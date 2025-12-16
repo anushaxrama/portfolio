@@ -60,7 +60,6 @@ export default function RecentWork() {
       description: 'A modern, full-stack web application enabling developers to interact with AI models, compare responses across different LLMs, and build custom AI agents—all through a sleek, glassmorphism-styled interface.',
       demoImages: [
         { src: '/narbl-1.png', label: 'Build with Intelligence' },
-        { src: '/narbl-2.png', label: 'Chat with Any Model' },
         { src: '/narbl-3.png', label: 'Compare Side by Side' },
       ],
       figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
