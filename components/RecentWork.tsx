@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useMemo } from 'react'
+import Image from 'next/image'
 
 interface Particle {
   id: number;
@@ -58,9 +59,9 @@ export default function RecentWork() {
       subtitle: 'AI Developer Platform',
       description: 'A modern, full-stack web application enabling developers to interact with AI models, compare responses across different LLMs, and build custom AI agents—all through a sleek, glassmorphism-styled interface.',
       demoImages: [
-        { src: '/narbl-1.png', label: 'AI Chat Interface' },
-        { src: '/narbl-2.png', label: 'Model Comparison' },
-        { src: '/narbl-3.png', label: 'Agent Builder' },
+        { src: '/narbl-1.png', label: 'Build with Intelligence' },
+        { src: '/narbl-2.png', label: 'Chat with Any Model' },
+        { src: '/narbl-3.png', label: 'Compare Side by Side' },
       ],
       figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
     },
@@ -185,11 +186,17 @@ export default function RecentWork() {
                     {project.demoImages.map((image, imgIndex) => (
                       <div
                         key={imgIndex}
-                        className={`absolute inset-0 bg-gradient-to-br from-purple-500/20 via-blue-500/20 to-cyan-500/20 flex items-center justify-center transition-opacity duration-700 ${
+                        className={`absolute inset-0 transition-opacity duration-700 ${
                           (activeSlides[index] || 0) === imgIndex ? 'opacity-100' : 'opacity-0'
                         }`}
                       >
-                        <span className="text-white/60 text-sm">{image.label}</span>
+                        <Image
+                          src={image.src}
+                          alt={image.label}
+                          fill
+                          className="object-cover object-top"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
                       </div>
                     ))}
                     
