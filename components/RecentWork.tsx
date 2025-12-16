@@ -61,6 +61,10 @@ export default function RecentWork() {
       demoImages: [
         { src: '/narbl-1.png', label: 'Build with Intelligence' },
         { src: '/narbl-3.png', label: 'Compare Side by Side' },
+        { src: '/narbl-4.png', label: 'Chat with Any Model' },
+        { src: '/narbl-5.png', label: 'Build Custom AI Agents' },
+        { src: '/narbl-6.png', label: 'Powerful AI Products' },
+        { src: '/narbl-7.png', label: 'User Dashboard' },
       ],
       figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
     },
