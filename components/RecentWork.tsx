@@ -69,9 +69,9 @@ export default function RecentWork() {
       figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
     },
     {
-      title: 'Project Two',
-      subtitle: 'Coming Soon',
-      description: '',
+      title: 'NeuraNote',
+      subtitle: 'AI-Powered Cognitive Note-Taking Platform',
+      description: 'A modern learning companion that transforms how students and lifelong learners capture, connect, and retain knowledge. Features smart notes with AI concept extraction, visual concept maps, spaced repetition review, and personalized learning insights.',
       demoImages: [],
       figmaLink: null,
     },
