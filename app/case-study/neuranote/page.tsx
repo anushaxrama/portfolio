@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface Particle {
   id: number;
@@ -97,6 +98,43 @@ export default function NeuranNoteCaseStudy() {
             <div>
               <p className="text-white/30 uppercase tracking-wider mb-1">Platform</p>
               <p className="text-white/80">Web Application</p>
+            </div>
+          </div>
+
+          {/* Laptop Mockup */}
+          <div className={`mt-20 transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <div className="relative max-w-4xl mx-auto">
+              {/* Laptop Frame */}
+              <div className="relative">
+                {/* Screen */}
+                <div className="relative bg-[#1a1a1a] rounded-t-xl pt-6 px-6 pb-4">
+                  {/* Camera notch */}
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#2a2a2a] flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#3a3a3a]"></div>
+                  </div>
+                  {/* Screen content */}
+                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-black">
+                    <Image
+                      src="/neuranote-4.png"
+                      alt="NeuraNote Dashboard"
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 800px"
+                    />
+                  </div>
+                </div>
+                {/* Laptop base */}
+                <div className="relative h-4 bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] rounded-b-lg">
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1 bg-[#3a3a3a] rounded-b-lg"></div>
+                </div>
+                {/* Base/Stand */}
+                <div className="relative mx-auto w-[40%] h-1 bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] rounded-b-xl"></div>
+                <div className="relative mx-auto w-[60%] h-1 bg-[#1a1a1a] rounded-b-xl -mt-0.5"></div>
+              </div>
+              
+              {/* Subtle glow effect */}
+              <div className="absolute -inset-10 bg-gradient-to-t from-purple-500/5 via-transparent to-transparent rounded-3xl blur-3xl -z-10"></div>
             </div>
           </div>
         </div>
