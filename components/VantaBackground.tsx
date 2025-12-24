@@ -15,8 +15,15 @@ export default function VantaBackground() {
         const VANTA = await import('vanta/dist/vanta.dots.min.js')
 
         if (vantaEffect.current) {
-          vantaEffect.current.destroy()
+          try {
+            vantaEffect.current.destroy()
+          } catch (e) {
+            // Ignore cleanup errors
+          }
+          vantaEffect.current = null
         }
+
+        if (!vantaRef.current) return
 
         vantaEffect.current = (VANTA as any).default({
           el: vantaRef.current,
@@ -44,7 +51,12 @@ export default function VantaBackground() {
 
     return () => {
       if (vantaEffect.current) {
-        vantaEffect.current.destroy()
+        try {
+          vantaEffect.current.destroy()
+        } catch (e) {
+          // Ignore cleanup errors
+        }
+        vantaEffect.current = null
       }
     }
   }, [])
