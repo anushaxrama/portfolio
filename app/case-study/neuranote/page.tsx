@@ -14,8 +14,17 @@ interface Particle {
   opacity: number;
 }
 
+const demoImages = [
+  { src: '/neuranote-1.png', label: 'Landing Page' },
+  { src: '/neuranote-4.png', label: 'Dashboard' },
+  { src: '/neuranote-5.png', label: 'Concept Map' },
+  { src: '/neuranote-6.png', label: 'Review Mode' },
+  { src: '/neuranote-7.png', label: 'Insights' },
+]
+
 export default function NeuranNoteCaseStudy() {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [activeSlide, setActiveSlide] = useState(0)
 
   const particles: Particle[] = useMemo(() => {
     return Array.from({ length: 60 }, (_, i) => ({
@@ -32,6 +41,14 @@ export default function NeuranNoteCaseStudy() {
   useEffect(() => {
     setIsLoaded(true)
   }, [])
+
+  const goToPrevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + demoImages.length) % demoImages.length)
+  }
+
+  const goToNextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % demoImages.length)
+  }
 
   return (
     <main className="relative min-h-screen bg-black text-white">
@@ -68,73 +85,123 @@ export default function NeuranNoteCaseStudy() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center px-8 pt-32 pb-20">
-        <div className="max-w-6xl mx-auto w-full">
-          <p className={`text-white/40 text-sm tracking-[0.3em] uppercase mb-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Case Study
-          </p>
-          
-          <h1 className={`text-6xl md:text-8xl lg:text-9xl font-black tracking-tight mb-8 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            NeuraNote
-          </h1>
-          
-          <p className={`text-xl md:text-2xl text-white/50 max-w-2xl mb-16 leading-relaxed transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            Designing an AI-powered note-taking platform grounded in cognitive science.
-          </p>
-
-          {/* Project Meta */}
-          <div className={`flex flex-wrap gap-x-16 gap-y-6 text-sm transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left side - Title and info */}
             <div>
-              <p className="text-white/30 uppercase tracking-wider mb-1">Role</p>
-              <p className="text-white/80">UX Designer & Researcher</p>
-            </div>
-            <div>
-              <p className="text-white/30 uppercase tracking-wider mb-1">Duration</p>
-              <p className="text-white/80">6 weeks</p>
-            </div>
-            <div>
-              <p className="text-white/30 uppercase tracking-wider mb-1">Tools</p>
-              <p className="text-white/80">Figma, FigJam, Lovable</p>
-            </div>
-            <div>
-              <p className="text-white/30 uppercase tracking-wider mb-1">Platform</p>
-              <p className="text-white/80">Web Application</p>
-            </div>
-          </div>
-
-          {/* Laptop Mockup */}
-          <div className={`mt-20 transition-all duration-1000 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <div className="relative max-w-4xl mx-auto">
-              {/* Laptop Frame */}
-              <div className="relative">
-                {/* Screen */}
-                <div className="relative bg-[#1a1a1a] rounded-t-xl pt-6 px-6 pb-4">
-                  {/* Camera notch */}
-                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#2a2a2a] flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#3a3a3a]"></div>
-                  </div>
-                  {/* Screen content */}
-                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-black">
-                    <Image
-                      src="/neuranote-4.png"
-                      alt="NeuraNote Dashboard"
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 768px) 100vw, 800px"
-                    />
-                  </div>
-                </div>
-                {/* Laptop base */}
-                <div className="relative h-4 bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] rounded-b-lg">
-                  {/* Notch */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1 bg-[#3a3a3a] rounded-b-lg"></div>
-                </div>
-                {/* Base/Stand */}
-                <div className="relative mx-auto w-[40%] h-1 bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] rounded-b-xl"></div>
-                <div className="relative mx-auto w-[60%] h-1 bg-[#1a1a1a] rounded-b-xl -mt-0.5"></div>
-              </div>
+              <p className={`text-white/40 text-sm tracking-[0.3em] uppercase mb-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                Case Study
+              </p>
               
-              {/* Subtle glow effect */}
-              <div className="absolute -inset-10 bg-gradient-to-t from-purple-500/5 via-transparent to-transparent rounded-3xl blur-3xl -z-10"></div>
+              <h1 className={`text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                NeuraNote
+              </h1>
+              
+              <p className={`text-lg md:text-xl text-white/50 mb-10 leading-relaxed transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                Designing an AI-powered note-taking platform grounded in cognitive science.
+              </p>
+
+              {/* Project Meta */}
+              <div className={`grid grid-cols-2 gap-x-8 gap-y-4 text-sm transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div>
+                  <p className="text-white/30 uppercase tracking-wider mb-1">Role</p>
+                  <p className="text-white/80">UX Designer & Researcher</p>
+                </div>
+                <div>
+                  <p className="text-white/30 uppercase tracking-wider mb-1">Duration</p>
+                  <p className="text-white/80">6 weeks</p>
+                </div>
+                <div>
+                  <p className="text-white/30 uppercase tracking-wider mb-1">Tools</p>
+                  <p className="text-white/80">Figma, FigJam, Lovable</p>
+                </div>
+                <div>
+                  <p className="text-white/30 uppercase tracking-wider mb-1">Platform</p>
+                  <p className="text-white/80">Web Application</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right side - Laptop Mockup */}
+            <div className={`transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+              <div className="relative group">
+                {/* Laptop Frame */}
+                <div className="relative">
+                  {/* Screen bezel */}
+                  <div className="relative bg-[#1c1c1c] rounded-t-2xl p-3 pb-2">
+                    {/* Camera */}
+                    <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#2a2a2a]"></div>
+                    
+                    {/* Screen */}
+                    <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-black">
+                      {/* Slideshow images */}
+                      {demoImages.map((image, index) => (
+                        <div
+                          key={index}
+                          className={`absolute inset-0 transition-opacity duration-500 ${
+                            activeSlide === index ? 'opacity-100' : 'opacity-0'
+                          }`}
+                        >
+                          <Image
+                            src={image.src}
+                            alt={image.label}
+                            fill
+                            className="object-cover object-top"
+                            sizes="(max-width: 768px) 100vw, 500px"
+                          />
+                        </div>
+                      ))}
+
+                      {/* Navigation arrows */}
+                      <button
+                        onClick={goToPrevSlide}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <button
+                        onClick={goToNextSlide}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+
+                      {/* Slide dots */}
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                        {demoImages.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setActiveSlide(index)}
+                            className={`w-1.5 h-1.5 rounded-full transition-all ${
+                              activeSlide === index 
+                                ? 'bg-white w-4' 
+                                : 'bg-white/40 hover:bg-white/60'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Laptop base */}
+                  <div className="relative h-3 bg-gradient-to-b from-[#2a2a2a] to-[#1c1c1c] rounded-b-xl">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-[#3a3a3a] rounded-b"></div>
+                  </div>
+                  
+                  {/* Stand */}
+                  <div className="mx-auto w-[30%] h-1 bg-gradient-to-b from-[#2a2a2a] to-transparent rounded-b-lg"></div>
+                </div>
+
+                {/* Subtle glow */}
+                <div className="absolute -inset-8 bg-gradient-to-t from-purple-500/10 via-transparent to-transparent rounded-3xl blur-2xl -z-10"></div>
+              </div>
+
+              {/* Current slide label */}
+              <p className="text-center text-white/30 text-sm mt-4">{demoImages[activeSlide].label}</p>
             </div>
           </div>
         </div>
