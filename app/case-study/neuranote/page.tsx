@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, useRef } from 'react'
 import Link from 'next/link'
 
 interface Particle {
@@ -66,20 +66,22 @@ export default function NeuranNoteCaseStudy() {
       </nav>
 
       {/* Hero Section */}
-      <section className={`relative min-h-screen flex items-center px-8 pt-32 pb-20 transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      <section className="relative min-h-screen flex items-center px-8 pt-32 pb-20">
         <div className="max-w-6xl mx-auto w-full">
-          <p className="text-white/40 text-sm tracking-[0.3em] uppercase mb-6">Case Study</p>
+          <p className={`text-white/40 text-sm tracking-[0.3em] uppercase mb-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            Case Study
+          </p>
           
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tight mb-8">
+          <h1 className={`text-6xl md:text-8xl lg:text-9xl font-black tracking-tight mb-8 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             NeuraNote
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/50 max-w-2xl mb-16 leading-relaxed">
+          <p className={`text-xl md:text-2xl text-white/50 max-w-2xl mb-16 leading-relaxed transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             Designing an AI-powered note-taking platform grounded in cognitive science.
           </p>
 
           {/* Project Meta */}
-          <div className="flex flex-wrap gap-x-16 gap-y-6 text-sm">
+          <div className={`flex flex-wrap gap-x-16 gap-y-6 text-sm transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div>
               <p className="text-white/30 uppercase tracking-wider mb-1">Role</p>
               <p className="text-white/80">UX Designer & Researcher</p>
@@ -320,32 +322,7 @@ export default function NeuranNoteCaseStudy() {
       </Section>
 
       {/* Footer */}
-      <section className="relative py-32 px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap gap-6">
-            <a
-              href="https://github.com/anushaxrama/neuranote"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-white/50 hover:text-white transition-colors text-sm"
-            >
-              View on GitHub
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-3 text-white/50 hover:text-white transition-colors text-sm"
-            >
-              Back to Portfolio
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <FooterSection />
 
       <style jsx>{`
         @keyframes float {
@@ -368,8 +345,39 @@ export default function NeuranNoteCaseStudy() {
 }
 
 function Section({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1, rootMargin: '-50px' }
+    )
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current)
+      }
+    }
+  }, [])
+
   return (
-    <section className="relative py-24 px-8 border-t border-white/5">
+    <section 
+      ref={ref}
+      className={`relative py-24 px-8 border-t border-white/5 transition-all duration-1000 ease-out ${
+        isVisible 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 translate-y-12'
+      }`}
+    >
       <div className="max-w-6xl mx-auto">
         {children}
       </div>
@@ -435,5 +443,65 @@ function Feature({ title, description }: { title: string; description: string })
       <h4 className="text-white/80 mb-1">{title}</h4>
       <p className="text-white/40 text-sm">{description}</p>
     </div>
+  )
+}
+
+function FooterSection() {
+  const ref = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current)
+      }
+    }
+  }, [])
+
+  return (
+    <section 
+      ref={ref}
+      className={`relative py-32 px-8 transition-all duration-1000 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      }`}
+    >
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-wrap gap-6">
+          <a
+            href="https://github.com/anushaxrama/neuranote"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 text-white/50 hover:text-white transition-colors text-sm"
+          >
+            View on GitHub
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-3 text-white/50 hover:text-white transition-colors text-sm"
+          >
+            Back to Portfolio
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+        </div>
+      </div>
+    </section>
   )
 }
