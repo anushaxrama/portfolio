@@ -127,81 +127,93 @@ export default function NeuranNoteCaseStudy() {
               <div className="relative group">
                 {/* Laptop Frame */}
                 <div className="relative">
-                  {/* Screen bezel */}
-                  <div className="relative bg-[#1c1c1c] rounded-t-2xl p-3 pb-2">
-                    {/* Camera */}
-                    <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#2a2a2a]"></div>
-                    
-                    {/* Screen */}
-                    <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-black">
-                      {/* Slideshow images */}
-                      {demoImages.map((image, index) => (
-                        <div
-                          key={index}
-                          className={`absolute inset-0 transition-opacity duration-500 ${
-                            activeSlide === index ? 'opacity-100' : 'opacity-0'
-                          }`}
-                        >
-                          <Image
-                            src={image.src}
-                            alt={image.label}
-                            fill
-                            className="object-cover object-top"
-                            sizes="(max-width: 768px) 100vw, 500px"
-                          />
-                        </div>
-                      ))}
-
-                      {/* Navigation arrows */}
-                      <button
-                        onClick={goToPrevSlide}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                      </button>
-                      <button
-                        onClick={goToNextSlide}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
-                      >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </button>
-
-                      {/* Slide dots */}
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-                        {demoImages.map((_, index) => (
-                          <button
+                  {/* Screen lid - silver aluminum */}
+                  <div className="relative bg-gradient-to-b from-[#e8e8e8] via-[#d4d4d4] to-[#c0c0c0] rounded-t-2xl p-[3px] shadow-lg">
+                    {/* Inner black bezel */}
+                    <div className="relative bg-[#1a1a1a] rounded-t-xl p-2.5 pb-2">
+                      {/* Camera */}
+                      <div className="absolute top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#0a0a0a] ring-1 ring-[#2a2a2a]">
+                        <div className="absolute inset-0.5 rounded-full bg-[#1a3a1a]"></div>
+                      </div>
+                      
+                      {/* Screen */}
+                      <div className="relative aspect-[16/10] rounded overflow-hidden bg-black shadow-inner">
+                        {/* Slideshow images */}
+                        {demoImages.map((image, index) => (
+                          <div
                             key={index}
-                            onClick={() => setActiveSlide(index)}
-                            className={`w-1.5 h-1.5 rounded-full transition-all ${
-                              activeSlide === index 
-                                ? 'bg-white w-4' 
-                                : 'bg-white/40 hover:bg-white/60'
+                            className={`absolute inset-0 transition-opacity duration-500 ${
+                              activeSlide === index ? 'opacity-100' : 'opacity-0'
                             }`}
-                          />
+                          >
+                            <Image
+                              src={image.src}
+                              alt={image.label}
+                              fill
+                              className="object-cover object-top"
+                              sizes="(max-width: 768px) 100vw, 500px"
+                            />
+                          </div>
                         ))}
+
+                        {/* Navigation arrows */}
+                        <button
+                          onClick={goToPrevSlide}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={goToNextSlide}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
+
+                        {/* Slide dots */}
+                        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                          {demoImages.map((_, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setActiveSlide(index)}
+                              className={`w-1.5 h-1.5 rounded-full transition-all ${
+                                activeSlide === index 
+                                  ? 'bg-white w-4' 
+                                  : 'bg-white/40 hover:bg-white/60'
+                              }`}
+                            />
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
                   
-                  {/* Laptop base */}
-                  <div className="relative h-3 bg-gradient-to-b from-[#2a2a2a] to-[#1c1c1c] rounded-b-xl">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-[#3a3a3a] rounded-b"></div>
+                  {/* Laptop bottom/keyboard area */}
+                  <div className="relative">
+                    {/* Hinge */}
+                    <div className="h-1.5 bg-gradient-to-b from-[#a0a0a0] to-[#888888] rounded-b-sm shadow-md"></div>
+                    
+                    {/* Bottom case */}
+                    <div className="h-4 bg-gradient-to-b from-[#d4d4d4] via-[#c8c8c8] to-[#b8b8b8] rounded-b-2xl shadow-lg">
+                      {/* Trackpad notch */}
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1.5 bg-gradient-to-b from-[#c0c0c0] to-[#a8a8a8] rounded-t-lg"></div>
+                    </div>
                   </div>
                   
-                  {/* Stand */}
-                  <div className="mx-auto w-[30%] h-1 bg-gradient-to-b from-[#2a2a2a] to-transparent rounded-b-lg"></div>
+                  {/* Shadow underneath */}
+                  <div className="absolute -bottom-4 left-[10%] right-[10%] h-4 bg-black/20 blur-xl rounded-full"></div>
                 </div>
 
-                {/* Subtle glow */}
-                <div className="absolute -inset-8 bg-gradient-to-t from-purple-500/10 via-transparent to-transparent rounded-3xl blur-2xl -z-10"></div>
+                {/* Ambient reflection */}
+                <div className="absolute -inset-4 bg-gradient-to-tr from-white/5 via-transparent to-white/5 rounded-3xl -z-10"></div>
               </div>
 
               {/* Current slide label */}
-              <p className="text-center text-white/30 text-sm mt-4">{demoImages[activeSlide].label}</p>
+              <p className="text-center text-white/40 text-sm mt-6">{demoImages[activeSlide].label}</p>
             </div>
           </div>
         </div>
