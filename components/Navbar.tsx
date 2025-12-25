@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 right-0 z-50 p-6 md:p-8">
-      <div className="flex gap-6 md:gap-8 text-white/60 text-xs md:text-sm font-light tracking-wider uppercase">
+      <div className="flex gap-6 md:gap-8 text-white/60 text-xs md:text-sm font-light tracking-wider lowercase">
         <button
           onClick={() => scrollToSection('about')}
           className="hover:text-white transition-colors duration-300 cursor-pointer"
