@@ -164,8 +164,8 @@ export default function RecentWork() {
         }`}
         style={{ perspective: '1000px' }}
       >
-        {/* Centered laptop container */}
-        <div className="w-full max-w-[420px]">
+        {/* Centered laptop container - Bigger */}
+        <div className="w-full max-w-[500px] mx-auto">
           {/* 3D transform container */}
           <div 
             className="relative transition-all duration-500 hover:translate-y-[-4px]"
@@ -219,7 +219,7 @@ export default function RecentWork() {
                             alt={image.label}
                             fill
                             className="object-cover object-top"
-                            sizes="420px"
+                            sizes="500px"
                             priority={index === 0 && imgIndex === 0}
                           />
                         </div>
@@ -360,9 +360,9 @@ export default function RecentWork() {
           style={{ backgroundColor: `hsl(${project.accentHue}, 60%, 50%)` }}
         />
 
-        {/* Phone Frame - iPhone 15 Pro style */}
+        {/* Phone Frame - iPhone 15 Pro style - Bigger */}
         <div 
-          className="relative w-[300px] rounded-[50px] p-[10px] shadow-2xl"
+          className="relative w-[320px] rounded-[50px] p-[10px] shadow-2xl"
           style={{
             background: 'linear-gradient(145deg, #3a3a3f 0%, #2a2a2f 50%, #1a1a1f 100%)',
             boxShadow: `
@@ -407,7 +407,7 @@ export default function RecentWork() {
                     alt={image.label}
                     fill
                     className="object-cover object-top"
-                    sizes="300px"
+                    sizes="320px"
                   />
                 </div>
               ))}
@@ -523,7 +523,7 @@ export default function RecentWork() {
           <section
             key={index}
             ref={setProjectRef(index)}
-            className="relative min-h-screen flex items-center py-20 lg:py-0"
+            className="relative min-h-screen flex items-center py-24 lg:py-12"
           >
             <div className="relative z-10 w-full max-w-[1300px] mx-auto px-6 md:px-12 lg:px-16">
               <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
@@ -638,8 +638,8 @@ export default function RecentWork() {
                   </div>
                 </div>
 
-                {/* Device Mockup Side */}
-                <div className={`${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                {/* Device Mockup Side - Centered */}
+                <div className={`flex justify-center items-center ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
                   {project.deviceType === 'phone' ? (
                     <PhoneMockup project={project} index={index} isVisible={isVisible} />
                   ) : (
@@ -649,11 +649,23 @@ export default function RecentWork() {
               </div>
             </div>
 
-            {/* Scroll indicator between projects */}
+            {/* Transition between projects */}
             {index < projects.length - 1 && (
-              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-                <span className="text-white/60 text-xs uppercase tracking-widest">Scroll</span>
-                <div className="w-px h-10 bg-gradient-to-b from-white/60 to-transparent animate-pulse" />
+              <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none">
+                {/* Gradient fade */}
+                <div 
+                  className="absolute inset-0 transition-all duration-1000"
+                  style={{
+                    background: `linear-gradient(180deg, transparent 0%, hsla(${projects[index + 1]?.accentHue || 0}, 30%, 10%, 0.3) 100%)`,
+                  }}
+                />
+                {/* Scroll indicator */}
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+                  <div className="w-[1px] h-12 bg-gradient-to-b from-white/50 to-transparent" />
+                  <div className="w-6 h-10 rounded-full border border-white/20 flex justify-center pt-2">
+                    <div className="w-1 h-2 bg-white/40 rounded-full animate-bounce" />
+                  </div>
+                </div>
               </div>
             )}
           </section>
