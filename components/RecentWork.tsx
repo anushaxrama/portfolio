@@ -162,8 +162,8 @@ export default function RecentWork() {
         }`}
         style={{ perspective: '1200px' }}
       >
-        {/* Bigger centered laptop */}
-        <div className="w-full max-w-[520px] mx-auto">
+        {/* Centered laptop with breathing room */}
+        <div className="w-full max-w-[480px] mx-auto">
           {/* 3D transform - minimal rotation for sleek look */}
           <div 
             className="relative transition-all duration-500 hover:translate-y-[-6px] hover:scale-[1.02]"
@@ -218,7 +218,7 @@ export default function RecentWork() {
                             alt={image.label}
                             fill
                             className="object-cover object-top"
-                            sizes="520px"
+                            sizes="480px"
                             priority={index === 0 && imgIndex === 0}
                           />
                         </div>
@@ -524,14 +524,14 @@ export default function RecentWork() {
             ref={setProjectRef(index)}
             className="relative min-h-screen flex items-center py-20 lg:py-0"
           >
-            <div className="relative z-10 w-full max-w-[1300px] mx-auto px-6 md:px-12 lg:px-16">
-              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
+            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center ${
                 isEven ? '' : 'lg:grid-flow-dense'
               }`}>
                 
                 {/* Content Side */}
                 <div className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                  {/* Project Number - Bold & Visible */}
+                  {/* Project Number - Clearly Visible */}
                   <div 
                     className={`absolute -top-4 -left-2 transition-all duration-700 delay-100 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -540,9 +540,9 @@ export default function RecentWork() {
                     <span 
                       className="text-[6rem] md:text-[8rem] font-black leading-none select-none"
                       style={{ 
-                        color: `hsla(${project.accentHue}, 50%, 60%, 0.25)`,
-                        WebkitTextStroke: `3px hsla(${project.accentHue}, 55%, 70%, 0.6)`,
-                        textShadow: `0 0 50px hsla(${project.accentHue}, 60%, 60%, 0.4)`,
+                        color: `hsla(${project.accentHue}, 50%, 65%, 0.35)`,
+                        WebkitTextStroke: `3px hsla(${project.accentHue}, 55%, 75%, 0.7)`,
+                        textShadow: `0 0 60px hsla(${project.accentHue}, 60%, 65%, 0.5)`,
                       }}
                     >
                       {project.number}
