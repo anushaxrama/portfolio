@@ -24,13 +24,13 @@ export default function Navbar() {
           resume
         </button>
         <a
-          href="mailto:hello@anusharamachandran.com"
+          href="mailto:anusharama100@gmail.com"
           className="hover:text-white transition-colors duration-300"
         >
           email
         </a>
         <a
-          href="https://linkedin.com/in/anusharamachandran"
+          href="https://www.linkedin.com/in/anusha-ramachandran-45882724a"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-white transition-colors duration-300"
