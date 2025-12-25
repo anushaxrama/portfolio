@@ -150,22 +150,23 @@ export default function RecentWork() {
   // Get current accent color based on active project
   const currentHue = projects[activeProject]?.accentHue || 270
 
-  // Premium MacBook-style 3D Laptop Mockup - Compact & Clean
+  // Premium MacBook-style 3D Laptop Mockup - Centered & Clean
   const LaptopMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => {
     const isLeftAngle = project.laptopAngle === 'left'
-    const rotateY = isLeftAngle ? 20 : -20
-    const rotateX = 8
+    // Subtle rotation - keyboard always faces user
+    const rotateY = isLeftAngle ? 12 : -12
+    const rotateX = 5
     
     return (
       <div 
-        className={`relative transition-all duration-1000 delay-300 ${
+        className={`relative flex justify-center transition-all duration-1000 delay-300 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}
-        style={{ perspective: '1200px' }}
+        style={{ perspective: '1000px' }}
       >
-        {/* Scaled container for smaller laptop */}
-        <div className="max-w-md mx-auto">
-          {/* Floating container with 3D transform */}
+        {/* Centered laptop container */}
+        <div className="w-full max-w-[420px]">
+          {/* 3D transform container */}
           <div 
             className="relative transition-all duration-500 hover:translate-y-[-4px]"
             style={{ 
@@ -175,7 +176,7 @@ export default function RecentWork() {
           >
             {/* Ambient glow */}
             <div 
-              className="absolute -inset-12 rounded-full blur-[80px] opacity-20 transition-colors duration-1000"
+              className="absolute -inset-10 rounded-full blur-[60px] opacity-25 transition-colors duration-1000"
               style={{ backgroundColor: `hsl(${project.accentHue}, 60%, 50%)` }}
             />
 
@@ -183,38 +184,31 @@ export default function RecentWork() {
             <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
               
               {/* SCREEN */}
-              <div 
-                className="relative"
-                style={{ 
-                  transformStyle: 'preserve-3d',
-                  transform: 'rotateX(-3deg)',
-                  transformOrigin: 'bottom center',
-                }}
-              >
-                {/* Screen frame */}
+              <div className="relative">
+                {/* Screen frame - Space Gray */}
                 <div 
-                  className="relative rounded-t-[12px] p-[4px]"
+                  className="relative rounded-t-[14px] p-[5px]"
                   style={{
                     background: 'linear-gradient(180deg, #3a3a40 0%, #2a2a30 50%, #1a1a20 100%)',
                     boxShadow: `
-                      0 0 0 1px rgba(255,255,255,0.06),
-                      0 0 40px -15px hsla(${project.accentHue}, 60%, 50%, 0.3)
+                      0 0 0 1px rgba(255,255,255,0.08),
+                      0 0 50px -15px hsla(${project.accentHue}, 60%, 50%, 0.4)
                     `,
                   }}
                 >
                   {/* Inner bezel */}
-                  <div className="relative rounded-t-[9px] bg-[#0a0a0a] p-[2px]">
+                  <div className="relative rounded-t-[10px] bg-[#0a0a0a] p-[3px]">
                     {/* Camera */}
-                    <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[5px] h-[5px] rounded-full bg-[#1a1a1a]">
-                      <div className="w-[2px] h-[2px] rounded-full bg-green-400/30 mx-auto mt-[1.5px]"></div>
+                    <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[6px] h-[6px] rounded-full bg-[#1a1a1a]">
+                      <div className="w-[3px] h-[3px] rounded-full bg-green-400/40 mx-auto mt-[1.5px]"></div>
                     </div>
 
                     {/* Screen */}
-                    <div className="relative aspect-[16/10] rounded-[6px] overflow-hidden bg-black group mt-1">
+                    <div className="relative aspect-[16/10] rounded-[7px] overflow-hidden bg-black group mt-1">
                       {project.demoImages.map((image, imgIndex) => (
                         <div
                           key={imgIndex}
-                          className={`absolute inset-0 transition-all duration-500 ${
+                          className={`absolute inset-0 transition-opacity duration-300 ${
                             (activeSlides[index] || 0) === imgIndex 
                               ? 'opacity-100' 
                               : 'opacity-0'
@@ -225,7 +219,7 @@ export default function RecentWork() {
                             alt={image.label}
                             fill
                             className="object-cover object-top"
-                            sizes="400px"
+                            sizes="420px"
                             priority={index === 0 && imgIndex === 0}
                           />
                         </div>
@@ -235,40 +229,38 @@ export default function RecentWork() {
                       <div 
                         className="absolute inset-0 pointer-events-none"
                         style={{
-                          background: isLeftAngle 
-                            ? 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 25%)'
-                            : 'linear-gradient(225deg, rgba(255,255,255,0.08) 0%, transparent 25%)',
+                          background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 30%)',
                         }}
                       />
 
-                      {/* Navigation */}
+                      {/* Navigation Arrows - Bigger & More Visible */}
                       <button
                         onClick={() => goToPrevSlide(index, project.demoImages.length)}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/50 backdrop-blur flex items-center justify-center text-white/70 hover:bg-black/70 transition-all opacity-0 group-hover:opacity-100"
+                        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-10"
                       >
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                         </svg>
                       </button>
                       <button
                         onClick={() => goToNextSlide(index, project.demoImages.length)}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/50 backdrop-blur flex items-center justify-center text-white/70 hover:bg-black/70 transition-all opacity-0 group-hover:opacity-100"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-10"
                       >
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                         </svg>
                       </button>
 
                       {/* Dots */}
-                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/40 backdrop-blur-sm rounded-full px-2 py-1">
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/50 backdrop-blur-sm rounded-full px-2.5 py-1.5">
                         {project.demoImages.map((_, dotIndex) => (
                           <button
                             key={dotIndex}
                             onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
-                            className={`h-1 rounded-full transition-all ${
+                            className={`h-1.5 rounded-full transition-all cursor-pointer ${
                               (activeSlides[index] || 0) === dotIndex 
-                                ? 'bg-white w-3' 
-                                : 'bg-white/40 w-1 hover:bg-white/60'
+                                ? 'bg-white w-4' 
+                                : 'bg-white/40 w-1.5 hover:bg-white/70'
                             }`}
                           />
                         ))}
@@ -280,67 +272,67 @@ export default function RecentWork() {
 
               {/* HINGE */}
               <div 
-                className="relative h-[5px] mx-2"
+                className="relative h-[6px] mx-3"
                 style={{
                   background: 'linear-gradient(180deg, #1a1a20 0%, #2a2a30 50%, #3a3a40 100%)',
-                  borderRadius: '0 0 3px 3px',
+                  borderRadius: '0 0 4px 4px',
                 }}
               />
 
-              {/* KEYBOARD BASE */}
+              {/* KEYBOARD BASE - Always facing towards user */}
               <div 
                 className="relative"
                 style={{ 
                   transformStyle: 'preserve-3d',
-                  transform: 'rotateX(75deg)',
+                  transform: 'rotateX(72deg)',
                   transformOrigin: 'top center',
                 }}
               >
                 <div 
-                  className="relative rounded-b-[12px] pt-2 pb-1.5 px-2"
+                  className="relative rounded-b-[14px] pt-2.5 pb-2 px-2.5"
                   style={{
                     background: 'linear-gradient(180deg, #3a3a40 0%, #2a2a30 50%, #1f1f25 100%)',
-                    boxShadow: '0 20px 30px -8px rgba(0,0,0,0.5)',
+                    boxShadow: '0 25px 35px -10px rgba(0,0,0,0.6)',
                   }}
                 >
-                  {/* Keyboard */}
-                  <div className="bg-[#0c0c0e] rounded p-1.5">
+                  {/* Keyboard area */}
+                  <div className="bg-[#0c0c0e] rounded-md p-2">
                     {/* Key rows */}
-                    {[12, 12, 11, 10].map((count, rowIndex) => (
-                      <div key={rowIndex} className="flex gap-[1.5px] mb-[1.5px]">
+                    {[13, 13, 12, 11].map((count, rowIndex) => (
+                      <div key={rowIndex} className="flex gap-[2px] mb-[2px]">
                         {Array.from({ length: count }).map((_, i) => (
                           <div 
                             key={i} 
-                            className="flex-1 h-2.5 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]"
+                            className="flex-1 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]"
                           />
                         ))}
                       </div>
                     ))}
                     {/* Spacebar row */}
-                    <div className="flex gap-[1.5px]">
-                      <div className="w-4 h-2.5 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
-                      <div className="w-4 h-2.5 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
-                      <div className="flex-1 h-2.5 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
-                      <div className="w-4 h-2.5 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
-                      <div className="w-4 h-2.5 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
+                    <div className="flex gap-[2px]">
+                      <div className="w-5 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
+                      <div className="w-5 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
+                      <div className="flex-1 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
+                      <div className="w-5 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
+                      <div className="w-5 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
                     </div>
                   </div>
                   {/* Trackpad */}
-                  <div className="mx-auto mt-1.5 w-16 h-10 rounded-lg bg-gradient-to-b from-[#1a1a1c] to-[#0f0f10]" />
+                  <div className="mx-auto mt-2 w-20 h-12 rounded-lg bg-gradient-to-b from-[#1a1a1c] to-[#0f0f10] border border-white/5" />
                 </div>
               </div>
             </div>
 
             {/* Shadow */}
             <div 
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[90%] h-8 rounded-[50%] blur-xl opacity-40"
+              className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[85%] h-10 rounded-[50%] blur-xl opacity-50"
               style={{ backgroundColor: `hsl(${project.accentHue}, 20%, 8%)` }}
             />
           </div>
         </div>
 
         {/* Label */}
-        <p className="text-center text-white/40 text-xs mt-6 font-medium">
+        <p className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-white/50 text-sm font-medium whitespace-nowrap">
           {project.demoImages[activeSlides[index] || 0]?.label}
         </p>
       </div>
@@ -428,21 +420,21 @@ export default function RecentWork() {
                 }}
               />
 
-              {/* Navigation arrows */}
+              {/* Navigation arrows - Bigger & More Visible */}
               <button
                 onClick={() => goToPrevSlide(index, project.demoImages.length)}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/80 hover:bg-black/70 transition-all opacity-0 group-hover:opacity-100 z-20"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-20"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
                 onClick={() => goToNextSlide(index, project.demoImages.length)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/80 hover:bg-black/70 transition-all opacity-0 group-hover:opacity-100 z-20"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-20"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
 
@@ -540,18 +532,18 @@ export default function RecentWork() {
                 
                 {/* Content Side */}
                 <div className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                  {/* Project Number - Visible but aesthetic */}
+                  {/* Project Number - Clearly Visible */}
                   <div 
-                    className={`absolute -top-8 -left-2 transition-all duration-700 delay-100 ${
+                    className={`absolute -top-6 -left-3 transition-all duration-700 delay-100 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                   >
                     <span 
-                      className="text-[8rem] md:text-[10rem] font-black leading-none select-none"
+                      className="text-[7rem] md:text-[9rem] font-black leading-none select-none"
                       style={{ 
-                        color: `hsla(${project.accentHue}, 40%, 50%, 0.08)`,
-                        WebkitTextStroke: `2px hsla(${project.accentHue}, 50%, 60%, 0.25)`,
-                        textShadow: `0 0 60px hsla(${project.accentHue}, 50%, 50%, 0.15)`,
+                        color: `hsla(${project.accentHue}, 45%, 55%, 0.15)`,
+                        WebkitTextStroke: `2px hsla(${project.accentHue}, 50%, 65%, 0.4)`,
+                        textShadow: `0 0 40px hsla(${project.accentHue}, 60%, 60%, 0.25)`,
                       }}
                     >
                       {project.number}
