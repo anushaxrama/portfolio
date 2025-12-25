@@ -13,19 +13,18 @@ interface ShootingStar {
 }
 
 export default function Hero() {
-  const [showScroll, setShowScroll] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // Generate shooting stars
+  // Generate shooting stars (continuous on Hero page too)
   const shootingStars: ShootingStar[] = useMemo(() => {
-    return Array.from({ length: 8 }, (_, i) => ({
+    return Array.from({ length: 5 }, (_, i) => ({
       id: i,
-      startX: Math.random() * 100,
-      startY: Math.random() * 50,
+      startX: Math.random() * 80 + 10,
+      startY: Math.random() * 40,
       duration: Math.random() * 2 + 1.5,
-      delay: Math.random() * 10 + i * 2,
-      angle: Math.random() * 30 + 30, // 30-60 degrees
-      length: Math.random() * 60 + 40,
+      delay: Math.random() * 8 + i * 3,
+      angle: Math.random() * 25 + 35,
+      length: Math.random() * 50 + 30,
     }));
   }, []);
 
@@ -34,13 +33,8 @@ export default function Hero() {
       setIsLoaded(true)
     }, 100)
     
-    const scrollTimer = setTimeout(() => {
-      setShowScroll(true)
-    }, 1200)
-    
     return () => {
       clearTimeout(loadTimer)
-      clearTimeout(scrollTimer)
     }
   }, [])
 
@@ -48,23 +42,23 @@ export default function Hero() {
     <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-blue-900/10" />
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[150px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/8 via-transparent to-blue-900/8" />
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px]" />
       </div>
 
-      {/* Shooting stars */}
+      {/* Shooting stars (continuous, very subtle) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {shootingStars.map((star) => (
           <div
             key={star.id}
-            className="absolute shooting-star"
+            className="absolute"
             style={{
               left: `${star.startX}%`,
               top: `${star.startY}%`,
               width: `${star.length}px`,
               height: '1px',
-              background: 'linear-gradient(90deg, rgba(255,255,255,0.6), transparent)',
+              background: 'linear-gradient(90deg, rgba(255,255,255,0.4), transparent)',
               transform: `rotate(${star.angle}deg)`,
               animation: `shoot ${star.duration}s ease-out ${star.delay}s infinite`,
               opacity: 0,
@@ -73,69 +67,43 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Centered content */}
-      <div className="flex flex-col items-center justify-center z-10 text-center w-full max-w-5xl mx-auto">
-        {/* Name - Bold & Perfectly Centered */}
+      {/* Centered content - Name with same styling as splash */}
+      <div className="flex flex-col items-center justify-center z-10 text-center w-full">
+        {/* Name container */}
         <div 
-          className="w-full"
+          className="flex items-center justify-center"
           style={{
             opacity: isLoaded ? 1 : 0,
-            transform: isLoaded ? 'translateY(0)' : 'translateY(40px)',
-            transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+            transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
           }}
         >
           <h1 
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight text-center w-full"
+            className="text-white font-black tracking-tight"
             style={{
+              fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
               letterSpacing: '-0.02em',
               lineHeight: 1,
             }}
           >
-            ANUSHA
-          </h1>
-        </div>
-        
-        <div 
-          className="w-full mt-1"
-          style={{
-            opacity: isLoaded ? 1 : 0,
-            transform: isLoaded ? 'translateY(0)' : 'translateY(40px)',
-            transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s',
-          }}
-        >
-          <h1 
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight text-center w-full"
-            style={{
-              letterSpacing: '-0.02em',
-              lineHeight: 1,
-            }}
-          >
-            RAMACHANDRAN
+            ANUSHA RAMACHANDRAN
           </h1>
         </div>
 
-        {/* Subtitle */}
-        <p 
-          className="mt-6 text-white/50 text-xs sm:text-sm tracking-[0.3em] uppercase"
+        {/* Scroll indicator */}
+        <div 
+          className="mt-12 flex flex-col items-center"
           style={{
-            opacity: showScroll ? 1 : 0,
-            transform: showScroll ? 'translateY(0)' : 'translateY(15px)',
-            transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+            opacity: isLoaded ? 1 : 0,
+            transform: isLoaded ? 'translateY(0)' : 'translateY(10px)',
+            transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s',
           }}
         >
-          Scroll Anywhere
-        </p>
-        
-        {/* Animated line */}
-        <div 
-          className="mt-4 w-px h-12 bg-gradient-to-b from-white/40 to-transparent"
-          style={{
-            opacity: showScroll ? 1 : 0,
-            transform: showScroll ? 'scaleY(1)' : 'scaleY(0)',
-            transformOrigin: 'top',
-            transition: 'opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s',
-          }}
-        />
+          <p className="text-white/40 text-xs tracking-[0.3em] uppercase mb-3">
+            Scroll Anywhere
+          </p>
+          <div className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent" />
+        </div>
       </div>
 
       <style jsx>{`
@@ -144,19 +112,16 @@ export default function Hero() {
             opacity: 0;
             transform: rotate(var(--angle, 45deg)) translateX(0);
           }
-          5% {
-            opacity: 0.8;
+          10% {
+            opacity: 0.5;
           }
-          30% {
-            opacity: 0.4;
+          40% {
+            opacity: 0.2;
           }
           100% {
             opacity: 0;
-            transform: rotate(var(--angle, 45deg)) translateX(200px);
+            transform: rotate(var(--angle, 45deg)) translateX(150px);
           }
-        }
-        .shooting-star {
-          --angle: 45deg;
         }
       `}</style>
     </section>

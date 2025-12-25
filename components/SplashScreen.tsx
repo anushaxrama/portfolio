@@ -6,30 +6,31 @@ interface SplashScreenProps {
   onComplete: () => void;
 }
 
-interface Particle {
+interface ShootingStar {
   id: number;
-  x: number;
-  y: number;
-  size: number;
+  startX: number;
+  startY: number;
   duration: number;
   delay: number;
-  opacity: number;
+  angle: number;
+  length: number;
 }
 
 const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   const [showLastName, setShowLastName] = useState(false);
+  const [showStars, setShowStars] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
 
-  // Generate random particles
-  const particles: Particle[] = useMemo(() => {
-    return Array.from({ length: 60 }, (_, i) => ({
+  // Generate shooting stars
+  const shootingStars: ShootingStar[] = useMemo(() => {
+    return Array.from({ length: 6 }, (_, i) => ({
       id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 4 + 1,
-      duration: Math.random() * 8 + 4,
-      delay: Math.random() * 5,
-      opacity: Math.random() * 0.5 + 0.2,
+      startX: Math.random() * 80 + 10,
+      startY: Math.random() * 40 + 5,
+      duration: Math.random() * 1.5 + 1,
+      delay: i * 0.8,
+      angle: Math.random() * 25 + 35,
+      length: Math.random() * 50 + 30,
     }));
   }, []);
 
@@ -39,18 +40,24 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
       setShowLastName(true);
     }, 2200);
 
+    // Show shooting stars after last name appears
+    const starsTimer = setTimeout(() => {
+      setShowStars(true);
+    }, 3000);
+
     // Start fade out (gentler)
     const fadeTimer = setTimeout(() => {
       setFadeOut(true);
-    }, 4500);
+    }, 5000);
 
     // Complete after fade
     const completeTimer = setTimeout(() => {
       onComplete();
-    }, 6500);
+    }, 7000);
 
     return () => {
       clearTimeout(lastNameTimer);
+      clearTimeout(starsTimer);
       clearTimeout(fadeTimer);
       clearTimeout(completeTimer);
     };
@@ -64,19 +71,33 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         transition: 'opacity 2s ease-out',
       }}
     >
-      {/* Floating particles */}
+      {/* Subtle gradient background */}
       <div className="absolute inset-0 pointer-events-none">
-        {particles.map((particle) => (
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/8 via-transparent to-blue-900/8" />
+        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/3 right-1/4 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px]" />
+      </div>
+
+      {/* Shooting stars - appear after name animation */}
+      <div 
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        style={{
+          opacity: showStars ? 1 : 0,
+          transition: 'opacity 0.5s ease-out',
+        }}
+      >
+        {shootingStars.map((star) => (
           <div
-            key={particle.id}
-            className="absolute rounded-full bg-white"
+            key={star.id}
+            className="absolute"
             style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              opacity: particle.opacity,
-              animation: `float ${particle.duration}s ease-in-out ${particle.delay}s infinite`,
+              left: `${star.startX}%`,
+              top: `${star.startY}%`,
+              width: `${star.length}px`,
+              height: '1px',
+              background: 'linear-gradient(90deg, rgba(255,255,255,0.5), transparent)',
+              transform: `rotate(${star.angle}deg)`,
+              animation: showStars ? `shoot ${star.duration}s ease-out ${star.delay}s infinite` : 'none',
             }}
           />
         ))}
@@ -172,19 +193,36 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         </div>
       </div>
 
+      {/* Scroll anywhere text - appears after stars */}
+      <div 
+        className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center"
+        style={{
+          opacity: showStars ? 1 : 0,
+          transform: showStars ? 'translateY(0)' : 'translateY(10px)',
+          transition: 'opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 0.5s',
+        }}
+      >
+        <p className="text-white/40 text-xs tracking-[0.3em] uppercase mb-3">
+          Scroll Anywhere
+        </p>
+        <div className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent" />
+      </div>
+
       <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0) translateX(0);
+        @keyframes shoot {
+          0% {
+            opacity: 0;
+            transform: rotate(var(--angle, 45deg)) translateX(0);
           }
-          25% {
-            transform: translateY(-20px) translateX(10px);
+          10% {
+            opacity: 0.6;
           }
-          50% {
-            transform: translateY(-10px) translateX(-10px);
+          40% {
+            opacity: 0.3;
           }
-          75% {
-            transform: translateY(-30px) translateX(5px);
+          100% {
+            opacity: 0;
+            transform: rotate(var(--angle, 45deg)) translateX(150px);
           }
         }
       `}</style>
@@ -193,4 +231,3 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
 };
 
 export default SplashScreen;
-
