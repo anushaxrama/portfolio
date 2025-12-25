@@ -5,19 +5,21 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 /**
- * RecentWork - Full-page project showcase with 3D device mockups
+ * RecentWork - Full-page project showcase with premium 3D device mockups
  * 
  * Features:
- * - Smooth ombre gradient background that flows between sections
- * - 3D perspective device mockups for each project
+ * - Scroll-reactive ombre gradient that shifts colors per project
+ * - Premium MacBook-style 3D laptop mockups
+ * - iPhone-style 3D phone mockups
  * - Alternating left/right layouts
- * - Scroll-triggered animations
  */
 
 export default function RecentWork() {
   const [activeSlides, setActiveSlides] = useState<{ [key: number]: number }>({})
   const [visibleProjects, setVisibleProjects] = useState<Set<number>>(new Set())
+  const [activeProject, setActiveProject] = useState(0)
   const projectRefs = useRef<(HTMLElement | null)[]>([])
+  const sectionRef = useRef<HTMLElement>(null)
 
   const projects = [
     {
@@ -37,6 +39,7 @@ export default function RecentWork() {
       caseStudyLink: null,
       deviceType: 'laptop' as const,
       number: '01',
+      accentHue: 270, // Purple
     },
     {
       title: 'NeuraNote',
@@ -56,6 +59,7 @@ export default function RecentWork() {
       caseStudyLink: '/case-study/neuranote',
       deviceType: 'laptop' as const,
       number: '02',
+      accentHue: 210, // Blue
     },
     {
       title: 'Spotify',
@@ -74,8 +78,26 @@ export default function RecentWork() {
       caseStudyLink: '/case-study/spotify',
       deviceType: 'phone' as const,
       number: '03',
+      accentHue: 160, // Teal/Green
     },
   ]
+
+  // Track which project is most visible for background color
+  useEffect(() => {
+    const handleScroll = () => {
+      projectRefs.current.forEach((ref, index) => {
+        if (!ref) return
+        const rect = ref.getBoundingClientRect()
+        const viewportCenter = window.innerHeight / 2
+        if (rect.top < viewportCenter && rect.bottom > viewportCenter) {
+          setActiveProject(index)
+        }
+      })
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Intersection Observer for scroll-triggered animations
   useEffect(() => {
@@ -122,41 +144,246 @@ export default function RecentWork() {
     projectRefs.current[index] = el
   }
 
-  // 3D Laptop Mockup Component
+  // Get current accent color based on active project
+  const currentHue = projects[activeProject]?.accentHue || 270
+
+  // Premium MacBook-style 3D Laptop Mockup
   const LaptopMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => (
     <div 
       className={`relative transition-all duration-1000 delay-300 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
       }`}
-      style={{ perspective: '1500px' }}
+      style={{ perspective: '2000px' }}
     >
+      {/* Floating container with 3D transform */}
       <div 
-        className="relative transition-transform duration-500 hover:scale-[1.02]"
+        className="relative transition-all duration-700 hover:translate-y-[-8px]"
         style={{ 
           transformStyle: 'preserve-3d',
-          transform: 'rotateX(2deg) rotateY(-3deg)',
+          transform: 'rotateX(8deg) rotateY(-5deg) rotateZ(1deg)',
         }}
       >
-        {/* Laptop Frame */}
-        <div className="relative">
-          {/* Screen bezel */}
-          <div className="relative bg-gradient-to-b from-[#2a2a2a] via-[#1a1a1a] to-[#0a0a0a] rounded-t-2xl p-2 shadow-2xl">
-            {/* Camera */}
-            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#1a1a1a] flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#0a0a0a] flex items-center justify-center">
-                <div className="w-0.5 h-0.5 rounded-full bg-green-500/30"></div>
+        {/* Ambient glow behind laptop */}
+        <div 
+          className="absolute -inset-20 rounded-full blur-[100px] opacity-20 transition-colors duration-1000"
+          style={{ backgroundColor: `hsl(${project.accentHue}, 60%, 50%)` }}
+        />
+
+        {/* Laptop Screen/Lid */}
+        <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
+          {/* Screen outer frame - Space Gray MacBook style */}
+          <div 
+            className="relative rounded-t-[20px] p-[8px] shadow-2xl"
+            style={{
+              background: 'linear-gradient(145deg, #3a3a3f 0%, #2a2a2f 50%, #1a1a1f 100%)',
+              boxShadow: `
+                0 0 0 1px rgba(255,255,255,0.05),
+                0 25px 50px -12px rgba(0,0,0,0.8),
+                0 0 80px -20px hsla(${project.accentHue}, 60%, 50%, 0.3)
+              `,
+            }}
+          >
+            {/* Inner bezel */}
+            <div className="relative rounded-t-[14px] bg-[#0a0a0a] p-[3px]">
+              {/* Camera housing */}
+              <div className="absolute top-[6px] left-1/2 -translate-x-1/2 flex items-center gap-1">
+                <div className="w-[6px] h-[6px] rounded-full bg-[#1a1a1a] flex items-center justify-center">
+                  <div className="w-[3px] h-[3px] rounded-full bg-[#2a2a3a]">
+                    <div className="w-[1px] h-[1px] rounded-full bg-green-500/40 mx-auto mt-[1px]"></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Screen */}
+              <div className="relative aspect-[16/10] rounded-[10px] overflow-hidden bg-black group mt-2">
+                {project.demoImages.map((image, imgIndex) => (
+                  <div
+                    key={imgIndex}
+                    className={`absolute inset-0 transition-all duration-700 ${
+                      (activeSlides[index] || 0) === imgIndex 
+                        ? 'opacity-100 scale-100' 
+                        : 'opacity-0 scale-[1.02]'
+                    }`}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.label}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority={index === 0 && imgIndex === 0}
+                    />
+                  </div>
+                ))}
+
+                {/* Screen glare/reflection */}
+                <div 
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(115deg, rgba(255,255,255,0.1) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.03) 100%)',
+                  }}
+                />
+
+                {/* Navigation arrows */}
+                <button
+                  onClick={() => goToPrevSlide(index, project.demoImages.length)}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/80 hover:bg-black/70 hover:text-white transition-all opacity-0 group-hover:opacity-100"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={() => goToNextSlide(index, project.demoImages.length)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/80 hover:bg-black/70 hover:text-white transition-all opacity-0 group-hover:opacity-100"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Dots indicator */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/30 backdrop-blur-md rounded-full px-3 py-1.5">
+                  {project.demoImages.map((_, dotIndex) => (
+                    <button
+                      key={dotIndex}
+                      onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
+                      className={`h-1.5 rounded-full transition-all ${
+                        (activeSlides[index] || 0) === dotIndex 
+                          ? 'bg-white w-5' 
+                          : 'bg-white/40 w-1.5 hover:bg-white/60'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-            
+          </div>
+
+          {/* Hinge */}
+          <div 
+            className="relative h-[6px] mx-4"
+            style={{
+              background: 'linear-gradient(180deg, #1a1a1f 0%, #2a2a2f 50%, #3a3a3f 100%)',
+              borderRadius: '0 0 2px 2px',
+            }}
+          />
+
+          {/* Laptop Base/Keyboard */}
+          <div 
+            className="relative rounded-b-[20px] pt-2 pb-4 px-4"
+            style={{
+              background: 'linear-gradient(180deg, #3a3a3f 0%, #2a2a2f 30%, #1f1f24 100%)',
+              transform: 'rotateX(-80deg)',
+              transformOrigin: 'top center',
+              boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)',
+            }}
+          >
+            {/* Keyboard area */}
+            <div className="bg-[#0a0a0c] rounded-lg p-2 mx-2">
+              {/* Keyboard rows simulation */}
+              <div className="grid grid-cols-12 gap-[2px] mb-1">
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <div key={i} className="h-2 bg-[#1a1a1c] rounded-[2px]" />
+                ))}
+              </div>
+              <div className="grid grid-cols-11 gap-[2px] mb-1">
+                {Array.from({ length: 11 }).map((_, i) => (
+                  <div key={i} className="h-2 bg-[#1a1a1c] rounded-[2px]" />
+                ))}
+              </div>
+              <div className="grid grid-cols-10 gap-[2px] mb-1">
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <div key={i} className="h-2 bg-[#1a1a1c] rounded-[2px]" />
+                ))}
+              </div>
+              {/* Spacebar row */}
+              <div className="flex gap-[2px] justify-center">
+                <div className="w-6 h-2 bg-[#1a1a1c] rounded-[2px]" />
+                <div className="w-20 h-2 bg-[#1a1a1c] rounded-[2px]" />
+                <div className="w-6 h-2 bg-[#1a1a1c] rounded-[2px]" />
+              </div>
+            </div>
+            {/* Trackpad */}
+            <div className="mx-auto mt-2 w-28 h-8 bg-[#1a1a1c] rounded-lg border border-white/5" />
+          </div>
+        </div>
+
+        {/* Ground shadow */}
+        <div 
+          className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-[90%] h-20 rounded-[50%] blur-2xl opacity-40"
+          style={{ backgroundColor: `hsl(${project.accentHue}, 30%, 10%)` }}
+        />
+      </div>
+
+      {/* Image label */}
+      <p className="text-center text-white/50 text-sm mt-8 font-medium">
+        {project.demoImages[activeSlides[index] || 0]?.label}
+      </p>
+    </div>
+  )
+
+  // Premium iPhone-style 3D Phone Mockup
+  const PhoneMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => (
+    <div 
+      className={`relative flex justify-center transition-all duration-1000 delay-300 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+      }`}
+      style={{ perspective: '2000px' }}
+    >
+      <div 
+        className="relative transition-all duration-700 hover:translate-y-[-8px]"
+        style={{ 
+          transformStyle: 'preserve-3d',
+          transform: 'rotateX(5deg) rotateY(8deg) rotateZ(-1deg)',
+        }}
+      >
+        {/* Ambient glow */}
+        <div 
+          className="absolute -inset-16 rounded-full blur-[80px] opacity-25 transition-colors duration-1000"
+          style={{ backgroundColor: `hsl(${project.accentHue}, 60%, 50%)` }}
+        />
+
+        {/* Phone Frame - iPhone 15 Pro style */}
+        <div 
+          className="relative w-[300px] rounded-[50px] p-[10px] shadow-2xl"
+          style={{
+            background: 'linear-gradient(145deg, #3a3a3f 0%, #2a2a2f 50%, #1a1a1f 100%)',
+            boxShadow: `
+              0 0 0 1px rgba(255,255,255,0.1),
+              inset 0 0 0 1px rgba(255,255,255,0.05),
+              0 30px 60px -15px rgba(0,0,0,0.8),
+              0 0 100px -30px hsla(${project.accentHue}, 60%, 50%, 0.4)
+            `,
+          }}
+        >
+          {/* Titanium edge highlights */}
+          <div className="absolute inset-y-4 left-0 w-[1px] bg-gradient-to-b from-transparent via-white/20 to-transparent" />
+          <div className="absolute inset-y-4 right-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+
+          {/* Side buttons */}
+          <div className="absolute -left-[3px] top-28 w-[3px] h-8 bg-gradient-to-r from-[#2a2a2f] to-[#3a3a3f] rounded-l-sm" />
+          <div className="absolute -left-[3px] top-40 w-[3px] h-14 bg-gradient-to-r from-[#2a2a2f] to-[#3a3a3f] rounded-l-sm" />
+          <div className="absolute -left-[3px] top-56 w-[3px] h-14 bg-gradient-to-r from-[#2a2a2f] to-[#3a3a3f] rounded-l-sm" />
+          <div className="absolute -right-[3px] top-36 w-[3px] h-20 bg-gradient-to-l from-[#2a2a2f] to-[#3a3a3f] rounded-r-sm" />
+
+          {/* Inner bezel */}
+          <div className="relative rounded-[42px] bg-[#0a0a0a] overflow-hidden">
+            {/* Dynamic Island */}
+            <div className="absolute top-[12px] left-1/2 -translate-x-1/2 w-[125px] h-[35px] bg-black rounded-[20px] z-20 flex items-center justify-center gap-3">
+              <div className="w-[10px] h-[10px] rounded-full bg-[#1a1a1c]" />
+              <div className="w-[8px] h-[8px] rounded-full bg-[#1a1a1c]" />
+            </div>
+
             {/* Screen */}
-            <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-black group">
+            <div className="relative aspect-[9/19.5] group">
               {project.demoImages.map((image, imgIndex) => (
                 <div
                   key={imgIndex}
                   className={`absolute inset-0 transition-all duration-700 ${
                     (activeSlides[index] || 0) === imgIndex 
                       ? 'opacity-100 scale-100' 
-                      : 'opacity-0 scale-105'
+                      : 'opacity-0 scale-[1.02]'
                   }`}
                 >
                   <Image
@@ -164,191 +391,98 @@ export default function RecentWork() {
                     alt={image.label}
                     fill
                     className="object-cover object-top"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority={index === 0 && imgIndex === 0}
+                    sizes="300px"
                   />
                 </div>
               ))}
 
-              {/* Screen reflection */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
+              {/* Screen glare */}
+              <div 
+                className="absolute inset-0 pointer-events-none z-10"
+                style={{
+                  background: 'linear-gradient(130deg, rgba(255,255,255,0.12) 0%, transparent 35%, transparent 65%, rgba(255,255,255,0.05) 100%)',
+                }}
+              />
 
               {/* Navigation arrows */}
               <button
                 onClick={() => goToPrevSlide(index, project.demoImages.length)}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/80 hover:bg-black/70 transition-all opacity-0 group-hover:opacity-100 z-20"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
                 onClick={() => goToNextSlide(index, project.demoImages.length)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white/80 hover:bg-black/70 transition-all opacity-0 group-hover:opacity-100 z-20"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
 
               {/* Dots */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/30 backdrop-blur-md rounded-full px-2.5 py-1 z-20">
                 {project.demoImages.map((_, dotIndex) => (
                   <button
                     key={dotIndex}
                     onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
-                    className={`h-1.5 rounded-full transition-all ${
+                    className={`h-1 rounded-full transition-all ${
                       (activeSlides[index] || 0) === dotIndex 
-                        ? 'bg-white w-6' 
-                        : 'bg-white/40 w-1.5 hover:bg-white/60'
+                        ? 'bg-white w-4' 
+                        : 'bg-white/40 w-1 hover:bg-white/60'
                     }`}
                   />
                 ))}
               </div>
-            </div>
-          </div>
 
-          {/* Laptop hinge */}
-          <div className="relative h-3 bg-gradient-to-b from-[#1a1a1a] to-[#2a2a2a] rounded-b-sm">
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-          </div>
-
-          {/* Laptop base/keyboard */}
-          <div 
-            className="relative bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] rounded-b-2xl pt-1 pb-3 px-4"
-            style={{ transform: 'rotateX(-5deg)', transformOrigin: 'top' }}
-          >
-            {/* Keyboard area */}
-            <div className="bg-[#0f0f0f] rounded-lg h-6 flex items-center justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full" />
+              {/* Home indicator */}
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[130px] h-[4px] bg-white/20 rounded-full z-20" />
             </div>
-            {/* Trackpad */}
-            <div className="mt-1 mx-auto w-24 h-4 bg-[#0f0f0f] rounded-md border border-white/5" />
           </div>
         </div>
 
-        {/* Shadow */}
-        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[80%] h-8 bg-black/30 blur-xl rounded-full" />
+        {/* Ground shadow */}
+        <div 
+          className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[70%] h-16 rounded-[50%] blur-xl opacity-40"
+          style={{ backgroundColor: `hsl(${project.accentHue}, 30%, 10%)` }}
+        />
       </div>
 
       {/* Image label */}
-      <p className="text-center text-white/50 text-sm mt-6 font-medium">
-        {project.demoImages[activeSlides[index] || 0]?.label}
-      </p>
-    </div>
-  )
-
-  // 3D Phone Mockup Component
-  const PhoneMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => (
-    <div 
-      className={`relative flex justify-center transition-all duration-1000 delay-300 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-      }`}
-      style={{ perspective: '1500px' }}
-    >
-      <div 
-        className="relative transition-transform duration-500 hover:scale-[1.02]"
-        style={{ 
-          transformStyle: 'preserve-3d',
-          transform: 'rotateX(2deg) rotateY(5deg)',
-        }}
-      >
-        {/* Phone Frame */}
-        <div className="relative w-[280px] bg-gradient-to-b from-[#2a2a2a] via-[#1a1a1a] to-[#0a0a0a] rounded-[3rem] p-2 shadow-2xl">
-          {/* Side buttons */}
-          <div className="absolute -left-1 top-24 w-1 h-8 bg-[#2a2a2a] rounded-l-sm" />
-          <div className="absolute -left-1 top-36 w-1 h-12 bg-[#2a2a2a] rounded-l-sm" />
-          <div className="absolute -left-1 top-52 w-1 h-12 bg-[#2a2a2a] rounded-l-sm" />
-          <div className="absolute -right-1 top-32 w-1 h-16 bg-[#2a2a2a] rounded-r-sm" />
-
-          {/* Dynamic Island */}
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-8 bg-black rounded-full z-10 flex items-center justify-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-[#1a1a1a]" />
-            <div className="w-1.5 h-1.5 rounded-full bg-[#0a0a0a]" />
-          </div>
-
-          {/* Screen */}
-          <div className="relative aspect-[9/19.5] rounded-[2.5rem] overflow-hidden bg-black group">
-            {project.demoImages.map((image, imgIndex) => (
-              <div
-                key={imgIndex}
-                className={`absolute inset-0 transition-all duration-700 ${
-                  (activeSlides[index] || 0) === imgIndex 
-                    ? 'opacity-100 scale-100' 
-                    : 'opacity-0 scale-105'
-                }`}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.label}
-                  fill
-                  className="object-cover object-top"
-                  sizes="280px"
-                />
-              </div>
-            ))}
-
-            {/* Screen reflection */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
-
-            {/* Navigation arrows */}
-            <button
-              onClick={() => goToPrevSlide(index, project.demoImages.length)}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              onClick={() => goToNextSlide(index, project.demoImages.length)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-
-            {/* Dots */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5">
-              {project.demoImages.map((_, dotIndex) => (
-                <button
-                  key={dotIndex}
-                  onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
-                  className={`h-1 rounded-full transition-all ${
-                    (activeSlides[index] || 0) === dotIndex 
-                      ? 'bg-white w-4' 
-                      : 'bg-white/40 w-1 hover:bg-white/60'
-                  }`}
-                />
-              ))}
-            </div>
-
-            {/* Home indicator */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full" />
-          </div>
-        </div>
-
-        {/* Shadow */}
-        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[60%] h-6 bg-black/30 blur-xl rounded-full" />
-      </div>
-
-      {/* Image label */}
-      <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white/50 text-sm font-medium whitespace-nowrap">
+      <p className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-sm font-medium whitespace-nowrap">
         {project.demoImages[activeSlides[index] || 0]?.label}
       </p>
     </div>
   )
 
   return (
-    <section id="work" className="relative">
-      {/* Smooth ombre gradient background */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0f] via-[#0f0a1a] via-[#0a0f1a] to-[#050a0f]" />
-        {/* Subtle color orbs for smooth transitions */}
-        <div className="absolute top-[20%] left-1/4 w-[600px] h-[600px] bg-violet-900/10 rounded-full blur-[150px]" />
-        <div className="absolute top-[50%] right-1/4 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[150px]" />
-        <div className="absolute top-[80%] left-1/3 w-[400px] h-[400px] bg-emerald-900/10 rounded-full blur-[150px]" />
+    <section id="work" ref={sectionRef} className="relative">
+      {/* Dynamic ombre gradient background - colors shift as you scroll */}
+      <div className="fixed inset-0 -z-10 pointer-events-none transition-all duration-1000">
+        <div className="absolute inset-0 bg-[#050507]" />
+        {/* Main color orb that changes with active project */}
+        <div 
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full blur-[200px] transition-all duration-1000 ease-out"
+          style={{ 
+            backgroundColor: `hsla(${currentHue}, 50%, 30%, 0.15)`,
+          }}
+        />
+        {/* Secondary accent orb */}
+        <div 
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[150px] transition-all duration-1000 ease-out"
+          style={{ 
+            backgroundColor: `hsla(${currentHue + 30}, 40%, 25%, 0.1)`,
+          }}
+        />
+        {/* Subtle top gradient */}
+        <div 
+          className="absolute top-0 left-0 right-0 h-[50vh] transition-all duration-1000"
+          style={{
+            background: `linear-gradient(180deg, hsla(${currentHue}, 40%, 15%, 0.1) 0%, transparent 100%)`,
+          }}
+        />
       </div>
 
       {/* Section Header */}
@@ -381,21 +515,28 @@ export default function RecentWork() {
               }`}>
                 
                 {/* Content Side */}
-                <div className={`${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                  {/* Project Number */}
+                <div className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                  {/* Project Number - More visible */}
                   <div 
-                    className={`transition-all duration-700 delay-100 ${
+                    className={`absolute -top-16 -left-4 transition-all duration-700 delay-100 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                   >
-                    <span className="text-8xl md:text-9xl font-black text-white/5 absolute -top-10 -left-4">
+                    <span 
+                      className="text-[10rem] md:text-[12rem] font-black leading-none select-none"
+                      style={{ 
+                        color: 'transparent',
+                        WebkitTextStroke: `1px hsla(${project.accentHue}, 50%, 60%, 0.15)`,
+                        textShadow: `0 0 80px hsla(${project.accentHue}, 50%, 50%, 0.1)`,
+                      }}
+                    >
                       {project.number}
                     </span>
                   </div>
 
                   {/* Title */}
                   <div 
-                    className={`transition-all duration-700 delay-200 ${
+                    className={`relative z-10 transition-all duration-700 delay-200 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                   >
