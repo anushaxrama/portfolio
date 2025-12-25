@@ -150,65 +150,64 @@ export default function RecentWork() {
   // Get current accent color based on active project
   const currentHue = projects[activeProject]?.accentHue || 270
 
-  // Premium MacBook-style 3D Laptop Mockup - Centered & Clean
+  // Premium MacBook-style 3D Laptop Mockup - Sleek, Bigger, Centered
   const LaptopMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => {
     const isLeftAngle = project.laptopAngle === 'left'
-    // Subtle rotation - keyboard always faces user
-    const rotateY = isLeftAngle ? 12 : -12
-    const rotateX = 5
+    const rotateY = isLeftAngle ? 8 : -8
     
     return (
       <div 
-        className={`relative flex justify-center transition-all duration-1000 delay-300 ${
+        className={`relative flex justify-center items-center transition-all duration-1000 delay-200 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}
-        style={{ perspective: '1000px' }}
+        style={{ perspective: '1200px' }}
       >
-        {/* Centered laptop container - Bigger */}
-        <div className="w-full max-w-[500px] mx-auto">
-          {/* 3D transform container */}
+        {/* Bigger centered laptop */}
+        <div className="w-full max-w-[520px] mx-auto">
+          {/* 3D transform - minimal rotation for sleek look */}
           <div 
-            className="relative transition-all duration-500 hover:translate-y-[-4px]"
+            className="relative transition-all duration-500 hover:translate-y-[-6px] hover:scale-[1.02]"
             style={{ 
               transformStyle: 'preserve-3d',
-              transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+              transform: `rotateX(3deg) rotateY(${rotateY}deg)`,
             }}
           >
             {/* Ambient glow */}
             <div 
-              className="absolute -inset-10 rounded-full blur-[60px] opacity-25 transition-colors duration-1000"
+              className="absolute -inset-16 rounded-full blur-[100px] opacity-30 transition-colors duration-1000"
               style={{ backgroundColor: `hsl(${project.accentHue}, 60%, 50%)` }}
             />
 
-            {/* Main Laptop */}
+            {/* Sleek MacBook */}
             <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
               
-              {/* SCREEN */}
+              {/* SCREEN - Clean & Modern */}
               <div className="relative">
-                {/* Screen frame - Space Gray */}
                 <div 
-                  className="relative rounded-t-[14px] p-[5px]"
+                  className="relative rounded-t-[16px] p-[5px]"
                   style={{
-                    background: 'linear-gradient(180deg, #3a3a40 0%, #2a2a30 50%, #1a1a20 100%)',
+                    background: 'linear-gradient(180deg, #3d3d42 0%, #2d2d32 50%, #1d1d22 100%)',
                     boxShadow: `
-                      0 0 0 1px rgba(255,255,255,0.08),
-                      0 0 50px -15px hsla(${project.accentHue}, 60%, 50%, 0.4)
+                      0 0 0 1px rgba(255,255,255,0.1),
+                      0 -1px 30px -5px hsla(${project.accentHue}, 60%, 50%, 0.3)
                     `,
                   }}
                 >
                   {/* Inner bezel */}
-                  <div className="relative rounded-t-[10px] bg-[#0a0a0a] p-[3px]">
-                    {/* Camera */}
-                    <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[6px] h-[6px] rounded-full bg-[#1a1a1a]">
-                      <div className="w-[3px] h-[3px] rounded-full bg-green-400/40 mx-auto mt-[1.5px]"></div>
+                  <div className="relative rounded-t-[12px] bg-[#080808] p-[3px]">
+                    {/* Camera notch */}
+                    <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[8px] h-[8px] rounded-full bg-[#151515] flex items-center justify-center">
+                      <div className="w-[4px] h-[4px] rounded-full bg-[#1a1a1a]">
+                        <div className="w-[2px] h-[2px] rounded-full bg-green-500/50 mx-auto mt-[1px]"></div>
+                      </div>
                     </div>
 
                     {/* Screen */}
-                    <div className="relative aspect-[16/10] rounded-[7px] overflow-hidden bg-black group mt-1">
+                    <div className="relative aspect-[16/10] rounded-[9px] overflow-hidden bg-black group mt-1">
                       {project.demoImages.map((image, imgIndex) => (
                         <div
                           key={imgIndex}
-                          className={`absolute inset-0 transition-opacity duration-300 ${
+                          className={`absolute inset-0 transition-opacity duration-200 ${
                             (activeSlides[index] || 0) === imgIndex 
                               ? 'opacity-100' 
                               : 'opacity-0'
@@ -219,24 +218,24 @@ export default function RecentWork() {
                             alt={image.label}
                             fill
                             className="object-cover object-top"
-                            sizes="500px"
+                            sizes="520px"
                             priority={index === 0 && imgIndex === 0}
                           />
                         </div>
                       ))}
 
-                      {/* Screen glare */}
+                      {/* Subtle screen reflection */}
                       <div 
                         className="absolute inset-0 pointer-events-none"
                         style={{
-                          background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 30%)',
+                          background: 'linear-gradient(145deg, rgba(255,255,255,0.04) 0%, transparent 20%)',
                         }}
                       />
 
-                      {/* Navigation Arrows - Bigger & More Visible */}
+                      {/* Navigation Arrows */}
                       <button
                         onClick={() => goToPrevSlide(index, project.demoImages.length)}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-10"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/70 backdrop-blur border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-10"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
@@ -244,7 +243,7 @@ export default function RecentWork() {
                       </button>
                       <button
                         onClick={() => goToNextSlide(index, project.demoImages.length)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-10"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/70 backdrop-blur border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-10"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
@@ -252,15 +251,15 @@ export default function RecentWork() {
                       </button>
 
                       {/* Dots */}
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/50 backdrop-blur-sm rounded-full px-2.5 py-1.5">
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/60 backdrop-blur rounded-full px-3 py-2">
                         {project.demoImages.map((_, dotIndex) => (
                           <button
                             key={dotIndex}
                             onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
-                            className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                            className={`h-2 rounded-full transition-all cursor-pointer ${
                               (activeSlides[index] || 0) === dotIndex 
-                                ? 'bg-white w-4' 
-                                : 'bg-white/40 w-1.5 hover:bg-white/70'
+                                ? 'bg-white w-5' 
+                                : 'bg-white/40 w-2 hover:bg-white/70'
                             }`}
                           />
                         ))}
@@ -270,69 +269,69 @@ export default function RecentWork() {
                 </div>
               </div>
 
-              {/* HINGE */}
+              {/* HINGE - Sleek */}
               <div 
-                className="relative h-[6px] mx-3"
+                className="relative h-[7px] mx-4"
                 style={{
-                  background: 'linear-gradient(180deg, #1a1a20 0%, #2a2a30 50%, #3a3a40 100%)',
+                  background: 'linear-gradient(180deg, #1a1a1f 0%, #2a2a2f 50%, #3a3a3f 100%)',
                   borderRadius: '0 0 4px 4px',
                 }}
               />
 
-              {/* KEYBOARD BASE - Always facing towards user */}
+              {/* KEYBOARD BASE */}
               <div 
                 className="relative"
                 style={{ 
                   transformStyle: 'preserve-3d',
-                  transform: 'rotateX(72deg)',
+                  transform: 'rotateX(70deg)',
                   transformOrigin: 'top center',
                 }}
               >
                 <div 
-                  className="relative rounded-b-[14px] pt-2.5 pb-2 px-2.5"
+                  className="relative rounded-b-[16px] pt-3 pb-2.5 px-3"
                   style={{
-                    background: 'linear-gradient(180deg, #3a3a40 0%, #2a2a30 50%, #1f1f25 100%)',
-                    boxShadow: '0 25px 35px -10px rgba(0,0,0,0.6)',
+                    background: 'linear-gradient(180deg, #3a3a3f 0%, #2a2a2f 50%, #1f1f24 100%)',
+                    boxShadow: '0 30px 40px -12px rgba(0,0,0,0.7)',
                   }}
                 >
-                  {/* Keyboard area */}
-                  <div className="bg-[#0c0c0e] rounded-md p-2">
-                    {/* Key rows */}
-                    {[13, 13, 12, 11].map((count, rowIndex) => (
+                  {/* Keyboard */}
+                  <div className="bg-[#0a0a0c] rounded-lg p-2.5">
+                    {[14, 14, 13, 12].map((count, rowIndex) => (
                       <div key={rowIndex} className="flex gap-[2px] mb-[2px]">
                         {Array.from({ length: count }).map((_, i) => (
                           <div 
                             key={i} 
-                            className="flex-1 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]"
+                            className="flex-1 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]"
+                            style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)' }}
                           />
                         ))}
                       </div>
                     ))}
                     {/* Spacebar row */}
                     <div className="flex gap-[2px]">
-                      <div className="w-5 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
-                      <div className="w-5 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
-                      <div className="flex-1 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
-                      <div className="w-5 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
-                      <div className="w-5 h-3 rounded-[2px] bg-gradient-to-b from-[#2a2a2c] to-[#1a1a1c]" />
+                      <div className="w-6 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]" />
+                      <div className="w-6 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]" />
+                      <div className="flex-1 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]" />
+                      <div className="w-6 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]" />
+                      <div className="w-6 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]" />
                     </div>
                   </div>
                   {/* Trackpad */}
-                  <div className="mx-auto mt-2 w-20 h-12 rounded-lg bg-gradient-to-b from-[#1a1a1c] to-[#0f0f10] border border-white/5" />
+                  <div className="mx-auto mt-2.5 w-24 h-14 rounded-xl bg-gradient-to-b from-[#1a1a1c] to-[#0e0e10] border border-white/[0.04]" />
                 </div>
               </div>
             </div>
 
             {/* Shadow */}
             <div 
-              className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[85%] h-10 rounded-[50%] blur-xl opacity-50"
-              style={{ backgroundColor: `hsl(${project.accentHue}, 20%, 8%)` }}
+              className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[80%] h-12 rounded-[50%] blur-2xl opacity-60"
+              style={{ backgroundColor: `hsl(${project.accentHue}, 25%, 6%)` }}
             />
           </div>
         </div>
 
         {/* Label */}
-        <p className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-white/50 text-sm font-medium whitespace-nowrap">
+        <p className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-sm font-medium whitespace-nowrap">
           {project.demoImages[activeSlides[index] || 0]?.label}
         </p>
       </div>
@@ -360,9 +359,9 @@ export default function RecentWork() {
           style={{ backgroundColor: `hsl(${project.accentHue}, 60%, 50%)` }}
         />
 
-        {/* Phone Frame - iPhone 15 Pro style - Bigger */}
+        {/* Phone Frame - iPhone 15 Pro style */}
         <div 
-          className="relative w-[320px] rounded-[50px] p-[10px] shadow-2xl"
+          className="relative w-[300px] rounded-[50px] p-[10px] shadow-2xl"
           style={{
             background: 'linear-gradient(145deg, #3a3a3f 0%, #2a2a2f 50%, #1a1a1f 100%)',
             boxShadow: `
@@ -407,7 +406,7 @@ export default function RecentWork() {
                     alt={image.label}
                     fill
                     className="object-cover object-top"
-                    sizes="320px"
+                    sizes="300px"
                   />
                 </div>
               ))}
@@ -523,7 +522,7 @@ export default function RecentWork() {
           <section
             key={index}
             ref={setProjectRef(index)}
-            className="relative min-h-screen flex items-center py-24 lg:py-12"
+            className="relative min-h-screen flex items-center py-20 lg:py-0"
           >
             <div className="relative z-10 w-full max-w-[1300px] mx-auto px-6 md:px-12 lg:px-16">
               <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
@@ -532,18 +531,18 @@ export default function RecentWork() {
                 
                 {/* Content Side */}
                 <div className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                  {/* Project Number - Clearly Visible */}
+                  {/* Project Number - Bold & Visible */}
                   <div 
-                    className={`absolute -top-6 -left-3 transition-all duration-700 delay-100 ${
+                    className={`absolute -top-4 -left-2 transition-all duration-700 delay-100 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                   >
                     <span 
-                      className="text-[7rem] md:text-[9rem] font-black leading-none select-none"
+                      className="text-[6rem] md:text-[8rem] font-black leading-none select-none"
                       style={{ 
-                        color: `hsla(${project.accentHue}, 45%, 55%, 0.15)`,
-                        WebkitTextStroke: `2px hsla(${project.accentHue}, 50%, 65%, 0.4)`,
-                        textShadow: `0 0 40px hsla(${project.accentHue}, 60%, 60%, 0.25)`,
+                        color: `hsla(${project.accentHue}, 50%, 60%, 0.25)`,
+                        WebkitTextStroke: `3px hsla(${project.accentHue}, 55%, 70%, 0.6)`,
+                        textShadow: `0 0 50px hsla(${project.accentHue}, 60%, 60%, 0.4)`,
                       }}
                     >
                       {project.number}
@@ -638,8 +637,8 @@ export default function RecentWork() {
                   </div>
                 </div>
 
-                {/* Device Mockup Side - Centered */}
-                <div className={`flex justify-center items-center ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                {/* Device Mockup Side */}
+                <div className={`${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
                   {project.deviceType === 'phone' ? (
                     <PhoneMockup project={project} index={index} isVisible={isVisible} />
                   ) : (
@@ -649,23 +648,11 @@ export default function RecentWork() {
               </div>
             </div>
 
-            {/* Transition between projects */}
+            {/* Scroll indicator between projects */}
             {index < projects.length - 1 && (
-              <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none">
-                {/* Gradient fade */}
-                <div 
-                  className="absolute inset-0 transition-all duration-1000"
-                  style={{
-                    background: `linear-gradient(180deg, transparent 0%, hsla(${projects[index + 1]?.accentHue || 0}, 30%, 10%, 0.3) 100%)`,
-                  }}
-                />
-                {/* Scroll indicator */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-                  <div className="w-[1px] h-12 bg-gradient-to-b from-white/50 to-transparent" />
-                  <div className="w-6 h-10 rounded-full border border-white/20 flex justify-center pt-2">
-                    <div className="w-1 h-2 bg-white/40 rounded-full animate-bounce" />
-                  </div>
-                </div>
+              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+                <span className="text-white/60 text-xs uppercase tracking-widest">Scroll</span>
+                <div className="w-px h-10 bg-gradient-to-b from-white/60 to-transparent animate-pulse" />
               </div>
             )}
           </section>
