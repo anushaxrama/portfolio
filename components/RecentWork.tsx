@@ -89,13 +89,19 @@ export default function RecentWork() {
       caseStudyLink: '/case-study/neuranote',
     },
     {
-      title: 'Project Three',
-      subtitle: 'Coming Soon',
-      description: '',
-      demoImages: [],
+      title: 'Spotify Redesign',
+      subtitle: 'Listening Threads — Intent-Based Discovery',
+      description: 'A UX redesign reimagining Spotify\'s discovery experience around listening intent and memory. Replaces endless carousels with curated "Listening Threads" — finite, intentional collections that explain why each song matters to you.',
+      demoImages: [
+        { src: '/spotify-1.png', label: 'Your Threads - Home' },
+        { src: '/spotify-2.png', label: 'Thread Detail View' },
+        { src: '/spotify-3.png', label: 'Listening Memory' },
+        { src: '/spotify-4.png', label: 'Now Playing with Insights' },
+        { src: '/spotify-5.png', label: 'Emotional Clusters' },
+      ],
       figmaLink: null,
-      githubLink: null,
-      caseStudyLink: null,
+      githubLink: 'https://github.com/anushaxrama/your-music-journey',
+      caseStudyLink: '/case-study/spotify',
     },
   ]
 
