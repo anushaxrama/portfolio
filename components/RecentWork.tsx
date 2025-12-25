@@ -23,26 +23,6 @@ export default function RecentWork() {
 
   const projects = [
     {
-      title: 'Narbl',
-      subtitle: 'AI Developer Platform',
-      description: 'A modern, full-stack web application enabling developers to interact with AI models, compare responses across different LLMs, and build custom AI agents—all through a sleek, glassmorphism-styled interface.',
-      demoImages: [
-        { src: '/narbl-1.png', label: 'Build with Intelligence' },
-        { src: '/narbl-3.png', label: 'Compare Side by Side' },
-        { src: '/narbl-4.png', label: 'Chat with Any Model' },
-        { src: '/narbl-5.png', label: 'Build Custom AI Agents' },
-        { src: '/narbl-6.png', label: 'Powerful AI Products' },
-        { src: '/narbl-7.png', label: 'User Dashboard' },
-      ],
-      figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
-      githubLink: null,
-      caseStudyLink: null,
-      deviceType: 'laptop' as const,
-      number: '01',
-      accentHue: 270,
-      laptopAngle: 'right' as const, // Keyboard faces user, angled to show right side
-    },
-    {
       title: 'NeuraNote',
       subtitle: 'AI-Powered Cognitive Note-Taking',
       description: 'A modern learning companion that transforms how students and lifelong learners capture, connect, and retain knowledge. Features smart notes with AI concept extraction, visual concept maps, and spaced repetition review.',
@@ -59,8 +39,28 @@ export default function RecentWork() {
       githubLink: 'https://github.com/anushaxrama/neuranote',
       caseStudyLink: '/case-study/neuranote',
       deviceType: 'laptop' as const,
-      number: '02',
+      number: '01',
       accentHue: 210,
+      laptopAngle: 'right' as const, // Keyboard faces user, angled to show right side
+    },
+    {
+      title: 'Narbl',
+      subtitle: 'AI Developer Platform',
+      description: 'A modern, full-stack web application enabling developers to interact with AI models, compare responses across different LLMs, and build custom AI agents—all through a sleek, glassmorphism-styled interface.',
+      demoImages: [
+        { src: '/narbl-1.png', label: 'Build with Intelligence' },
+        { src: '/narbl-3.png', label: 'Compare Side by Side' },
+        { src: '/narbl-4.png', label: 'Chat with Any Model' },
+        { src: '/narbl-5.png', label: 'Build Custom AI Agents' },
+        { src: '/narbl-6.png', label: 'Powerful AI Products' },
+        { src: '/narbl-7.png', label: 'User Dashboard' },
+      ],
+      figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
+      githubLink: null,
+      caseStudyLink: null,
+      deviceType: 'laptop' as const,
+      number: '02',
+      accentHue: 270,
       laptopAngle: 'left' as const, // Keyboard faces user, angled to show left side (mirrored)
     },
     {
