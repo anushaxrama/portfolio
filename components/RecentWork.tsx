@@ -490,38 +490,6 @@ export default function RecentWork() {
         />
       </div>
 
-      {/* Section Header - Minimal with arrow */}
-      <div className="min-h-[30vh] flex items-center justify-center px-8 relative">
-        <div 
-          className="flex items-center gap-3 text-white/50 animate-fade-in"
-          style={{
-            animation: 'fadeInDown 0.8s ease-out forwards',
-          }}
-        >
-          <svg 
-            className="w-5 h-5 animate-bounce" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-          <p className="text-sm tracking-[0.2em] uppercase">Selected Work</p>
-        </div>
-      </div>
-
-      <style jsx>{`
-        @keyframes fadeInDown {
-          0% {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
 
       {/* Full-page project sections */}
       {projects.map((project, index) => {
