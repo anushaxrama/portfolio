@@ -162,8 +162,8 @@ export default function RecentWork() {
         }`}
         style={{ perspective: '1200px' }}
       >
-        {/* Bigger laptop - offset for left angle */}
-        <div className={`w-full max-w-[520px] ${isLeftAngle ? 'mr-auto ml-0' : 'mx-auto'}`}>
+        {/* Smaller laptop like Rashi's - offset for left angle */}
+        <div className={`w-full max-w-[380px] ${isLeftAngle ? 'mr-auto ml-0' : 'mx-auto'}`}>
           {/* 3D transform - minimal rotation for sleek look */}
           <div 
             className="relative transition-all duration-500 hover:translate-y-[-6px] hover:scale-[1.02]"
@@ -218,7 +218,7 @@ export default function RecentWork() {
                             alt={image.label}
                             fill
                             className="object-cover object-top"
-                            sizes="520px"
+                            sizes="380px"
                             priority={index === 0 && imgIndex === 0}
                           />
                         </div>
@@ -359,9 +359,9 @@ export default function RecentWork() {
           style={{ backgroundColor: `hsl(${project.accentHue}, 60%, 50%)` }}
         />
 
-        {/* Phone Frame - iPhone 15 Pro style */}
+        {/* Phone Frame - Smaller like Rashi's */}
         <div 
-          className="relative w-[300px] rounded-[50px] p-[10px] shadow-2xl"
+          className="relative w-[220px] rounded-[40px] p-[8px] shadow-2xl"
           style={{
             background: 'linear-gradient(145deg, #3a3a3f 0%, #2a2a2f 50%, #1a1a1f 100%)',
             boxShadow: `
@@ -406,7 +406,7 @@ export default function RecentWork() {
                     alt={image.label}
                     fill
                     className="object-cover object-top"
-                    sizes="300px"
+                    sizes="220px"
                   />
                 </div>
               ))}
@@ -500,15 +500,15 @@ export default function RecentWork() {
         />
       </div>
 
-      {/* Section Header */}
-      <div className="min-h-[50vh] flex items-center justify-center px-8 relative">
+      {/* Section Header - Smaller */}
+      <div className="min-h-[40vh] flex items-center justify-center px-8 relative">
         <div className="text-center">
-          <p className="text-white/40 text-sm tracking-[0.3em] uppercase mb-4">Selected Work</p>
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight">
+          <p className="text-white/40 text-xs tracking-[0.3em] uppercase mb-3">Selected Work</p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
             Projects
         </h2>
-          <div className="mt-8 flex justify-center">
-            <div className="w-px h-20 bg-gradient-to-b from-white/40 to-transparent" />
+          <div className="mt-6 flex justify-center">
+            <div className="w-px h-16 bg-gradient-to-b from-white/30 to-transparent" />
           </div>
         </div>
       </div>
@@ -524,78 +524,78 @@ export default function RecentWork() {
             ref={setProjectRef(index)}
             className="relative min-h-screen flex items-center py-20 lg:py-0"
           >
-            <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
-              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center ${
+            <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
+              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
                 isEven ? '' : 'lg:grid-flow-dense'
               }`}>
                 
                 {/* Content Side */}
                 <div className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                  {/* Project Number - Visible & Not Hidden Behind Title */}
+                  {/* Project Number - Subtle but visible */}
                   <div 
-                    className={`absolute -top-20 -left-6 transition-all duration-700 delay-100 ${
+                    className={`absolute -top-12 -left-4 transition-all duration-700 delay-100 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                   >
                     <span 
-                      className="text-[7rem] md:text-[9rem] font-black leading-none select-none"
+                      className="text-[5rem] md:text-[6rem] font-black leading-none select-none"
                       style={{ 
-                        color: `hsla(${project.accentHue}, 55%, 70%, 0.4)`,
-                        WebkitTextStroke: `2px hsla(${project.accentHue}, 60%, 80%, 0.8)`,
-                        textShadow: `0 0 80px hsla(${project.accentHue}, 65%, 70%, 0.6)`,
+                        color: `hsla(${project.accentHue}, 50%, 65%, 0.3)`,
+                        WebkitTextStroke: `2px hsla(${project.accentHue}, 55%, 70%, 0.5)`,
+                        textShadow: `0 0 50px hsla(${project.accentHue}, 60%, 65%, 0.4)`,
                       }}
                     >
                       {project.number}
                     </span>
                   </div>
 
-                  {/* Title */}
+                  {/* Title - Smaller like Rashi's */}
                   <div 
                     className={`relative z-10 transition-all duration-700 delay-200 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                   >
-                    <h3 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white tracking-tight leading-[0.85]">
+                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
                     {project.title}
                   </h3>
                   </div>
 
                   {/* Subtitle */}
                   <div 
-                    className={`mt-4 transition-all duration-700 delay-300 ${
+                    className={`mt-3 transition-all duration-700 delay-300 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                   >
-                    <p className="text-xl md:text-2xl text-white/50 font-light tracking-wide">
+                    <p className="text-base md:text-lg text-white/50 font-light">
                     {project.subtitle}
                   </p>
                   </div>
 
                   {/* Description */}
                   <div 
-                    className={`mt-8 transition-all duration-700 delay-400 ${
+                    className={`mt-5 transition-all duration-700 delay-400 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                   >
-                    <p className="text-lg md:text-xl text-white/40 leading-relaxed max-w-xl">
+                    <p className="text-sm md:text-base text-white/40 leading-relaxed max-w-lg">
                       {project.description}
                     </p>
                 </div>
                 
-                  {/* Links */}
+                  {/* Links - Smaller like Rashi's */}
                   <div 
-                    className={`mt-10 flex flex-wrap gap-4 transition-all duration-700 delay-500 ${
+                    className={`mt-6 flex flex-wrap gap-3 transition-all duration-700 delay-500 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                   >
                     {project.caseStudyLink && (
                       <Link
                         href={project.caseStudyLink}
-                        className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-white/90 transition-all"
+                        className="group inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-all"
                       >
                         <span>View Case Study</span>
-                      <svg 
-                        className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
+                        <svg 
+                          className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" 
                         fill="none" 
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
@@ -609,9 +609,9 @@ export default function RecentWork() {
                         href={project.figmaLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-3 px-8 py-4 border border-white/20 text-white font-medium rounded-full hover:bg-white/10 hover:border-white/40 transition-all"
+                        className="group inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white text-sm font-medium rounded-full hover:bg-white/10 hover:border-white/40 transition-all"
                       >
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
                           <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/>
                           <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/>
@@ -626,9 +626,9 @@ export default function RecentWork() {
                         href={project.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-3 px-8 py-4 border border-white/20 text-white font-medium rounded-full hover:bg-white/10 hover:border-white/40 transition-all"
+                        className="group inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white text-sm font-medium rounded-full hover:bg-white/10 hover:border-white/40 transition-all"
                       >
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                         </svg>
                         <span>GitHub</span>
