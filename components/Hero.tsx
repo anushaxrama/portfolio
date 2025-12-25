@@ -179,10 +179,9 @@ export default function Hero() {
           transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
         }}
       >
-        <p className="text-white/40 text-xs tracking-[0.3em] uppercase mb-3 text-center">
+        <p className="text-white/40 text-xs tracking-[0.3em] uppercase text-center">
           Scroll Anywhere
         </p>
-        <div className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent" />
       </div>
 
       <style jsx>{`

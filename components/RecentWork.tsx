@@ -490,18 +490,38 @@ export default function RecentWork() {
         />
       </div>
 
-      {/* Section Header - Smaller */}
-      <div className="min-h-[40vh] flex items-center justify-center px-8 relative">
-        <div className="text-center">
-          <p className="text-white/40 text-xs tracking-[0.3em] uppercase mb-3">Selected Work</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-            Projects
-        </h2>
-          <div className="mt-6 flex justify-center">
-            <div className="w-px h-16 bg-gradient-to-b from-white/30 to-transparent" />
-          </div>
+      {/* Section Header - Minimal with arrow */}
+      <div className="min-h-[30vh] flex items-center justify-center px-8 relative">
+        <div 
+          className="flex items-center gap-3 text-white/50 animate-fade-in"
+          style={{
+            animation: 'fadeInDown 0.8s ease-out forwards',
+          }}
+        >
+          <svg 
+            className="w-5 h-5 animate-bounce" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+          <p className="text-sm tracking-[0.2em] uppercase">Selected Work</p>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fadeInDown {
+          0% {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
 
       {/* Full-page project sections */}
       {projects.map((project, index) => {
