@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import VantaBackground from '@/components/VantaBackground'
 import Navbar from '@/components/Navbar'
-import Hero from '@/components/Hero'
 import RecentWork from '@/components/RecentWork'
 import SplashScreen from '@/components/SplashScreen'
 
@@ -16,7 +15,6 @@ export default function Home() {
       <main className="relative min-h-screen">
         <VantaBackground />
         <Navbar />
-        <Hero />
         <RecentWork />
       </main>
       
@@ -27,4 +25,3 @@ export default function Home() {
     </>
   )
 }
-
