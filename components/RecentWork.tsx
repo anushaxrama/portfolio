@@ -5,14 +5,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 /**
- * RecentWork - Full-page project showcase
+ * RecentWork - Full-page project showcase with 3D device mockups
  * 
- * Inspired by rashibihani.com:
- * - Each project takes up full viewport height
- * - Smooth scroll-triggered transitions
+ * Features:
+ * - Smooth ombre gradient background that flows between sections
+ * - 3D perspective device mockups for each project
  * - Alternating left/right layouts
- * - Large, impactful typography
- * - Scroll indicator between projects
+ * - Scroll-triggered animations
  */
 
 export default function RecentWork() {
@@ -36,7 +35,7 @@ export default function RecentWork() {
       figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
       githubLink: null,
       caseStudyLink: null,
-      accentColor: 'from-violet-500/20 to-purple-500/20',
+      deviceType: 'laptop' as const,
       number: '01',
     },
     {
@@ -55,7 +54,7 @@ export default function RecentWork() {
       figmaLink: null,
       githubLink: 'https://github.com/anushaxrama/neuranote',
       caseStudyLink: '/case-study/neuranote',
-      accentColor: 'from-blue-500/20 to-cyan-500/20',
+      deviceType: 'laptop' as const,
       number: '02',
     },
     {
@@ -73,7 +72,7 @@ export default function RecentWork() {
       figmaLink: null,
       githubLink: 'https://github.com/anushaxrama/your-music-journey',
       caseStudyLink: '/case-study/spotify',
-      accentColor: 'from-emerald-500/20 to-green-500/20',
+      deviceType: 'phone' as const,
       number: '03',
     },
   ]
@@ -123,10 +122,237 @@ export default function RecentWork() {
     projectRefs.current[index] = el
   }
 
+  // 3D Laptop Mockup Component
+  const LaptopMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => (
+    <div 
+      className={`relative transition-all duration-1000 delay-300 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      }`}
+      style={{ perspective: '1500px' }}
+    >
+      <div 
+        className="relative transition-transform duration-500 hover:scale-[1.02]"
+        style={{ 
+          transformStyle: 'preserve-3d',
+          transform: 'rotateX(2deg) rotateY(-3deg)',
+        }}
+      >
+        {/* Laptop Frame */}
+        <div className="relative">
+          {/* Screen bezel */}
+          <div className="relative bg-gradient-to-b from-[#2a2a2a] via-[#1a1a1a] to-[#0a0a0a] rounded-t-2xl p-2 shadow-2xl">
+            {/* Camera */}
+            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#1a1a1a] flex items-center justify-center">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#0a0a0a] flex items-center justify-center">
+                <div className="w-0.5 h-0.5 rounded-full bg-green-500/30"></div>
+              </div>
+            </div>
+            
+            {/* Screen */}
+            <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-black group">
+              {project.demoImages.map((image, imgIndex) => (
+                <div
+                  key={imgIndex}
+                  className={`absolute inset-0 transition-all duration-700 ${
+                    (activeSlides[index] || 0) === imgIndex 
+                      ? 'opacity-100 scale-100' 
+                      : 'opacity-0 scale-105'
+                  }`}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.label}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={index === 0 && imgIndex === 0}
+                  />
+                </div>
+              ))}
+
+              {/* Screen reflection */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
+
+              {/* Navigation arrows */}
+              <button
+                onClick={() => goToPrevSlide(index, project.demoImages.length)}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={() => goToNextSlide(index, project.demoImages.length)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              {/* Dots */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {project.demoImages.map((_, dotIndex) => (
+                  <button
+                    key={dotIndex}
+                    onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
+                    className={`h-1.5 rounded-full transition-all ${
+                      (activeSlides[index] || 0) === dotIndex 
+                        ? 'bg-white w-6' 
+                        : 'bg-white/40 w-1.5 hover:bg-white/60'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Laptop hinge */}
+          <div className="relative h-3 bg-gradient-to-b from-[#1a1a1a] to-[#2a2a2a] rounded-b-sm">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          </div>
+
+          {/* Laptop base/keyboard */}
+          <div 
+            className="relative bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] rounded-b-2xl pt-1 pb-3 px-4"
+            style={{ transform: 'rotateX(-5deg)', transformOrigin: 'top' }}
+          >
+            {/* Keyboard area */}
+            <div className="bg-[#0f0f0f] rounded-lg h-6 flex items-center justify-center">
+              <div className="w-16 h-1 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full" />
+            </div>
+            {/* Trackpad */}
+            <div className="mt-1 mx-auto w-24 h-4 bg-[#0f0f0f] rounded-md border border-white/5" />
+          </div>
+        </div>
+
+        {/* Shadow */}
+        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[80%] h-8 bg-black/30 blur-xl rounded-full" />
+      </div>
+
+      {/* Image label */}
+      <p className="text-center text-white/50 text-sm mt-6 font-medium">
+        {project.demoImages[activeSlides[index] || 0]?.label}
+      </p>
+    </div>
+  )
+
+  // 3D Phone Mockup Component
+  const PhoneMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => (
+    <div 
+      className={`relative flex justify-center transition-all duration-1000 delay-300 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      }`}
+      style={{ perspective: '1500px' }}
+    >
+      <div 
+        className="relative transition-transform duration-500 hover:scale-[1.02]"
+        style={{ 
+          transformStyle: 'preserve-3d',
+          transform: 'rotateX(2deg) rotateY(5deg)',
+        }}
+      >
+        {/* Phone Frame */}
+        <div className="relative w-[280px] bg-gradient-to-b from-[#2a2a2a] via-[#1a1a1a] to-[#0a0a0a] rounded-[3rem] p-2 shadow-2xl">
+          {/* Side buttons */}
+          <div className="absolute -left-1 top-24 w-1 h-8 bg-[#2a2a2a] rounded-l-sm" />
+          <div className="absolute -left-1 top-36 w-1 h-12 bg-[#2a2a2a] rounded-l-sm" />
+          <div className="absolute -left-1 top-52 w-1 h-12 bg-[#2a2a2a] rounded-l-sm" />
+          <div className="absolute -right-1 top-32 w-1 h-16 bg-[#2a2a2a] rounded-r-sm" />
+
+          {/* Dynamic Island */}
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-8 bg-black rounded-full z-10 flex items-center justify-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-[#1a1a1a]" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#0a0a0a]" />
+          </div>
+
+          {/* Screen */}
+          <div className="relative aspect-[9/19.5] rounded-[2.5rem] overflow-hidden bg-black group">
+            {project.demoImages.map((image, imgIndex) => (
+              <div
+                key={imgIndex}
+                className={`absolute inset-0 transition-all duration-700 ${
+                  (activeSlides[index] || 0) === imgIndex 
+                    ? 'opacity-100 scale-100' 
+                    : 'opacity-0 scale-105'
+                }`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.label}
+                  fill
+                  className="object-cover object-top"
+                  sizes="280px"
+                />
+              </div>
+            ))}
+
+            {/* Screen reflection */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
+
+            {/* Navigation arrows */}
+            <button
+              onClick={() => goToPrevSlide(index, project.demoImages.length)}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={() => goToNextSlide(index, project.demoImages.length)}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Dots */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {project.demoImages.map((_, dotIndex) => (
+                <button
+                  key={dotIndex}
+                  onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
+                  className={`h-1 rounded-full transition-all ${
+                    (activeSlides[index] || 0) === dotIndex 
+                      ? 'bg-white w-4' 
+                      : 'bg-white/40 w-1 hover:bg-white/60'
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Home indicator */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full" />
+          </div>
+        </div>
+
+        {/* Shadow */}
+        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[60%] h-6 bg-black/30 blur-xl rounded-full" />
+      </div>
+
+      {/* Image label */}
+      <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white/50 text-sm font-medium whitespace-nowrap">
+        {project.demoImages[activeSlides[index] || 0]?.label}
+      </p>
+    </div>
+  )
+
   return (
     <section id="work" className="relative">
+      {/* Smooth ombre gradient background */}
+      <div className="fixed inset-0 -z-10 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0f] via-[#0f0a1a] via-[#0a0f1a] to-[#050a0f]" />
+        {/* Subtle color orbs for smooth transitions */}
+        <div className="absolute top-[20%] left-1/4 w-[600px] h-[600px] bg-violet-900/10 rounded-full blur-[150px]" />
+        <div className="absolute top-[50%] right-1/4 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[150px]" />
+        <div className="absolute top-[80%] left-1/3 w-[400px] h-[400px] bg-emerald-900/10 rounded-full blur-[150px]" />
+      </div>
+
       {/* Section Header */}
-      <div className="min-h-[50vh] flex items-center justify-center px-8">
+      <div className="min-h-[50vh] flex items-center justify-center px-8 relative">
         <div className="text-center">
           <p className="text-white/40 text-sm tracking-[0.3em] uppercase mb-4">Selected Work</p>
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight">
@@ -149,11 +375,6 @@ export default function RecentWork() {
             ref={setProjectRef(index)}
             className="relative min-h-screen flex items-center py-20 lg:py-0"
           >
-            {/* Background gradient accent */}
-            <div 
-              className={`absolute inset-0 bg-gradient-to-br ${project.accentColor} opacity-0 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : ''}`}
-            />
-            
             <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
               <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${
                 isEven ? '' : 'lg:grid-flow-dense'
@@ -260,82 +481,13 @@ export default function RecentWork() {
                   </div>
                 </div>
 
-                {/* Image Side */}
-                <div 
-                  className={`${isEven ? 'lg:order-2' : 'lg:order-1'} transition-all duration-1000 delay-300 ${
-                    isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
-                  }`}
-                >
-                  <div className="relative aspect-[4/3] lg:aspect-[16/12] rounded-2xl overflow-hidden group bg-black/20 backdrop-blur-sm border border-white/10 shadow-2xl">
-                    {project.demoImages.length > 0 ? (
-                      <>
-                        {/* Slideshow images */}
-                        {project.demoImages.map((image, imgIndex) => (
-                          <div
-                            key={imgIndex}
-                            className={`absolute inset-0 transition-all duration-700 ${
-                              (activeSlides[index] || 0) === imgIndex 
-                                ? 'opacity-100 scale-100' 
-                                : 'opacity-0 scale-105'
-                            }`}
-                          >
-                            <Image
-                              src={image.src}
-                              alt={image.label}
-                              fill
-                              className="object-cover object-top"
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                              priority={index === 0 && imgIndex === 0}
-                            />
-                          </div>
-                        ))}
-
-                        {/* Image label */}
-                        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
-                          <p className="text-white/80 text-sm font-medium">
-                            {project.demoImages[activeSlides[index] || 0]?.label}
-                          </p>
-                        </div>
-
-                        {/* Navigation */}
-                        <button
-                          onClick={() => goToPrevSlide(index, project.demoImages.length)}
-                          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:border-white/40 transition-all opacity-0 group-hover:opacity-100"
-                        >
-                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                          </svg>
-                        </button>
-                        <button
-                          onClick={() => goToNextSlide(index, project.demoImages.length)}
-                          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:border-white/40 transition-all opacity-0 group-hover:opacity-100"
-                        >
-                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </button>
-
-                        {/* Dots */}
-                        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2">
-                          {project.demoImages.map((_, dotIndex) => (
-                            <button
-                              key={dotIndex}
-                              onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
-                              className={`h-2 rounded-full transition-all ${
-                                (activeSlides[index] || 0) === dotIndex 
-                                  ? 'bg-white w-8' 
-                                  : 'bg-white/30 w-2 hover:bg-white/50'
-                              }`}
-                            />
-                          ))}
-                        </div>
-                      </>
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-white/30 text-lg">Coming Soon</span>
-                      </div>
-                    )}
-                  </div>
+                {/* Device Mockup Side */}
+                <div className={`${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                  {project.deviceType === 'phone' ? (
+                    <PhoneMockup project={project} index={index} isVisible={isVisible} />
+                  ) : (
+                    <LaptopMockup project={project} index={index} isVisible={isVisible} />
+                  )}
                 </div>
               </div>
             </div>
