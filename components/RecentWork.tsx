@@ -154,8 +154,8 @@ export default function RecentWork() {
   const LaptopMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => {
     const isLeftAngle = project.laptopAngle === 'left'
     const rotateY = isLeftAngle ? 8 : -8
-    
-    return (
+
+  return (
       <div 
         className={`relative flex justify-center items-start pt-16 transition-all duration-1000 delay-200 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
@@ -546,8 +546,8 @@ export default function RecentWork() {
                     }`}
                   >
                     <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
-                      {project.title}
-                    </h3>
+                    {project.title}
+                  </h3>
                   </div>
 
                   {/* Subtitle */}

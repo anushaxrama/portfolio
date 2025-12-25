@@ -2,40 +2,38 @@
 
 import { useEffect, useState, useMemo } from 'react'
 
-interface Particle {
+interface ShootingStar {
   id: number;
-  x: number;
-  y: number;
-  size: number;
+  startX: number;
+  startY: number;
   duration: number;
   delay: number;
-  opacity: number;
+  angle: number;
+  length: number;
 }
 
 export default function Hero() {
   const [showScroll, setShowScroll] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // Generate random particles
-  const particles: Particle[] = useMemo(() => {
-    return Array.from({ length: 60 }, (_, i) => ({
+  // Generate shooting stars
+  const shootingStars: ShootingStar[] = useMemo(() => {
+    return Array.from({ length: 8 }, (_, i) => ({
       id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 4 + 1,
-      duration: Math.random() * 8 + 4,
-      delay: Math.random() * 5,
-      opacity: Math.random() * 0.5 + 0.2,
+      startX: Math.random() * 100,
+      startY: Math.random() * 50,
+      duration: Math.random() * 2 + 1.5,
+      delay: Math.random() * 10 + i * 2,
+      angle: Math.random() * 30 + 30, // 30-60 degrees
+      length: Math.random() * 60 + 40,
     }));
   }, []);
 
   useEffect(() => {
-    // Trigger name animation
     const loadTimer = setTimeout(() => {
       setIsLoaded(true)
     }, 100)
     
-    // Fade in "scroll anywhere" after name animation
     const scrollTimer = setTimeout(() => {
       setShowScroll(true)
     }, 1200)
@@ -47,29 +45,39 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative h-screen flex items-center justify-center px-4">
-      {/* Floating particles */}
+    <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-blue-900/10" />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px]" />
+      </div>
+
+      {/* Shooting stars */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {particles.map((particle) => (
+        {shootingStars.map((star) => (
           <div
-            key={particle.id}
-            className="absolute rounded-full bg-white"
+            key={star.id}
+            className="absolute shooting-star"
             style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              opacity: particle.opacity,
-              animation: `float ${particle.duration}s ease-in-out ${particle.delay}s infinite`,
+              left: `${star.startX}%`,
+              top: `${star.startY}%`,
+              width: `${star.length}px`,
+              height: '1px',
+              background: 'linear-gradient(90deg, rgba(255,255,255,0.6), transparent)',
+              transform: `rotate(${star.angle}deg)`,
+              animation: `shoot ${star.duration}s ease-out ${star.delay}s infinite`,
+              opacity: 0,
             }}
           />
         ))}
       </div>
 
-      <div className="flex flex-col items-center justify-center z-10 text-center">
-        {/* Name - Bold & Centered with exciting animation */}
+      {/* Centered content */}
+      <div className="flex flex-col items-center justify-center z-10 text-center w-full max-w-5xl mx-auto">
+        {/* Name - Bold & Perfectly Centered */}
         <div 
-          className="overflow-hidden"
+          className="w-full"
           style={{
             opacity: isLoaded ? 1 : 0,
             transform: isLoaded ? 'translateY(0)' : 'translateY(40px)',
@@ -77,7 +85,7 @@ export default function Hero() {
           }}
         >
           <h1 
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight text-center"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight text-center w-full"
             style={{
               letterSpacing: '-0.02em',
               lineHeight: 1,
@@ -88,7 +96,7 @@ export default function Hero() {
         </div>
         
         <div 
-          className="overflow-hidden mt-1"
+          className="w-full mt-1"
           style={{
             opacity: isLoaded ? 1 : 0,
             transform: isLoaded ? 'translateY(0)' : 'translateY(40px)',
@@ -96,7 +104,7 @@ export default function Hero() {
           }}
         >
           <h1 
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight text-center"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight text-center w-full"
             style={{
               letterSpacing: '-0.02em',
               lineHeight: 1,
@@ -106,7 +114,7 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Subtitle with staggered animation */}
+        {/* Subtitle */}
         <p 
           className="mt-6 text-white/50 text-xs sm:text-sm tracking-[0.3em] uppercase"
           style={{
@@ -131,19 +139,24 @@ export default function Hero() {
       </div>
 
       <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0) translateX(0);
+        @keyframes shoot {
+          0% {
+            opacity: 0;
+            transform: rotate(var(--angle, 45deg)) translateX(0);
           }
-          25% {
-            transform: translateY(-20px) translateX(10px);
+          5% {
+            opacity: 0.8;
           }
-          50% {
-            transform: translateY(-10px) translateX(-10px);
+          30% {
+            opacity: 0.4;
           }
-          75% {
-            transform: translateY(-30px) translateX(5px);
+          100% {
+            opacity: 0;
+            transform: rotate(var(--angle, 45deg)) translateX(200px);
           }
+        }
+        .shooting-star {
+          --angle: 45deg;
         }
       `}</style>
     </section>
