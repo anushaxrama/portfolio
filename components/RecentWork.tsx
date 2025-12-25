@@ -150,20 +150,20 @@ export default function RecentWork() {
   // Get current accent color based on active project
   const currentHue = projects[activeProject]?.accentHue || 270
 
-  // Premium MacBook-style 3D Laptop Mockup - Sleek, Bigger, Centered
+  // Premium MacBook-style 3D Laptop Mockup - Compact & Aligned
   const LaptopMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => {
     const isLeftAngle = project.laptopAngle === 'left'
     const rotateY = isLeftAngle ? 8 : -8
-
-  return (
+    
+    return (
       <div 
-        className={`relative flex justify-center items-center transition-all duration-1000 delay-200 ${
+        className={`relative flex justify-center items-start pt-8 transition-all duration-1000 delay-200 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}
         style={{ perspective: '1200px' }}
       >
-        {/* Smaller laptop like Rashi's - offset for left angle */}
-        <div className={`w-full max-w-[380px] ${isLeftAngle ? 'mr-auto ml-0' : 'mx-auto'}`}>
+        {/* Smaller laptop - aligned with title */}
+        <div className={`w-full max-w-[340px] ${isLeftAngle ? 'mr-auto ml-4' : 'ml-auto mr-4'}`}>
           {/* 3D transform - minimal rotation for sleek look */}
           <div 
             className="relative transition-all duration-500 hover:translate-y-[-6px] hover:scale-[1.02]"
@@ -218,7 +218,7 @@ export default function RecentWork() {
                             alt={image.label}
                             fill
                             className="object-cover object-top"
-                            sizes="380px"
+                            sizes="340px"
                             priority={index === 0 && imgIndex === 0}
                           />
                         </div>
@@ -324,16 +324,11 @@ export default function RecentWork() {
 
             {/* Shadow */}
             <div 
-              className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[80%] h-12 rounded-[50%] blur-2xl opacity-60"
+              className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[80%] h-10 rounded-[50%] blur-2xl opacity-50"
               style={{ backgroundColor: `hsl(${project.accentHue}, 25%, 6%)` }}
             />
           </div>
         </div>
-
-        {/* Label */}
-        <p className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-sm font-medium whitespace-nowrap">
-          {project.demoImages[activeSlides[index] || 0]?.label}
-        </p>
       </div>
     )
   }
@@ -341,7 +336,7 @@ export default function RecentWork() {
   // Premium iPhone-style 3D Phone Mockup
   const PhoneMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => (
     <div 
-      className={`relative flex justify-center transition-all duration-1000 delay-300 ${
+      className={`relative flex justify-center items-start pt-8 transition-all duration-1000 delay-300 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
       }`}
       style={{ perspective: '2000px' }}
@@ -460,15 +455,10 @@ export default function RecentWork() {
 
         {/* Ground shadow */}
         <div 
-          className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[70%] h-16 rounded-[50%] blur-xl opacity-40"
+          className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[70%] h-12 rounded-[50%] blur-xl opacity-40"
           style={{ backgroundColor: `hsl(${project.accentHue}, 30%, 10%)` }}
         />
       </div>
-
-      {/* Image label */}
-      <p className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-sm font-medium whitespace-nowrap">
-        {project.demoImages[activeSlides[index] || 0]?.label}
-      </p>
     </div>
   )
 
@@ -549,15 +539,15 @@ export default function RecentWork() {
                     </span>
                   </div>
 
-                  {/* Title - Smaller like Rashi's */}
+                  {/* Title - Bold but smaller */}
                   <div 
                     className={`relative z-10 transition-all duration-700 delay-200 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                   >
-                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
-                    {project.title}
-                  </h3>
+                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+                      {project.title}
+                    </h3>
                   </div>
 
                   {/* Subtitle */}
