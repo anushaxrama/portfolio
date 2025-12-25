@@ -14,6 +14,7 @@ interface Particle {
 
 export default function Hero() {
   const [showScroll, setShowScroll] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   // Generate random particles
   const particles: Particle[] = useMemo(() => {
@@ -29,15 +30,24 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    // Fade in "scroll anywhere" after a short delay
-    const timer = setTimeout(() => {
+    // Trigger name animation
+    const loadTimer = setTimeout(() => {
+      setIsLoaded(true)
+    }, 100)
+    
+    // Fade in "scroll anywhere" after name animation
+    const scrollTimer = setTimeout(() => {
       setShowScroll(true)
-    }, 500)
-    return () => clearTimeout(timer)
+    }, 1200)
+    
+    return () => {
+      clearTimeout(loadTimer)
+      clearTimeout(scrollTimer)
+    }
   }, [])
 
   return (
-    <section className="relative h-screen flex items-center justify-center px-4" style={{ paddingTop: '50px' }}>
+    <section className="relative h-screen flex items-center justify-center px-4">
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {particles.map((particle) => (
@@ -56,71 +66,68 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="flex flex-col items-center z-10">
-        {/* Name using SVG to match splash screen exactly */}
-        <div className="flex items-center justify-center">
-          <svg
-            height="70"
-            viewBox="0 0 340 70"
-            className="overflow-visible"
+      <div className="flex flex-col items-center justify-center z-10 text-center">
+        {/* Name - Bold & Centered with exciting animation */}
+        <div 
+          className="overflow-hidden"
+          style={{
+            opacity: isLoaded ? 1 : 0,
+            transform: isLoaded ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        >
+          <h1 
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight text-center"
             style={{
-              width: 'clamp(180px, 35vw, 340px)',
-              height: 'auto',
+              letterSpacing: '-0.02em',
+              lineHeight: 1,
             }}
           >
-            <text
-              x="0"
-              y="50"
-              fontSize="60"
-              fontWeight="900"
-              fontFamily="system-ui, -apple-system, sans-serif"
-              fill="white"
-              style={{
-                textTransform: "uppercase",
-                letterSpacing: "0.02em",
-              }}
-            >
-              ANUSHA
-            </text>
-          </svg>
-          
-          <svg
-            height="70"
-            viewBox="0 0 580 70"
-            className="overflow-visible"
-            style={{
-              width: 'clamp(220px, 50vw, 580px)',
-              height: 'auto',
-              marginLeft: '-45px',
-            }}
-          >
-            <text
-              x="0"
-              y="50"
-              fontSize="60"
-              fontWeight="900"
-              fontFamily="system-ui, -apple-system, sans-serif"
-              fill="white"
-              style={{
-                textTransform: "uppercase",
-                letterSpacing: "0.02em",
-              }}
-            >
-              RAMACHANDRAN
-            </text>
-          </svg>
+            ANUSHA
+          </h1>
         </div>
         
+        <div 
+          className="overflow-hidden mt-1"
+          style={{
+            opacity: isLoaded ? 1 : 0,
+            transform: isLoaded ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s',
+          }}
+        >
+          <h1 
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight text-center"
+            style={{
+              letterSpacing: '-0.02em',
+              lineHeight: 1,
+            }}
+          >
+            RAMACHANDRAN
+          </h1>
+        </div>
+
+        {/* Subtitle with staggered animation */}
         <p 
-          className="mt-8 text-white/60 text-sm tracking-widest uppercase"
+          className="mt-6 text-white/50 text-xs sm:text-sm tracking-[0.3em] uppercase"
           style={{
             opacity: showScroll ? 1 : 0,
-            transform: showScroll ? 'translateY(0)' : 'translateY(10px)',
-            transition: 'opacity 1s ease-out, transform 1s ease-out',
+            transform: showScroll ? 'translateY(0)' : 'translateY(15px)',
+            transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
           }}
         >
           Scroll Anywhere
         </p>
+        
+        {/* Animated line */}
+        <div 
+          className="mt-4 w-px h-12 bg-gradient-to-b from-white/40 to-transparent"
+          style={{
+            opacity: showScroll ? 1 : 0,
+            transform: showScroll ? 'scaleY(1)' : 'scaleY(0)',
+            transformOrigin: 'top',
+            transition: 'opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s',
+          }}
+        />
       </div>
 
       <style jsx>{`
@@ -142,4 +149,3 @@ export default function Hero() {
     </section>
   )
 }
-

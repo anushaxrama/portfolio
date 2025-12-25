@@ -157,7 +157,7 @@ export default function RecentWork() {
     
     return (
       <div 
-        className={`relative flex justify-center items-start pt-8 transition-all duration-1000 delay-200 ${
+        className={`relative flex justify-center items-start pt-16 transition-all duration-1000 delay-200 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}
         style={{ perspective: '1200px' }}
@@ -336,7 +336,7 @@ export default function RecentWork() {
   // Premium iPhone-style 3D Phone Mockup
   const PhoneMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => (
     <div 
-      className={`relative flex justify-center items-start pt-8 transition-all duration-1000 delay-300 ${
+      className={`relative flex justify-center items-start pt-16 transition-all duration-1000 delay-300 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
       }`}
       style={{ perspective: '2000px' }}
