@@ -2,125 +2,202 @@
 
 import { useEffect, useState, useMemo } from 'react'
 
-interface ShootingStar {
+interface Particle {
   id: number;
-  startX: number;
-  startY: number;
+  x: number;
+  y: number;
+  size: number;
   duration: number;
   delay: number;
-  angle: number;
-  length: number;
+  opacity: number;
 }
 
 export default function Hero() {
+  const [showLastName, setShowLastName] = useState(false)
+  const [showScroll, setShowScroll] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // Generate shooting stars (continuous on Hero page too)
-  const shootingStars: ShootingStar[] = useMemo(() => {
-    return Array.from({ length: 5 }, (_, i) => ({
+  // Generate floating white particles (star specs)
+  const particles: Particle[] = useMemo(() => {
+    return Array.from({ length: 60 }, (_, i) => ({
       id: i,
-      startX: Math.random() * 80 + 10,
-      startY: Math.random() * 40,
-      duration: Math.random() * 2 + 1.5,
-      delay: Math.random() * 8 + i * 3,
-      angle: Math.random() * 25 + 35,
-      length: Math.random() * 50 + 30,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      duration: Math.random() * 8 + 4,
+      delay: Math.random() * 5,
+      opacity: Math.random() * 0.5 + 0.2,
     }));
   }, []);
 
   useEffect(() => {
+    // Start animation
     const loadTimer = setTimeout(() => {
       setIsLoaded(true)
     }, 100)
-    
+
+    // Show last name after Anusha animation
+    const lastNameTimer = setTimeout(() => {
+      setShowLastName(true)
+    }, 2200)
+
+    // Show scroll text after last name appears
+    const scrollTimer = setTimeout(() => {
+      setShowScroll(true)
+    }, 3200)
+
     return () => {
       clearTimeout(loadTimer)
+      clearTimeout(lastNameTimer)
+      clearTimeout(scrollTimer)
     }
   }, [])
 
   return (
-    <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden">
-      {/* Subtle gradient background */}
+    <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Floating white particles (star specs) */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/8 via-transparent to-blue-900/8" />
-        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px]" />
-      </div>
-
-      {/* Shooting stars (continuous, very subtle) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {shootingStars.map((star) => (
+        {particles.map((particle) => (
           <div
-            key={star.id}
-            className="absolute"
+            key={particle.id}
+            className="absolute rounded-full bg-white"
             style={{
-              left: `${star.startX}%`,
-              top: `${star.startY}%`,
-              width: `${star.length}px`,
-              height: '1px',
-              background: 'linear-gradient(90deg, rgba(255,255,255,0.4), transparent)',
-              transform: `rotate(${star.angle}deg)`,
-              animation: `shoot ${star.duration}s ease-out ${star.delay}s infinite`,
-              opacity: 0,
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              opacity: particle.opacity,
+              animation: `float ${particle.duration}s ease-in-out ${particle.delay}s infinite`,
             }}
           />
         ))}
       </div>
 
-      {/* Centered content - Name with same styling as splash */}
-      <div className="flex flex-col items-center justify-center z-10 text-center w-full">
-        {/* Name container */}
-        <div 
-          className="flex items-center justify-center"
-          style={{
-            opacity: isLoaded ? 1 : 0,
-            transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
-          }}
-        >
-          <h1 
-            className="text-white font-black tracking-tight"
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/5 via-transparent to-blue-900/5" />
+      </div>
+
+      {/* Name animation - centered */}
+      <div className="relative z-10 flex items-center justify-center px-4">
+        <div className="flex items-center justify-center">
+          {/* ANUSHA with SVG stroke animation */}
+          <svg
+            height="70"
+            viewBox="0 0 340 70"
+            className="overflow-visible"
             style={{
-              fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
-              letterSpacing: '-0.02em',
-              lineHeight: 1,
+              width: 'clamp(180px, 35vw, 340px)',
+              height: 'auto',
+              opacity: isLoaded ? 1 : 0,
+              transition: 'opacity 0.3s ease-out',
             }}
           >
-            ANUSHA RAMACHANDRAN
-          </h1>
-        </div>
-
-        {/* Scroll indicator */}
-        <div 
-          className="mt-12 flex flex-col items-center"
-          style={{
-            opacity: isLoaded ? 1 : 0,
-            transform: isLoaded ? 'translateY(0)' : 'translateY(10px)',
-            transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s',
-          }}
-        >
-          <p className="text-white/40 text-xs tracking-[0.3em] uppercase mb-3">
-            Scroll Anywhere
-          </p>
-          <div className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent" />
+            <text
+              x="0"
+              y="50"
+              fontSize="60"
+              fontWeight="900"
+              fontFamily="system-ui, -apple-system, sans-serif"
+              fill="white"
+              stroke="white"
+              strokeWidth="2"
+              strokeDasharray="1000"
+              strokeDashoffset="1000"
+              fillOpacity="0"
+              style={{
+                paintOrder: "stroke",
+                textTransform: "uppercase",
+                letterSpacing: "0.02em",
+              }}
+            >
+              ANUSHA
+              <animate
+                attributeName="stroke-dashoffset"
+                from="1000"
+                to="0"
+                dur="1.8s"
+                fill="freeze"
+                calcMode="spline"
+                keySplines="0.4 0 0.2 1"
+              />
+              <animate
+                attributeName="fill-opacity"
+                from="0"
+                to="1"
+                dur="0.5s"
+                begin="1.6s"
+                fill="freeze"
+              />
+            </text>
+          </svg>
+          
+          {/* RAMACHANDRAN - slides out from right of ANUSHA */}
+          <div
+            className="overflow-hidden"
+            style={{
+              maxWidth: showLastName ? '600px' : '0',
+              opacity: showLastName ? 1 : 0,
+              transition: 'max-width 1s ease-out, opacity 0.6s ease-out',
+              marginLeft: '-45px',
+            }}
+          >
+            <svg
+              height="70"
+              viewBox="0 0 580 70"
+              className="overflow-visible"
+              style={{
+                width: 'clamp(220px, 50vw, 580px)',
+                height: 'auto',
+              }}
+            >
+              <text
+                x="0"
+                y="50"
+                fontSize="60"
+                fontWeight="900"
+                fontFamily="system-ui, -apple-system, sans-serif"
+                fill="white"
+                style={{
+                  textTransform: "uppercase",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                RAMACHANDRAN
+              </text>
+            </svg>
+          </div>
         </div>
       </div>
 
+      {/* Scroll anywhere text - CENTERED at bottom */}
+      <div 
+        className="absolute bottom-20 left-0 right-0 flex flex-col items-center justify-center"
+        style={{
+          opacity: showScroll ? 1 : 0,
+          transform: showScroll ? 'translateY(0)' : 'translateY(10px)',
+          transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+        }}
+      >
+        <p className="text-white/40 text-xs tracking-[0.3em] uppercase mb-3 text-center">
+          Scroll Anywhere
+        </p>
+        <div className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent" />
+      </div>
+
       <style jsx>{`
-        @keyframes shoot {
-          0% {
-            opacity: 0;
-            transform: rotate(var(--angle, 45deg)) translateX(0);
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0) translateX(0);
           }
-          10% {
-            opacity: 0.5;
+          25% {
+            transform: translateY(-20px) translateX(10px);
           }
-          40% {
-            opacity: 0.2;
+          50% {
+            transform: translateY(-10px) translateX(-10px);
           }
-          100% {
-            opacity: 0;
-            transform: rotate(var(--angle, 45deg)) translateX(150px);
+          75% {
+            transform: translateY(-30px) translateX(5px);
           }
         }
       `}</style>
