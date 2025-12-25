@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 export default function Navbar() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -11,12 +13,12 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 right-0 z-50 p-6 md:p-8">
       <div className="flex gap-6 md:gap-8 text-white/60 text-xs md:text-sm font-light tracking-wider lowercase">
-        <button
-          onClick={() => scrollToSection('about')}
-          className="hover:text-white transition-colors duration-300 cursor-pointer"
+        <Link
+          href="/about"
+          className="hover:text-white transition-colors duration-300"
         >
           about
-        </button>
+        </Link>
         <button
           onClick={() => scrollToSection('resume')}
           className="hover:text-white transition-colors duration-300 cursor-pointer"
@@ -41,4 +43,3 @@ export default function Navbar() {
     </nav>
   )
 }
-
