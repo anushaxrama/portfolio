@@ -83,10 +83,10 @@ export default function Hero() {
         <div className="flex items-center justify-center">
           {/* ANUSHA with stroke drawing animation */}
           <svg
-            viewBox="0 0 280 60"
+            viewBox="0 0 320 70"
             className="overflow-visible"
             style={{
-              width: 'clamp(160px, 30vw, 280px)',
+              width: 'clamp(200px, 35vw, 320px)',
               height: 'auto',
               opacity: isLoaded ? 1 : 0,
               transition: 'opacity 0.2s ease-out',
@@ -95,9 +95,9 @@ export default function Hero() {
             {/* Background stroke that draws */}
             <text
               x="0"
-              y="48"
+              y="55"
               style={{
-                fontSize: '52px',
+                fontSize: '62px',
                 fontWeight: 900,
                 fontFamily: 'system-ui, -apple-system, sans-serif',
                 fill: 'none',
@@ -113,9 +113,9 @@ export default function Hero() {
             {/* Fill that fades in */}
             <text
               x="0"
-              y="48"
+              y="55"
               style={{
-                fontSize: '52px',
+                fontSize: '62px',
                 fontWeight: 900,
                 fontFamily: 'system-ui, -apple-system, sans-serif',
                 fill: 'white',
@@ -131,16 +131,16 @@ export default function Hero() {
           <div
             className="overflow-hidden"
             style={{
-              maxWidth: showLastName ? '700px' : '0',
+              maxWidth: showLastName ? '800px' : '0',
               opacity: showLastName ? 1 : 0,
               transition: 'max-width 0.8s ease-out, opacity 0.4s ease-out',
-              marginLeft: '-20px',
+              marginLeft: '-28px',
             }}
           >
             <span 
               className="text-white font-black uppercase tracking-tight whitespace-nowrap"
               style={{
-                fontSize: 'clamp(2.5rem, 8vw, 3.25rem)',
+                fontSize: 'clamp(3rem, 9vw, 3.875rem)',
                 letterSpacing: '0.02em',
               }}
             >
