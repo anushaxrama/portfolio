@@ -81,92 +81,29 @@ export default function Hero() {
       {/* Name animation - centered */}
       <div className="relative z-10 flex items-center justify-center px-4">
         <div className="flex items-center justify-center">
-          {/* ANUSHA with SVG stroke animation */}
-          <svg
-            height="70"
-            viewBox="0 0 340 70"
-            className="overflow-visible"
+          {/* ANUSHA */}
+          <h1
+            className="text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight"
             style={{
-              width: 'clamp(180px, 35vw, 340px)',
-              height: 'auto',
               opacity: isLoaded ? 1 : 0,
-              transition: 'opacity 0.3s ease-out',
+              transition: 'opacity 0.8s ease-out',
             }}
           >
-            <text
-              x="0"
-              y="50"
-              fontSize="60"
-              fontWeight="900"
-              fontFamily="system-ui, -apple-system, sans-serif"
-              fill="white"
-              stroke="white"
-              strokeWidth="2"
-              strokeDasharray="1000"
-              strokeDashoffset="1000"
-              fillOpacity="0"
-              style={{
-                paintOrder: "stroke",
-                textTransform: "uppercase",
-                letterSpacing: "0.02em",
-              }}
-            >
-              ANUSHA
-              <animate
-                attributeName="stroke-dashoffset"
-                from="1000"
-                to="0"
-                dur="1.8s"
-                fill="freeze"
-                calcMode="spline"
-                keySplines="0.4 0 0.2 1"
-              />
-              <animate
-                attributeName="fill-opacity"
-                from="0"
-                to="1"
-                dur="0.5s"
-                begin="1.6s"
-                fill="freeze"
-              />
-            </text>
-          </svg>
+            ANUSHA
+          </h1>
           
           {/* RAMACHANDRAN - slides out from right of ANUSHA */}
-          <div
-            className="overflow-hidden"
+          <span
+            className="text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight overflow-hidden whitespace-nowrap"
             style={{
-              maxWidth: showLastName ? '600px' : '0',
+              maxWidth: showLastName ? '800px' : '0',
               opacity: showLastName ? 1 : 0,
               transition: 'max-width 1s ease-out, opacity 0.6s ease-out',
-              marginLeft: '-45px',
+              display: 'inline-block',
             }}
           >
-            <svg
-              height="70"
-              viewBox="0 0 580 70"
-              className="overflow-visible"
-              style={{
-                width: 'clamp(220px, 50vw, 580px)',
-                height: 'auto',
-              }}
-            >
-              <text
-                x="0"
-                y="50"
-                fontSize="60"
-                fontWeight="900"
-                fontFamily="system-ui, -apple-system, sans-serif"
-                fill="white"
-                style={{
-                  textTransform: "uppercase",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                RAMACHANDRAN
-              </text>
-            </svg>
-          </div>
+            RAMACHANDRAN
+          </span>
         </div>
       </div>
 
