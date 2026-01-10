@@ -134,7 +134,7 @@ export default function Hero() {
               maxWidth: showLastName ? '700px' : '0',
               opacity: showLastName ? 1 : 0,
               transition: 'max-width 0.8s ease-out, opacity 0.4s ease-out',
-              marginLeft: '0px',
+              marginLeft: '-20px',
             }}
           >
             <span 
