@@ -81,29 +81,38 @@ export default function Hero() {
       {/* Name animation - centered */}
       <div className="relative z-10 flex items-center justify-center px-4">
         <div className="flex items-center justify-center">
-          {/* ANUSHA */}
-          <h1
-            className="text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight"
+          {/* ANUSHA with CSS stroke animation */}
+          <div 
+            className={`anusha-text ${isLoaded ? 'animate' : ''}`}
             style={{
               opacity: isLoaded ? 1 : 0,
-              transition: 'opacity 0.8s ease-out',
+              transition: 'opacity 0.3s ease-out',
             }}
           >
-            ANUSHA
-          </h1>
+            <span className="text-stroke">ANUSHA</span>
+            <span className="text-fill">ANUSHA</span>
+          </div>
           
           {/* RAMACHANDRAN - slides out from right of ANUSHA */}
-          <span
-            className="text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight overflow-hidden whitespace-nowrap"
+          <div
+            className="overflow-hidden"
             style={{
-              maxWidth: showLastName ? '800px' : '0',
+              maxWidth: showLastName ? '600px' : '0',
               opacity: showLastName ? 1 : 0,
               transition: 'max-width 1s ease-out, opacity 0.6s ease-out',
-              display: 'inline-block',
+              marginLeft: '-8px',
             }}
           >
-            RAMACHANDRAN
-          </span>
+            <span 
+              className="text-white font-black uppercase tracking-tight whitespace-nowrap"
+              style={{
+                fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
+                letterSpacing: '0.02em',
+              }}
+            >
+              RAMACHANDRAN
+            </span>
+          </div>
         </div>
       </div>
 
@@ -142,6 +151,58 @@ export default function Hero() {
           }
           75% {
             transform: translateY(-30px) translateX(5px);
+          }
+        }
+
+        .anusha-text {
+          position: relative;
+          font-size: clamp(2.5rem, 8vw, 4.5rem);
+          font-weight: 900;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+        }
+
+        .text-stroke {
+          color: transparent;
+          -webkit-text-stroke: 2px white;
+          background: linear-gradient(90deg, white 50%, transparent 50%);
+          background-size: 200% 100%;
+          background-position: 100% 0;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+
+        .text-fill {
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: white;
+          clip-path: inset(0 100% 0 0);
+        }
+
+        .anusha-text.animate .text-stroke {
+          animation: strokeDraw 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .anusha-text.animate .text-fill {
+          animation: fillReveal 0.5s ease-out 1.6s forwards;
+        }
+
+        @keyframes strokeDraw {
+          0% {
+            background-position: 100% 0;
+          }
+          100% {
+            background-position: 0% 0;
+          }
+        }
+
+        @keyframes fillReveal {
+          0% {
+            clip-path: inset(0 100% 0 0);
+          }
+          100% {
+            clip-path: inset(0 0% 0 0);
           }
         }
       `}</style>
