@@ -80,7 +80,7 @@ export default function Hero() {
 
       {/* Name animation - centered */}
       <div className="relative z-10 flex items-center justify-center px-4">
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-1">
           {/* ANUSHA with stroke drawing animation */}
           <svg
             viewBox="0 0 280 60"
