@@ -2,13 +2,9 @@ services:
   - type: web
     name: anusha-portfolio
     runtime: node
-    buildCommand: npm install && npm run build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/
-    startCommand: node .next/standalone/server.js
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
     envVars:
       - key: NODE_VERSION
         value: 20
-      - key: PORT
-        value: 3000
-      - key: HOSTNAME
-        value: 0.0.0.0
 
