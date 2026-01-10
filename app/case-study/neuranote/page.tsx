@@ -15,11 +15,11 @@ interface Particle {
 }
 
 const demoImages = [
-  { src: '/neuranote-1.png', label: 'Landing Page' },
-  { src: '/neuranote-4.png', label: 'Dashboard' },
-  { src: '/neuranote-5.png', label: 'Concept Map' },
-  { src: '/neuranote-6.png', label: 'Review Mode' },
-  { src: '/neuranote-7.png', label: 'Insights' },
+  { src: '/neuranote/neuranote-1.png', label: 'Landing Page' },
+  { src: '/neuranote/neuranote-4.png', label: 'Dashboard' },
+  { src: '/neuranote/neuranote-5.png', label: 'Concept Map' },
+  { src: '/neuranote/neuranote-6.png', label: 'Review Mode' },
+  { src: '/neuranote/neuranote-7.png', label: 'Insights' },
 ]
 
 export default function NeuranNoteCaseStudy() {
@@ -98,7 +98,7 @@ export default function NeuranNoteCaseStudy() {
               </h1>
               
               <p className={`text-lg md:text-xl text-white/50 mb-10 leading-relaxed transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                Designing an AI-powered note-taking platform grounded in cognitive science.
+                A learning system disguised as a note-taking app.
               </p>
 
               {/* Project Meta */}
@@ -113,7 +113,7 @@ export default function NeuranNoteCaseStudy() {
                 </div>
                 <div>
                   <p className="text-white/30 uppercase tracking-wider mb-1">Tools</p>
-                  <p className="text-white/80">Figma, FigJam, Lovable</p>
+                  <p className="text-white/80">Figma, FigJam, AI-assisted workflows</p>
                 </div>
                 <div>
                   <p className="text-white/30 uppercase tracking-wider mb-1">Platform</p>
@@ -150,7 +150,7 @@ export default function NeuranNoteCaseStudy() {
                               src={image.src}
                               alt={image.label}
                               fill
-                              className="object-cover object-top"
+                              className="object-contain"
                               sizes="(max-width: 768px) 100vw, 500px"
                             />
                           </div>
@@ -219,222 +219,1542 @@ export default function NeuranNoteCaseStudy() {
         </div>
       </section>
 
-      {/* Overview */}
+      {/* Introduction */}
       <Section>
-        <SectionLabel>01</SectionLabel>
-        <SectionTitle>Overview</SectionTitle>
+        <SectionLabel>Overview</SectionLabel>
         <div className="max-w-3xl">
-          <p className="text-lg text-white/60 leading-relaxed mb-6">
-            NeuraNote helps learners move beyond passive note storage toward deep understanding and long-term retention. Unlike traditional note apps that prioritize speed and volume, this platform is grounded in cognitive science principles—retrieval practice, spacing, and metacognition.
+          <p className="text-2xl md:text-3xl text-white/80 font-light leading-relaxed mb-8">
+            Most note-taking apps help you organize. NeuraNote helps you actually learn.
           </p>
-          <p className="text-lg text-white/60 leading-relaxed">
-            This project explores how design can support how people actually learn, not just how they record information.
+          <p className="text-lg text-white/50 leading-relaxed mb-12">
+            I designed NeuraNote around cognitive science principles (retrieval practice, spaced repetition, and concept mapping) to transform passive notes into active learning. The goal: help students build lasting understanding, not just extensive archives.
           </p>
+          
+          {/* Problem Statement Box */}
+          <div 
+            className="relative rounded-3xl p-10 md:p-14"
+            style={{
+              background: 'linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
+              boxShadow: `
+                0 4px 24px -4px rgba(0,0,0,0.4),
+                0 12px 48px -8px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.08),
+                inset 0 -1px 0 rgba(0,0,0,0.2)
+              `,
+              border: '1px solid rgba(255,255,255,0.08)',
+            }}
+          >
+            {/* Label */}
+            <p className="text-white/30 text-xs uppercase tracking-[0.25em] mb-6">Problem Statement</p>
+            
+            <p className="text-xl md:text-2xl lg:text-[1.7rem] text-white/90 leading-relaxed font-light">
+              How might we design a note-taking experience that helps learners{' '}
+              <span className="text-[#d4a5a5]">capture</span>,{' '}
+              <span className="text-[#d4a5a5]">connect</span>, and{' '}
+              <span className="text-[#d4a5a5]">review</span>{' '}
+              ideas in a way that supports{' '}
+              <span className="text-[#d4a5a5]">deep understanding</span> and{' '}
+              <span className="text-[#d4a5a5]">long-term memory</span> rather than passive information storage?
+            </p>
+          </div>
         </div>
       </Section>
 
-      {/* Problem */}
+      {/* Design Process Timeline */}
       <Section>
-        <SectionLabel>02</SectionLabel>
-        <SectionTitle>Problem</SectionTitle>
-        <div className="max-w-3xl mb-12">
-          <p className="text-lg text-white/60 leading-relaxed mb-8">
-            Students and lifelong learners take extensive notes, but existing tools prioritize organization over learning. Users end up spending more time studying without better outcomes.
-          </p>
+        <SectionLabel>Design Process</SectionLabel>
+        <p className="text-white/40 text-sm mb-12">June 2025 to July 2025</p>
+        
+        <div className="relative max-w-5xl">
+          {/* Week labels */}
+          <div className="grid grid-cols-6 mb-8">
+            {['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'].map((week, i) => (
+              <div key={i} className="text-center">
+                <span className="text-white/50 text-sm">{week}</span>
+              </div>
+            ))}
         </div>
         
-        <div className="grid md:grid-cols-2 gap-x-16 gap-y-6 max-w-3xl mb-16">
-          <p className="text-white/50 border-l border-white/20 pl-6">Rereading notes instead of actively engaging</p>
-          <p className="text-white/50 border-l border-white/20 pl-6">Confusing familiarity with understanding</p>
-          <p className="text-white/50 border-l border-white/20 pl-6">Feeling overwhelmed by information volume</p>
-          <p className="text-white/50 border-l border-white/20 pl-6">Lacking feedback on actual knowledge</p>
+          {/* Timeline with dotted lines */}
+          <div className="relative">
+            {/* Vertical dotted lines */}
+            <div className="absolute inset-0 grid grid-cols-6 pointer-events-none">
+              {[0, 1, 2, 3, 4, 5].map((i) => (
+                <div key={i} className="flex justify-center">
+                  <div 
+                    className="w-px h-full"
+                    style={{
+                      backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,0.2) 50%, transparent 50%)',
+                      backgroundSize: '1px 8px',
+                    }}
+                  />
+                </div>
+              ))}
         </div>
 
-        <div className="max-w-3xl">
-          <p className="text-2xl md:text-3xl text-white/80 font-light italic leading-relaxed">
-            "How might we design a note-taking experience that supports learning, retention, and self-awareness—without adding stress?"
-          </p>
+            {/* Timeline bars */}
+            <div className="relative space-y-4 py-4">
+              {/* User Research - Week 1 */}
+              <div className="grid grid-cols-6">
+                <div className="col-span-1 pr-2">
+                  <div 
+                    className="rounded-full py-3 px-4 text-center text-sm text-white/90"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%)',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.3)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                  >
+                    User Research
+                  </div>
+                </div>
+              </div>
+
+              {/* Lo-Fi and Mid-Fi - Week 2-3 */}
+              <div className="grid grid-cols-6">
+                <div className="col-start-2 col-span-2 px-2">
+                  <div 
+                    className="rounded-full py-3 px-4 text-center text-sm text-white/90"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%)',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.3)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                  >
+                    Lo-Fi & Mid-Fi Wireframes
+                  </div>
+                </div>
+              </div>
+
+              {/* Hi-Fi Prototypes - Week 3-4 */}
+              <div className="grid grid-cols-6">
+                <div className="col-start-3 col-span-2 px-2">
+                  <div 
+                    className="rounded-full py-3 px-4 text-center text-sm text-white/90"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%)',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.3)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                  >
+                    Hi-Fi Desktop Prototypes
+                  </div>
+                </div>
+              </div>
+
+              {/* Usability Testing - Week 4-5 */}
+              <div className="grid grid-cols-6">
+                <div className="col-start-4 col-span-2 px-2">
+                  <div 
+                    className="rounded-full py-3 px-4 text-center text-sm text-white/90"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%)',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.3)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                  >
+                    Usability Testing
+                  </div>
+                </div>
+              </div>
+
+              {/* Completion - Week 5-6 */}
+              <div className="grid grid-cols-6">
+                <div className="col-start-5 col-span-2 px-2">
+                  <div 
+                    className="rounded-full py-3 px-4 text-center text-sm text-white/90"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%)',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.3)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                  >
+                    Hi-Fi Prototype Completion
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 
       {/* Research */}
       <Section>
-        <SectionLabel>03</SectionLabel>
         <SectionTitle>Research</SectionTitle>
         
-        <div className="grid lg:grid-cols-2 gap-16 mb-20">
+        <div className="max-w-3xl mb-16">
+          <h3 className="text-xl md:text-2xl font-semibold text-white mb-6">Research Goals</h3>
+          <p className="text-lg text-white/60 leading-relaxed">
+            I started with a hypothesis: existing note-taking tools prioritize speed and organization over actual learning. I wanted to understand how students currently study, where they struggle, and what prevents knowledge from sticking, then design something that supports{' '}
+            <span className="text-white font-medium">deep understanding</span> and{' '}
+            <span className="text-white font-medium">long-term retention</span>{' '}
+            without adding pressure.
+          </p>
+        </div>
+
+        {/* User Surveys */}
+        <div className="mb-8">
+          <h3 className="text-xl md:text-2xl font-semibold text-white mb-8">User Surveys</h3>
+          <p className="text-white/40 text-sm mb-12">Survey sample: n = 28 users</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
+          {/* Devices Used for Note-Taking */}
           <div>
-            <h3 className="text-white/40 uppercase tracking-wider text-sm mb-6">Methods</h3>
-            <ul className="space-y-3 text-white/60">
-              <li>6 semi-structured user interviews</li>
-              <li>Competitive analysis (Notion, Apple Notes, Obsidian)</li>
-              <li>Heuristic evaluation of learning tools</li>
-              <li>Cognitive psychology literature review</li>
+            <h4 className="text-white/80 text-sm font-medium mb-6">Devices Used for Note-Taking</h4>
+            <div className="space-y-4">
+              {[
+                { label: 'Laptop / Computer', value: 72, color: '#c9a9a9' },
+                { label: 'Tablet', value: 48, color: '#d4b5b5' },
+                { label: 'Phone', value: 44, color: '#dfc4c4' },
+                { label: 'Paper', value: 29, color: '#e8d4d4' },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <span className="text-white/50 text-xs w-28 shrink-0">{item.label}</span>
+                  <div className="flex-1 h-6 bg-white/5 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full rounded-full transition-all duration-1000"
+                      style={{ width: `${item.value}%`, backgroundColor: item.color }}
+                    />
+                  </div>
+                  <span className="text-white/50 text-xs w-10 text-right">{item.value}%</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-white/30 text-xs mt-4 leading-relaxed">
+              This informed a web-first experience optimized for longer writing sessions.
+            </p>
+          </div>
+
+          {/* Primary Note-Taking Applications */}
+          <div>
+            <h4 className="text-white/80 text-sm font-medium mb-6">Primary Note-Taking Applications</h4>
+            <div className="space-y-3">
+              {[
+                { label: 'Google Docs', value: 54, color: '#8a9a7c' },
+                { label: 'Apple Notes', value: 25, color: '#9daa91' },
+                { label: 'Notion', value: 22, color: '#a8b59e' },
+                { label: 'GoodNotes', value: 18, color: '#b5c1ad' },
+                { label: 'Notability', value: 15, color: '#c2cdbc' },
+                { label: 'Other', value: 21, color: '#cfd9cb' },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <span className="text-white/50 text-xs w-20 shrink-0">{item.label}</span>
+                  <div className="flex-1 h-5 bg-white/5 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full rounded-full transition-all duration-1000"
+                      style={{ width: `${item.value}%`, backgroundColor: item.color }}
+                    />
+                  </div>
+                  <span className="text-white/50 text-xs w-8 text-right">{item.value}%</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-white/30 text-xs mt-4 leading-relaxed">
+              This highlighted an opportunity to design beyond organization toward learning-focused workflows.
+            </p>
+          </div>
+
+          {/* Note-Taking Purpose - Pie Chart */}
+          <div>
+            <h4 className="text-white/80 text-sm font-medium mb-6">Note-Taking Purpose</h4>
+            <div className="flex items-center gap-6">
+              {/* Pie Chart */}
+              <div className="relative w-32 h-32 shrink-0">
+                <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
+                  {/* School 55% */}
+                  <circle
+                    cx="50" cy="50" r="40"
+                    fill="transparent"
+                    stroke="#8a9a7c"
+                    strokeWidth="20"
+                    strokeDasharray="138.2 251.2"
+                    strokeDashoffset="0"
+                  />
+                  {/* Work 20.5% */}
+                  <circle
+                    cx="50" cy="50" r="40"
+                    fill="transparent"
+                    stroke="#a8b59e"
+                    strokeWidth="20"
+                    strokeDasharray="51.5 251.2"
+                    strokeDashoffset="-138.2"
+                  />
+                  {/* Planning 12.8% */}
+                  <circle
+                    cx="50" cy="50" r="40"
+                    fill="transparent"
+                    stroke="#c2cdbc"
+                    strokeWidth="20"
+                    strokeDasharray="32.2 251.2"
+                    strokeDashoffset="-189.7"
+                  />
+                  {/* Other 12.8% */}
+                  <circle
+                    cx="50" cy="50" r="40"
+                    fill="transparent"
+                    stroke="#dfe8da"
+                    strokeWidth="20"
+                    strokeDasharray="32.2 251.2"
+                    strokeDashoffset="-221.9"
+                  />
+                </svg>
+              </div>
+
+              {/* Legend */}
+              <div className="space-y-2">
+                {[
+                  { label: 'School', value: '55%', color: '#8a9a7c' },
+                  { label: 'Work', value: '20.5%', color: '#a8b59e' },
+                  { label: 'Planning', value: '12.8%', color: '#c2cdbc' },
+                  { label: 'Other', value: '12.8%', color: '#dfe8da' },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <div 
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: item.color }}
+                    />
+                    <span className="text-white/50 text-xs">{item.label}</span>
+                    <span className="text-white/40 text-xs">{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <p className="text-white/30 text-xs mt-4 leading-relaxed">
+              55% of users take notes primarily for <span className="text-white/50">school</span>.
+            </p>
+          </div>
+        </div>
+
+        {/* Survey Summary */}
+        <div className="max-w-3xl mt-16 pt-12 border-t border-white/10">
+          <h4 className="text-white/80 text-lg font-medium mb-4">Key Takeaways</h4>
+          <div className="space-y-4 text-white/50 leading-relaxed">
+            <p>
+              <span className="text-white/70 font-medium">General-purpose tools dominate.</span>{' '}
+              72% use laptops, and over half rely on Google Docs (built for documents, not learning). This revealed an opportunity to design for how students think, not just type.
+            </p>
+            <p>
+              <span className="text-white/70 font-medium">School is the primary use case.</span>{' '}
+              55% take notes for academics, so I focused on comprehension and retention features rather than workplace collaboration.
+            </p>
+            <p>
+              <span className="text-white/70 font-medium">Capture ≠ retention.</span>{' '}
+              Users consistently reported that despite detailed notes, they couldn't recall information when needed. This gap became my core design challenge.
+            </p>
+          </div>
+        </div>
+
+        {/* Competitive Analysis */}
+        <div className="mt-20 pt-12 border-t border-white/10">
+          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">Competitive Analysis</h3>
+          <p className="text-white/40 text-sm mb-10">User Research</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Notion */}
+            <div 
+              className="rounded-2xl p-6"
+              style={{
+                background: 'linear-gradient(145deg, rgba(138,154,124,0.15) 0%, rgba(138,154,124,0.05) 100%)',
+                border: '1px solid rgba(138,154,124,0.2)',
+              }}
+            >
+              <h4 className="text-white font-medium mb-5">Notion</h4>
+              <div className="mb-5">
+                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
+                <ul className="space-y-1.5 text-white/50 text-sm">
+                  <li>• Highly flexible for structuring and organizing information</li>
+                  <li>• Supports multiple content types (text, media, databases)</li>
             </ul>
           </div>
           <div>
-            <h3 className="text-white/40 uppercase tracking-wider text-sm mb-6">Participants</h3>
-            <ul className="space-y-3 text-white/60">
-              <li>4 undergraduate students</li>
-              <li>2 early-career professionals</li>
-              <li>Mixed STEM and non-STEM backgrounds</li>
+                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
+                <ul className="space-y-1.5 text-white/50 text-sm">
+                  <li>• Overwhelming for quick note capture</li>
+                  <li>• Prioritizes structure over learning and retention</li>
+                  <li>• Requires constant manual setup to make notes meaningful</li>
             </ul>
           </div>
         </div>
 
-        <h3 className="text-white/40 uppercase tracking-wider text-sm mb-8">What We Heard</h3>
-        <div className="space-y-8 max-w-3xl">
-          <Quote text="I reread my notes a lot. I highlight things, but I'm not sure it actually helps." />
-          <Quote text="If it looks familiar, I assume I get it—until I'm tested." />
-          <Quote text="Not knowing what I should focus on. Everything feels important." />
-          <Quote text="Notion and Google Docs are more about organization than learning." />
+            {/* GoodNotes */}
+            <div 
+              className="rounded-2xl p-6"
+              style={{
+                background: 'linear-gradient(145deg, rgba(201,169,169,0.15) 0%, rgba(201,169,169,0.05) 100%)',
+                border: '1px solid rgba(201,169,169,0.2)',
+              }}
+            >
+              <h4 className="text-white font-medium mb-5">GoodNotes</h4>
+              <div className="mb-5">
+                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
+                <ul className="space-y-1.5 text-white/50 text-sm">
+                  <li>• Natural handwriting experience for visual thinkers</li>
+                  <li>• Supports typed notes and audio recording</li>
+                  <li>• Reliable offline access</li>
+                </ul>
+        </div>
+              <div>
+                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
+                <ul className="space-y-1.5 text-white/50 text-sm">
+                  <li>• Handwritten and typed notes remain siloed</li>
+                  <li>• Limited support for connecting ideas across notes</li>
+                  <li>• Not designed for reflection or long-term learning</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Apple Notes */}
+            <div 
+              className="rounded-2xl p-6"
+              style={{
+                background: 'linear-gradient(145deg, rgba(138,154,124,0.15) 0%, rgba(138,154,124,0.05) 100%)',
+                border: '1px solid rgba(138,154,124,0.2)',
+              }}
+            >
+              <h4 className="text-white font-medium mb-5">Apple Notes</h4>
+              <div className="mb-5">
+                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
+                <ul className="space-y-1.5 text-white/50 text-sm">
+                  <li>• Fast and frictionless for capturing thoughts</li>
+                  <li>• Works seamlessly offline</li>
+                  <li>• Simple organization with folders and tags</li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
+                <ul className="space-y-1.5 text-white/50 text-sm">
+                  <li>• Notes remain largely static after capture</li>
+                  <li>• Limited tools for reviewing or reinforcing knowledge</li>
+                  <li>• Minimal support for conceptual connections</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Google Docs */}
+            <div 
+              className="rounded-2xl p-6"
+              style={{
+                background: 'linear-gradient(145deg, rgba(201,169,169,0.15) 0%, rgba(201,169,169,0.05) 100%)',
+                border: '1px solid rgba(201,169,169,0.2)',
+              }}
+            >
+              <h4 className="text-white font-medium mb-5">Google Docs</h4>
+              <div className="mb-5">
+                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
+                <ul className="space-y-1.5 text-white/50 text-sm">
+                  <li>• Strong collaboration and sharing</li>
+                  <li>• Familiar editing experience across devices</li>
+                  <li>• Easy import and export</li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
+                <ul className="space-y-1.5 text-white/50 text-sm">
+                  <li>• Designed for documents, not learning workflows</li>
+                  <li>• Friction in quick idea capture</li>
+                  <li>• Weak support for organizing and revisiting ideas over time</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Competitive Analysis Summary */}
+          <div className="max-w-3xl mt-12">
+            <p className="text-white/50 leading-relaxed mb-4">
+              <span className="text-white/70 font-medium">The pattern:</span> existing tools excel at either capture (Apple Notes, Google Docs) or organization (Notion, GoodNotes), but none prioritize learning. Spaced repetition, concept linking, and metacognitive prompts are absent across the board.
+            </p>
+            <p className="text-white/50 leading-relaxed">
+              This validated my hypothesis: there's room for a tool that bridges note-taking and understanding. I designed NeuraNote to treat notes as the starting point for deeper learning, not static archives.
+            </p>
+          </div>
+        </div>
+
+        {/* Affinity Mapping */}
+        <div className="mt-20 pt-12 border-t border-white/10">
+          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">Affinity Mapping</h3>
+            <p className="text-white/40 text-sm mb-6">Synthesizing Research Insights</p>
+            
+            <p className="text-white/50 leading-relaxed max-w-3xl mb-8">
+              I synthesized survey and interview data through affinity mapping. Three themes emerged:
+            </p>
+            
+            <div className="max-w-3xl mb-12 space-y-3">
+              <p className="text-white/50 leading-relaxed">
+                <span className="text-white/80 font-medium">Organization:</span> Quick access to notes and cross-subject connections without complex folder structures.
+              </p>
+              <p className="text-white/50 leading-relaxed">
+                <span className="text-white/80 font-medium">Collaboration:</span> Easy sharing for study groups and team knowledge transfer.
+              </p>
+              <p className="text-white/50 leading-relaxed">
+                <span className="text-white/80 font-medium">Efficiency:</span> Fast capture during lectures, effective review for retention.
+              </p>
+            </div>
+
+          {/* Affinity Map Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            
+            {/* Collaboration Column */}
+            <div>
+              <h4 className="text-2xl font-bold text-white mb-8 text-center">Collaboration</h4>
+              <div className="grid grid-cols-2 gap-3">
+                {/* User Behavior - Pink */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#f4a4a6',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">User Behavior</p>
+                  <p className="text-gray-700 leading-snug">Takes shared notes during study groups or review sessions to align understanding and divide work.</p>
+                </div>
+                {/* Needs/Goals - Green */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#a7d89c',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Needs / Goals</p>
+                  <p className="text-gray-700 leading-snug">Wants collaborators to see how ideas are connected, not just shared text blocks.</p>
+                </div>
+                {/* Pain Point - Yellow */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#fff59d',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">Collaborative notes become cluttered and difficult to review after the session ends.</p>
+                </div>
+                {/* Pain Point 2 - Yellow */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#fff59d',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">No clear ownership or visibility into who added or edited specific concepts.</p>
+                </div>
+                {/* UX Principle - Blue */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#90caf9',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">UX Principle</p>
+                  <p className="text-gray-700 leading-snug">Collaboration should reduce cognitive load, not add coordination overhead.</p>
+                </div>
+                {/* Opportunity - Orange */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#ffb780',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Opportunity</p>
+                  <p className="text-gray-700 leading-snug">Shared concept maps that visually represent relationships and show contributor ownership.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Organization Column */}
+            <div>
+              <h4 className="text-2xl font-bold text-white mb-8 text-center">Organization</h4>
+              <div className="grid grid-cols-2 gap-3">
+                {/* User Behavior - Pink */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#f4a4a6',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">User Behavior</p>
+                  <p className="text-gray-700 leading-snug">Takes notes across multiple subjects and courses within the same app.</p>
+                </div>
+                {/* Needs/Goals - Green */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#a7d89c',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Needs / Goals</p>
+                  <p className="text-gray-700 leading-snug">Wants notes grouped by conceptual meaning rather than folders or file location.</p>
+                </div>
+                {/* Pain Point - Yellow */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#fff59d',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">Hard to see relationships between topics when notes are separated by notebooks or files.</p>
+                </div>
+                {/* Pain Point 2 - Yellow */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#fff59d',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">Over-organizing notes interrupts learning flow and attention during capture.</p>
+                </div>
+                {/* UX Principle - Blue */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#90caf9',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">UX Principle</p>
+                  <p className="text-gray-700 leading-snug">Organization should support sense-making, not just storage.</p>
+                </div>
+                {/* Opportunity - Orange (Highlighted) */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#ffb780',
+                    boxShadow: '4px 4px 12px rgba(255,183,128,0.4)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Opportunity</p>
+                  <p className="text-gray-700 leading-snug">Auto-generated concept clusters and visual maps that organize notes based on meaning.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Efficiency / Speed Column */}
+            <div>
+              <h4 className="text-2xl font-bold text-white mb-8 text-center">Efficiency / Speed</h4>
+              <div className="grid grid-cols-2 gap-3">
+                {/* User Behavior - Pink */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#f4a4a6',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">User Behavior</p>
+                  <p className="text-gray-700 leading-snug">Takes notes quickly during lectures to keep up with fast-paced information.</p>
+                </div>
+                {/* Needs/Goals - Green */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#a7d89c',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Needs / Goals</p>
+                  <p className="text-gray-700 leading-snug">Wants to capture ideas without breaking focus or attention during learning.</p>
+                </div>
+                {/* Pain Point - Yellow */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#fff59d',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">Reviewing long, unstructured notes is time-consuming and inefficient.</p>
+                </div>
+                {/* Pain Point 2 - Yellow */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#fff59d',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">Passive rereading of notes feels ineffective for long-term retention.</p>
+                </div>
+                {/* UX Principle - Blue */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#90caf9',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">UX Principle</p>
+                  <p className="text-gray-700 leading-snug">Speed should not sacrifice learning depth or understanding.</p>
+                </div>
+                {/* Opportunity - Orange */}
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ 
+                    backgroundColor: '#ffb780',
+                    boxShadow: '2px 2px 8px rgba(0,0,0,0.15)',
+                    transform: 'rotate(0deg)',
+                  }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Opportunity</p>
+                  <p className="text-gray-700 leading-snug">One-click conversion from notes to recall-based formats like flashcards or prompts.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Legend */}
+          <div className="flex flex-wrap gap-4 mt-10 justify-center">
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: 'rgba(244,164,166,0.9)' }}></div>
+              <span className="text-white/40 text-xs">User Behavior</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: 'rgba(167,216,156,0.9)' }}></div>
+              <span className="text-white/40 text-xs">Needs / Goals</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: 'rgba(255,245,157,0.9)' }}></div>
+              <span className="text-white/40 text-xs">Pain Point</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: 'rgba(144,202,249,0.9)' }}></div>
+              <span className="text-white/40 text-xs">UX Principle</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: 'rgba(255,183,128,0.9)' }}></div>
+              <span className="text-white/40 text-xs">Opportunity</span>
+            </div>
+          </div>
+
+          {/* Affinity Mapping Summary */}
+          <div className="max-w-3xl mt-12">
+            <h4 className="text-white/80 text-lg font-medium mb-4">What This Revealed</h4>
+            <p className="text-white/50 leading-relaxed mb-4">
+              A consistent tension emerged: users want speed during capture, but that speed costs future understanding. Notes pile up, connections get lost, reviewing becomes a chore.
+            </p>
+            <p className="text-white/50 leading-relaxed">
+              The solution: <span className="text-white/70">intelligent organization that happens automatically</span>. Rather than manual tagging, NeuraNote surfaces conceptual relationships on the user's behalf, turning passive archives into living knowledge maps.
+            </p>
+          </div>
+        </div>
+
+        {/* Low Fidelity Designs */}
+        <div className="mt-20 pt-12 border-t border-white/10">
+          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">Low Fidelity Designs</h3>
+          <p className="text-white/40 text-sm mb-6">Early Explorations</p>
+          
+          <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
+            I sketched initial concepts focusing on three journeys: <span className="text-white/70">note creation</span>, <span className="text-white/70">concept visualization</span>, and <span className="text-white/70">review for retention</span>. Each sketch was evaluated against research findings to ensure I was solving real problems.
+          </p>
+
+          {/* Lo-Fi Screenshots - Side by Side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            {/* Sketch 1 - User Flows */}
+            <div 
+              className="rounded-xl p-5 overflow-hidden"
+              style={{ 
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
+                border: '1px solid rgba(255,255,255,0.08)',
+              }}
+            >
+              <p className="text-white/60 text-xs mb-3 font-medium">User Flow Explorations</p>
+              <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden bg-white">
+                <Image
+                  src="/neuranote/lofi-sketches-1.png"
+                  alt="Low fidelity sketches - user flows"
+                  fill
+                  className="object-contain"
+                  sizes="50vw"
+                />
+              </div>
+              <p className="text-white/40 text-xs mt-3">Early sketches for flashcards, pins, and zoom controls.</p>
+            </div>
+
+            {/* Sketch 2 - Screen Layouts */}
+            <div 
+              className="rounded-xl p-5 overflow-hidden"
+              style={{ 
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
+                border: '1px solid rgba(255,255,255,0.08)',
+              }}
+            >
+              <p className="text-white/60 text-xs mb-3 font-medium">Core Screen Layouts</p>
+              <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden bg-white">
+                <Image
+                  src="/neuranote/lofi-sketches-2.png"
+                  alt="Low fidelity sketches - screen layouts"
+                  fill
+                  className="object-contain"
+                  sizes="50vw"
+                />
+              </div>
+              <p className="text-white/40 text-xs mt-3">Dashboard, Notes, Concept Map, Review, and Insights screens.</p>
+            </div>
+          </div>
+
+          {/* Lo-Fi Summary */}
+          <div className="max-w-3xl">
+            <h4 className="text-white/80 text-lg font-medium mb-4">Key Decisions</h4>
+            <div className="space-y-3 text-white/50 leading-relaxed">
+              <p>
+                <span className="text-white/70 font-medium">Persistent sidebar navigation:</span> Quick switching between notes, concept maps, review, and insights.
+              </p>
+              <p>
+                <span className="text-white/70 font-medium">Concept map as core feature:</span> Interactive node-based map that auto-generates connections.
+              </p>
+              <p>
+                <span className="text-white/70 font-medium">Active recall over flashcards:</span> Users explain concepts in their own words before seeing references.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* User Flows */}
+        <div className="mt-20 pt-12 border-t border-white/10">
+          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">User Flows & Core Features</h3>
+          <p className="text-white/40 text-sm mb-10">Five core journeys mapped from research insights</p>
+
+          {/* Condensed User Flows Grid */}
+          <div className="space-y-4">
+            
+            {/* Onboarding Flow */}
+            <div 
+              className="rounded-2xl p-6 border border-white/[0.06]"
+              style={{
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+              }}
+            >
+              <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Onboarding</p>
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#e8d4a0]/90 text-[#2a2416]">Landing Page</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Features</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Try Free</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#f0e6b8]/90 text-[#2a2416] border border-[#f0e6b8]/40">Dashboard</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Create Note</span>
+              </div>
+            </div>
+
+            {/* Create Note Flow */}
+            <div 
+              className="rounded-2xl p-6 border border-white/[0.06]"
+              style={{
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+              }}
+            >
+              <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Create Note</p>
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#f0e6b8]/90 text-[#2a2416] border border-[#f0e6b8]/40">Dashboard</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Notes Page</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">New Note</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Write Content</span>
+                <span className="text-white/20 text-sm">→</span>
+                <div className="flex flex-col gap-1.5">
+                  <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Upload PDF</span>
+                  <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Import Photo</span>
+                  <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Voice Note</span>
+                </div>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#a8c9a8]/90 text-[#1a2a1a]">Save</span>
+              </div>
+            </div>
+
+            {/* AI Features Flow */}
+            <div 
+              className="rounded-2xl p-6 border border-white/[0.06]"
+              style={{
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+              }}
+            >
+              <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">AI Features</p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Note Content</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a8c9a8]/90 text-[#1a2a1a]">Extract Concepts</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">AI Processing</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Concepts Displayed</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <div className="flex flex-col gap-1.5">
+                    <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Click → Explanation</span>
+                    <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Save → Add to Map</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Note Content</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a8c9a8]/90 text-[#1a2a1a]">Summarize</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">AI Processing</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Summary</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Concept Map Flow */}
+            <div 
+              className="rounded-2xl p-6 border border-white/[0.06]"
+              style={{
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+              }}
+            >
+              <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Concept Map</p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#f0e6b8]/90 text-[#2a2416] border border-[#f0e6b8]/40">Dashboard</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a8d4d4]/90 text-[#1a2a2a]">Concept Map</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#dcb5c4]/90 text-[#2a1a20]">Has Concepts?</span>
+                </div>
+                <div className="flex items-center gap-3 flex-wrap pl-6">
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#a8c9a8]/90 text-[#1a2a1a]">Yes</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a8d4d4]/90 text-[#1a2a2a]">View Map</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a8d4d4]/90 text-[#1a2a2a]">Click Node</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a8d4d4]/90 text-[#1a2a2a]">See Connections</span>
+                </div>
+                <div className="flex items-center gap-3 flex-wrap pl-6">
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#dcb5c4]/90 text-[#2a1a20]">No</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a8d4d4]/90 text-[#1a2a2a]">Empty State</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a8d4d4]/90 text-[#1a2a2a]">Create Notes</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Review Session Flow */}
+            <div 
+              className="rounded-2xl p-6 border border-white/[0.06]"
+              style={{
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+              }}
+            >
+              <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Review Session</p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#f0e6b8]/90 text-[#2a2416] border border-[#f0e6b8]/40">Dashboard</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Review Page</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#dcb5c4]/90 text-[#2a1a20]">Has Concepts?</span>
+                </div>
+                <div className="flex items-center gap-3 flex-wrap pl-6">
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#a8c9a8]/90 text-[#1a2a1a]">Yes</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Start</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Question</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Answer</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Feedback</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#dcb5c4]/90 text-[#2a1a20]">More?</span>
+                  <span className="text-white/20 text-sm">↺</span>
+                </div>
+                <div className="flex items-center gap-3 flex-wrap pl-6">
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#dcb5c4]/90 text-[#2a1a20]">No</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Complete</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">View Insights</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Insights Flow */}
+            <div 
+              className="rounded-2xl p-6 border border-white/[0.06]"
+              style={{
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+              }}
+            >
+              <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Insights</p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#f0e6b8]/90 text-[#2a2416] border border-[#f0e6b8]/40">Dashboard</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#dcb5c4]/90 text-[#2a1a20]">Insights Page</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#dcb5c4]/90 text-[#2a1a20]">Has Content?</span>
+                </div>
+                <div className="flex items-center gap-3 flex-wrap pl-6">
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#a8c9a8]/90 text-[#1a2a1a]">Yes</span>
+                  <span className="text-white/20 text-sm">→</span>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">AI Coach Summary</span>
+                    <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Strengths & Focus</span>
+                    <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Progress Bars</span>
+                    <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Weekly Reflection</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Legend */}
+          <div className="flex flex-wrap gap-6 mt-10 text-xs">
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 rounded-full bg-[#f0e6b8]/90"></span>
+              <span className="text-white/50">Dashboard</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 rounded-full bg-[#a8c9a8]/90"></span>
+              <span className="text-white/50">Entry/Exit</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 rounded-lg bg-[#c4b5dc]/80"></span>
+              <span className="text-white/50">Screens</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 rounded-lg bg-[#a8d4d4]/90"></span>
+              <span className="text-white/50">Concept Map</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 rounded-lg bg-[#dcb5c4]/90"></span>
+              <span className="text-white/50">Decisions</span>
+            </div>
+          </div>
+
+          {/* User Flows Summary */}
+          <div className="max-w-3xl mt-12">
+            <p className="text-white/50 leading-relaxed">
+              I mapped research insights to six user journeys, each designed to minimize friction while maximizing learning: capture quickly, see connections automatically, review effectively.
+            </p>
+          </div>
         </div>
       </Section>
 
-      {/* Insights */}
+      {/* Core Features */}
+      <Section>
+        <SectionLabel>02</SectionLabel>
+        <SectionTitle>Core Features</SectionTitle>
+        <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
+          Six integrated features that transform passive notes into active learning, from capture to mastery.
+        </p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
+          {/* Feature 1: Smart Notes */}
+          <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all duration-300 hover:bg-white/[0.05]">
+            <h3 className="text-white text-lg font-semibold mb-3">Smart Notes</h3>
+            <p className="text-white/40 text-sm leading-relaxed">
+              Capture ideas through typing, voice recording, PDF uploads, or photo imports. Notes are automatically formatted and searchable.
+            </p>
+          </div>
+
+          {/* Feature 2: AI Concept Extraction */}
+          <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all duration-300 hover:bg-white/[0.05]">
+            <h3 className="text-white text-lg font-semibold mb-3">AI Concept Extraction</h3>
+            <p className="text-white/40 text-sm leading-relaxed">
+              One click extracts key concepts from your notes. AI identifies important terms, definitions, and relationships automatically.
+            </p>
+          </div>
+
+          {/* Feature 3: AI Summarization */}
+          <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all duration-300 hover:bg-white/[0.05]">
+            <h3 className="text-white text-lg font-semibold mb-3">AI Summarization</h3>
+            <p className="text-white/40 text-sm leading-relaxed">
+              Generate concise summaries of lengthy notes. Perfect for quick review sessions or sharing key takeaways with study groups.
+            </p>
+          </div>
+
+          {/* Feature 4: Concept Map */}
+          <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all duration-300 hover:bg-white/[0.05]">
+            <h3 className="text-white text-lg font-semibold mb-3">Concept Map</h3>
+            <p className="text-white/40 text-sm leading-relaxed">
+              Visualize how concepts connect across all your notes. Interactive node-based maps reveal relationships you might have missed.
+            </p>
+          </div>
+
+          {/* Feature 5: Review Sessions */}
+          <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all duration-300 hover:bg-white/[0.05]">
+            <h3 className="text-white text-lg font-semibold mb-3">Review Sessions</h3>
+            <p className="text-white/40 text-sm leading-relaxed">
+              AI generates questions from your concepts. Practice active recall, get instant feedback, and rate your confidence to optimize retention.
+            </p>
+          </div>
+
+          {/* Feature 6: Learning Insights */}
+          <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all duration-300 hover:bg-white/[0.05]">
+            <h3 className="text-white text-lg font-semibold mb-3">Learning Insights</h3>
+            <p className="text-white/40 text-sm leading-relaxed">
+              Track your progress with AI-powered analytics. See strengths, focus areas, concept mastery levels, and personalized learning recommendations.
+            </p>
+          </div>
+        </div>
+
+        {/* Features Summary */}
+        <div className="max-w-3xl mt-12">
+          <p className="text-white/50 leading-relaxed">
+            Each feature works independently while amplifying the others. No forced workflow, just intelligent assistance when you want it.
+          </p>
+        </div>
+      </Section>
+
+      {/* Mid-Fidelity Prototypes */}
+      <Section>
+        <SectionLabel>03</SectionLabel>
+        <SectionTitle>Mid-Fidelity Prototypes</SectionTitle>
+        <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
+          I developed mid-fi wireframes to refine layout, hierarchy, and interactions before high-fidelity, testing core functionality and gathering early feedback.
+        </p>
+
+        {/* Wireframes Grid */}
+        <div className="space-y-8">
+          {/* Main Screens Overview - Full Width */}
+          <div>
+            <p className="text-white/50 text-xs uppercase tracking-wider mb-3">Core Screens</p>
+            <div className="relative rounded-xl overflow-hidden border border-white/10 bg-white/[0.02]">
+              <Image
+                src="/neuranote/midfi-wireframes.png"
+                alt="Mid-fidelity wireframes showing landing page, onboarding, dashboard, notes, and concept map screens"
+                width={1400}
+                height={600}
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+
+          {/* Review Flow - Full Width */}
+          <div>
+            <p className="text-white/50 text-xs uppercase tracking-wider mb-3">Review Flow</p>
+            <div className="relative rounded-xl overflow-hidden border border-white/10 bg-white/[0.02]">
+              <Image
+                src="/neuranote/midfi-review.png"
+                alt="Mid-fidelity wireframes showing the review session flow"
+                width={1400}
+                height={600}
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Mid-Fi Summary */}
+        <div className="max-w-3xl mt-12">
+          <h4 className="text-white/80 text-lg font-medium mb-4">Key Refinements</h4>
+          <div className="space-y-3 text-white/50 leading-relaxed">
+            <p><span className="text-white/70 font-medium">Consistent sidebar:</span> Same navigation pattern across all screens.</p>
+            <p><span className="text-white/70 font-medium">Progressive disclosure:</span> Review guides users from empty state to active recall with on-demand hints.</p>
+            <p><span className="text-white/70 font-medium">Glanceable Insights:</span> AI coaching, strengths, and progress in one view.</p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Usability Testing */}
       <Section>
         <SectionLabel>04</SectionLabel>
-        <SectionTitle>Key Insights</SectionTitle>
-        
-        <div className="space-y-16">
-          <Insight 
-            number="1"
-            finding="Users rely heavily on rereading, even though they doubt its effectiveness."
-            implication="Encourage active recall instead of passive review."
-          />
-          <Insight 
-            number="2"
-            finding="Familiarity is often mistaken for understanding."
-            implication="Build mechanisms that reveal gaps in knowledge."
-          />
-          <Insight 
-            number="3"
-            finding="Users feel overwhelmed by large volumes of notes."
-            implication="Surface only what matters most at a given time."
-          />
-          <Insight 
-            number="4"
-            finding="Productivity tools often increase anxiety rather than reduce it."
-            implication="Use calm, non-judgmental language. Avoid streaks or scores."
-          />
+        <SectionTitle>Usability Testing</SectionTitle>
+        <p className="text-white/50 leading-relaxed max-w-3xl mb-10">
+          I conducted moderated tests with 6 participants to validate mid-fi prototypes and identify friction points.
+        </p>
+
+        {/* Testing Stats */}
+        <div className="grid grid-cols-3 gap-6 max-w-2xl mb-12">
+          <div className="text-center p-5 rounded-xl bg-white/[0.03] border border-white/5">
+            <p className="text-3xl font-bold text-white mb-1">6</p>
+            <p className="text-white/40 text-sm">Participants</p>
+          </div>
+          <div className="text-center p-5 rounded-xl bg-white/[0.03] border border-white/5">
+            <p className="text-3xl font-bold text-white mb-1">5</p>
+            <p className="text-white/40 text-sm">Core Tasks</p>
+          </div>
+          <div className="text-center p-5 rounded-xl bg-white/[0.03] border border-white/5">
+            <p className="text-3xl font-bold text-white mb-1">92%</p>
+            <p className="text-white/40 text-sm">Task Success</p>
+        </div>
+        </div>
+
+        {/* Key Findings */}
+        <div className="max-w-3xl">
+          <h4 className="text-white/80 text-lg font-medium mb-5">Key Findings</h4>
+          <div className="space-y-4">
+            <div className="flex gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <span className="text-green-400 text-lg">+</span>
+              <p className="text-white/50 text-sm leading-relaxed">
+                <span className="text-white/70 font-medium">Navigation was intuitive.</span> All participants successfully located Notes, Concept Map, and Review without guidance.
+              </p>
+            </div>
+            <div className="flex gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <span className="text-green-400 text-lg">+</span>
+              <p className="text-white/50 text-sm leading-relaxed">
+                <span className="text-white/70 font-medium">Review flow felt natural.</span> Users appreciated the "explain in your own words" approach over simple flashcards.
+              </p>
+            </div>
+            <div className="flex gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <span className="text-yellow-400 text-lg">~</span>
+              <p className="text-white/50 text-sm leading-relaxed">
+                <span className="text-white/70 font-medium">Concept extraction needed clarity.</span> 3 participants weren't sure when AI would auto-extract vs. manual tagging.
+              </p>
+            </div>
+            <div className="flex gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <span className="text-yellow-400 text-lg">~</span>
+              <p className="text-white/50 text-sm leading-relaxed">
+                <span className="text-white/70 font-medium">Insights page was dense.</span> Users wanted a quicker summary before diving into detailed stats.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Iterations */}
+        <div className="max-w-3xl mt-10">
+          <h4 className="text-white/80 text-lg font-medium mb-4">Iterations</h4>
+          <p className="text-white/50 leading-relaxed">
+            Based on feedback: added clearer AI indicators, introduced a "Quick Summary" card in Insights, and refined concept extraction with explanatory tooltips.
+          </p>
         </div>
       </Section>
 
-      {/* Design Principles */}
+      {/* Hi-Fi Prototyping */}
       <Section>
         <SectionLabel>05</SectionLabel>
-        <SectionTitle>Design Principles</SectionTitle>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-10 max-w-4xl">
-          <Principle title="Design for retrieval" description="Not rereading" />
-          <Principle title="Reduce cognitive load" description="Through chunking" />
-          <Principle title="Support metacognition" description="Self-awareness of knowledge" />
-          <Principle title="Avoid anxiety-driven motivation" description="No streaks or pressure" />
-          <Principle title="Make AI transparent" description="Optional and clear" />
-        </div>
-      </Section>
+        <SectionTitle>Design System</SectionTitle>
+        <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
+          I focused on simplicity: black and white foundation with customizable pastel accents. User interviews revealed that many organize information by assigning personal colors, so I designed accents to be adaptable to individual workflows.
+        </p>
 
-      {/* Process */}
-      <Section>
-        <SectionLabel>06</SectionLabel>
-        <SectionTitle>Design Process</SectionTitle>
-        
-        <div className="max-w-3xl mb-16">
-          <h3 className="text-white/40 uppercase tracking-wider text-sm mb-6">Deprioritized Ideas</h3>
-          <div className="space-y-4 text-white/50">
-            <p><span className="line-through">Flashcard-only systems</span> — encouraged memorization over understanding</p>
-            <p><span className="line-through">Gamified study streaks</span> — increased pressure and anxiety</p>
-            <p><span className="line-through">AI-generated summaries</span> — replaced thinking rather than supporting it</p>
+        {/* Design System */}
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
+          {/* Colors */}
+          <div 
+            className="rounded-2xl p-8 border border-white/10"
+            style={{
+              background: 'linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
+            }}
+          >
+            <h5 className="text-white text-lg font-semibold mb-8">Colors</h5>
+            
+            {/* Background */}
+            <div className="mb-8">
+              <p className="text-white/60 text-xs uppercase tracking-[0.2em] mb-4 font-medium">Background</p>
+              <div className="flex gap-4">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-14 h-14 rounded-xl bg-[#FAFAFA] shadow-lg shadow-white/10 ring-1 ring-white/20"></div>
+                  <span className="text-white/60 text-xs font-mono">#FAFAFA</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-14 h-14 rounded-xl bg-[#222222] shadow-lg ring-1 ring-white/10"></div>
+                  <span className="text-white/60 text-xs font-mono">#222222</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Primary */}
+            <div className="mb-8">
+              <p className="text-white/60 text-xs uppercase tracking-[0.2em] mb-4 font-medium">Primary</p>
+              <div className="flex gap-4">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-14 h-14 rounded-xl bg-[#1a1a1a] shadow-lg ring-1 ring-white/10"></div>
+                  <span className="text-white/60 text-xs font-mono">#1A1A1A</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-14 h-14 rounded-xl bg-white shadow-lg shadow-white/20 ring-1 ring-white/30"></div>
+                  <span className="text-white/60 text-xs font-mono">#FFFFFF</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Secondary - Dashboard Colors */}
+            <div className="mb-8">
+              <p className="text-white/60 text-xs uppercase tracking-[0.2em] mb-4 font-medium">Secondary</p>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-14 h-14 rounded-xl bg-[#E89A65] shadow-lg shadow-[#E89A65]/30"></div>
+                  <span className="text-white/60 text-xs font-mono">#E89A65</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-14 h-14 rounded-xl bg-[#90E199] shadow-lg shadow-[#90E199]/30"></div>
+                  <span className="text-white/60 text-xs font-mono">#90E199</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-14 h-14 rounded-xl bg-[#E8BD5A] shadow-lg shadow-[#E8BD5A]/30"></div>
+                  <span className="text-white/60 text-xs font-mono">#E8BD5A</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Tertiary - Feature Colors */}
+            <div>
+              <p className="text-white/60 text-xs uppercase tracking-[0.2em] mb-4 font-medium">Feature Accents</p>
+              <div className="grid grid-cols-5 gap-3">
+                <div className="w-11 h-11 rounded-xl bg-[#9C89CE] shadow-lg shadow-[#9C89CE]/25"></div>
+                <div className="w-11 h-11 rounded-xl bg-[#A0A5DC] shadow-lg shadow-[#A0A5DC]/25"></div>
+                <div className="w-11 h-11 rounded-xl bg-[#C9A090] shadow-lg shadow-[#C9A090]/25"></div>
+                <div className="w-11 h-11 rounded-xl bg-[#DA9D4A] shadow-lg shadow-[#DA9D4A]/25"></div>
+                <div className="w-11 h-11 rounded-xl bg-[#8E98DC] shadow-lg shadow-[#8E98DC]/25"></div>
+                <div className="w-11 h-11 rounded-xl bg-[#E8B4F0] shadow-lg shadow-[#E8B4F0]/25"></div>
+                <div className="w-11 h-11 rounded-xl bg-[#A5C5B3] shadow-lg shadow-[#A5C5B3]/25"></div>
+                <div className="w-11 h-11 rounded-xl bg-[#7ED9B0] shadow-lg shadow-[#7ED9B0]/25"></div>
+                <div className="w-11 h-11 rounded-xl bg-[#F5D76E] shadow-lg shadow-[#F5D76E]/25"></div>
+                <div className="w-11 h-11 rounded-xl bg-[#7EC8D9] shadow-lg shadow-[#7EC8D9]/25"></div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className="max-w-3xl">
-          <h3 className="text-white/40 uppercase tracking-wider text-sm mb-8">Iteration</h3>
-          <div className="space-y-8">
-            <ProcessStage 
-              stage="Low-fi" 
-              description="Concept-based note blocks, review flow centered on questions, minimal dashboard" 
-            />
-            <ProcessStage 
-              stage="Mid-fi" 
-              description="Reduced AI prompts, moved reflection into note flow, simplified navigation" 
-            />
-            <ProcessStage 
-              stage="High-fi" 
-              description="Polished visuals, calm color palette, refined micro-interactions" 
-            />
+          {/* Typography */}
+          <div 
+            className="rounded-2xl p-8 border border-white/10"
+            style={{
+              background: 'linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
+            }}
+          >
+            <h5 className="text-white text-lg font-semibold mb-8">Typography</h5>
+            
+            <div className="space-y-0">
+              {/* Heading */}
+              <div className="flex items-center justify-between py-4 border-b border-white/10">
+                <div>
+                  <p className="text-white/80 text-sm font-medium">Heading</p>
+                  <p className="text-white/40 text-xs mt-0.5">Poppins SemiBold · 30px</p>
+                </div>
+                <p className="text-white text-2xl font-semibold" style={{ fontFamily: 'Poppins, sans-serif' }}>Heading</p>
+              </div>
+
+              {/* Display / Cursive */}
+              <div className="flex items-center justify-between py-4 border-b border-white/10">
+                <div>
+                  <p className="text-white/80 text-sm font-medium">Display</p>
+                  <p className="text-white/40 text-xs mt-0.5">Playfair Display Italic · 28px</p>
+                </div>
+                <p className="text-white text-xl italic" style={{ fontFamily: 'Playfair Display, Georgia, serif' }}>Learn Deeper</p>
+              </div>
+
+              {/* Heading 2 */}
+              <div className="flex items-center justify-between py-4 border-b border-white/10">
+                <div>
+                  <p className="text-white/80 text-sm font-medium">Heading 2</p>
+                  <p className="text-white/40 text-xs mt-0.5">Poppins SemiBold · 20px</p>
+                </div>
+                <p className="text-white text-xl font-semibold" style={{ fontFamily: 'Poppins, sans-serif' }}>Heading 2</p>
+              </div>
+
+              {/* Subheading */}
+              <div className="flex items-center justify-between py-4 border-b border-white/10">
+                <div>
+                  <p className="text-white/80 text-sm font-medium">Subheading</p>
+                  <p className="text-white/40 text-xs mt-0.5">Poppins Medium · 18px</p>
+                </div>
+                <p className="text-white/90 text-lg font-medium" style={{ fontFamily: 'Poppins, sans-serif' }}>Subheading</p>
+              </div>
+
+              {/* Body */}
+              <div className="flex items-center justify-between py-4 border-b border-white/10">
+                <div>
+                  <p className="text-white/80 text-sm font-medium">Body</p>
+                  <p className="text-white/40 text-xs mt-0.5">Poppins Regular · 14px</p>
+                </div>
+                <p className="text-white/80 text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>Body text</p>
+              </div>
+
+              {/* Body 2 */}
+              <div className="flex items-center justify-between py-4 border-b border-white/10">
+                <div>
+                  <p className="text-white/80 text-sm font-medium">Body 2</p>
+                  <p className="text-white/40 text-xs mt-0.5">Poppins Regular · 12px</p>
+                </div>
+                <p className="text-white/70 text-xs" style={{ fontFamily: 'Poppins, sans-serif' }}>Body 2</p>
+              </div>
+
+              {/* Caption */}
+              <div className="flex items-center justify-between py-4">
+                <div>
+                  <p className="text-white/80 text-sm font-medium">Caption</p>
+                  <p className="text-white/40 text-xs mt-0.5">Poppins Regular · 10px</p>
+                </div>
+                <p className="text-white/60 text-[10px]" style={{ fontFamily: 'Poppins, sans-serif' }}>Caption</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </Section>
-
-      {/* Testing */}
-      <Section>
-        <SectionLabel>07</SectionLabel>
-        <SectionTitle>Usability Testing</SectionTitle>
-        
-        <div className="grid lg:grid-cols-2 gap-16 max-w-4xl mb-16">
-          <div>
-            <h3 className="text-white/40 uppercase tracking-wider text-sm mb-6">Findings</h3>
-            <ul className="space-y-3 text-white/60">
-              <li>Users skipped prompts if they felt intrusive</li>
-              <li>Concept map needed clearer entry points</li>
-              <li>Review felt calming when language was supportive</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-white/40 uppercase tracking-wider text-sm mb-6">Changes Made</h3>
-            <ul className="space-y-3 text-white/60">
-              <li>Prompts became dismissible and optional</li>
-              <li>Added concept map previews</li>
-              <li>Rewrote copy to remove urgency</li>
-            </ul>
-          </div>
-        </div>
-      </Section>
-
-      {/* Final Design */}
-      <Section>
-        <SectionLabel>08</SectionLabel>
-        <SectionTitle>Final Design</SectionTitle>
-        
-        <div className="grid md:grid-cols-2 gap-x-16 gap-y-10 max-w-4xl">
-          <Feature title="Concept-based Notes" description="Notes organized into focused concept blocks" />
-          <Feature title="AI Reflection Prompts" description="Gentle prompts to encourage deeper thinking" />
-          <Feature title="Visual Concept Map" description="Knowledge visualized as connected ideas" />
-          <Feature title="Low-Pressure Review" description="Calm, supportive review experience" />
-          <Feature title="Memory Strength Indicators" description="See how well you know each concept" />
-          <Feature title="Insight Dashboard" description="Personalized learning analytics" />
-        </div>
-      </Section>
-
-      {/* Ethics */}
-      <Section>
-        <SectionLabel>09</SectionLabel>
-        <SectionTitle>Accessibility & Ethics</SectionTitle>
-        
-        <div className="grid md:grid-cols-2 gap-6 max-w-3xl text-white/60">
-          <p>No streaks or penalties</p>
-          <p>Adjustable motion and contrast</p>
-          <p>Transparent AI suggestions</p>
-          <p>User control over prompts</p>
         </div>
       </Section>
 
       {/* Reflection */}
       <Section>
-        <SectionLabel>10</SectionLabel>
+        <SectionLabel>06</SectionLabel>
         <SectionTitle>Reflection</SectionTitle>
         
         <div className="max-w-3xl">
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            <div>
           <h3 className="text-white/40 uppercase tracking-wider text-sm mb-6">Key Learnings</h3>
-          <ul className="space-y-3 text-white/60 mb-16">
+              <ul className="space-y-3 text-white/60">
             <li>Designing for cognition, not just usability</li>
-            <li>Questioning productivity norms</li>
+                <li>Questioning productivity norms (no streaks, no pressure)</li>
             <li>Treating AI as a collaborator, not an authority</li>
           </ul>
+            </div>
+            <div>
+              <h3 className="text-white/40 uppercase tracking-wider text-sm mb-6">What I'd Do Differently</h3>
+              <ul className="space-y-3 text-white/60">
+                <li>Earlier prototype testing with real notes</li>
+                <li>More diverse participant pool</li>
+                <li>Longitudinal retention studies</li>
+              </ul>
+            </div>
+          </div>
 
           <h3 className="text-white/40 uppercase tracking-wider text-sm mb-6">Future Work</h3>
-          <p className="text-white/60">Longitudinal testing, classroom pilots, collaboration features</p>
+          <p className="text-white/60">Classroom pilots, collaboration features, and measuring actual learning outcomes over time.</p>
+        </div>
+      </Section>
+
+      {/* User Walkthrough */}
+      <Section>
+        <SectionLabel>07</SectionLabel>
+        <SectionTitle>User Walkthrough</SectionTitle>
+        <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
+          Watch a walkthrough of the final prototype, from creating notes to reviewing concepts.
+        </p>
+
+        {/* Large Laptop with Video */}
+        <div className="max-w-5xl mx-auto">
+          <div className="relative">
+            {/* Laptop Frame */}
+            <div className="relative">
+              {/* Screen lid - silver aluminum */}
+              <div className="relative bg-gradient-to-b from-[#e8e8e8] via-[#d4d4d4] to-[#c0c0c0] rounded-t-3xl p-[4px] shadow-2xl">
+                {/* Inner black bezel */}
+                <div className="relative bg-[#1a1a1a] rounded-t-2xl p-3 pb-2.5">
+                  {/* Camera */}
+                  <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#0a0a0a] ring-1 ring-[#2a2a2a]">
+                    <div className="absolute inset-0.5 rounded-full bg-[#1a3a1a]"></div>
+                  </div>
+                  
+                  {/* Screen with Video */}
+                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-[#0a0a0a] shadow-inner">
+                    {/* Video Element */}
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-contain"
+                    >
+                      <source src="/neuranote/neuranote-demo.mp4" type="video/mp4" />
+                      <source src="/neuranote/neuranote-demo.webm" type="video/webm" />
+                    </video>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Laptop bottom/keyboard area */}
+              <div className="relative">
+                {/* Hinge */}
+                <div className="h-2 bg-gradient-to-b from-[#a0a0a0] to-[#888888] rounded-b-sm shadow-md"></div>
+                
+                {/* Bottom case */}
+                <div className="h-5 bg-gradient-to-b from-[#d4d4d4] via-[#c8c8c8] to-[#b8b8b8] rounded-b-3xl shadow-lg">
+                  {/* Trackpad notch */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-2 bg-gradient-to-b from-[#c0c0c0] to-[#a8a8a8] rounded-t-lg"></div>
+                </div>
+              </div>
+              
+              {/* Shadow underneath */}
+              <div className="absolute -bottom-6 left-[5%] right-[5%] h-6 bg-black/20 blur-2xl rounded-full"></div>
+            </div>
+
+            {/* Ambient glow */}
+            <div className="absolute -inset-8 bg-gradient-to-tr from-purple-500/10 via-transparent to-teal-500/10 rounded-[3rem] -z-10 blur-2xl"></div>
+          </div>
+        </div>
+
+        {/* Caption */}
+        <p className="text-center text-white/40 text-sm mt-10">
+          Prototype built in Figma • Interactions demonstrate core user flows
+        </p>
+
+        {/* Second Video Demo */}
+        <div className="max-w-5xl mx-auto mt-24">
+          <div className="relative">
+            {/* Laptop Frame */}
+            <div className="relative">
+              {/* Screen lid - silver aluminum */}
+              <div className="relative bg-gradient-to-b from-[#e8e8e8] via-[#d4d4d4] to-[#c0c0c0] rounded-t-3xl p-[4px] shadow-2xl">
+                {/* Inner black bezel */}
+                <div className="relative bg-[#1a1a1a] rounded-t-2xl p-3 pb-2.5">
+                  {/* Camera */}
+                  <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#0a0a0a] ring-1 ring-[#2a2a2a]">
+                    <div className="absolute inset-0.5 rounded-full bg-[#1a3a1a]"></div>
+                  </div>
+                  
+                  {/* Screen with Video */}
+                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-[#0a0a0a] shadow-inner">
+                    {/* Video Element */}
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-contain"
+                    >
+                      <source src="/neuranote/My Movie 6.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Laptop bottom/keyboard area */}
+              <div className="relative">
+                {/* Hinge */}
+                <div className="h-2 bg-gradient-to-b from-[#a0a0a0] to-[#888888] rounded-b-sm shadow-md"></div>
+                
+                {/* Bottom case */}
+                <div className="h-5 bg-gradient-to-b from-[#d4d4d4] via-[#c8c8c8] to-[#b8b8b8] rounded-b-3xl shadow-lg">
+                  {/* Trackpad notch */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-2 bg-gradient-to-b from-[#c0c0c0] to-[#a8a8a8] rounded-t-lg"></div>
+                </div>
+              </div>
+              
+              {/* Shadow underneath */}
+              <div className="absolute -bottom-6 left-[5%] right-[5%] h-6 bg-black/20 blur-2xl rounded-full"></div>
+            </div>
+
+            {/* Ambient glow */}
+            <div className="absolute -inset-8 bg-gradient-to-tr from-teal-500/10 via-transparent to-purple-500/10 rounded-[3rem] -z-10 blur-2xl"></div>
+          </div>
         </div>
       </Section>
 
@@ -472,7 +1792,7 @@ function Section({ children }: { children: React.ReactNode }) {
           setIsVisible(true)
         }
       },
-      { threshold: 0.1, rootMargin: '-50px' }
+      { threshold: 0.05, rootMargin: '0px' }
     )
 
     if (ref.current) {
@@ -489,10 +1809,10 @@ function Section({ children }: { children: React.ReactNode }) {
   return (
     <section 
       ref={ref}
-      className={`relative py-24 px-8 border-t border-white/5 transition-all duration-1000 ease-out ${
+      className={`relative z-10 py-24 px-8 border-t border-white/5 transition-all duration-700 ease-out ${
         isVisible 
           ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-12'
+          : 'opacity-0 translate-y-8'
       }`}
     >
       <div className="max-w-6xl mx-auto">

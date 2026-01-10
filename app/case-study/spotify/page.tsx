@@ -15,12 +15,12 @@ interface Particle {
 }
 
 const demoImages = [
-  { src: '/spotify-1.png', label: 'Your Threads' },
-  { src: '/spotify-2.png', label: 'Listening Memory' },
-  { src: '/spotify-3.png', label: 'Emotional Clusters' },
-  { src: '/spotify-4.png', label: 'Thread Card' },
-  { src: '/spotify-5.png', label: 'Thread Detail' },
-  { src: '/spotify-6.png', label: 'Now Playing Memory' },
+  { src: '/spotify/spotify-1.png', label: 'Your Threads' },
+  { src: '/spotify/spotify-2.png', label: 'Listening Memory' },
+  { src: '/spotify/spotify-3.png', label: 'Emotional Clusters' },
+  { src: '/spotify/spotify-4.png', label: 'Thread Card' },
+  { src: '/spotify/spotify-5.png', label: 'Thread Detail' },
+  { src: '/spotify/spotify-6.png', label: 'Now Playing Memory' },
 ]
 
 export default function SpotifyCaseStudy() {

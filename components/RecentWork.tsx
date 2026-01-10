@@ -27,13 +27,13 @@ export default function RecentWork() {
       subtitle: 'AI-Powered Cognitive Note-Taking',
       description: 'A modern learning companion that transforms how students and lifelong learners capture, connect, and retain knowledge. Features smart notes with AI concept extraction, visual concept maps, and spaced repetition review.',
       demoImages: [
-        { src: '/neuranote-1.png', label: 'Think Clearer, Learn Deeper' },
-        { src: '/neuranote-2.png', label: 'Designed to Help You' },
-        { src: '/neuranote-3.png', label: 'The Science Behind NeuraNote' },
-        { src: '/neuranote-4.png', label: 'Welcome Dashboard' },
-        { src: '/neuranote-5.png', label: 'Visual Concept Maps' },
-        { src: '/neuranote-6.png', label: 'Ready to Review' },
-        { src: '/neuranote-7.png', label: 'Learning Insights' },
+        { src: '/neuranote/neuranote-1.png', label: 'Think Clearer, Learn Deeper' },
+        { src: '/neuranote/neuranote-2.png', label: 'Designed to Help You' },
+        { src: '/neuranote/neuranote-3.png', label: 'The Science Behind NeuraNote' },
+        { src: '/neuranote/neuranote-4.png', label: 'Welcome Dashboard' },
+        { src: '/neuranote/neuranote-5.png', label: 'Visual Concept Maps' },
+        { src: '/neuranote/neuranote-6.png', label: 'Ready to Review' },
+        { src: '/neuranote/neuranote-7.png', label: 'Learning Insights' },
       ],
       figmaLink: null,
       githubLink: 'https://github.com/anushaxrama/neuranote',
@@ -48,12 +48,12 @@ export default function RecentWork() {
       subtitle: 'AI Developer Platform',
       description: 'A modern, full-stack web application enabling developers to interact with AI models, compare responses across different LLMs, and build custom AI agents—all through a sleek, glassmorphism-styled interface.',
       demoImages: [
-        { src: '/narbl-1.png', label: 'Build with Intelligence' },
-        { src: '/narbl-3.png', label: 'Compare Side by Side' },
-        { src: '/narbl-4.png', label: 'Chat with Any Model' },
-        { src: '/narbl-5.png', label: 'Build Custom AI Agents' },
-        { src: '/narbl-6.png', label: 'Powerful AI Products' },
-        { src: '/narbl-7.png', label: 'User Dashboard' },
+        { src: '/narbl/narbl-1.png', label: 'Build with Intelligence' },
+        { src: '/narbl/narbl-3.png', label: 'Compare Side by Side' },
+        { src: '/narbl/narbl-4.png', label: 'Chat with Any Model' },
+        { src: '/narbl/narbl-5.png', label: 'Build Custom AI Agents' },
+        { src: '/narbl/narbl-6.png', label: 'Powerful AI Products' },
+        { src: '/narbl/narbl-7.png', label: 'User Dashboard' },
       ],
       figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
       githubLink: null,
@@ -68,12 +68,12 @@ export default function RecentWork() {
       subtitle: 'Listening Threads — Intent-Based Discovery',
       description: 'A UX redesign reimagining Spotify\'s discovery experience around listening intent and memory. Replaces endless carousels with curated "Listening Threads" — finite, intentional collections that explain why each song matters.',
       demoImages: [
-        { src: '/spotify-1.png', label: 'Your Threads - Home' },
-        { src: '/spotify-2.png', label: 'Listening Memory Insights' },
-        { src: '/spotify-3.png', label: 'Emotional Clusters' },
-        { src: '/spotify-4.png', label: 'Thread Card with Tracks' },
-        { src: '/spotify-5.png', label: 'Thread Detail View' },
-        { src: '/spotify-6.png', label: 'Now Playing Memory' },
+        { src: '/spotify/spotify-1.png', label: 'Your Threads - Home' },
+        { src: '/spotify/spotify-2.png', label: 'Listening Memory Insights' },
+        { src: '/spotify/spotify-3.png', label: 'Emotional Clusters' },
+        { src: '/spotify/spotify-4.png', label: 'Thread Card with Tracks' },
+        { src: '/spotify/spotify-5.png', label: 'Thread Detail View' },
+        { src: '/spotify/spotify-6.png', label: 'Now Playing Memory' },
       ],
       figmaLink: null,
       githubLink: 'https://github.com/anushaxrama/your-music-journey',
@@ -107,15 +107,15 @@ export default function RecentWork() {
     const observers = projectRefs.current.map((ref, index) => {
       if (!ref) return null
       
-      const observer = new IntersectionObserver(
+    const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
             setVisibleProjects(prev => new Set([...prev, index]))
           }
-        },
+      },
         { threshold: 0.2 }
-      )
-      
+    )
+
       observer.observe(ref)
       return observer
     })
@@ -124,7 +124,7 @@ export default function RecentWork() {
       observers.forEach((observer, index) => {
         if (observer && projectRefs.current[index]) {
           observer.unobserve(projectRefs.current[index]!)
-        }
+      }
       })
     }
   }, [])
@@ -150,182 +150,127 @@ export default function RecentWork() {
   // Get current accent color based on active project
   const currentHue = projects[activeProject]?.accentHue || 270
 
-  // Premium MacBook-style 3D Laptop Mockup - Compact & Aligned
+  // Clean MacBook Pro Mockup - Matches reference image exactly
   const LaptopMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => {
     const isLeftAngle = project.laptopAngle === 'left'
-    const rotateY = isLeftAngle ? 8 : -8
 
   return (
       <div 
-        className={`relative flex justify-center items-start pt-16 transition-all duration-1000 delay-200 ${
+        className={`relative flex justify-center items-center transition-all duration-1000 delay-200 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}
-        style={{ perspective: '1200px' }}
       >
-        {/* Smaller laptop - aligned with title */}
-        <div className={`w-full max-w-[340px] ${isLeftAngle ? 'mr-auto ml-4' : 'ml-auto mr-4'}`}>
-          {/* 3D transform - minimal rotation for sleek look */}
-          <div 
-            className="relative transition-all duration-500 hover:translate-y-[-6px] hover:scale-[1.02]"
-            style={{ 
-              transformStyle: 'preserve-3d',
-              transform: `rotateX(3deg) rotateY(${rotateY}deg)`,
-            }}
-          >
-            {/* Ambient glow */}
+        <div className={`w-full max-w-[500px] ${isLeftAngle ? 'mr-auto' : 'ml-auto'}`}>
+          <div className="relative transition-all duration-500 hover:translate-y-[-8px] hover:scale-[1.02]">
+            
+            {/* Subtle ambient glow */}
             <div 
-              className="absolute -inset-16 rounded-full blur-[100px] opacity-30 transition-colors duration-1000"
-              style={{ backgroundColor: `hsl(${project.accentHue}, 60%, 50%)` }}
+              className="absolute -inset-20 rounded-full blur-[120px] opacity-20 transition-colors duration-1000"
+              style={{ backgroundColor: `hsl(${project.accentHue}, 50%, 50%)` }}
             />
 
-            {/* Sleek MacBook */}
-            <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
+            {/* MacBook Pro Frame */}
+            <div className="relative">
               
-              {/* SCREEN - Clean & Modern */}
-              <div className="relative">
-                <div 
-                  className="relative rounded-t-[16px] p-[5px]"
-                  style={{
-                    background: 'linear-gradient(180deg, #3d3d42 0%, #2d2d32 50%, #1d1d22 100%)',
-                    boxShadow: `
-                      0 0 0 1px rgba(255,255,255,0.1),
-                      0 -1px 30px -5px hsla(${project.accentHue}, 60%, 50%, 0.3)
-                    `,
-                  }}
-                >
-                  {/* Inner bezel */}
-                  <div className="relative rounded-t-[12px] bg-[#080808] p-[3px]">
-                    {/* Camera notch */}
-                    <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[8px] h-[8px] rounded-full bg-[#151515] flex items-center justify-center">
-                      <div className="w-[4px] h-[4px] rounded-full bg-[#1a1a1a]">
-                        <div className="w-[2px] h-[2px] rounded-full bg-green-500/50 mx-auto mt-[1px]"></div>
-                      </div>
-                    </div>
+              {/* Screen housing - dark bezel */}
+              <div 
+                className="relative rounded-t-[18px] bg-[#1a1a1a] p-[10px] pb-[8px]"
+                style={{
+                  boxShadow: `
+                    0 0 0 1px rgba(255,255,255,0.08),
+                    0 -2px 40px -10px hsla(${project.accentHue}, 50%, 50%, 0.2),
+                    0 25px 50px -15px rgba(0,0,0,0.5)
+                  `,
+                }}
+              >
+                {/* Camera notch - centered pill */}
+                <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-[80px] h-[18px] bg-[#0a0a0a] rounded-b-[10px] flex items-center justify-center z-10">
+                  <div className="w-[6px] h-[6px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a]">
+                    <div className="w-[3px] h-[3px] rounded-full bg-[#0d2818] mx-auto mt-[1px]"></div>
+                  </div>
+                </div>
 
-                    {/* Screen */}
-                    <div className="relative aspect-[16/10] rounded-[9px] overflow-hidden bg-black group mt-1">
-                      {project.demoImages.map((image, imgIndex) => (
-                        <div
-                          key={imgIndex}
-                          className={`absolute inset-0 transition-opacity duration-200 ${
-                            (activeSlides[index] || 0) === imgIndex 
-                              ? 'opacity-100' 
-                              : 'opacity-0'
-                          }`}
-                        >
-                          <Image
-                            src={image.src}
-                            alt={image.label}
-                            fill
-                            className="object-cover object-top"
-                            sizes="340px"
-                            priority={index === 0 && imgIndex === 0}
-                          />
-                        </div>
-                      ))}
-
-                      {/* Subtle screen reflection */}
-                      <div 
-                        className="absolute inset-0 pointer-events-none"
-                        style={{
-                          background: 'linear-gradient(145deg, rgba(255,255,255,0.04) 0%, transparent 20%)',
-                        }}
+                {/* Screen area with content */}
+                <div className="relative rounded-[8px] overflow-hidden bg-[#faf8f6] group" style={{ aspectRatio: '16/10' }}>
+                  
+                  {/* Slideshow images */}
+                  {project.demoImages.map((image, imgIndex) => (
+                    <div
+                      key={imgIndex}
+                      className={`absolute inset-0 transition-opacity duration-500 flex items-center justify-center ${
+                        (activeSlides[index] || 0) === imgIndex ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    >
+                      <Image
+                        src={image.src}
+                        alt={image.label}
+                        fill
+                        className="object-contain"
+                        sizes="500px"
+                        priority={index === 0 && imgIndex === 0}
                       />
-
-                      {/* Navigation Arrows */}
-                      <button
-                        onClick={() => goToPrevSlide(index, project.demoImages.length)}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/70 backdrop-blur border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-10"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-                        </svg>
-                      </button>
-                      <button
-                        onClick={() => goToNextSlide(index, project.demoImages.length)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/70 backdrop-blur border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-black hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-10"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </button>
-
-                      {/* Dots */}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/60 backdrop-blur rounded-full px-3 py-2">
-                        {project.demoImages.map((_, dotIndex) => (
-                          <button
-                            key={dotIndex}
-                            onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
-                            className={`h-2 rounded-full transition-all cursor-pointer ${
-                              (activeSlides[index] || 0) === dotIndex 
-                                ? 'bg-white w-5' 
-                                : 'bg-white/40 w-2 hover:bg-white/70'
-                            }`}
-                          />
-                        ))}
-                      </div>
                     </div>
+                  ))}
+
+                  {/* Navigation Arrows */}
+                  <button
+                    onClick={() => goToPrevSlide(index, project.demoImages.length)}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-20"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => goToNextSlide(index, project.demoImages.length)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-20"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+
+                  {/* Slideshow dots */}
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/50 backdrop-blur-sm rounded-full px-2.5 py-1.5 z-20">
+                    {project.demoImages.map((_, dotIndex) => (
+                      <button
+                        key={dotIndex}
+                        onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
+                        className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                          (activeSlides[index] || 0) === dotIndex 
+                            ? 'bg-white w-4' 
+                            : 'bg-white/40 w-1.5 hover:bg-white/60'
+                        }`}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
 
-              {/* HINGE - Sleek */}
-              <div 
-                className="relative h-[7px] mx-4"
-                style={{
-                  background: 'linear-gradient(180deg, #1a1a1f 0%, #2a2a2f 50%, #3a3a3f 100%)',
-                  borderRadius: '0 0 4px 4px',
-                }}
-              />
-
-              {/* KEYBOARD BASE */}
-              <div 
-                className="relative"
-                style={{ 
-                  transformStyle: 'preserve-3d',
-                  transform: 'rotateX(70deg)',
-                  transformOrigin: 'top center',
-                }}
-              >
+              {/* Bottom chin / hinge area */}
+              <div className="relative">
+                {/* Hinge */}
                 <div 
-                  className="relative rounded-b-[16px] pt-3 pb-2.5 px-3"
+                  className="h-[4px] mx-[15%] rounded-b-sm"
                   style={{
-                    background: 'linear-gradient(180deg, #3a3a3f 0%, #2a2a2f 50%, #1f1f24 100%)',
-                    boxShadow: '0 30px 40px -12px rgba(0,0,0,0.7)',
+                    background: 'linear-gradient(180deg, #2a2a2a 0%, #3a3a3a 100%)',
                   }}
-                >
-                  {/* Keyboard */}
-                  <div className="bg-[#0a0a0c] rounded-lg p-2.5">
-                    {[14, 14, 13, 12].map((count, rowIndex) => (
-                      <div key={rowIndex} className="flex gap-[2px] mb-[2px]">
-                        {Array.from({ length: count }).map((_, i) => (
-                          <div 
-                            key={i} 
-                            className="flex-1 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]"
-                            style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)' }}
-                          />
-                        ))}
-                      </div>
-                    ))}
-                    {/* Spacebar row */}
-                    <div className="flex gap-[2px]">
-                      <div className="w-6 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]" />
-                      <div className="w-6 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]" />
-                      <div className="flex-1 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]" />
-                      <div className="w-6 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]" />
-                      <div className="w-6 h-3.5 rounded-[3px] bg-gradient-to-b from-[#282828] to-[#1a1a1a]" />
-                    </div>
-                  </div>
-                  {/* Trackpad */}
-                  <div className="mx-auto mt-2.5 w-24 h-14 rounded-xl bg-gradient-to-b from-[#1a1a1c] to-[#0e0e10] border border-white/[0.04]" />
-                </div>
+                />
+                
+                {/* Base/keyboard deck - simplified, just visible edge */}
+                <div 
+                  className="h-[12px] mx-[5%] rounded-b-[8px]"
+                  style={{
+                    background: 'linear-gradient(180deg, #c4c4c6 0%, #a8a8aa 50%, #8a8a8c 100%)',
+                    boxShadow: '0 4px 15px -5px rgba(0,0,0,0.3)',
+                  }}
+                />
               </div>
             </div>
 
-            {/* Shadow */}
+            {/* Ground shadow */}
             <div 
-              className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[80%] h-10 rounded-[50%] blur-2xl opacity-50"
-              style={{ backgroundColor: `hsl(${project.accentHue}, 25%, 6%)` }}
+              className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[70%] h-6 rounded-[50%] blur-xl opacity-40 bg-black"
             />
           </div>
         </div>
@@ -498,7 +443,7 @@ export default function RecentWork() {
         
         return (
           <section
-            key={index}
+              key={index}
             ref={setProjectRef(index)}
             className="relative min-h-screen flex items-center py-20 lg:py-0"
           >
@@ -531,11 +476,11 @@ export default function RecentWork() {
                   <div 
                     className={`relative z-10 transition-all duration-700 delay-200 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}
-                  >
+              }`}
+            >
                     <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
-                    {project.title}
-                  </h3>
+                {project.title}
+              </h3>
                   </div>
 
                   {/* Subtitle */}
@@ -556,8 +501,8 @@ export default function RecentWork() {
                     }`}
                   >
                     <p className="text-sm md:text-base text-white/40 leading-relaxed max-w-lg">
-                      {project.description}
-                    </p>
+                {project.description}
+              </p>
                 </div>
                 
                   {/* Links - Smaller like Rashi's */}
@@ -605,7 +550,7 @@ export default function RecentWork() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white text-sm font-medium rounded-full hover:bg-white/10 hover:border-white/40 transition-all"
-                      >
+                  >
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                         </svg>
