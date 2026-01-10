@@ -39,12 +39,12 @@ export default function Hero() {
     // Show last name after Anusha animation
     const lastNameTimer = setTimeout(() => {
       setShowLastName(true)
-    }, 2200)
+    }, 1000)
 
     // Show scroll text after last name appears
     const scrollTimer = setTimeout(() => {
       setShowScroll(true)
-    }, 3200)
+    }, 1800)
 
     return () => {
       clearTimeout(loadTimer)
@@ -80,7 +80,7 @@ export default function Hero() {
 
       {/* Name animation - centered */}
       <div className="relative z-10 flex items-center justify-center px-4">
-        <div className="flex items-center justify-center gap-1">
+        <div className="flex items-center justify-center">
           {/* ANUSHA with stroke drawing animation */}
           <svg
             viewBox="0 0 280 60"
@@ -89,14 +89,13 @@ export default function Hero() {
               width: 'clamp(160px, 30vw, 280px)',
               height: 'auto',
               opacity: isLoaded ? 1 : 0,
-              transition: 'opacity 0.3s ease-out',
+              transition: 'opacity 0.2s ease-out',
             }}
           >
             {/* Background stroke that draws */}
             <text
               x="0"
               y="48"
-              className="anusha-stroke"
               style={{
                 fontSize: '52px',
                 fontWeight: 900,
@@ -106,7 +105,7 @@ export default function Hero() {
                 strokeWidth: 2,
                 strokeDasharray: 800,
                 strokeDashoffset: isLoaded ? 0 : 800,
-                transition: 'stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
               }}
             >
               ANUSHA
@@ -115,14 +114,13 @@ export default function Hero() {
             <text
               x="0"
               y="48"
-              className="anusha-fill"
               style={{
                 fontSize: '52px',
                 fontWeight: 900,
                 fontFamily: 'system-ui, -apple-system, sans-serif',
                 fill: 'white',
                 opacity: showLastName ? 1 : 0,
-                transition: 'opacity 0.5s ease-out',
+                transition: 'opacity 0.3s ease-out',
               }}
             >
               ANUSHA
@@ -135,7 +133,8 @@ export default function Hero() {
             style={{
               maxWidth: showLastName ? '700px' : '0',
               opacity: showLastName ? 1 : 0,
-              transition: 'max-width 1s ease-out, opacity 0.6s ease-out',
+              transition: 'max-width 0.6s ease-out, opacity 0.4s ease-out',
+              marginLeft: '12px',
             }}
           >
             <span 
