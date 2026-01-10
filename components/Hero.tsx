@@ -39,12 +39,12 @@ export default function Hero() {
     // Show last name after Anusha animation
     const lastNameTimer = setTimeout(() => {
       setShowLastName(true)
-    }, 1400)
+    }, 1800)
 
     // Show scroll text after last name appears
     const scrollTimer = setTimeout(() => {
       setShowScroll(true)
-    }, 2200)
+    }, 2800)
 
     return () => {
       clearTimeout(loadTimer)
@@ -105,7 +105,7 @@ export default function Hero() {
                 strokeWidth: 2,
                 strokeDasharray: 800,
                 strokeDashoffset: isLoaded ? 0 : 800,
-                transition: 'stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'stroke-dashoffset 1.6s cubic-bezier(0.4, 0, 0.2, 1)',
               }}
             >
               ANUSHA
@@ -134,7 +134,7 @@ export default function Hero() {
               maxWidth: showLastName ? '700px' : '0',
               opacity: showLastName ? 1 : 0,
               transition: 'max-width 0.8s ease-out, opacity 0.4s ease-out',
-              marginLeft: '4px',
+              marginLeft: '0px',
             }}
           >
             <span 
