@@ -25,9 +25,16 @@ const demoImages = [
 export default function NeuranNoteCaseStudy() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Check for mobile on mount
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
 
   const particles: Particle[] = useMemo(() => {
-    return Array.from({ length: 60 }, (_, i) => ({
+    const count = isMobile ? 15 : 60 // Reduce particles on mobile
+    return Array.from({ length: count }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -36,7 +43,7 @@ export default function NeuranNoteCaseStudy() {
       delay: Math.random() * 5,
       opacity: Math.random() * 0.3 + 0.1,
     }));
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     setIsLoaded(true)

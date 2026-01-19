@@ -19,13 +19,20 @@ export default function Hero() {
   const [showSubtitle, setShowSubtitle] = useState(false)
   const [animateStar, setAnimateStar] = useState(false)
   const [showScroll, setShowScroll] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   const firstName = 'ANUSHA'
   const lastName = 'RAMACHANDRAN'
 
-  // Generate floating white particles (star specs)
+  // Check for mobile on mount
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
+
+  // Generate floating white particles (star specs) - reduced on mobile
   const particles: Particle[] = useMemo(() => {
-    return Array.from({ length: 50 }, (_, i) => ({
+    const count = isMobile ? 15 : 50 // Reduce particles on mobile
+    return Array.from({ length: count }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -34,7 +41,7 @@ export default function Hero() {
       delay: Math.random() * 5,
       opacity: Math.random() * 0.4 + 0.1,
     }));
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches

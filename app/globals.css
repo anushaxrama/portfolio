@@ -110,3 +110,77 @@ body {
   width: 100%;
 }
 
+
+/* ========== MOBILE PERFORMANCE OPTIMIZATIONS ========== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Disable expensive blur effects on mobile */
+  .blur-3xl, .blur-2xl, .blur-xl {
+    filter: none !important;
+    backdrop-filter: none !important;
+  }
+  
+  /* Reduce blur intensity */
+  [class*="blur-"] {
+    filter: blur(10px) !important;
+  }
+  
+  /* Simplify gradients on mobile */
+  .bg-gradient-to-br,
+  .bg-gradient-to-r {
+    background-attachment: scroll !important;
+  }
+  
+  /* Hardware acceleration for smoother animations */
+  .transition-all,
+  .transition-transform,
+  .transition-opacity {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+/* Ensure particles never block interactions */
+.pointer-events-none {
+  pointer-events: none !important;
+}
+
+/* Optimize animations for GPU */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) translateZ(0); 
+  }
+  50% { 
+    transform: translateY(-10px) translateZ(0); 
+  }
+}
+
+/* Touch-friendly button sizing */
+@media (max-width: 768px) {
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Smooth scrolling performance */
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent layout shifts */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
