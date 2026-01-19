@@ -30,11 +30,20 @@ body {
   scrollbar-width: none;
 }
 
-
 /* Subtle micro-interactions */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
 @keyframes pulse-subtle {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 /* Button hover lift effect */
@@ -65,6 +74,22 @@ body {
   transform: scale(1.02);
 }
 
+/* Fade in up animation for scroll reveals */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
 /* Smooth link underline animation */
 .link-underline {
   position: relative;
@@ -84,3 +109,4 @@ body {
 .link-underline:hover::after {
   width: 100%;
 }
+
