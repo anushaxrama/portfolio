@@ -25,7 +25,7 @@ export default function RecentWork() {
     {
       title: 'NeuraNote',
       subtitle: 'AI-Powered Cognitive Note-Taking',
-      description: 'A modern learning companion that transforms how students and lifelong learners capture, connect, and retain knowledge. Features smart notes with AI concept extraction, visual concept maps, and spaced repetition review.',
+      description: 'What if your notes actually helped you remember things? NeuraNote uses AI to pull out key concepts, connect ideas visually, and remind you of what matters before you forget it. Built for students who are tired of re-reading the same page five times.',
       demoImages: [
         { src: '/neuranote/neuranote-1.png', label: 'Think Clearer, Learn Deeper' },
         { src: '/neuranote/neuranote-2.png', label: 'Designed to Help You' },
@@ -40,13 +40,13 @@ export default function RecentWork() {
       caseStudyLink: '/case-study/neuranote',
       deviceType: 'laptop' as const,
       number: '01',
-      accentHue: 210,
+      accentHue: 270,
       laptopAngle: 'right' as const, // Keyboard faces user, angled to show right side
     },
     {
       title: 'Narbl',
       subtitle: 'AI Developer Platform',
-      description: 'A modern, full-stack web application enabling developers to interact with AI models, compare responses across different LLMs, and build custom AI agents—all through a sleek, glassmorphism-styled interface.',
+      description: 'Comparing AI models used to mean opening twelve browser tabs. Narbl puts them all in one place so developers can test prompts, compare responses side by side, and actually figure out which model works best. Clean interface, less chaos.',
       demoImages: [
         { src: '/narbl/narbl-1.png', label: 'Build with Intelligence' },
         { src: '/narbl/narbl-3.png', label: 'Compare Side by Side' },
@@ -57,16 +57,31 @@ export default function RecentWork() {
       ],
       figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
       githubLink: null,
-      caseStudyLink: null,
+      caseStudyLink: '/case-study/narbl',
       deviceType: 'laptop' as const,
       number: '02',
-      accentHue: 270,
+      accentHue: 210,
       laptopAngle: 'left' as const, // Keyboard faces user, angled to show left side (mirrored)
+    },
+    {
+      title: 'HABITat',
+      subtitle: 'Gamified Habit Tracking for College Students',
+      description: 'Most habit apps get abandoned in two weeks. HABITat changes that through gamification and social accountability: maintain streaks to unlock collectible animals, build your own habitat, and invite friends to keep you on track. Because staying consistent shouldn\'t feel like a chore.',
+      demoImages: [
+        { src: '/habitat/habitat-hero.png', label: 'HABITat Preview' },
+      ],
+      figmaLink: null,
+      githubLink: null,
+      caseStudyLink: '/case-study/habitat',
+      deviceType: 'hero-image' as const,
+      number: '03',
+      accentHue: 30,
+      laptopAngle: 'left' as const,
     },
     {
       title: 'Spotify',
       subtitle: 'Listening Threads — Intent-Based Discovery',
-      description: 'A UX redesign reimagining Spotify\'s discovery experience around listening intent and memory. Replaces endless carousels with curated "Listening Threads" — finite, intentional collections that explain why each song matters.',
+      description: 'A concept redesign exploring how Spotify could help users rediscover their relationship with music. Through user research and affinity mapping, I identified key pain points around passive listening and designed features like Listening Memory, Threads, and Emotional Clusters to bring intention back to music discovery.',
       demoImages: [
         { src: '/spotify/spotify-1.png', label: 'Your Threads - Home' },
         { src: '/spotify/spotify-2.png', label: 'Listening Memory Insights' },
@@ -79,8 +94,8 @@ export default function RecentWork() {
       githubLink: 'https://github.com/anushaxrama/your-music-journey',
       caseStudyLink: '/case-study/spotify',
       deviceType: 'phone' as const,
-      number: '03',
-      accentHue: 160,
+      number: '04',
+      accentHue: 145,
       laptopAngle: 'right' as const,
     },
   ]
@@ -191,7 +206,13 @@ export default function RecentWork() {
                 </div>
 
                 {/* Screen area with content */}
-                <div className="relative rounded-[8px] overflow-hidden bg-[#faf8f6] group" style={{ aspectRatio: '16/10' }}>
+                <div 
+                  className="relative rounded-[8px] overflow-hidden group" 
+                  style={{ 
+                    aspectRatio: '16/10',
+                    backgroundColor: project.title === 'Narbl' ? '#000000' : '#faf8f6'
+                  }}
+                >
                   
                   {/* Slideshow images */}
                   {project.demoImages.map((image, imgIndex) => (
@@ -407,6 +428,36 @@ export default function RecentWork() {
     </div>
   )
 
+  // Hero Image Mockup for HABITat - Display the dual phone image
+  const HeroImageMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => (
+    <div 
+      className={`relative flex justify-center items-center transition-all duration-1000 delay-300 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
+      }`}
+    >
+      <div className="relative w-full max-w-[550px]">
+        {/* Ambient glow */}
+        <div 
+          className="absolute -inset-16 rounded-full blur-[100px] opacity-30 transition-colors duration-1000"
+          style={{ backgroundColor: `hsl(${project.accentHue}, 60%, 50%)` }}
+        />
+
+        {/* Hero Image - displayed normally */}
+        <Image
+          src={project.demoImages[0]?.src || '/habitat/habitat-hero.png'}
+          alt={project.demoImages[0]?.label || 'HABITat Preview'}
+          width={550}
+          height={450}
+          className="w-full h-auto"
+          style={{ 
+            filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.3))',
+          }}
+          sizes="550px"
+        />
+      </div>
+    </div>
+  )
+
   return (
     <section id="work" ref={sectionRef} className="relative">
       {/* Dynamic ombre gradient background - colors shift as you scroll */}
@@ -414,23 +465,23 @@ export default function RecentWork() {
         <div className="absolute inset-0 bg-[#050507]" />
         {/* Main color orb that changes with active project */}
         <div 
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full blur-[200px] transition-all duration-1000 ease-out"
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full blur-[200px] transition-all duration-1000 ease-out"
           style={{ 
-            backgroundColor: `hsla(${currentHue}, 50%, 30%, 0.15)`,
+            backgroundColor: `hsla(${currentHue}, 70%, 35%, 0.25)`,
           }}
         />
         {/* Secondary accent orb */}
         <div 
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[150px] transition-all duration-1000 ease-out"
+          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[150px] transition-all duration-1000 ease-out"
           style={{ 
-            backgroundColor: `hsla(${currentHue + 30}, 40%, 25%, 0.1)`,
+            backgroundColor: `hsla(${currentHue + 30}, 60%, 30%, 0.18)`,
           }}
         />
         {/* Subtle top gradient */}
         <div 
           className="absolute top-0 left-0 right-0 h-[50vh] transition-all duration-1000"
           style={{
-            background: `linear-gradient(180deg, hsla(${currentHue}, 40%, 15%, 0.1) 0%, transparent 100%)`,
+            background: `linear-gradient(180deg, hsla(${currentHue}, 60%, 20%, 0.2) 0%, transparent 100%)`,
           }}
         />
       </div>
@@ -514,7 +565,7 @@ export default function RecentWork() {
                     {project.caseStudyLink && (
                       <Link
                         href={project.caseStudyLink}
-                        className="group inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-all"
+                        className="group inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 hover-lift transition-all"
                       >
                         <span>View Case Study</span>
                         <svg 
@@ -526,36 +577,6 @@ export default function RecentWork() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                       </Link>
-                    )}
-                    {project.figmaLink && (
-                      <a
-                        href={project.figmaLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white text-sm font-medium rounded-full hover:bg-white/10 hover:border-white/40 transition-all"
-                      >
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
-                          <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/>
-                          <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/>
-                          <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/>
-                          <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
-                        </svg>
-                        <span>View Figma</span>
-                      </a>
-                    )}
-                    {project.githubLink && (
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white text-sm font-medium rounded-full hover:bg-white/10 hover:border-white/40 transition-all"
-                  >
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        <span>GitHub</span>
-                    </a>
                   )}
                 </div>
               </div>
@@ -564,6 +585,8 @@ export default function RecentWork() {
                 <div className={`${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
                   {project.deviceType === 'phone' ? (
                     <PhoneMockup project={project} index={index} isVisible={isVisible} />
+                  ) : project.deviceType === 'hero-image' ? (
+                    <HeroImageMockup project={project} index={index} isVisible={isVisible} />
                   ) : (
                     <LaptopMockup project={project} index={index} isVisible={isVisible} />
                   )}

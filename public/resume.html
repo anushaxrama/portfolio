@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anusha Ramachandran - Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #1a1a1a;
+      --color-secondary: #4a4a4a;
+      --color-muted: #6b6b6b;
+      --color-accent: #2563eb;
+      --color-border: #e5e5e5;
+      --color-bg: #ffffff;
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      font-size: 10pt;
+      line-height: 1.5;
+      color: var(--color-primary);
+      background: var(--color-bg);
+      padding: 0.5in;
+      max-width: 8.5in;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1.5px solid var(--color-primary);
+    }
+
+    .name {
+      font-size: 24pt;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .title {
+      font-size: 11pt;
+      font-weight: 500;
+      color: var(--color-secondary);
+      margin-bottom: 10px;
+    }
+
+    .contact {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 9pt;
+      color: var(--color-secondary);
+    }
+
+    .contact a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-primary);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* Education */
+    .education-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .school {
+      font-weight: 600;
+    }
+
+    .degree {
+      color: var(--color-secondary);
+      font-size: 9pt;
+    }
+
+    .coursework {
+      font-size: 9pt;
+      color: var(--color-muted);
+      margin-top: 4px;
+    }
+
+    /* Experience */
+    .experience-item {
+      margin-bottom: 14px;
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .company {
+      font-weight: 600;
+    }
+
+    .role {
+      color: var(--color-secondary);
+      font-style: italic;
+    }
+
+    .date {
+      font-size: 9pt;
+      color: var(--color-muted);
+    }
+
+    .experience-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .experience-list li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 3px;
+      font-size: 9.5pt;
+      color: var(--color-secondary);
+    }
+
+    .experience-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--color-muted);
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    /* Projects */
+    .project-item {
+      margin-bottom: 12px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .project-name {
+      font-weight: 600;
+    }
+
+    .project-type {
+      color: var(--color-muted);
+      font-size: 9pt;
+      font-style: italic;
+    }
+
+    .project-duration {
+      font-size: 9pt;
+      color: var(--color-muted);
+    }
+
+    .tools {
+      font-size: 8.5pt;
+      color: var(--color-accent);
+      margin-top: 2px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 6px 12px;
+      font-size: 9.5pt;
+    }
+
+    .skill-category {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .skill-items {
+      color: var(--color-secondary);
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        padding: 0;
+      }
+      
+      .contact a {
+        color: var(--color-secondary);
+      }
+    }
+
+    /* Award badge */
+    .award {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+      font-size: 8pt;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1 class="name">ANUSHA RAMACHANDRAN</h1>
+    <p class="title">Product & UX Designer</p>
+    <div class="contact">
+      <span class="contact-item">arama@ucdavis.edu</span>
+      <span class="contact-item">(925) 750-3546</span>
+      <span class="contact-item"><a href="https://anusharamachandran.com">anusharamachandran.com</a></span>
+      <span class="contact-item"><a href="https://linkedin.com/in/anusha-ramachandran-45882724a">LinkedIn</a></span>
+    </div>
+  </header>
+
+  <!-- Education -->
+  <section class="section">
+    <h2 class="section-title">Education</h2>
+    <div class="education-item">
+      <div>
+        <span class="school">University of California, Davis</span>
+        <span class="degree"> — B.S. Computational Cognitive Science, Minor in Computer Science</span>
+      </div>
+      <span class="date">Graduating Dec 2026</span>
+    </div>
+    <p class="coursework">Relevant Coursework: Human-Computer Interaction, Data Structures, Programming in C/C++, Cognitive Psychology, Research Methods</p>
+  </section>
+
+  <!-- Experience -->
+  <section class="section">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="experience-item">
+      <div class="experience-header">
+        <div>
+          <span class="company">Narbl</span>
+          <span class="role"> — UI/UX Design Intern</span>
+        </div>
+        <span class="date">June 2025 – Present</span>
+      </div>
+      <ul class="experience-list">
+        <li>Redesigned onboarding flow and core product features, resulting in <span class="highlight">40% increase in user sign-ups</span> within 3 months</li>
+        <li>Led end-to-end design of AI model comparison interface, reducing user onboarding time by <span class="highlight">2x</span></li>
+        <li>Built and maintained design system components in Figma, ensuring visual consistency across 15+ screens</li>
+        <li>Collaborated daily with engineers to ship designs to <span class="highlight">500+ active users</span></li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="experience-header">
+        <div>
+          <span class="company">ThinkNeuro</span>
+          <span class="role"> — UX Research Intern</span>
+        </div>
+        <span class="date">Jan 2024 – July 2024</span>
+      </div>
+      <ul class="experience-list">
+        <li>Led UX research for a digital intervention platform supporting opioid addiction recovery</li>
+        <li>Conducted <span class="highlight">20+ usability testing sessions</span> with patients and healthcare providers</li>
+        <li>Synthesized qualitative and quantitative data into actionable design recommendations</li>
+        <li>Collaborated with clinical researchers to ensure human-centered, compliant design</li>
+      </ul>
+    </div>
+
+    <div class="experience-item">
+      <div class="experience-header">
+        <div>
+          <span class="company">UC Davis Design Interactive</span>
+          <span class="role"> — Design Fellow</span>
+        </div>
+        <span class="date">Apr 2023 – June 2024</span>
+      </div>
+      <ul class="experience-list">
+        <li>Designed <span class="highlight">HABITat</span>, a gamified habit-tracking app that won <span class="award">🏆 Most User-Centered Design</span></li>
+        <li>Led user research with <span class="highlight">30+ participants</span> through interviews and surveys</li>
+        <li>Conducted multiple rounds of usability testing, iterating on wireframes and prototypes</li>
+        <li>Created comprehensive design documentation including user flows, personas, and design system</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Design Projects -->
+  <section class="section">
+    <h2 class="section-title">Design Projects</h2>
+
+    <div class="project-item">
+      <div class="project-header">
+        <div>
+          <span class="project-name">Spotify Redesign</span>
+          <span class="project-type"> — Concept Project</span>
+        </div>
+        <span class="project-duration">2 Weeks</span>
+      </div>
+      <ul class="experience-list">
+        <li>Reimagined Spotify's mobile experience to help users reconnect with music through memory and intention</li>
+        <li>Conducted user surveys with <span class="highlight">24 Spotify users</span>, synthesized insights through affinity mapping</li>
+        <li>Designed new features: "Listening Memory," "Threads," and "Emotional Clusters" with full user flows</li>
+      </ul>
+      <p class="tools">Figma, Cursor, Lovable</p>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <div>
+          <span class="project-name">NeuraNote</span>
+          <span class="project-type"> — AI-Powered Notes App</span>
+        </div>
+        <span class="project-duration">4 Weeks</span>
+      </div>
+      <ul class="experience-list">
+        <li>Designed an intelligent note-taking app helping users organize, connect, and retain information</li>
+        <li>Conducted competitive analysis of 5+ tools and user interviews to identify market opportunities</li>
+        <li>Developed lo-fi wireframes through hi-fi prototypes with micro-interactions</li>
+      </ul>
+      <p class="tools">Figma, Cursor, Galileo</p>
+    </div>
+  </section>
+
+  <!-- Technical Projects -->
+  <section class="section">
+    <h2 class="section-title">Technical Projects</h2>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">Healthcare Analytics Platform</span>
+        <span class="project-type"> — Data Engineering & AI/ML</span>
+      </div>
+      <ul class="experience-list">
+        <li>Built production-ready ETL pipeline with Python, PySpark, PostgreSQL; designed Streamlit dashboard</li>
+        <li>Integrated LangChain-powered chatbot for natural language querying; identified <span class="highlight">$2M+ in preventable costs</span></li>
+      </ul>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">Diabetes Readmission Predictor</span>
+        <span class="project-type"> — Machine Learning & Full-Stack</span>
+      </div>
+      <ul class="experience-list">
+        <li>Developed ML models predicting 30-day readmission risk across <span class="highlight">101K+ patient encounters</span></li>
+        <li>Built Flask API and Node.js frontend for interactive risk visualization</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <span class="skill-category">Design</span>
+      <span class="skill-items">UI/UX Design, Interaction Design, Visual Design, Design Systems, Wireframing, Prototyping, User Flows</span>
+      
+      <span class="skill-category">Research</span>
+      <span class="skill-items">User Interviews, Usability Testing, Surveys, Competitive Analysis, Affinity Mapping, Personas, Journey Mapping</span>
+      
+      <span class="skill-category">Tools</span>
+      <span class="skill-items">Figma, FigJam, Adobe Creative Suite (Photoshop, XD, Illustrator), Canva, Notion, Miro</span>
+      
+      <span class="skill-category">Technical</span>
+      <span class="skill-items">HTML/CSS, React, TypeScript, Tailwind CSS, Python, SQL, Git</span>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -13,45 +13,120 @@ interface Particle {
 }
 
 export default function Hero() {
-  const [showLastName, setShowLastName] = useState(false)
-  const [showScroll, setShowScroll] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [typedFirstName, setTypedFirstName] = useState('')
+  const [typedLastName, setTypedLastName] = useState('')
+  const [showSubtitle, setShowSubtitle] = useState(false)
+  const [animateStar, setAnimateStar] = useState(false)
+  const [showScroll, setShowScroll] = useState(false)
+
+  const firstName = 'ANUSHA'
+  const lastName = 'RAMACHANDRAN'
 
   // Generate floating white particles (star specs)
   const particles: Particle[] = useMemo(() => {
-    return Array.from({ length: 60 }, (_, i) => ({
+    return Array.from({ length: 50 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      duration: Math.random() * 8 + 4,
+      size: Math.random() * 2 + 1,
+      duration: Math.random() * 10 + 6,
       delay: Math.random() * 5,
-      opacity: Math.random() * 0.5 + 0.2,
+      opacity: Math.random() * 0.4 + 0.1,
     }));
   }, []);
 
   useEffect(() => {
-    // Start animation
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    // Start page load
     const loadTimer = setTimeout(() => {
       setIsLoaded(true)
     }, 100)
 
-    // Show last name after Anusha animation
-    const lastNameTimer = setTimeout(() => {
-      setShowLastName(true)
-    }, 1800)
+    // If reduced motion, show everything immediately
+    if (prefersReducedMotion) {
+      setTypedFirstName(firstName)
+      setTypedLastName(lastName)
+      setShowSubtitle(true)
+      setAnimateStar(true)
+      setShowScroll(true)
+      return () => clearTimeout(loadTimer)
+    }
 
-    // Show scroll text after last name appears
+    return () => clearTimeout(loadTimer)
+  }, [])
+
+  // Type first name
+  useEffect(() => {
+    if (!isLoaded) return
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) return
+
+    let currentIndex = 0
+    const startDelay = setTimeout(() => {
+      const typingInterval = setInterval(() => {
+        if (currentIndex <= firstName.length) {
+          setTypedFirstName(firstName.slice(0, currentIndex))
+          currentIndex++
+        } else {
+          clearInterval(typingInterval)
+        }
+      }, 80)
+
+      return () => clearInterval(typingInterval)
+    }, 300)
+
+    return () => clearTimeout(startDelay)
+  }, [isLoaded])
+
+  // Type last name after first name completes
+  useEffect(() => {
+    if (typedFirstName !== firstName) return
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) return
+
+    let currentIndex = 0
+    const startDelay = setTimeout(() => {
+      const typingInterval = setInterval(() => {
+        if (currentIndex <= lastName.length) {
+          setTypedLastName(lastName.slice(0, currentIndex))
+          currentIndex++
+        } else {
+          clearInterval(typingInterval)
+        }
+      }, 60)
+
+      return () => clearInterval(typingInterval)
+    }, 200)
+
+    return () => clearTimeout(startDelay)
+  }, [typedFirstName])
+
+  // Show subtitle and star after last name completes
+  useEffect(() => {
+    if (typedLastName !== lastName) return
+
+    const subtitleTimer = setTimeout(() => {
+      setShowSubtitle(true)
+    }, 400)
+
+    const starTimer = setTimeout(() => {
+      setAnimateStar(true)
+    }, 600)
+
     const scrollTimer = setTimeout(() => {
       setShowScroll(true)
-    }, 2800)
+    }, 1800)
 
     return () => {
-      clearTimeout(loadTimer)
-      clearTimeout(lastNameTimer)
+      clearTimeout(subtitleTimer)
+      clearTimeout(starTimer)
       clearTimeout(scrollTimer)
     }
-  }, [])
+  }, [typedLastName])
+
+  const isTypingComplete = typedLastName === lastName
 
   return (
     <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -78,88 +153,141 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/5 via-transparent to-blue-900/5" />
       </div>
 
-      {/* Name animation - centered */}
-      <div className="relative z-10 flex items-center justify-center px-4">
-        <div className="flex items-center justify-center">
-          {/* ANUSHA with stroke drawing animation */}
-          <svg
-            viewBox="0 0 320 70"
-            className="overflow-visible"
+      {/* Main content - centered */}
+      <div 
+        className="relative z-10 flex flex-col items-center justify-center px-4 text-center"
+        style={{
+          opacity: isLoaded ? 1 : 0,
+          transition: 'opacity 0.4s ease-out',
+        }}
+      >
+        {/* Two-line name with typing effect */}
+        <div className="relative">
+          {/* First name - larger */}
+          <h1 
+            className="text-white font-black uppercase tracking-tight leading-[0.9] select-none"
             style={{
-              width: 'clamp(200px, 35vw, 320px)',
-              height: 'auto',
-              opacity: isLoaded ? 1 : 0,
-              transition: 'opacity 0.2s ease-out',
+              fontSize: 'clamp(4rem, 14vw, 9rem)',
+              letterSpacing: '-0.02em',
+              minHeight: 'clamp(4rem, 14vw, 9rem)',
             }}
           >
-            {/* Background stroke that draws */}
-            <text
-              x="0"
-              y="55"
-              style={{
-                fontSize: '62px',
-                fontWeight: 900,
-                fontFamily: 'system-ui, -apple-system, sans-serif',
-                fill: 'none',
-                stroke: 'white',
-                strokeWidth: 2,
-                strokeDasharray: 800,
-                strokeDashoffset: isLoaded ? 0 : 800,
-                transition: 'stroke-dashoffset 1.6s cubic-bezier(0.4, 0, 0.2, 1)',
-              }}
-            >
-              ANUSHA
-            </text>
-            {/* Fill that fades in */}
-            <text
-              x="0"
-              y="55"
-              style={{
-                fontSize: '62px',
-                fontWeight: 900,
-                fontFamily: 'system-ui, -apple-system, sans-serif',
-                fill: 'white',
-                opacity: showLastName ? 1 : 0,
-                transition: 'opacity 0.3s ease-out',
-              }}
-            >
-              ANUSHA
-            </text>
-          </svg>
+            {typedFirstName}
+            {typedFirstName !== firstName && (
+              <span 
+                className="inline-block w-[4px] bg-white/80 ml-1 align-baseline"
+                style={{
+                  height: 'clamp(3rem, 10vw, 7rem)',
+                  animation: 'blink 1s step-end infinite',
+                }}
+              />
+            )}
+          </h1>
           
-          {/* RAMACHANDRAN - slides out from right of ANUSHA */}
-          <div
-            className="overflow-hidden"
+          {/* Last name - smaller */}
+          <h1 
+            className="text-white font-black uppercase tracking-tight leading-[0.9] select-none"
             style={{
-              maxWidth: showLastName ? '800px' : '0',
-              opacity: showLastName ? 1 : 0,
-              transition: 'max-width 0.8s ease-out, opacity 0.4s ease-out',
-              marginLeft: '-28px',
+              fontSize: 'clamp(2.2rem, 7vw, 5rem)',
+              letterSpacing: '0.01em',
+              minHeight: 'clamp(2.2rem, 7vw, 5rem)',
             }}
           >
-            <span 
-              className="text-white font-black uppercase tracking-tight whitespace-nowrap"
+            {typedLastName}
+            {typedFirstName === firstName && typedLastName !== lastName && (
+              <span 
+                className="inline-block w-[3px] bg-white/80 ml-1 align-baseline"
+                style={{
+                  height: 'clamp(1.8rem, 5vw, 4rem)',
+                  animation: 'blink 1s step-end infinite',
+                }}
+              />
+            )}
+          </h1>
+
+          {/* Shooting star underline */}
+          <div 
+            className="relative mt-4 h-[2px] overflow-visible"
+            style={{ 
+              width: '100%',
+              opacity: isTypingComplete ? 1 : 0,
+              transition: 'opacity 0.3s ease-out',
+            }}
+          >
+            {/* The underline trail */}
+            <div 
+              className="absolute top-0 left-0 h-full bg-gradient-to-r from-white/70 via-white/50 to-white/30"
               style={{
-                fontSize: 'clamp(3rem, 9vw, 3.875rem)',
-                letterSpacing: '0.02em',
+                width: animateStar ? '100%' : '0%',
+                transition: 'width 1s cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
+            />
+            
+            {/* The shooting star */}
+            <div 
+              className="absolute top-1/2 -translate-y-1/2"
+              style={{
+                left: animateStar ? '100%' : '0%',
+                opacity: animateStar ? 0 : 1,
+                transition: 'left 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out 0.8s',
               }}
             >
-              RAMACHANDRAN
-            </span>
+              {/* Star glow */}
+              <div 
+                className="absolute -left-1 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full"
+                style={{
+                  background: 'radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%)',
+                  boxShadow: '0 0 12px 4px rgba(255,255,255,0.6), 0 0 24px 8px rgba(255,255,255,0.3)',
+                }}
+              />
+              {/* Comet tail */}
+              <div 
+                className="absolute right-0 top-1/2 -translate-y-1/2 h-[2px]"
+                style={{
+                  width: '40px',
+                  background: 'linear-gradient(to left, rgba(255,255,255,0.8), rgba(255,255,255,0))',
+                  filter: 'blur(1px)',
+                }}
+              />
+            </div>
           </div>
         </div>
+
+        {/* Subtitle - fades in */}
+        <p 
+          className="text-white/80 text-sm md:text-base font-medium tracking-[0.2em] uppercase mt-8"
+          style={{
+            opacity: showSubtitle ? 1 : 0,
+            transform: showSubtitle ? 'translateY(0)' : 'translateY(8px)',
+            transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+          }}
+        >
+          UX / Product Designer
+        </p>
+
+        {/* Tagline - fades in */}
+        <p 
+          className="text-white/40 text-sm md:text-base mt-3 tracking-wide"
+          style={{
+            opacity: showSubtitle ? 1 : 0,
+            transform: showSubtitle ? 'translateY(0)' : 'translateY(8px)',
+            transition: 'opacity 0.6s ease-out 0.15s, transform 0.6s ease-out 0.15s',
+          }}
+        >
+          Designing thoughtful digital experiences
+        </p>
       </div>
 
       {/* Selected Work with arrow - CENTERED at bottom */}
       <div 
-        className="absolute bottom-20 left-0 right-0 flex flex-col items-center justify-center"
+        className="absolute bottom-16 left-0 right-0 flex flex-col items-center justify-center"
         style={{
           opacity: showScroll ? 1 : 0,
           transform: showScroll ? 'translateY(0)' : 'translateY(10px)',
           transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
         }}
       >
-        <div className="flex items-center gap-3 text-white/50">
+        <div className="flex items-center gap-3 text-white/40 hover:text-white/60 transition-colors cursor-pointer group">
           <svg 
             className="w-4 h-4 animate-bounce" 
             fill="none" 
@@ -168,7 +296,7 @@ export default function Hero() {
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
-          <p className="text-sm tracking-[0.2em] uppercase">Selected Work</p>
+          <p className="text-xs tracking-[0.25em] uppercase">Selected Work</p>
         </div>
       </div>
 
@@ -178,13 +306,28 @@ export default function Hero() {
             transform: translateY(0) translateX(0);
           }
           25% {
-            transform: translateY(-20px) translateX(10px);
+            transform: translateY(-15px) translateX(8px);
           }
           50% {
-            transform: translateY(-10px) translateX(-10px);
+            transform: translateY(-8px) translateX(-8px);
           }
           75% {
-            transform: translateY(-30px) translateX(5px);
+            transform: translateY(-20px) translateX(4px);
+          }
+        }
+        
+        @keyframes blink {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
+          }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+          .animate-bounce {
+            animation: none;
           }
         }
       `}</style>

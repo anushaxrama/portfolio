@@ -1,0 +1,970 @@
+'use client'
+
+import { useEffect, useState, useMemo, useRef } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  duration: number;
+  delay: number;
+  opacity: number;
+}
+
+export default function HabitatCaseStudy() {
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  const particles: Particle[] = useMemo(() => {
+    return Array.from({ length: 60 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      duration: Math.random() * 8 + 4,
+      delay: Math.random() * 5,
+      opacity: Math.random() * 0.3 + 0.1,
+    }));
+  }, []);
+
+  useEffect(() => {
+    setIsLoaded(true)
+  }, [])
+
+  return (
+    <main className="relative min-h-screen bg-black text-white">
+      {/* Floating particles - Orange accent */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            className="absolute rounded-full"
+            style={{
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              opacity: particle.opacity,
+              backgroundColor: particle.id % 3 === 0 ? '#f97316' : '#ffffff',
+              animation: `float ${particle.duration}s ease-in-out ${particle.delay}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Back button */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-8">
+        <Link 
+          href="/"
+          className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors text-sm tracking-wide"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          <span>Back</span>
+        </Link>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center px-8 pt-32 pb-20">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left side - Title and info */}
+            <div>
+              <div className={`flex items-center gap-3 mb-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <p className="text-[#f97316] text-sm tracking-[0.3em] uppercase">Case Study</p>
+                <span className="text-white/20">•</span>
+                <p className="text-[#fbbf24] text-sm tracking-wide flex items-center gap-1.5">
+                  <span>🏆</span> Awarded Most User-Centered Design
+                </p>
+              </div>
+              
+              <h1 className={`text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                HABITat
+              </h1>
+              
+              <p className={`text-lg md:text-xl text-white/50 mb-10 leading-relaxed transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                Track your habit, build your habitat. A gamified approach to habit tracking for college students.
+              </p>
+
+              {/* Project Meta */}
+              <div className={`grid grid-cols-2 gap-x-8 gap-y-4 text-sm transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div>
+                  <p className="text-white/30 uppercase tracking-wider mb-1">Role</p>
+                  <p className="text-white/80">UX Designer</p>
+                </div>
+                <div>
+                  <p className="text-white/30 uppercase tracking-wider mb-1">Duration</p>
+                  <p className="text-white/80">4-Week Sprint</p>
+                </div>
+                <div>
+                  <p className="text-white/30 uppercase tracking-wider mb-1">Tools</p>
+                  <p className="text-white/80">Figma, FigJam</p>
+                </div>
+                <div>
+                  <p className="text-white/30 uppercase tracking-wider mb-1">Team</p>
+                  <p className="text-white/80">4 Designers</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right side - Hero Image */}
+            <div className={`transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+              <div className="relative max-w-xl mx-auto">
+                <Image
+                  src="/habitat/habitat-hero.png"
+                  alt="HABITat App Preview"
+                  width={600}
+                  height={500}
+                  className="w-full h-auto"
+                  style={{ 
+                    filter: 'drop-shadow(0 25px 50px rgba(0,0,0,0.4))',
+                  }}
+                  priority
+                />
+                {/* Glow effect */}
+                <div className="absolute -inset-20 bg-gradient-to-t from-[#f97316]/15 via-[#f97316]/5 to-transparent rounded-full blur-3xl -z-10" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Overview Section */}
+      <Section>
+        <SectionLabel>01 — Overview</SectionLabel>
+        <div className="max-w-3xl">
+          <p className="text-2xl md:text-3xl text-white/80 font-light leading-relaxed mb-8">
+            Most habit tracking apps fail because they lack incentives, rewards, and accountability. What if building habits felt like building something meaningful?
+          </p>
+          <p className="text-lg text-white/50 leading-relaxed mb-12">
+            HABITat reimagines habit tracking through gamification. As you maintain your habits, you build a virtual habitat and unlock adorable animal companions. The app combines reward systems with social accountability, making habit-building feel less like a chore and more like nurturing your own little world.
+          </p>
+          
+          {/* Problem Statement */}
+          <div className="relative">
+            <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-[#f97316] to-transparent rounded-full" />
+            <div className="pl-8">
+              <p className="text-white/30 text-xs uppercase tracking-[0.25em] mb-4">Problem Statement</p>
+              <p className="text-xl md:text-2xl text-white/90 leading-relaxed font-light">
+                How might we design an app for{' '}
+                <span className="text-[#f97316]">college students</span> that tracks their{' '}
+                <span className="text-[#f97316]">habits</span> in a clear and concise way while keeping them{' '}
+                <span className="text-[#f97316]">engaged and accountable</span>?
+              </p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Design Sprint Timeline */}
+      <Section>
+        <SectionLabel>02 — Design Sprint</SectionLabel>
+        <SectionTitle>4-Week Process</SectionTitle>
+        
+        <div className="max-w-5xl">
+          <div className="relative">
+            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#f97316] via-[#f97316]/50 to-transparent md:-translate-x-1/2" />
+            
+            {/* Week 1 */}
+            <div className="relative pl-8 md:pl-0 pb-16 md:grid md:grid-cols-2 md:gap-12">
+              <div className="md:text-right md:pr-12">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f97316]/10 border border-[#f97316]/20 mb-4">
+                  <span className="text-[#f97316] text-sm font-medium">Week 1</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">Research & Discovery</h3>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  Conducted user surveys with college students, competitive analysis of habit apps, and stakeholder interviews.
+                </p>
+              </div>
+              <div className="hidden md:block" />
+              <div className="absolute left-0 md:left-1/2 top-0 w-3 h-3 rounded-full bg-[#f97316] md:-translate-x-1/2 shadow-lg shadow-[#f97316]/50" />
+            </div>
+
+            {/* Week 2 */}
+            <div className="relative pl-8 md:pl-0 pb-16 md:grid md:grid-cols-2 md:gap-12">
+              <div className="hidden md:block" />
+              <div className="md:pl-12">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f97316]/10 border border-[#f97316]/20 mb-4">
+                  <span className="text-[#f97316] text-sm font-medium">Week 2</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">Ideation & Concept</h3>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  Brainstormed concepts with crazy 8s, dot voting, and affinity mapping. Landed on the "habitat building" metaphor.
+                </p>
+              </div>
+              <div className="absolute left-0 md:left-1/2 top-0 w-3 h-3 rounded-full bg-[#f97316] md:-translate-x-1/2 shadow-lg shadow-[#f97316]/50" />
+            </div>
+
+            {/* Week 3 */}
+            <div className="relative pl-8 md:pl-0 pb-16 md:grid md:grid-cols-2 md:gap-12">
+              <div className="md:text-right md:pr-12">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f97316]/10 border border-[#f97316]/20 mb-4">
+                  <span className="text-[#f97316] text-sm font-medium">Week 3</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">Wireframing & Testing</h3>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  Created low-fi sketches, mid-fi wireframes in Figma, and conducted usability testing with real users.
+                </p>
+              </div>
+              <div className="hidden md:block" />
+              <div className="absolute left-0 md:left-1/2 top-0 w-3 h-3 rounded-full bg-[#f97316] md:-translate-x-1/2 shadow-lg shadow-[#f97316]/50" />
+            </div>
+
+            {/* Week 4 */}
+            <div className="relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-12">
+              <div className="hidden md:block" />
+              <div className="md:pl-12">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fbbf24]/10 border border-[#fbbf24]/20 mb-4">
+                  <span className="text-[#fbbf24] text-sm font-medium">Week 4</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">Hi-Fi & Presentation</h3>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  Polished visual design with safari theme, created interactive prototype, and presented to judges.
+                </p>
+              </div>
+              <div className="absolute left-0 md:left-1/2 top-0 w-3 h-3 rounded-full bg-[#fbbf24] md:-translate-x-1/2 shadow-lg shadow-[#fbbf24]/50" />
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* User Research Section */}
+      <Section>
+        <SectionLabel>03 — User Research</SectionLabel>
+        <SectionTitle>Understanding Our Users</SectionTitle>
+        
+        <div className="max-w-5xl">
+          <p className="text-lg text-white/60 leading-relaxed mb-12 max-w-3xl">
+            We surveyed college students to understand their relationship with habit tracking apps and identified the core problem: most users abandon habit apps within weeks due to lack of motivation.
+          </p>
+
+          {/* Survey Results */}
+          <div className="mb-16">
+            <h3 className="text-xl font-semibold text-white mb-8">Survey Findings</h3>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Question 1 */}
+              <div className="bg-white/[0.03] rounded-2xl p-6 border border-white/10">
+                <p className="text-white/80 font-medium mb-4">"What would incentivize you to keep up your habits?"</p>
+                <div className="space-y-3">
+                  {[
+                    { response: 'Non time consuming option', highlight: false },
+                    { response: 'Reaching my goals and expectations', highlight: false },
+                    { response: 'If I feel rewarded by it', highlight: true },
+                    { response: 'Money, satisfaction', highlight: false },
+                    { response: 'Food and rewards both in the app and real life. Include a system to share with friends.', highlight: true },
+                  ].map((item, i) => (
+                    <div 
+                      key={i} 
+                      className={`text-sm p-3 rounded-lg ${item.highlight ? 'bg-[#f97316]/10 text-[#f97316] border border-[#f97316]/20' : 'bg-white/5 text-white/60'}`}
+                    >
+                      {item.response}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Question 2 - Chart */}
+              <div className="bg-white/[0.03] rounded-2xl p-6 border border-white/10">
+                <p className="text-white/80 font-medium mb-4">"What challenges do you face keeping up habits?"</p>
+                <div className="space-y-4">
+                  {[
+                    { label: 'Too lazy to update daily', value: 100 },
+                    { label: 'Forget to update habits', value: 100 },
+                    { label: 'No incentive to continue', value: 67 },
+                    { label: 'User interface not appealing', value: 17 },
+                    { label: 'Difficult to access platform', value: 17 },
+                  ].map((item, i) => (
+                    <div key={i}>
+                      <div className="flex justify-between text-sm mb-1">
+                        <span className="text-white/60">{item.label}</span>
+                        <span className="text-white/40">{item.value}%</span>
+                      </div>
+                      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-gradient-to-r from-[#f97316] to-[#ea580c] rounded-full transition-all duration-1000"
+                          style={{ width: `${item.value}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Key Insights - No Emojis, Modern Design */}
+          <h3 className="text-xl font-semibold text-white mb-8">Key Research Insights</h3>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div>
+              <h4 className="text-[#f97316] font-semibold text-lg mb-3">Incentivization Gap</h4>
+              <p className="text-white/50 text-sm leading-relaxed">Users need tangible rewards and visual progress to stay motivated beyond the first week. Abstract streaks aren't enough.</p>
+            </div>
+            
+            <div>
+              <h4 className="text-[#60a5fa] font-semibold text-lg mb-3">Social Accountability</h4>
+              <p className="text-white/50 text-sm leading-relaxed">Social connections and shared goals create external motivation that self-tracking alone can't provide.</p>
+            </div>
+            
+            <div>
+              <h4 className="text-[#fbbf24] font-semibold text-lg mb-3">Emotional Rewards</h4>
+              <p className="text-white/50 text-sm leading-relaxed">Gamification elements like collecting and achievements tap into intrinsic motivation when done meaningfully.</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Affinity Mapping - Sticky Notes Style */}
+      <Section>
+        <SectionLabel>04 — Synthesis</SectionLabel>
+        <SectionTitle>Affinity Mapping</SectionTitle>
+        
+        <div className="max-w-6xl">
+          <p className="text-white/50 leading-relaxed max-w-3xl mb-8">
+            I synthesized survey and interview data through affinity mapping. Three themes emerged that would guide our design:
+          </p>
+          
+          <div className="max-w-3xl mb-12 space-y-3">
+            <p className="text-white/50 leading-relaxed">
+              <span className="text-white/80 font-medium">Incentivization:</span> Visual rewards and progress that create emotional investment.
+            </p>
+            <p className="text-white/50 leading-relaxed">
+              <span className="text-white/80 font-medium">Accountability:</span> Social features that create external motivation beyond self-discipline.
+            </p>
+            <p className="text-white/50 leading-relaxed">
+              <span className="text-white/80 font-medium">Engagement:</span> Game-like mechanics that make habit tracking feel rewarding, not tedious.
+            </p>
+          </div>
+
+          {/* Affinity Map Grid - Sticky Notes */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            
+            {/* Incentivization Column */}
+            <div>
+              <h4 className="text-2xl font-bold text-white mb-8 text-center">Incentivization</h4>
+              <div className="grid grid-cols-2 gap-3">
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#fcd5d7', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">User Behavior</p>
+                  <p className="text-gray-700 leading-snug">Stops using habit apps after a few days because progress feels invisible.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#d4edda', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Needs / Goals</p>
+                  <p className="text-gray-700 leading-snug">Wants to see tangible proof that daily habits are leading somewhere meaningful.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#fff9e6', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">Streaks alone don't feel rewarding enough to maintain motivation.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#fff9e6', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">Breaking a streak feels devastating with no way to recover momentum.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#d6eaff', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">UX Principle</p>
+                  <p className="text-gray-700 leading-snug">Rewards should create emotional attachment, not just acknowledge completion.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#ffe5d0', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Opportunity</p>
+                  <p className="text-gray-700 leading-snug">Collectible animals that users earn through milestones, creating emotional investment.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Accountability Column */}
+            <div>
+              <h4 className="text-2xl font-bold text-white mb-8 text-center">Accountability</h4>
+              <div className="grid grid-cols-2 gap-3">
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#fcd5d7', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">User Behavior</p>
+                  <p className="text-gray-700 leading-snug">More likely to complete habits when a friend or partner is involved.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#d4edda', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Needs / Goals</p>
+                  <p className="text-gray-700 leading-snug">Wants external motivation from friends to stay consistent with habits.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#fff9e6', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">Existing apps treat habit tracking as a solo activity with no social connection.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#fff9e6', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">No easy way to share progress or celebrate wins with friends.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#d6eaff', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">UX Principle</p>
+                  <p className="text-gray-700 leading-snug">Social features should feel supportive, not competitive or judgmental.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#ffe5d0', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Opportunity</p>
+                  <p className="text-gray-700 leading-snug">Shared habits with friends, gentle reminders, and visible progress sharing.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Engagement Column */}
+            <div>
+              <h4 className="text-2xl font-bold text-white mb-8 text-center">Engagement</h4>
+              <div className="grid grid-cols-2 gap-3">
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#fcd5d7', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">User Behavior</p>
+                  <p className="text-gray-700 leading-snug">Enjoys games with collection mechanics and progression systems.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#d4edda', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Needs / Goals</p>
+                  <p className="text-gray-700 leading-snug">Wants habit tracking to feel fun and rewarding, not like a chore.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#fff9e6', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">Most habit apps are boring and utilitarian with no personality.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#fff9e6', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Pain Point</p>
+                  <p className="text-gray-700 leading-snug">Gamification in existing apps feels forced or disconnected from habits.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#d6eaff', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">UX Principle</p>
+                  <p className="text-gray-700 leading-snug">Gamification should enhance the habit, not distract from it.</p>
+                </div>
+                <div 
+                  className="aspect-square p-3 text-xs flex flex-col"
+                  style={{ backgroundColor: '#ffe5d0', boxShadow: '2px 2px 8px rgba(0,0,0,0.15)' }}
+                >
+                  <p className="font-bold text-gray-800 mb-1">Opportunity</p>
+                  <p className="text-gray-700 leading-snug">Build a "habitat" that grows with habits—visual progress users care about.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Legend */}
+          <div className="flex flex-wrap gap-4 mt-10 justify-center">
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: 'rgba(252,213,215,0.9)' }}></div>
+              <span className="text-white/40 text-xs">User Behavior</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: 'rgba(212,237,218,0.9)' }}></div>
+              <span className="text-white/40 text-xs">Needs / Goals</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: 'rgba(255,249,230,0.9)' }}></div>
+              <span className="text-white/40 text-xs">Pain Point</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: 'rgba(214,234,255,0.9)' }}></div>
+              <span className="text-white/40 text-xs">UX Principle</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded" style={{ backgroundColor: 'rgba(255,229,208,0.9)' }}></div>
+              <span className="text-white/40 text-xs">Opportunity</span>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* User Flows - Styled like NeuraNote */}
+      <Section>
+        <SectionLabel>05 — Information Architecture</SectionLabel>
+        <SectionTitle>User Flows & Core Features</SectionTitle>
+        <p className="text-white/40 text-sm mb-10">Four core journeys mapped from research insights</p>
+        
+        <div className="max-w-5xl space-y-4">
+          
+          {/* Onboarding Flow */}
+          <div 
+            className="rounded-2xl p-6 border border-white/[0.06]"
+            style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+          >
+            <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Onboarding</p>
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">Launch App</span>
+              <span className="text-white/20 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Welcome</span>
+              <span className="text-white/20 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Sign Up</span>
+              <span className="text-white/20 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Setup Profile</span>
+              <span className="text-white/20 text-sm">→</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fed7aa]/90 text-[#2a2416] border border-[#fed7aa]/40">Home Dashboard</span>
+            </div>
+          </div>
+
+          {/* Create Habit Flow */}
+          <div 
+            className="rounded-2xl p-6 border border-white/[0.06]"
+            style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+          >
+            <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Create Habit</p>
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fed7aa]/90 text-[#2a2416] border border-[#fed7aa]/40">Home</span>
+              <span className="text-white/20 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">+ Add Habit</span>
+              <span className="text-white/20 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Name Habit</span>
+              <span className="text-white/20 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Set Frequency</span>
+              <span className="text-white/20 text-sm">→</span>
+              <div className="flex flex-col gap-1.5">
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Daily</span>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Weekly</span>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Custom</span>
+              </div>
+              <span className="text-white/20 text-sm">→</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">Save</span>
+            </div>
+          </div>
+
+          {/* Track & Complete Flow */}
+          <div 
+            className="rounded-2xl p-6 border border-white/[0.06]"
+            style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+          >
+            <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Track & Complete</p>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fed7aa]/90 text-[#2a2416] border border-[#fed7aa]/40">Home</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">View Habits</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">Tap Complete</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Streak +1</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#dcb5c4]/90 text-[#2a1a20]">Milestone?</span>
+              </div>
+              <div className="flex items-center gap-3 flex-wrap pl-6">
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">Yes</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fed7aa]/90 text-[#2a2416]">Unlock Animal!</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Add to Habitat</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Social/Shared Habits Flow */}
+          <div 
+            className="rounded-2xl p-6 border border-white/[0.06]"
+            style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+          >
+            <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Shared Habits</p>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Profile</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Friends</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">Invite Friend</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Start Shared Habit</span>
+              </div>
+              <div className="flex items-center gap-3 flex-wrap pl-6">
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">View Shared Progress</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#dcb5c4]/90 text-[#2a1a20]">Friend missed?</span>
+                <span className="text-white/20 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fdba74]/90 text-[#78350f]">Send Reminder</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Legend */}
+          <div className="flex flex-wrap gap-6 mt-10 text-xs">
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 rounded-full bg-[#fb923c]"></span>
+              <span className="text-white/50">Action</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 rounded-lg bg-[#c4b5dc]"></span>
+              <span className="text-white/50">Step</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 rounded-full bg-[#fed7aa]"></span>
+              <span className="text-white/50">Screen</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 rounded-lg bg-[#dcb5c4]"></span>
+              <span className="text-white/50">Decision</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 rounded-lg bg-[#fdba74]"></span>
+              <span className="text-white/50">Social</span>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Figma Prototyping */}
+      <Section>
+        <SectionLabel>06 — Design</SectionLabel>
+        <SectionTitle>Figma Prototyping</SectionTitle>
+        
+        <div className="max-w-5xl">
+          <p className="text-lg text-white/60 leading-relaxed mb-10 max-w-3xl">
+            Our comprehensive Figma prototype maps out all user flows, from onboarding to habit tracking, shared habits, and reward unlocking. The prototype includes interactive components for user testing.
+          </p>
+
+          <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/30">
+            <Image 
+              src="/habitat/habitat-figma.png" 
+              alt="HABITat Figma Prototype"
+              width={1400}
+              height={900}
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
+      </Section>
+
+      {/* Mid-Fi Wireframes */}
+      <Section>
+        <SectionLabel>07 — Wireframes</SectionLabel>
+        <SectionTitle>Mid-Fi Designs</SectionTitle>
+        
+        <div className="max-w-4xl">
+          <p className="text-lg text-white/60 leading-relaxed mb-10 max-w-3xl">
+            Mid-fidelity designs established the visual hierarchy and interaction patterns before moving to high-fidelity prototypes.
+          </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+              <Image 
+                src="/midfi-profile.png" 
+                alt="Profile Screen"
+                width={300}
+                height={600}
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+              <Image 
+                src="/midfi-habits.png" 
+                alt="Habits List"
+                width={300}
+                height={600}
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+              <Image 
+                src="/midfi-signin.png" 
+                alt="Sign In Screen"
+                width={300}
+                height={600}
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+              <Image 
+                src="/midfi-calendar.png" 
+                alt="Create Account Screen"
+                width={300}
+                height={600}
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Solution - Rewards & Collaboration */}
+      <Section>
+        <SectionLabel>08 — Solution</SectionLabel>
+        <SectionTitle>Rewards & Collaboration</SectionTitle>
+        
+        <div className="max-w-5xl">
+          <p className="text-lg text-white/60 leading-relaxed mb-12 max-w-3xl">
+            Our final solution combines two powerful motivators: a collectible reward system and social accountability features.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-10 items-start">
+            {/* Why This Solution */}
+            <div className="flex flex-col">
+              <h3 className="text-[#f97316] text-lg font-semibold mb-4">Why This Approach?</h3>
+              <p className="text-white/60 text-sm leading-relaxed mb-4">
+                Research showed that college students abandon habit trackers within 2 weeks due to lack of motivation. We needed something more engaging than checkboxes.
+              </p>
+              <p className="text-white/60 text-sm leading-relaxed mb-4">
+                By combining <span className="text-white">collectible rewards</span> with <span className="text-white">social accountability</span>, we tap into two powerful psychological drivers: the desire to collect and the fear of letting friends down.
+              </p>
+              <p className="text-white/40 text-xs mt-2">
+                Users who share habits with friends show 3x higher retention rates in our testing.
+              </p>
+            </div>
+
+            {/* Reward System */}
+            <div className="flex flex-col items-center">
+              <h3 className="text-[#f97316] text-lg font-semibold mb-4">Reward System</h3>
+              <div className="rounded-xl overflow-hidden border border-white/10 bg-white/5 max-w-[280px]">
+                <Image 
+                  src="/habitat/reward-tiger.jpeg" 
+                  alt="Tiger Reward"
+                  width={280}
+                  height={280}
+                  className="w-full h-auto"
+                />
+              </div>
+              <p className="text-white/40 text-xs mt-3 text-center">Unlock animals through<br/>habit milestones</p>
+            </div>
+
+            {/* Collaboration */}
+            <div className="flex flex-col items-center">
+              <h3 className="text-[#60a5fa] text-lg font-semibold mb-4">Collaboration</h3>
+              <div className="rounded-xl overflow-hidden border border-white/10 bg-black/20 max-w-[300px]">
+                <Image 
+                  src="/habitat/shared-habits.jpeg" 
+                  alt="Shared Habits"
+                  width={300}
+                  height={230}
+                  className="w-full h-auto"
+                />
+              </div>
+              <p className="text-white/40 text-xs mt-3 text-center">Share habits with friends<br/>& track together</p>
+            </div>
+          </div>
+
+          {/* Key Design Decision */}
+          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-[#f97316]/10 to-transparent border-l-2 border-[#f97316] max-w-3xl">
+            <p className="text-[#f97316] text-xs font-medium uppercase tracking-wider mb-2">Key Design Decision</p>
+            <p className="text-white/70 leading-relaxed">
+              We chose <strong className="text-white">collectible animals over points or badges</strong> because our research showed college students respond better to tangible, shareable rewards. The safari theme creates emotional investment that simple gamification lacks.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* Demo Section */}
+      <Section>
+        <SectionLabel>09 — Final Product</SectionLabel>
+        <SectionTitle>Interactive Demo</SectionTitle>
+        
+        <div className="max-w-5xl">
+          <p className="text-lg text-white/60 leading-relaxed mb-12 max-w-3xl">
+            The final HABITat prototype features a polished safari-themed visual design with smooth interactions and delightful micro-animations.
+          </p>
+
+          {/* Demo Video */}
+          <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-black">
+            <video 
+              className="w-full h-full object-contain"
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src="/habitat/habitat-demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </Section>
+
+      {/* Award Section */}
+      <Section>
+        <div className="max-w-4xl">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#fbbf24] to-[#f59e0b] flex items-center justify-center shadow-lg shadow-[#fbbf24]/20">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white">Most User-Centered Design</h2>
+              <p className="text-white/50">Awarded among all Design Innovation teams</p>
+            </div>
+          </div>
+          <p className="text-lg text-white/60 leading-relaxed max-w-2xl">
+            Our team's deep commitment to understanding real user pain points and designing meaningful, research-backed solutions earned us this recognition.
+          </p>
+        </div>
+      </Section>
+
+      {/* Results */}
+      <Section>
+        <SectionLabel>10 — Impact</SectionLabel>
+        <SectionTitle>Results & Validation</SectionTitle>
+        <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
+          We validated our designs through multiple rounds of usability testing with college students.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mb-12">
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+            <p className="text-4xl font-bold text-[#f97316] mb-2">30%</p>
+            <p className="text-white/50 text-sm">increase in user engagement during testing</p>
+          </div>
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+            <p className="text-4xl font-bold text-[#f97316] mb-2">🏆</p>
+            <p className="text-white/50 text-sm">Most User-Centered Design Award</p>
+          </div>
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+            <p className="text-4xl font-bold text-[#f97316] mb-2">94%</p>
+            <p className="text-white/50 text-sm">of testers would use HABITat regularly</p>
+          </div>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-gradient-to-r from-[#f97316]/10 to-transparent border-l-2 border-[#f97316] max-w-3xl">
+          <p className="text-[#f97316] text-xs font-medium uppercase tracking-wider mb-2">User Feedback</p>
+          <p className="text-white/70 leading-relaxed italic">
+            "I actually want to open this app every day. The animals make me feel like I'm working toward something real, not just checking boxes."
+          </p>
+          <p className="text-white/40 text-sm mt-2">— Usability Testing Participant</p>
+        </div>
+      </Section>
+
+      {/* Team & Reflection */}
+      <Section>
+        <SectionLabel>11 — Reflection</SectionLabel>
+        <SectionTitle>Team & Learnings</SectionTitle>
+        
+        <div className="max-w-3xl">
+          <div className="flex flex-wrap gap-3 mb-12">
+            {['Deepa Bhat', 'Anusha Ramachandran', 'Vaishnavi Chandrapati', 'Aaron Foronda'].map((name) => (
+              <span 
+                key={name}
+                className="px-4 py-2 rounded-full bg-white/5 text-white/60 text-sm border border-white/10"
+              >
+                {name}
+              </span>
+            ))}
+          </div>
+
+          <div className="space-y-8 mb-12">
+            <div>
+              <h3 className="text-white font-medium mb-3">Gamification requires careful balance</h3>
+              <p className="text-white/50 leading-relaxed">
+                Every animal, every reward had to connect to real habit progress—not just arbitrary points.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-white font-medium mb-3">Social features drive long-term engagement</h3>
+              <p className="text-white/50 leading-relaxed">
+                Accountability partners dramatically improve habit retention. Building social features was essential.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-white font-medium mb-3">User-centered design wins</h3>
+              <p className="text-white/50 leading-relaxed">
+                Starting with real user pain points—not assumptions—made all the difference in winning the award.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Footer */}
+      <section className="relative py-32 px-8">
+        <div className="max-w-6xl mx-auto">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-3 px-6 py-3 bg-[#f97316] hover:bg-[#ea580c] text-black font-semibold rounded-full transition-all"
+          >
+            Back to Portfolio
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+        </div>
+      </section>
+
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0) translateX(0); }
+          25% { transform: translateY(-20px) translateX(10px); }
+          50% { transform: translateY(-10px) translateX(-10px); }
+          75% { transform: translateY(-30px) translateX(5px); }
+        }
+      `}</style>
+    </main>
+  )
+}
+
+function Section({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true) },
+      { threshold: 0.1, rootMargin: '-50px' }
+    )
+    const currentRef = ref.current
+    if (currentRef) observer.observe(currentRef)
+    return () => { if (currentRef) observer.unobserve(currentRef) }
+  }, [])
+
+  return (
+    <section 
+      ref={ref}
+      className={`relative py-24 px-8 border-t border-white/5 transition-all duration-1000 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      }`}
+    >
+      <div className="max-w-6xl mx-auto">{children}</div>
+    </section>
+  )
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return <p className="text-[#f97316] text-sm font-medium tracking-wide mb-4">{children}</p>
+}
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return <h2 className="text-3xl md:text-4xl font-bold text-white mb-12">{children}</h2>
+}

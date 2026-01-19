@@ -26,7 +26,7 @@ export default function Navbar() {
           resume
         </button>
         <a
-          href="mailto:anusharama100@gmail.com"
+          href="mailto:arama@ucdavis.edu"
           className="hover:text-white transition-colors duration-300"
         >
           email
