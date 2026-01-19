@@ -17,10 +17,28 @@ interface Particle {
 export default function HabitatCaseStudy() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [showBackButton, setShowBackButton] = useState(true)
+  const footerRef = useRef<HTMLElement>(null)
 
   // Check for mobile on mount
   useEffect(() => {
     setIsMobile(window.innerWidth < 768)
+  }, [])
+
+  // Hide back button when footer is visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowBackButton(!entry.isIntersecting)
+      },
+      { threshold: 0.1 }
+    )
+    
+    if (footerRef.current) {
+      observer.observe(footerRef.current)
+    }
+    
+    return () => observer.disconnect()
   }, [])
 
   const particles: Particle[] = useMemo(() => {
@@ -62,7 +80,7 @@ export default function HabitatCaseStudy() {
       </div>
 
       {/* Back button */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-8">
+      <nav className={`fixed top-0 left-0 right-0 z-50 px-8 py-8 transition-opacity duration-300 ${showBackButton ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <Link 
           href="/"
           className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors text-sm tracking-wide"
@@ -141,13 +159,14 @@ export default function HabitatCaseStudy() {
 
       {/* Overview Section */}
       <Section>
-        <SectionLabel>01 — Overview</SectionLabel>
+        <SectionLabel>01</SectionLabel>
+        <SectionTitle>Overview</SectionTitle>
         <div className="max-w-3xl">
           <p className="text-2xl md:text-3xl text-white/80 font-light leading-relaxed mb-8">
             Most habit tracking apps fail because they lack incentives, rewards, and accountability. What if building habits felt like building something meaningful?
           </p>
           <p className="text-lg text-white/50 leading-relaxed mb-12">
-            HABITat reimagines habit tracking through gamification. As you maintain your habits, you build a virtual habitat and unlock adorable animal companions. The app combines reward systems with social accountability, making habit-building feel less like a chore and more like nurturing your own little world.
+            HABITat reimagines habit tracking through <strong className="text-white/70">gamification</strong>. As you maintain your habits, you build a virtual habitat and unlock adorable animal companions. The app combines <strong className="text-white/70">reward systems</strong> with <strong className="text-white/70">social accountability</strong>, making habit-building feel less like a chore and more like nurturing your own little world.
           </p>
           
           {/* Problem Statement */}
@@ -168,8 +187,8 @@ export default function HabitatCaseStudy() {
 
       {/* Design Sprint Timeline */}
       <Section>
-        <SectionLabel>02 — Design Sprint</SectionLabel>
-        <SectionTitle>4-Week Process</SectionTitle>
+        <SectionLabel>02</SectionLabel>
+        <SectionTitle>Design Process</SectionTitle>
         
         <div className="max-w-5xl">
           <div className="relative">
@@ -181,9 +200,9 @@ export default function HabitatCaseStudy() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f97316]/10 border border-[#f97316]/20 mb-4">
                   <span className="text-[#f97316] text-sm font-medium">Week 1</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Research & Discovery</h3>
+                <h3 className="text-xl font-semibold text-[#f97316] mb-2">Research & Discovery</h3>
                 <p className="text-white/50 text-sm leading-relaxed">
-                  Conducted user surveys with college students, competitive analysis of habit apps, and stakeholder interviews.
+                  Conducted <strong className="text-white/70">user surveys</strong> with college students, <strong className="text-white/70">competitive analysis</strong> of habit apps, and <strong className="text-white/70">stakeholder interviews</strong>.
                 </p>
               </div>
               <div className="hidden md:block" />
@@ -197,9 +216,9 @@ export default function HabitatCaseStudy() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f97316]/10 border border-[#f97316]/20 mb-4">
                   <span className="text-[#f97316] text-sm font-medium">Week 2</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Ideation & Concept</h3>
+                <h3 className="text-xl font-semibold text-[#f97316] mb-2">Ideation & Concept</h3>
                 <p className="text-white/50 text-sm leading-relaxed">
-                  Brainstormed concepts with crazy 8s, dot voting, and affinity mapping. Landed on the "habitat building" metaphor.
+                  Brainstormed concepts with <strong className="text-white/70">crazy 8s</strong>, <strong className="text-white/70">dot voting</strong>, and <strong className="text-white/70">affinity mapping</strong>. Landed on the "habitat building" metaphor.
                 </p>
               </div>
               <div className="absolute left-0 md:left-1/2 top-0 w-3 h-3 rounded-full bg-[#f97316] md:-translate-x-1/2 shadow-lg shadow-[#f97316]/50" />
@@ -211,9 +230,9 @@ export default function HabitatCaseStudy() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f97316]/10 border border-[#f97316]/20 mb-4">
                   <span className="text-[#f97316] text-sm font-medium">Week 3</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Wireframing & Testing</h3>
+                <h3 className="text-xl font-semibold text-[#f97316] mb-2">Wireframing & Testing</h3>
                 <p className="text-white/50 text-sm leading-relaxed">
-                  Created low-fi sketches, mid-fi wireframes in Figma, and conducted usability testing with real users.
+                  Created <strong className="text-white/70">low-fi sketches</strong>, <strong className="text-white/70">mid-fi wireframes</strong> in Figma, and conducted <strong className="text-white/70">usability testing</strong> with real users.
                 </p>
               </div>
               <div className="hidden md:block" />
@@ -227,7 +246,7 @@ export default function HabitatCaseStudy() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fbbf24]/10 border border-[#fbbf24]/20 mb-4">
                   <span className="text-[#fbbf24] text-sm font-medium">Week 4</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Hi-Fi & Presentation</h3>
+                <h3 className="text-xl font-semibold text-[#f97316] mb-2">Hi-Fi & Presentation</h3>
                 <p className="text-white/50 text-sm leading-relaxed">
                   Polished visual design with safari theme, created interactive prototype, and presented to judges.
                 </p>
@@ -240,17 +259,17 @@ export default function HabitatCaseStudy() {
 
       {/* User Research Section */}
       <Section>
-        <SectionLabel>03 — User Research</SectionLabel>
-        <SectionTitle>Understanding Our Users</SectionTitle>
+        <SectionLabel>03</SectionLabel>
+        <SectionTitle>Research</SectionTitle>
         
         <div className="max-w-5xl">
           <p className="text-lg text-white/60 leading-relaxed mb-12 max-w-3xl">
-            We surveyed college students to understand their relationship with habit tracking apps and identified the core problem: most users abandon habit apps within weeks due to lack of motivation.
+            We <strong className="text-white/80">surveyed college students</strong> to understand their relationship with habit tracking apps and identified the core problem: most users <strong className="text-white/80">abandon habit apps within weeks</strong> due to lack of motivation.
           </p>
 
           {/* Survey Results */}
           <div className="mb-16">
-            <h3 className="text-xl font-semibold text-white mb-8">Survey Findings</h3>
+            <h3 className="text-xl font-semibold text-[#f97316] mb-8">Survey Findings</h3>
             
             <div className="grid md:grid-cols-2 gap-8">
               {/* Question 1 */}
@@ -304,7 +323,7 @@ export default function HabitatCaseStudy() {
           </div>
 
           {/* Key Insights - No Emojis, Modern Design */}
-          <h3 className="text-xl font-semibold text-white mb-8">Key Research Insights</h3>
+          <h3 className="text-xl font-semibold text-[#f97316] mb-8">Key Research Insights</h3>
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div>
               <h4 className="text-[#f97316] font-semibold text-lg mb-3">Incentivization Gap</h4>
@@ -326,12 +345,12 @@ export default function HabitatCaseStudy() {
 
       {/* Affinity Mapping - Sticky Notes Style */}
       <Section>
-        <SectionLabel>04 — Synthesis</SectionLabel>
-        <SectionTitle>Affinity Mapping</SectionTitle>
+        <SectionLabel>04</SectionLabel>
+        <SectionTitle>Synthesis</SectionTitle>
         
         <div className="max-w-6xl">
           <p className="text-white/50 leading-relaxed max-w-3xl mb-8">
-            I synthesized survey and interview data through affinity mapping. Three themes emerged that would guide our design:
+            I <strong className="text-white/70">synthesized survey and interview data</strong> through <strong className="text-white/70">affinity mapping</strong>. Three themes emerged that would guide our design:
           </p>
           
           <div className="max-w-3xl mb-12 space-y-3">
@@ -351,7 +370,7 @@ export default function HabitatCaseStudy() {
             
             {/* Incentivization Column */}
             <div>
-              <h4 className="text-2xl font-bold text-white mb-8 text-center">Incentivization</h4>
+              <h4 className="text-2xl font-bold text-[#f97316] mb-8 text-center">Incentivization</h4>
               <div className="grid grid-cols-2 gap-3">
                 <div 
                   className="aspect-square p-3 text-xs flex flex-col"
@@ -400,7 +419,7 @@ export default function HabitatCaseStudy() {
 
             {/* Accountability Column */}
             <div>
-              <h4 className="text-2xl font-bold text-white mb-8 text-center">Accountability</h4>
+              <h4 className="text-2xl font-bold text-[#f97316] mb-8 text-center">Accountability</h4>
               <div className="grid grid-cols-2 gap-3">
                 <div 
                   className="aspect-square p-3 text-xs flex flex-col"
@@ -449,7 +468,7 @@ export default function HabitatCaseStudy() {
 
             {/* Engagement Column */}
             <div>
-              <h4 className="text-2xl font-bold text-white mb-8 text-center">Engagement</h4>
+              <h4 className="text-2xl font-bold text-[#f97316] mb-8 text-center">Engagement</h4>
               <div className="grid grid-cols-2 gap-3">
                 <div 
                   className="aspect-square p-3 text-xs flex flex-col"
@@ -525,8 +544,8 @@ export default function HabitatCaseStudy() {
 
       {/* User Flows - Styled like NeuraNote */}
       <Section>
-        <SectionLabel>05 — Information Architecture</SectionLabel>
-        <SectionTitle>User Flows & Core Features</SectionTitle>
+        <SectionLabel>05</SectionLabel>
+        <SectionTitle>User Flows</SectionTitle>
         <p className="text-white/40 text-sm mb-10">Four core journeys mapped from research insights</p>
         
         <div className="max-w-5xl space-y-4">
@@ -534,121 +553,111 @@ export default function HabitatCaseStudy() {
           {/* Onboarding Flow */}
           <div 
             className="rounded-2xl p-6 border border-white/[0.06]"
-            style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            style={{ background: 'linear-gradient(145deg, rgba(249,115,22,0.06) 0%, rgba(249,115,22,0.02) 100%)' }}
           >
-            <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Onboarding</p>
+            <p className="text-[#fb923c] text-sm font-medium mb-5 tracking-wide">Onboarding</p>
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">Launch App</span>
-              <span className="text-white/20 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Welcome</span>
-              <span className="text-white/20 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Sign Up</span>
-              <span className="text-white/20 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Setup Profile</span>
-              <span className="text-white/20 text-sm">→</span>
-              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fed7aa]/90 text-[#2a2416] border border-[#fed7aa]/40">Home Dashboard</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#f97316] text-white">Launch App</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Welcome</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Sign Up</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Setup Profile</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Home Dashboard</span>
             </div>
           </div>
 
           {/* Create Habit Flow */}
           <div 
             className="rounded-2xl p-6 border border-white/[0.06]"
-            style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            style={{ background: 'linear-gradient(145deg, rgba(249,115,22,0.06) 0%, rgba(249,115,22,0.02) 100%)' }}
           >
-            <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Create Habit</p>
+            <p className="text-[#fb923c] text-sm font-medium mb-5 tracking-wide">Create Habit</p>
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fed7aa]/90 text-[#2a2416] border border-[#fed7aa]/40">Home</span>
-              <span className="text-white/20 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">+ Add Habit</span>
-              <span className="text-white/20 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Name Habit</span>
-              <span className="text-white/20 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Set Frequency</span>
-              <span className="text-white/20 text-sm">→</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Home</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#f97316] text-white">+ Add Habit</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Name Habit</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Set Frequency</span>
+              <span className="text-white/30 text-sm">→</span>
               <div className="flex flex-col gap-1.5">
-                <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Daily</span>
-                <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Weekly</span>
-                <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.06] text-white/50 border border-white/10">Custom</span>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-black border border-white/10">Daily</span>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-black border border-white/10">Weekly</span>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-black border border-white/10">Custom</span>
               </div>
-              <span className="text-white/20 text-sm">→</span>
-              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">Save</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Save</span>
             </div>
           </div>
 
           {/* Track & Complete Flow */}
           <div 
             className="rounded-2xl p-6 border border-white/[0.06]"
-            style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            style={{ background: 'linear-gradient(145deg, rgba(249,115,22,0.06) 0%, rgba(249,115,22,0.02) 100%)' }}
           >
-            <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Track & Complete</p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 flex-wrap">
-                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fed7aa]/90 text-[#2a2416] border border-[#fed7aa]/40">Home</span>
-                <span className="text-white/20 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">View Habits</span>
-                <span className="text-white/20 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">Tap Complete</span>
-                <span className="text-white/20 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Streak +1</span>
-                <span className="text-white/20 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#dcb5c4]/90 text-[#2a1a20]">Milestone?</span>
-              </div>
-              <div className="flex items-center gap-3 flex-wrap pl-6">
-                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">Yes</span>
-                <span className="text-white/20 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fed7aa]/90 text-[#2a2416]">Unlock Animal!</span>
-                <span className="text-white/20 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Add to Habitat</span>
-              </div>
+            <p className="text-[#fb923c] text-sm font-medium mb-5 tracking-wide">Track & Complete</p>
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Home</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">View Habits</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#f97316] text-white">Tap Complete</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Streak +1</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a3a3a3] text-black">Milestone?</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Unlock Animal!</span>
             </div>
           </div>
 
           {/* Social/Shared Habits Flow */}
           <div 
             className="rounded-2xl p-6 border border-white/[0.06]"
-            style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}
+            style={{ background: 'linear-gradient(145deg, rgba(249,115,22,0.06) 0%, rgba(249,115,22,0.02) 100%)' }}
           >
-            <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Shared Habits</p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 flex-wrap">
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Profile</span>
-                <span className="text-white/20 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Friends</span>
-                <span className="text-white/20 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fb923c]/90 text-[#7c2d12]">Invite Friend</span>
-                <span className="text-white/20 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">Start Shared Habit</span>
-              </div>
-              <div className="flex items-center gap-3 flex-wrap pl-6">
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#c4b5dc]/80 text-[#1a1520]">View Shared Progress</span>
-                <span className="text-white/20 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#dcb5c4]/90 text-[#2a1a20]">Friend missed?</span>
-                <span className="text-white/20 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fdba74]/90 text-[#78350f]">Send Reminder</span>
-              </div>
+            <p className="text-[#fb923c] text-sm font-medium mb-5 tracking-wide">Shared Habits</p>
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Profile</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Friends</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Invite Friend</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Start Shared Habit</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">View Progress</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a3a3a3] text-black">Friend missed?</span>
+              <span className="text-white/30 text-sm">→</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Send Reminder</span>
             </div>
           </div>
 
           {/* Legend */}
           <div className="flex flex-wrap gap-6 mt-10 text-xs">
             <div className="flex items-center gap-2">
-              <span className="w-4 h-4 rounded-full bg-[#fb923c]"></span>
+              <span className="w-4 h-4 rounded-full bg-[#f97316]"></span>
               <span className="text-white/50">Action</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-4 h-4 rounded-lg bg-[#c4b5dc]"></span>
-              <span className="text-white/50">Step</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-4 h-4 rounded-full bg-[#fed7aa]"></span>
+              <span className="w-4 h-4 rounded-lg bg-[#fbbf24]"></span>
               <span className="text-white/50">Screen</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-4 h-4 rounded-lg bg-[#dcb5c4]"></span>
+              <span className="w-4 h-4 rounded-full bg-[#22c55e]"></span>
+              <span className="text-white/50">Destination</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-4 h-4 rounded-lg bg-[#a3a3a3]"></span>
               <span className="text-white/50">Decision</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-4 h-4 rounded-lg bg-[#fdba74]"></span>
+              <span className="w-4 h-4 rounded-lg bg-[#06b6d4]"></span>
               <span className="text-white/50">Social</span>
             </div>
           </div>
@@ -657,8 +666,8 @@ export default function HabitatCaseStudy() {
 
       {/* Figma Prototyping */}
       <Section>
-        <SectionLabel>06 — Design</SectionLabel>
-        <SectionTitle>Figma Prototyping</SectionTitle>
+        <SectionLabel>06</SectionLabel>
+        <SectionTitle>Prototyping</SectionTitle>
         
         <div className="max-w-5xl">
           <p className="text-lg text-white/60 leading-relaxed mb-10 max-w-3xl">
@@ -679,8 +688,8 @@ export default function HabitatCaseStudy() {
 
       {/* Mid-Fi Wireframes */}
       <Section>
-        <SectionLabel>07 — Wireframes</SectionLabel>
-        <SectionTitle>Mid-Fi Designs</SectionTitle>
+        <SectionLabel>07</SectionLabel>
+        <SectionTitle>Mid-Fidelity Prototypes</SectionTitle>
         
         <div className="max-w-4xl">
           <p className="text-lg text-white/60 leading-relaxed mb-10 max-w-3xl">
@@ -730,8 +739,8 @@ export default function HabitatCaseStudy() {
 
       {/* Solution - Rewards & Collaboration */}
       <Section>
-        <SectionLabel>08 — Solution</SectionLabel>
-        <SectionTitle>Rewards & Collaboration</SectionTitle>
+        <SectionLabel>08</SectionLabel>
+        <SectionTitle>Solution</SectionTitle>
         
         <div className="max-w-5xl">
           <p className="text-lg text-white/60 leading-relaxed mb-12 max-w-3xl">
@@ -770,7 +779,7 @@ export default function HabitatCaseStudy() {
 
             {/* Collaboration */}
             <div className="flex flex-col items-center">
-              <h3 className="text-[#60a5fa] text-lg font-semibold mb-4">Collaboration</h3>
+              <h3 className="text-[#f97316] text-lg font-semibold mb-4">Collaboration</h3>
               <div className="rounded-xl overflow-hidden border border-white/10 bg-black/20 max-w-[300px]">
                 <Image 
                   src="/habitat/shared-habits.jpeg" 
@@ -785,38 +794,11 @@ export default function HabitatCaseStudy() {
           </div>
 
           {/* Key Design Decision */}
-          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-[#f97316]/10 to-transparent border-l-2 border-[#f97316] max-w-3xl">
-            <p className="text-[#f97316] text-xs font-medium uppercase tracking-wider mb-2">Key Design Decision</p>
-            <p className="text-white/70 leading-relaxed">
-              We chose <strong className="text-white">collectible animals over points or badges</strong> because our research showed college students respond better to tangible, shareable rewards. The safari theme creates emotional investment that simple gamification lacks.
+          <div className="mt-12 p-8 rounded-2xl bg-white/[0.02] border border-white/10 max-w-3xl">
+            <p className="text-[#f97316] text-xs font-semibold uppercase tracking-widest mb-4">Key Design Decision</p>
+            <p className="text-white/70 text-lg leading-relaxed">
+              We chose <strong className="text-white font-semibold">collectible animals over points or badges</strong> because our research showed college students respond better to tangible, shareable rewards. The safari theme creates emotional investment that simple gamification lacks.
             </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Demo Section */}
-      <Section>
-        <SectionLabel>09 — Final Product</SectionLabel>
-        <SectionTitle>Interactive Demo</SectionTitle>
-        
-        <div className="max-w-5xl">
-          <p className="text-lg text-white/60 leading-relaxed mb-12 max-w-3xl">
-            The final HABITat prototype features a polished safari-themed visual design with smooth interactions and delightful micro-animations.
-          </p>
-
-          {/* Demo Video */}
-          <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-black">
-            <video 
-              className="w-full h-full object-contain"
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-            >
-              <source src="/habitat/habitat-demo.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
           </div>
         </div>
       </Section>
@@ -843,10 +825,10 @@ export default function HabitatCaseStudy() {
 
       {/* Results */}
       <Section>
-        <SectionLabel>10 — Impact</SectionLabel>
-        <SectionTitle>Results & Validation</SectionTitle>
+        <SectionLabel>09</SectionLabel>
+        <SectionTitle>Impact & Results</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-          We validated our designs through multiple rounds of usability testing with college students.
+          We <strong className="text-white/70">validated our designs</strong> through multiple rounds of <strong className="text-white/70">usability testing</strong> with college students.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mb-12">
@@ -875,8 +857,8 @@ export default function HabitatCaseStudy() {
 
       {/* Team & Reflection */}
       <Section>
-        <SectionLabel>11 — Reflection</SectionLabel>
-        <SectionTitle>Team & Learnings</SectionTitle>
+        <SectionLabel>10</SectionLabel>
+        <SectionTitle>Reflection</SectionTitle>
         
         <div className="max-w-3xl">
           <div className="flex flex-wrap gap-3 mb-12">
@@ -890,37 +872,73 @@ export default function HabitatCaseStudy() {
             ))}
           </div>
 
-          <div className="space-y-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div>
-              <h3 className="text-white font-medium mb-3">Gamification requires careful balance</h3>
-              <p className="text-white/50 leading-relaxed">
-                Every animal, every reward had to connect to real habit progress—not just arbitrary points.
-              </p>
+              <h3 className="text-[#f97316] font-medium mb-3">What I Learned</h3>
+              <ul className="space-y-2 text-white/60 text-sm">
+                <li>Gamification requires connecting rewards to real progress</li>
+                <li>Social features dramatically improve retention</li>
+                <li>User-centered design wins over assumptions</li>
+              </ul>
             </div>
-            
             <div>
-              <h3 className="text-white font-medium mb-3">Social features drive long-term engagement</h3>
-              <p className="text-white/50 leading-relaxed">
-                Accountability partners dramatically improve habit retention. Building social features was essential.
-              </p>
+              <h3 className="text-[#f97316] font-medium mb-3">Challenges</h3>
+              <ul className="space-y-2 text-white/60 text-sm">
+                <li>Balancing fun with functional habit tracking</li>
+                <li>Coordinating designs across a 4-person team</li>
+                <li>Creating rewards that feel earned, not arbitrary</li>
+              </ul>
             </div>
-            
             <div>
-              <h3 className="text-white font-medium mb-3">User-centered design wins</h3>
-              <p className="text-white/50 leading-relaxed">
-                Starting with real user pain points—not assumptions—made all the difference in winning the award.
-              </p>
+              <h3 className="text-[#f97316] font-medium mb-3">Next Time</h3>
+              <ul className="space-y-2 text-white/60 text-sm">
+                <li>Test gamification mechanics earlier</li>
+                <li>Include more diverse habit types in research</li>
+                <li>Build in analytics from the start</li>
+              </ul>
             </div>
+          </div>
+
+          <div className="p-5 bg-white/[0.03] rounded-xl border border-white/10">
+            <p className="text-white/70 text-sm leading-relaxed">
+              <span className="text-white font-medium">Key Insight:</span> Habit apps fail when they focus on tracking rather than motivation. By making progress feel tangible through collectibles and social accountability, we created something users actually wanted to return to.
+            </p>
           </div>
         </div>
       </Section>
 
       {/* Footer */}
-      <section className="relative py-32 px-8">
+      {/* Product Walkthrough */}
+      <Section>
+        <SectionLabel>11</SectionLabel>
+        <SectionTitle>Product Walkthrough</SectionTitle>
+        
+        <div className="max-w-5xl">
+          <p className="text-lg text-white/60 leading-relaxed mb-12 max-w-3xl">
+            A video walkthrough of the final HABITat prototype, showcasing the safari-themed visual design, smooth interactions, and delightful micro-animations.
+          </p>
+
+          <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-black">
+            <video 
+              className="w-full h-full object-contain"
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src="/habitat/habitat-demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </Section>
+
+      <section ref={footerRef} className="relative py-32 px-8">
         <div className="max-w-6xl mx-auto">
           <Link
             href="/"
-            className="inline-flex items-center gap-3 px-6 py-3 bg-[#f97316] hover:bg-[#ea580c] text-black font-semibold rounded-full transition-all"
+            className="relative z-30 inline-flex items-center gap-3 px-6 py-3 bg-[#f97316] hover:bg-[#ea580c] text-black font-semibold rounded-full transition-all touch-manipulation"
           >
             Back to Portfolio
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -969,7 +987,7 @@ function Section({ children }: { children: React.ReactNode }) {
 }
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
-  return <p className="text-[#f97316] text-sm font-medium tracking-wide mb-4">{children}</p>
+  return <p className="text-[#f97316]/60 text-sm font-mono mb-4">{children}</p>
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {

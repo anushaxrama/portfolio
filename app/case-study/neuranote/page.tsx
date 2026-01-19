@@ -26,10 +26,28 @@ export default function NeuranNoteCaseStudy() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [showBackButton, setShowBackButton] = useState(true)
+  const footerRef = useRef<HTMLElement>(null)
 
   // Check for mobile on mount
   useEffect(() => {
     setIsMobile(window.innerWidth < 768)
+  }, [])
+
+  // Hide back button when footer is visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowBackButton(!entry.isIntersecting)
+      },
+      { threshold: 0.1 }
+    )
+    
+    if (footerRef.current) {
+      observer.observe(footerRef.current)
+    }
+    
+    return () => observer.disconnect()
   }, [])
 
   const particles: Particle[] = useMemo(() => {
@@ -47,6 +65,14 @@ export default function NeuranNoteCaseStudy() {
 
   useEffect(() => {
     setIsLoaded(true)
+  }, [])
+
+  // Auto-advance slideshow every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % demoImages.length)
+    }, 4000)
+    return () => clearInterval(interval)
   }, [])
 
   const goToPrevSlide = () => {
@@ -78,7 +104,7 @@ export default function NeuranNoteCaseStudy() {
       </div>
 
       {/* Back button */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-8">
+      <nav className={`fixed top-0 left-0 right-0 z-50 px-8 py-8 transition-opacity duration-300 ${showBackButton ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <Link 
           href="/"
           className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors text-sm tracking-wide"
@@ -120,7 +146,7 @@ export default function NeuranNoteCaseStudy() {
                 </div>
                 <div>
                   <p className="text-white/30 uppercase tracking-wider mb-1">Tools</p>
-                  <p className="text-white/80">Figma, Cursor, Galileo</p>
+                  <p className="text-white/80">Figma, Cursor, Framer</p>
                 </div>
                 <div>
                   <p className="text-white/30 uppercase tracking-wider mb-1">Platform</p>
@@ -228,13 +254,14 @@ export default function NeuranNoteCaseStudy() {
 
       {/* Introduction */}
       <Section>
-        <SectionLabel>Overview</SectionLabel>
+        <SectionLabel>01</SectionLabel>
+        <SectionTitle>Overview</SectionTitle>
         <div className="max-w-3xl">
           <p className="text-2xl md:text-3xl text-white/80 font-light leading-relaxed mb-8">
             Most note-taking apps help you organize. NeuraNote helps you actually learn.
           </p>
           <p className="text-lg text-white/50 leading-relaxed mb-12">
-            I designed NeuraNote around cognitive science principles (retrieval practice, spaced repetition, and concept mapping) to transform passive notes into active learning. The goal: help students build lasting understanding, not just extensive archives.
+            I designed NeuraNote around <strong className="text-white/70">cognitive science principles</strong> (retrieval practice, spaced repetition, and concept mapping) to transform passive notes into <strong className="text-white/70">active learning</strong>. The goal: help students build <strong className="text-white/70">lasting understanding</strong>, not just forgotten files.
           </p>
           
           {/* Problem Statement Box */}
@@ -255,7 +282,7 @@ export default function NeuranNoteCaseStudy() {
             <p className="text-white/30 text-xs uppercase tracking-[0.25em] mb-6">Problem Statement</p>
             
             <p className="text-xl md:text-2xl lg:text-[1.7rem] text-white/90 leading-relaxed font-light">
-              How might we design a note-taking experience that helps learners{' '}
+              How might I design a note-taking experience that helps learners{' '}
               <span className="text-[#c4b5fc]">capture</span>,{' '}
               <span className="text-[#c4b5fc]">connect</span>, and{' '}
               <span className="text-[#c4b5fc]">review</span>{' '}
@@ -269,7 +296,8 @@ export default function NeuranNoteCaseStudy() {
 
       {/* Design Process Timeline */}
       <Section>
-        <SectionLabel>Design Process</SectionLabel>
+        <SectionLabel>02</SectionLabel>
+        <SectionTitle>Design Process</SectionTitle>
         <p className="text-white/40 text-sm mb-12">June 2025 to July 2025</p>
         
         <div className="relative max-w-5xl">
@@ -387,12 +415,13 @@ export default function NeuranNoteCaseStudy() {
 
       {/* Research */}
       <Section>
+        <SectionLabel>03</SectionLabel>
         <SectionTitle>Research</SectionTitle>
         
         <div className="max-w-3xl mb-16">
           <h3 className="text-xl md:text-2xl font-semibold text-[#c4b5fc] mb-6">Research Goals</h3>
           <p className="text-lg text-white/60 leading-relaxed">
-            I started with a hypothesis: existing note-taking tools prioritize speed and organization over actual learning. I wanted to understand how students currently study, where they struggle, and what prevents knowledge from sticking, then design something that supports{' '}
+            I started with a <strong className="text-white/80">hypothesis</strong>: existing note-taking tools prioritize speed and organization over actual learning. I wanted to understand <strong className="text-white/80">how students currently study</strong>, where they struggle, and what prevents knowledge from sticking, then design something that supports{' '}
             <span className="text-white font-medium">deep understanding</span> and{' '}
             <span className="text-white font-medium">long-term retention</span>{' '}
             without adding pressure.
@@ -555,124 +584,131 @@ export default function NeuranNoteCaseStudy() {
         {/* Competitive Analysis */}
         <div className="mt-20 pt-12 border-t border-white/10">
           <h3 className="text-xl md:text-2xl font-semibold text-[#c4b5fc] mb-2">Competitive Analysis</h3>
-          <p className="text-white/40 text-sm mb-10">User Research</p>
+          <p className="text-white/40 text-sm mb-10">Evaluating existing note-taking tools</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="max-w-5xl">
+            {/* Comparison Table Header */}
+            <div className="grid grid-cols-5 gap-4 mb-6 pb-4 border-b border-white/10">
+              <div className="text-white/40 text-xs uppercase tracking-wider">Tool</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Capture</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Organization</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Learning</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Gap</div>
+            </div>
+
             {/* Notion */}
-            <div 
-              className="rounded-2xl p-6"
-              style={{
-                background: 'linear-gradient(145deg, rgba(138,154,124,0.15) 0%, rgba(138,154,124,0.05) 100%)',
-                border: '1px solid rgba(138,154,124,0.2)',
-              }}
-            >
-              <h4 className="text-white font-medium mb-5">Notion</h4>
-              <div className="mb-5">
-                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Highly flexible for structuring and organizing information</li>
-                  <li>• Supports multiple content types (text, media, databases)</li>
-            </ul>
-          </div>
-          <div>
-                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Overwhelming for quick note capture</li>
-                  <li>• Prioritizes structure over learning and retention</li>
-                  <li>• Requires constant manual setup to make notes meaningful</li>
-            </ul>
-          </div>
-        </div>
+            <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
+              <div>
+                <p className="text-white font-medium">Notion</p>
+                <p className="text-white/30 text-xs mt-1">Productivity</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-400">◐</span>
+                <span className="text-white/50 text-sm">Slow setup</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span className="text-white/50 text-sm">Excellent</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">None</span>
+              </div>
+              <p className="text-white/40 text-sm">Structure over retention</p>
+            </div>
 
             {/* GoodNotes */}
-            <div 
-              className="rounded-2xl p-6"
-              style={{
-                background: 'linear-gradient(145deg, rgba(201,169,169,0.15) 0%, rgba(201,169,169,0.05) 100%)',
-                border: '1px solid rgba(201,169,169,0.2)',
-              }}
-            >
-              <h4 className="text-white font-medium mb-5">GoodNotes</h4>
-              <div className="mb-5">
-                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Natural handwriting experience for visual thinkers</li>
-                  <li>• Supports typed notes and audio recording</li>
-                  <li>• Reliable offline access</li>
-                </ul>
-        </div>
+            <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
               <div>
-                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Handwritten and typed notes remain siloed</li>
-                  <li>• Limited support for connecting ideas across notes</li>
-                  <li>• Not designed for reflection or long-term learning</li>
-                </ul>
+                <p className="text-white font-medium">GoodNotes</p>
+                <p className="text-white/30 text-xs mt-1">Handwriting</p>
               </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span className="text-white/50 text-sm">Natural</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-400">◐</span>
+                <span className="text-white/50 text-sm">Basic folders</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">None</span>
+              </div>
+              <p className="text-white/40 text-sm">No concept linking</p>
             </div>
 
             {/* Apple Notes */}
-            <div 
-              className="rounded-2xl p-6"
-              style={{
-                background: 'linear-gradient(145deg, rgba(138,154,124,0.15) 0%, rgba(138,154,124,0.05) 100%)',
-                border: '1px solid rgba(138,154,124,0.2)',
-              }}
-            >
-              <h4 className="text-white font-medium mb-5">Apple Notes</h4>
-              <div className="mb-5">
-                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Fast and frictionless for capturing thoughts</li>
-                  <li>• Works seamlessly offline</li>
-                  <li>• Simple organization with folders and tags</li>
-                </ul>
-              </div>
+            <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
               <div>
-                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Notes remain largely static after capture</li>
-                  <li>• Limited tools for reviewing or reinforcing knowledge</li>
-                  <li>• Minimal support for conceptual connections</li>
-                </ul>
+                <p className="text-white font-medium">Apple Notes</p>
+                <p className="text-white/30 text-xs mt-1">Quick capture</p>
               </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span className="text-white/50 text-sm">Fast</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-400">◐</span>
+                <span className="text-white/50 text-sm">Folders only</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">None</span>
+              </div>
+              <p className="text-white/40 text-sm">Static after capture</p>
             </div>
 
             {/* Google Docs */}
-            <div 
-              className="rounded-2xl p-6"
-              style={{
-                background: 'linear-gradient(145deg, rgba(201,169,169,0.15) 0%, rgba(201,169,169,0.05) 100%)',
-                border: '1px solid rgba(201,169,169,0.2)',
-              }}
-            >
-              <h4 className="text-white font-medium mb-5">Google Docs</h4>
-              <div className="mb-5">
-                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Strong collaboration and sharing</li>
-                  <li>• Familiar editing experience across devices</li>
-                  <li>• Easy import and export</li>
-                </ul>
-              </div>
+            <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
               <div>
-                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Designed for documents, not learning workflows</li>
-                  <li>• Friction in quick idea capture</li>
-                  <li>• Weak support for organizing and revisiting ideas over time</li>
-                </ul>
+                <p className="text-white font-medium">Google Docs</p>
+                <p className="text-white/30 text-xs mt-1">Collaboration</p>
               </div>
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-400">◐</span>
+                <span className="text-white/50 text-sm">Document-first</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-400">◐</span>
+                <span className="text-white/50 text-sm">Drive folders</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">None</span>
+              </div>
+              <p className="text-white/40 text-sm">Not built for learning</p>
+            </div>
+
+            {/* NeuraNote (The Solution) */}
+            <div className="grid grid-cols-5 gap-4 py-5 bg-[#a78bfa]/5 rounded-xl px-4 mt-4 items-start">
+              <div>
+                <p className="text-[#a78bfa] font-medium">NeuraNote</p>
+                <p className="text-[#a78bfa]/50 text-xs mt-1">Learning-first</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span className="text-white/50 text-sm">Quick + AI</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span className="text-white/50 text-sm">Auto-linked</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span className="text-white/50 text-sm">Built-in</span>
+              </div>
+              <p className="text-[#a78bfa]/70 text-sm font-medium">NeuraNote closes this gap</p>
             </div>
           </div>
 
-          {/* Competitive Analysis Summary */}
-          <div className="max-w-3xl mt-12">
+          {/* Key Finding */}
+          <div className="max-w-3xl mt-12 p-6 rounded-2xl bg-white/[0.02] border border-white/10">
             <p className="text-white/50 leading-relaxed mb-4">
-              <span className="text-white/70 font-medium">The pattern:</span> existing tools excel at either capture (Apple Notes, Google Docs) or organization (Notion, GoodNotes), but none prioritize learning. Spaced repetition, concept linking, and metacognitive prompts are absent across the board.
+              A clear pattern emerged: existing tools excel at either capture or organization, but <strong className="text-white/70">none prioritize learning</strong>. Spaced repetition, concept linking, and metacognitive prompts are absent across the board.
             </p>
             <p className="text-white/50 leading-relaxed">
-              This validated my hypothesis: there's room for a tool that bridges note-taking and understanding. I designed NeuraNote to treat notes as the starting point for deeper learning, not static archives.
+              This <strong className="text-white/70">validated my hypothesis</strong>: there's room for a tool that bridges note-taking and understanding, treating notes as the <strong className="text-white/70">starting point for deeper learning</strong>.
             </p>
           </div>
         </div>
@@ -963,14 +999,14 @@ export default function NeuranNoteCaseStudy() {
             </div>
           </div>
 
-          {/* Affinity Mapping Summary */}
+          {/* Synthesis */}
           <div className="max-w-3xl mt-12">
-            <h4 className="text-[#c4b5fc] text-lg font-medium mb-4">What This Revealed</h4>
+            <h4 className="text-[#c4b5fc] text-lg font-medium mb-4">Key Insight</h4>
             <p className="text-white/50 leading-relaxed mb-4">
-              A consistent tension emerged: users want speed during capture, but that speed costs future understanding. Notes pile up, connections get lost, reviewing becomes a chore.
+              A clear tension emerged from the research: <strong className="text-white/70">users prioritize speed when capturing notes, but that same speed undermines retention</strong>. Information accumulates, connections fade, and reviewing feels like a burden rather than a benefit.
             </p>
             <p className="text-white/50 leading-relaxed">
-              The solution: <span className="text-white/70">intelligent organization that happens automatically</span>. Rather than manual tagging, NeuraNote surfaces conceptual relationships on the user's behalf, turning passive archives into living knowledge maps.
+              This insight shaped the core design direction: <span className="text-white/70">automate the organization layer</span>. Instead of asking users to manually tag and categorize, NeuraNote intelligently surfaces relationships between concepts, transforming scattered notes into interconnected knowledge.
             </p>
           </div>
         </div>
@@ -1277,7 +1313,7 @@ export default function NeuranNoteCaseStudy() {
 
       {/* Core Features */}
       <Section>
-        <SectionLabel>02</SectionLabel>
+        <SectionLabel>04</SectionLabel>
         <SectionTitle>Core Features</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
           Six integrated features that transform passive notes into active learning, from capture to mastery.
@@ -1341,17 +1377,17 @@ export default function NeuranNoteCaseStudy() {
         </div>
 
         {/* Key Design Decision */}
-        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-[#a78bfa]/10 to-transparent border-l-2 border-[#a78bfa] max-w-3xl">
-          <p className="text-[#a78bfa] text-xs font-medium uppercase tracking-wider mb-2">Key Design Decision</p>
-          <p className="text-white/70 leading-relaxed">
-            I designed <strong className="text-white">visual concept maps instead of folder hierarchies</strong> because research showed students struggle with categorization during capture. Spatial relationships reduce cognitive load and match how memory actually works.
+        <div className="mt-12 p-8 rounded-2xl bg-white/[0.02] border border-white/10 max-w-3xl">
+          <p className="text-[#a78bfa] text-xs font-semibold uppercase tracking-widest mb-4">Key Design Decision</p>
+          <p className="text-white/70 text-lg leading-relaxed">
+            I designed <strong className="text-white font-semibold">visual concept maps instead of folder hierarchies</strong> because research showed students struggle with categorization during capture. Spatial relationships reduce cognitive load and match how memory actually works.
           </p>
         </div>
       </Section>
 
       {/* Mid-Fidelity Prototypes */}
       <Section>
-        <SectionLabel>03</SectionLabel>
+        <SectionLabel>05</SectionLabel>
         <SectionTitle>Mid-Fidelity Prototypes</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
           I developed mid-fi wireframes to refine layout, hierarchy, and interactions before high-fidelity, testing core functionality and gathering early feedback.
@@ -1401,10 +1437,10 @@ export default function NeuranNoteCaseStudy() {
 
       {/* Usability Testing */}
       <Section>
-        <SectionLabel>04</SectionLabel>
+        <SectionLabel>06</SectionLabel>
         <SectionTitle>Usability Testing</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-10">
-          I conducted moderated tests with 6 participants to validate mid-fi prototypes and identify friction points.
+          I conducted <strong className="text-white/70">moderated usability tests</strong> with <strong className="text-white/70">6 participants</strong> to validate mid-fi prototypes and identify friction points.
         </p>
 
         {/* Testing Stats */}
@@ -1424,30 +1460,31 @@ export default function NeuranNoteCaseStudy() {
         </div>
 
         {/* Key Findings */}
-        <div className="max-w-3xl">
+        <div className="max-w-6xl">
           <h4 className="text-[#c4b5fc] text-lg font-medium mb-5">Key Findings</h4>
-          <div className="space-y-4">
-            <div className="flex gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
-              <span className="text-green-400 text-lg">+</span>
-              <p className="text-white/50 text-sm leading-relaxed">
+          
+          <div className="space-y-3">
+            <div className="flex items-center gap-4 px-5 py-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <span className="text-green-400 text-lg flex-shrink-0">+</span>
+              <p className="text-white/50 text-sm">
                 <span className="text-white/70 font-medium">Navigation was intuitive.</span> All participants successfully located Notes, Concept Map, and Review without guidance.
               </p>
             </div>
-            <div className="flex gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
-              <span className="text-green-400 text-lg">+</span>
-              <p className="text-white/50 text-sm leading-relaxed">
+            <div className="flex items-center gap-4 px-5 py-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <span className="text-green-400 text-lg flex-shrink-0">+</span>
+              <p className="text-white/50 text-sm">
                 <span className="text-white/70 font-medium">Review flow felt natural.</span> Users appreciated the "explain in your own words" approach over simple flashcards.
               </p>
             </div>
-            <div className="flex gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
-              <span className="text-yellow-400 text-lg">~</span>
-              <p className="text-white/50 text-sm leading-relaxed">
+            <div className="flex items-center gap-4 px-5 py-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <span className="text-yellow-400 text-lg flex-shrink-0">~</span>
+              <p className="text-white/50 text-sm">
                 <span className="text-white/70 font-medium">Concept extraction needed clarity.</span> 3 participants weren't sure when AI would auto-extract vs. manual tagging.
               </p>
             </div>
-            <div className="flex gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/5">
-              <span className="text-yellow-400 text-lg">~</span>
-              <p className="text-white/50 text-sm leading-relaxed">
+            <div className="flex items-center gap-4 px-5 py-4 rounded-lg bg-white/[0.02] border border-white/5">
+              <span className="text-yellow-400 text-lg flex-shrink-0">~</span>
+              <p className="text-white/50 text-sm">
                 <span className="text-white/70 font-medium">Insights page was dense.</span> Users wanted a quicker summary before diving into detailed stats.
               </p>
             </div>
@@ -1465,10 +1502,10 @@ export default function NeuranNoteCaseStudy() {
 
       {/* Hi-Fi Prototyping */}
       <Section>
-        <SectionLabel>05</SectionLabel>
+        <SectionLabel>07</SectionLabel>
         <SectionTitle>Design System</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-          I focused on simplicity: black and white foundation with customizable pastel accents. User interviews revealed that many organize information by assigning personal colors, so I designed accents to be adaptable to individual workflows.
+          I focused on <strong className="text-white/70">simplicity</strong>: black and white foundation with <strong className="text-white/70">customizable pastel accents</strong>. User interviews revealed that many organize information by assigning personal colors, so I designed accents to be <strong className="text-white/70">adaptable to individual workflows</strong>.
         </p>
 
         {/* Design System */}
@@ -1487,12 +1524,12 @@ export default function NeuranNoteCaseStudy() {
               <p className="text-white/60 text-xs uppercase tracking-[0.2em] mb-4 font-medium">Background</p>
               <div className="flex gap-4">
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-14 h-14 rounded-xl bg-[#FAFAFA] shadow-lg shadow-white/10 ring-1 ring-white/20"></div>
-                  <span className="text-white/60 text-xs font-mono">#FAFAFA</span>
+                  <div className="w-14 h-14 rounded-xl bg-white shadow-lg shadow-white/20 ring-1 ring-white/30"></div>
+                  <span className="text-white/60 text-xs font-mono">#FFFFFF</span>
                 </div>
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-14 h-14 rounded-xl bg-[#222222] shadow-lg ring-1 ring-white/10"></div>
-                  <span className="text-white/60 text-xs font-mono">#222222</span>
+                  <div className="w-14 h-14 rounded-xl bg-[#F5F5F5] shadow-lg shadow-white/10 ring-1 ring-white/20"></div>
+                  <span className="text-white/60 text-xs font-mono">#F5F5F5</span>
                 </div>
               </div>
             </div>
@@ -1502,12 +1539,12 @@ export default function NeuranNoteCaseStudy() {
               <p className="text-white/60 text-xs uppercase tracking-[0.2em] mb-4 font-medium">Primary</p>
               <div className="flex gap-4">
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-14 h-14 rounded-xl bg-[#1a1a1a] shadow-lg ring-1 ring-white/10"></div>
-                  <span className="text-white/60 text-xs font-mono">#1A1A1A</span>
+                  <div className="w-14 h-14 rounded-xl bg-[#333333] shadow-lg ring-1 ring-white/10"></div>
+                  <span className="text-white/60 text-xs font-mono">#333333</span>
                 </div>
                 <div className="flex flex-col items-center gap-2">
-                  <div className="w-14 h-14 rounded-xl bg-white shadow-lg shadow-white/20 ring-1 ring-white/30"></div>
-                  <span className="text-white/60 text-xs font-mono">#FFFFFF</span>
+                  <div className="w-14 h-14 rounded-xl bg-[#666666] shadow-lg ring-1 ring-white/10"></div>
+                  <span className="text-white/60 text-xs font-mono">#666666</span>
                 </div>
               </div>
             </div>
@@ -1628,8 +1665,8 @@ export default function NeuranNoteCaseStudy() {
 
       {/* Projected Impact */}
       <Section>
-        <SectionLabel>06</SectionLabel>
-        <SectionTitle>Projected Impact</SectionTitle>
+        <SectionLabel>08</SectionLabel>
+        <SectionTitle>Impact & Results</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
           While NeuraNote is a concept project, the design decisions are grounded in cognitive science research and user testing feedback.
         </p>
@@ -1638,16 +1675,16 @@ export default function NeuranNoteCaseStudy() {
           <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
             <p className="text-4xl font-bold text-[#a78bfa] mb-2">40%</p>
             <p className="text-white/50 text-sm">projected reduction in review time through spaced repetition</p>
-          </div>
+                </div>
           <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
             <p className="text-4xl font-bold text-[#a78bfa] mb-2">2x</p>
             <p className="text-white/50 text-sm">faster concept recall with visual mapping vs. linear notes</p>
-          </div>
+              </div>
           <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
             <p className="text-4xl font-bold text-[#a78bfa] mb-2">89%</p>
             <p className="text-white/50 text-sm">of testers said they'd switch from their current app</p>
+            </div>
           </div>
-        </div>
 
         <div className="p-6 rounded-2xl bg-gradient-to-r from-[#a78bfa]/10 to-transparent border-l-2 border-[#a78bfa] max-w-3xl">
           <p className="text-[#a78bfa] text-xs font-medium uppercase tracking-wider mb-2">Based on Research</p>
@@ -1659,13 +1696,13 @@ export default function NeuranNoteCaseStudy() {
 
       {/* Reflection */}
       <Section>
-        <SectionLabel>07</SectionLabel>
+        <SectionLabel>09</SectionLabel>
         <SectionTitle>Reflection</SectionTitle>
         
         <div className="max-w-3xl">
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div>
-              <h3 className="text-purple-400 font-medium mb-3">What I Learned</h3>
+              <h3 className="text-[#a78bfa] font-medium mb-3">What I Learned</h3>
               <ul className="space-y-2 text-white/60 text-sm">
             <li>Designing for cognition, not just usability</li>
                 <li>Positioning AI as collaborator, not authority</li>
@@ -1673,7 +1710,7 @@ export default function NeuranNoteCaseStudy() {
           </ul>
             </div>
             <div>
-              <h3 className="text-purple-400 font-medium mb-3">Challenges</h3>
+              <h3 className="text-[#a78bfa] font-medium mb-3">Challenges</h3>
               <ul className="space-y-2 text-white/60 text-sm">
                 <li>Balancing simplicity with powerful features</li>
                 <li>Measuring learning retention in prototypes</li>
@@ -1681,7 +1718,7 @@ export default function NeuranNoteCaseStudy() {
               </ul>
             </div>
             <div>
-              <h3 className="text-purple-400 font-medium mb-3">Next Time</h3>
+              <h3 className="text-[#a78bfa] font-medium mb-3">Next Time</h3>
               <ul className="space-y-2 text-white/60 text-sm">
                 <li>Test with real content earlier</li>
                 <li>Include more diverse learners</li>
@@ -1700,8 +1737,8 @@ export default function NeuranNoteCaseStudy() {
 
       {/* User Walkthrough */}
       <Section>
-        <SectionLabel>07</SectionLabel>
-        <SectionTitle>User Walkthrough</SectionTitle>
+        <SectionLabel>10</SectionLabel>
+        <SectionTitle>Product Walkthrough</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
           Watch a walkthrough of the final prototype, from creating notes to reviewing concepts.
         </p>
@@ -1816,11 +1853,11 @@ export default function NeuranNoteCaseStudy() {
       </Section>
 
       {/* Back to Portfolio */}
-      <section className="relative py-32 px-8">
+      <section ref={footerRef} className="relative py-32 px-8">
         <div className="max-w-6xl mx-auto">
           <Link
             href="/"
-            className="inline-flex items-center gap-3 px-6 py-3 bg-[#a78bfa] hover:bg-[#8b5cf6] text-black font-semibold rounded-full transition-all"
+            className="relative z-30 inline-flex items-center gap-3 px-6 py-3 bg-[#a78bfa] hover:bg-[#8b5cf6] text-black font-semibold rounded-full transition-all touch-manipulation"
           >
             Back to Portfolio
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

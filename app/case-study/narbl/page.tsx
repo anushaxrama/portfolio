@@ -27,10 +27,28 @@ export default function NarblCaseStudy() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [showBackButton, setShowBackButton] = useState(true)
+  const footerRef = useRef<HTMLElement>(null)
 
   // Check for mobile on mount
   useEffect(() => {
     setIsMobile(window.innerWidth < 768)
+  }, [])
+
+  // Hide back button when footer is visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowBackButton(!entry.isIntersecting)
+      },
+      { threshold: 0.1 }
+    )
+    
+    if (footerRef.current) {
+      observer.observe(footerRef.current)
+    }
+    
+    return () => observer.disconnect()
   }, [])
 
   const particles: Particle[] = useMemo(() => {
@@ -87,7 +105,7 @@ export default function NarblCaseStudy() {
       </div>
 
       {/* Back button */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-8">
+      <nav className={`fixed top-0 left-0 right-0 z-50 px-8 py-8 transition-opacity duration-300 ${showBackButton ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <Link 
           href="/"
           className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors text-sm tracking-wide"
@@ -237,27 +255,28 @@ export default function NarblCaseStudy() {
 
       {/* Introduction */}
       <Section>
-        <SectionLabel>Overview</SectionLabel>
+        <SectionLabel>01</SectionLabel>
+        <SectionTitle>Overview</SectionTitle>
         <div className="max-w-3xl">
           <p className="text-2xl md:text-3xl text-white/80 font-light leading-relaxed mb-8">
             Most AI tools force you to choose a single model. Narbl lets you use them all.
           </p>
           <p className="text-lg text-white/50 leading-relaxed mb-12">
-            During my internship, our team designed Narbl as a unified AI developer platform. The goal was simple: let developers chat with any LLM, compare responses side by side, and build custom AI agents. We wrapped it all in a sleek glassmorphism interface that makes complex AI workflows feel surprisingly intuitive.
+            During my <strong className="text-white/70">internship</strong>, our team designed Narbl as a <strong className="text-white/70">unified AI developer platform</strong>. The goal was simple: let developers chat with any LLM, <strong className="text-white/70">compare responses side by side</strong>, and build custom AI agents. We wrapped it all in a sleek <strong className="text-white/70">glassmorphism interface</strong> that makes complex AI workflows feel surprisingly intuitive.
           </p>
           
           {/* Problem Statement Box */}
           <div 
             className="relative rounded-3xl p-10 md:p-14"
             style={{
-              background: 'linear-gradient(145deg, rgba(147,112,219,0.12) 0%, rgba(147,112,219,0.04) 100%)',
+              background: 'linear-gradient(145deg, rgba(59,130,246,0.12) 0%, rgba(59,130,246,0.04) 100%)',
               boxShadow: `
                 0 4px 24px -4px rgba(0,0,0,0.4),
                 0 12px 48px -8px rgba(0,0,0,0.3),
                 inset 0 1px 0 rgba(255,255,255,0.08),
                 inset 0 -1px 0 rgba(0,0,0,0.2)
               `,
-              border: '1px solid rgba(147,112,219,0.2)',
+              border: '1px solid rgba(59,130,246,0.2)',
             }}
           >
             {/* Label */}
@@ -278,7 +297,8 @@ export default function NarblCaseStudy() {
 
       {/* Design Process Timeline */}
       <Section>
-        <SectionLabel>Design Process</SectionLabel>
+        <SectionLabel>02</SectionLabel>
+        <SectionTitle>Design Process</SectionTitle>
         <p className="text-white/40 text-sm mb-12">10-Week Timeline</p>
         
         <div className="relative max-w-5xl">
@@ -412,12 +432,13 @@ export default function NarblCaseStudy() {
 
       {/* Research */}
       <Section>
+        <SectionLabel>03</SectionLabel>
         <SectionTitle>Research</SectionTitle>
         
         <div className="max-w-3xl mb-16">
-          <h3 className="text-xl md:text-2xl font-semibold text-white mb-6">Research Goals</h3>
+          <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-6">Research Goals</h3>
           <p className="text-lg text-white/60 leading-relaxed">
-            We started with a hypothesis: developers want to try different AI models, but current tools make switching between them a hassle. Our team wanted to dig into how developers actually work with LLMs, where they hit walls, and what would make model comparison and agent building feel{' '}
+            We started with a <strong className="text-white/80">hypothesis</strong>: developers want to try different AI models, but current tools make switching between them a hassle. Our team wanted to dig into <strong className="text-white/80">how developers actually work with LLMs</strong>, where they hit walls, and what would make model comparison and agent building feel{' '}
             <span className="text-white font-medium">frictionless</span> and{' '}
             <span className="text-white font-medium">intuitive</span>.
           </p>
@@ -425,7 +446,7 @@ export default function NarblCaseStudy() {
 
         {/* User Surveys */}
         <div className="mb-8">
-          <h3 className="text-xl md:text-2xl font-semibold text-white mb-8">User Surveys</h3>
+          <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-8">User Surveys</h3>
           <p className="text-white/40 text-sm mb-12">Survey sample: n = 32 developers</p>
         </div>
 
@@ -559,7 +580,7 @@ export default function NarblCaseStudy() {
 
         {/* Survey Summary */}
         <div className="max-w-3xl mt-16 pt-12 border-t border-white/10">
-          <h4 className="text-white/80 text-lg font-medium mb-4">Key Takeaways</h4>
+          <h4 className="text-[#60a5fa] text-lg font-medium mb-4">Key Takeaways</h4>
           <div className="space-y-4 text-white/50 leading-relaxed">
             <p>
               <span className="text-white/70 font-medium">Tool fatigue is real.</span>{' '}
@@ -578,133 +599,139 @@ export default function NarblCaseStudy() {
 
         {/* Competitive Analysis */}
         <div className="mt-20 pt-12 border-t border-white/10">
-          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">Competitive Analysis</h3>
-          <p className="text-white/40 text-sm mb-10">Existing AI Platforms</p>
+          <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-2">Competitive Analysis</h3>
+          <p className="text-white/40 text-sm mb-10">Evaluating existing AI platforms</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="max-w-5xl">
+            {/* Comparison Table Header */}
+            <div className="grid grid-cols-5 gap-4 mb-6 pb-4 border-b border-white/10">
+              <div className="text-white/40 text-xs uppercase tracking-wider">Platform</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Multi-Model</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Comparison</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Agent Building</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Gap</div>
+            </div>
+
             {/* ChatGPT */}
-            <div 
-              className="rounded-2xl p-6"
-              style={{
-                background: 'linear-gradient(145deg, rgba(147,112,219,0.15) 0%, rgba(147,112,219,0.05) 100%)',
-                border: '1px solid rgba(147,112,219,0.2)',
-              }}
-            >
-              <h4 className="text-white font-medium mb-5">ChatGPT</h4>
-              <div className="mb-5">
-                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Industry-leading brand recognition and trust</li>
-                  <li>• Polished conversational interface</li>
-                  <li>• Extensive plugin ecosystem</li>
-                </ul>
-              </div>
+            <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
               <div>
-                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Single model per conversation</li>
-                  <li>• No native comparison features</li>
-                  <li>• Limited customization for developers</li>
-                </ul>
+                <p className="text-white font-medium">ChatGPT</p>
+                <p className="text-white/30 text-xs mt-1">OpenAI</p>
               </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">Single model</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">None</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-400">◐</span>
+                <span className="text-white/50 text-sm">GPTs only</span>
+              </div>
+              <p className="text-white/40 text-sm">Locked ecosystem</p>
             </div>
 
             {/* Claude */}
-            <div 
-              className="rounded-2xl p-6"
-              style={{
-                background: 'linear-gradient(145deg, rgba(124,58,237,0.15) 0%, rgba(124,58,237,0.05) 100%)',
-                border: '1px solid rgba(124,58,237,0.2)',
-              }}
-            >
-              <h4 className="text-white font-medium mb-5">Claude</h4>
-              <div className="mb-5">
-                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Superior at long-form content and analysis</li>
-                  <li>• Clean, minimal interface design</li>
-                  <li>• Excellent at following complex instructions</li>
-                </ul>
-              </div>
+            <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
               <div>
-                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• No multi-model support</li>
-                  <li>• Limited integration capabilities</li>
-                  <li>• No agent-building features</li>
-                </ul>
+                <p className="text-white font-medium">Claude</p>
+                <p className="text-white/30 text-xs mt-1">Anthropic</p>
               </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">Single model</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">None</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">None</span>
+              </div>
+              <p className="text-white/40 text-sm">No customization</p>
             </div>
 
             {/* Poe */}
-            <div 
-              className="rounded-2xl p-6"
-              style={{
-                background: 'linear-gradient(145deg, rgba(147,112,219,0.15) 0%, rgba(147,112,219,0.05) 100%)',
-                border: '1px solid rgba(147,112,219,0.2)',
-              }}
-            >
-              <h4 className="text-white font-medium mb-5">Poe</h4>
-              <div className="mb-5">
-                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Access to multiple models in one place</li>
-                  <li>• Easy model switching</li>
-                  <li>• Community-created bots</li>
-                </ul>
-              </div>
+            <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
               <div>
-                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• No side-by-side comparison</li>
-                  <li>• Consumer-focused, not developer-centric</li>
-                  <li>• Limited workflow automation</li>
-                </ul>
+                <p className="text-white font-medium">Poe</p>
+                <p className="text-white/30 text-xs mt-1">Quora</p>
               </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span className="text-white/50 text-sm">Multiple</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">None</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-400">◐</span>
+                <span className="text-white/50 text-sm">Basic bots</span>
+              </div>
+              <p className="text-white/40 text-sm">Consumer-focused</p>
             </div>
 
             {/* OpenRouter */}
-            <div 
-              className="rounded-2xl p-6"
-              style={{
-                background: 'linear-gradient(145deg, rgba(124,58,237,0.15) 0%, rgba(124,58,237,0.05) 100%)',
-                border: '1px solid rgba(124,58,237,0.2)',
-              }}
-            >
-              <h4 className="text-white font-medium mb-5">OpenRouter</h4>
-              <div className="mb-5">
-                <p className="text-white/70 text-sm font-medium mb-2">Strengths</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• Unified API for all major models</li>
-                  <li>• Pay-per-use pricing transparency</li>
-                  <li>• Developer-first approach</li>
-                </ul>
-              </div>
+            <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
               <div>
-                <p className="text-white/70 text-sm font-medium mb-2">Limitations</p>
-                <ul className="space-y-1.5 text-white/50 text-sm">
-                  <li>• API-only, no chat interface</li>
-                  <li>• No visual comparison tools</li>
-                  <li>• Requires technical integration</li>
-                </ul>
+                <p className="text-white font-medium">OpenRouter</p>
+                <p className="text-white/30 text-xs mt-1">API Gateway</p>
               </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span className="text-white/50 text-sm">All models</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">None</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">○</span>
+                <span className="text-white/50 text-sm">API only</span>
+              </div>
+              <p className="text-white/40 text-sm">No UI, dev-only</p>
+            </div>
+
+            {/* Narbl (The Solution) */}
+            <div className="grid grid-cols-5 gap-4 py-5 bg-[#3b82f6]/5 rounded-xl px-4 mt-4 items-start">
+              <div>
+                <p className="text-[#60a5fa] font-medium">Narbl</p>
+                <p className="text-[#60a5fa]/50 text-xs mt-1">All-in-one</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span className="text-white/50 text-sm">All models</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span className="text-white/50 text-sm">Side-by-side</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">●</span>
+                <span className="text-white/50 text-sm">Full agents</span>
+              </div>
+              <p className="text-[#60a5fa]/70 text-sm font-medium">Narbl closes this gap</p>
             </div>
           </div>
 
-          {/* Competitive Analysis Summary */}
-          <div className="max-w-3xl mt-12">
+          {/* Key Finding */}
+          <div className="max-w-3xl mt-12 p-6 rounded-2xl bg-white/[0.02] border border-white/10">
             <p className="text-white/50 leading-relaxed mb-4">
-              <span className="text-white/70 font-medium">The gap:</span> existing tools either offer a polished interface for one model (ChatGPT, Claude) or multi-model access with clunky UX (Poe, OpenRouter). Nobody was combining beautiful design, side-by-side comparison, and agent building in one place.
+              A clear pattern emerged: platforms either offer <strong className="text-white/70">polished UX for one model</strong> (ChatGPT, Claude) or <strong className="text-white/70">multi-model access with clunky interfaces</strong> (Poe, OpenRouter). None combine beautiful design, side-by-side comparison, and agent building.
             </p>
             <p className="text-white/50 leading-relaxed">
-              That is exactly where Narbl comes in. Our team set out to build a developer platform with consumer-grade polish, model-agnostic flexibility, and powerful comparison and workflow tools.
+              This <strong className="text-white/70">validated our hypothesis</strong>: there's room for a platform that gives developers <strong className="text-white/70">consumer-grade polish</strong> with <strong className="text-white/70">professional-grade flexibility</strong>.
             </p>
           </div>
         </div>
 
         {/* Affinity Mapping */}
         <div className="mt-20 pt-12 border-t border-white/10">
-          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">Affinity Mapping</h3>
+          <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-2">Affinity Mapping</h3>
           <p className="text-white/40 text-sm mb-6">Synthesizing Research Insights</p>
           
           <p className="text-white/50 leading-relaxed max-w-3xl mb-8">
@@ -728,7 +755,7 @@ export default function NarblCaseStudy() {
             
             {/* Exploration Column */}
             <div>
-              <h4 className="text-2xl font-bold text-white mb-8 text-center">Exploration</h4>
+              <h4 className="text-2xl font-bold text-[#60a5fa] mb-8 text-center">Exploration</h4>
               <div className="grid grid-cols-2 gap-3">
                 {/* User Behavior - Pink */}
                 <div 
@@ -801,7 +828,7 @@ export default function NarblCaseStudy() {
 
             {/* Comparison Column */}
             <div>
-              <h4 className="text-2xl font-bold text-white mb-8 text-center">Comparison</h4>
+              <h4 className="text-2xl font-bold text-[#60a5fa] mb-8 text-center">Comparison</h4>
               <div className="grid grid-cols-2 gap-3">
                 {/* User Behavior - Pink */}
                 <div 
@@ -874,7 +901,7 @@ export default function NarblCaseStudy() {
 
             {/* Building Column */}
             <div>
-              <h4 className="text-2xl font-bold text-white mb-8 text-center">Building</h4>
+              <h4 className="text-2xl font-bold text-[#60a5fa] mb-8 text-center">Building</h4>
               <div className="grid grid-cols-2 gap-3">
                 {/* User Behavior - Pink */}
                 <div 
@@ -970,21 +997,21 @@ export default function NarblCaseStudy() {
             </div>
           </div>
 
-          {/* Affinity Mapping Summary */}
+          {/* Synthesis */}
           <div className="max-w-3xl mt-12">
-            <h4 className="text-white/80 text-lg font-medium mb-4">What This Revealed</h4>
+            <h4 className="text-[#60a5fa] text-lg font-medium mb-4">Key Insight</h4>
             <p className="text-white/50 leading-relaxed mb-4">
-              A clear progression emerged: users start by exploring models, then move to comparing for specific tasks, and eventually want to build on top of what they learn. Each stage has friction that breaks the flow.
+              A clear progression emerged from the research: developers <strong className="text-white/70">start by exploring models, then compare for specific tasks, and eventually want to build on what they learn</strong>. Each stage has friction that disrupts the workflow.
             </p>
             <p className="text-white/50 leading-relaxed">
-              The solution: <span className="text-white/70">a unified platform that supports the full journey</span>. Chat with any model, compare responses instantly, and graduate to building agents, all without leaving Narbl.
+              This shaped our solution: <span className="text-white/70">a unified platform that supports the full journey</span>. Chat with any model, compare responses instantly, and graduate to building agents—all without leaving Narbl.
             </p>
           </div>
         </div>
 
         {/* User Flows */}
         <div className="mt-20 pt-12 border-t border-white/10">
-          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">User Flows & Core Features</h3>
+          <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-2">User Flows & Core Features</h3>
           <p className="text-white/40 text-sm mb-10">Four core journeys mapped from research insights</p>
 
           {/* Condensed User Flows Grid */}
@@ -994,18 +1021,18 @@ export default function NarblCaseStudy() {
             <div 
               className="rounded-2xl p-6 border border-white/[0.06]"
               style={{
-                background: 'linear-gradient(145deg, rgba(124,58,237,0.06) 0%, rgba(124,58,237,0.02) 100%)',
+                background: 'linear-gradient(145deg, rgba(59,130,246,0.06) 0%, rgba(59,130,246,0.02) 100%)',
               }}
             >
-              <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Onboarding</p>
+              <p className="text-[#60a5fa] text-sm font-medium mb-5 tracking-wide">Onboarding</p>
               <div className="flex items-center gap-3 flex-wrap">
                 <span className="px-4 py-2 rounded-full text-xs font-medium bg-white/10 text-white/80 border border-white/20">Landing Page</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Sign Up</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Sign Up</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Choose Plan</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Choose Plan</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#f472b6] text-white">Dashboard</span>
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Dashboard</span>
               </div>
             </div>
 
@@ -1013,20 +1040,20 @@ export default function NarblCaseStudy() {
             <div 
               className="rounded-2xl p-6 border border-white/[0.06]"
               style={{
-                background: 'linear-gradient(145deg, rgba(124,58,237,0.06) 0%, rgba(124,58,237,0.02) 100%)',
+                background: 'linear-gradient(145deg, rgba(59,130,246,0.06) 0%, rgba(59,130,246,0.02) 100%)',
               }}
             >
-              <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Chat with Any Model</p>
+              <p className="text-[#60a5fa] text-sm font-medium mb-5 tracking-wide">Chat with Any Model</p>
               <div className="flex items-center gap-3 flex-wrap">
-                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#f472b6] text-white">Dashboard</span>
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#3b82f6] text-white">Dashboard</span>
                 <span className="text-white/30 text-sm">→</span>
                 <span className="px-4 py-2 rounded-lg text-xs font-medium bg-white/10 text-white/80 border border-white/20">New Chat</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Select Model</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Select Model</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Send Message</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Send Message</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Get Response</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Get Response</span>
                 <span className="text-white/30 text-sm">→</span>
                 <div className="flex flex-col gap-1.5">
                   <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.08] text-white/60 border border-white/10">Continue Chat</span>
@@ -1039,20 +1066,20 @@ export default function NarblCaseStudy() {
             <div 
               className="rounded-2xl p-6 border border-white/[0.06]"
               style={{
-                background: 'linear-gradient(145deg, rgba(124,58,237,0.06) 0%, rgba(124,58,237,0.02) 100%)',
+                background: 'linear-gradient(145deg, rgba(59,130,246,0.06) 0%, rgba(59,130,246,0.02) 100%)',
               }}
             >
-              <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Compare Models</p>
+              <p className="text-[#60a5fa] text-sm font-medium mb-5 tracking-wide">Compare Models</p>
               <div className="flex items-center gap-3 flex-wrap">
-                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#f472b6] text-white">Dashboard</span>
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#3b82f6] text-white">Dashboard</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#2563eb] text-white">Compare Mode</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Compare Mode</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Select Models</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Select Models</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Enter Prompt</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Enter Prompt</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#2563eb] text-white">Side-by-Side Results</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Side-by-Side Results</span>
                 <span className="text-white/30 text-sm">→</span>
                 <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Choose Best</span>
               </div>
@@ -1062,30 +1089,26 @@ export default function NarblCaseStudy() {
             <div 
               className="rounded-2xl p-6 border border-white/[0.06]"
               style={{
-                background: 'linear-gradient(145deg, rgba(124,58,237,0.06) 0%, rgba(124,58,237,0.02) 100%)',
+                background: 'linear-gradient(145deg, rgba(59,130,246,0.06) 0%, rgba(59,130,246,0.02) 100%)',
               }}
             >
-              <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Build AI Agent</p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 flex-wrap">
-                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#f472b6] text-white">Dashboard</span>
-                  <span className="text-white/30 text-sm">→</span>
-                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#ec4899] text-white">Agent Builder</span>
-                  <span className="text-white/30 text-sm">→</span>
-                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Name Agent</span>
-                  <span className="text-white/30 text-sm">→</span>
-                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Choose Model</span>
-                </div>
-                <div className="flex items-center gap-3 flex-wrap pl-6">
-                  <span className="text-white/30 text-sm">→</span>
-                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Set System Prompt</span>
-                  <span className="text-white/30 text-sm">→</span>
-                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Add Knowledge</span>
-                  <span className="text-white/30 text-sm">→</span>
-                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#3b82f6] text-[#1a1a2e]">Test Agent</span>
-                  <span className="text-white/30 text-sm">→</span>
-                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Deploy</span>
-                </div>
+              <p className="text-[#60a5fa] text-sm font-medium mb-5 tracking-wide">Build AI Agent</p>
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#3b82f6] text-white">Dashboard</span>
+                <span className="text-white/30 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#6366f1] text-white">Agent Builder</span>
+                <span className="text-white/30 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Name Agent</span>
+                <span className="text-white/30 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Choose Model</span>
+                <span className="text-white/30 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Set System Prompt</span>
+                <span className="text-white/30 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Add Knowledge</span>
+                <span className="text-white/30 text-sm">→</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#6366f1] text-white">Test Agent</span>
+                <span className="text-white/30 text-sm">→</span>
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Deploy</span>
               </div>
             </div>
           </div>
@@ -1093,19 +1116,19 @@ export default function NarblCaseStudy() {
           {/* Legend */}
           <div className="flex flex-wrap gap-6 mt-10 text-xs">
             <div className="flex items-center gap-2">
-              <span className="w-4 h-4 rounded-full bg-[#f472b6]"></span>
+              <span className="w-4 h-4 rounded-full bg-[#3b82f6]"></span>
               <span className="text-white/50">Dashboard</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-4 h-4 rounded-lg bg-[#3b82f6]"></span>
+              <span className="w-4 h-4 rounded-lg bg-[#06b6d4]"></span>
               <span className="text-white/50">Screens</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-4 h-4 rounded-lg bg-[#2563eb]"></span>
+              <span className="w-4 h-4 rounded-lg bg-[#8b5cf6]"></span>
               <span className="text-white/50">Compare</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-4 h-4 rounded-lg bg-[#ec4899]"></span>
+              <span className="w-4 h-4 rounded-lg bg-[#6366f1]"></span>
               <span className="text-white/50">Agent Builder</span>
             </div>
             <div className="flex items-center gap-2">
@@ -1124,7 +1147,7 @@ export default function NarblCaseStudy() {
 
         {/* Low Fidelity Designs */}
         <div className="mt-20 pt-12 border-t border-white/10">
-          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">Low Fidelity Designs</h3>
+          <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-2">Low Fidelity Designs</h3>
           <p className="text-white/40 text-sm mb-6">Early Explorations</p>
           
           <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
@@ -1347,7 +1370,7 @@ export default function NarblCaseStudy() {
 
         {/* Mid-Fidelity Prototypes */}
         <div className="mt-20 pt-12 border-t border-white/10">
-          <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">Mid-Fidelity Prototypes</h3>
+          <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-2">Mid-Fidelity Prototypes</h3>
           <p className="text-white/40 text-sm mb-6">Refining the Experience</p>
           
           <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
@@ -1653,7 +1676,7 @@ export default function NarblCaseStudy() {
 
           {/* Mid-Fi Summary */}
           <div className="max-w-3xl mt-12">
-            <h4 className="text-white/80 text-lg font-medium mb-4">Key Refinements</h4>
+            <h4 className="text-[#60a5fa] text-lg font-medium mb-4">Key Refinements</h4>
             <div className="space-y-3 text-white/50 leading-relaxed">
               <p><span className="text-white/70 font-medium">Persistent sidebar:</span> Same navigation pattern across all screens for consistency.</p>
               <p><span className="text-white/70 font-medium">Model cards:</span> Visual representation of each AI model with quick-select actions.</p>
@@ -1685,7 +1708,7 @@ export default function NarblCaseStudy() {
 
       {/* Core Features */}
       <Section>
-        <SectionLabel>02</SectionLabel>
+        <SectionLabel>04</SectionLabel>
         <SectionTitle>Core Features</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
           Four integrated features that make working with multiple AI models intuitive, from exploration to production.
@@ -1755,10 +1778,10 @@ export default function NarblCaseStudy() {
 
       {/* Design System */}
       <Section>
-        <SectionLabel>03</SectionLabel>
+        <SectionLabel>05</SectionLabel>
         <SectionTitle>Design System</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-          Our team designed a glassmorphism-inspired system that feels both futuristic and approachable. The dark navy theme reduces eye strain during long coding sessions while blue accents create a distinct, tech-forward identity that feels professional and trustworthy.
+          Our team designed a <strong className="text-white/70">glassmorphism-inspired system</strong> that feels both futuristic and approachable. The dark navy theme <strong className="text-white/70">reduces eye strain</strong> during long coding sessions while blue accents create a distinct, <strong className="text-white/70">tech-forward identity</strong> that feels professional and trustworthy.
         </p>
 
         {/* Design System */}
@@ -1935,11 +1958,19 @@ export default function NarblCaseStudy() {
             </div>
           </div>
         </div>
+
+        {/* Key Design Decision */}
+        <div className="mt-16 p-8 rounded-2xl bg-white/[0.02] border border-white/10 max-w-3xl">
+          <p className="text-[#60a5fa] text-xs font-semibold uppercase tracking-widest mb-4">Key Design Decision</p>
+          <p className="text-white/70 text-lg leading-relaxed">
+            We designed a <strong className="text-white font-semibold">unified multi-model interface instead of separate tool pages</strong> because developer research showed context-switching between AI tools was the biggest pain point. One workspace, multiple models, zero friction.
+          </p>
+        </div>
       </Section>
 
       {/* Impact & Results */}
       <Section>
-        <SectionLabel>04</SectionLabel>
+        <SectionLabel>06</SectionLabel>
         <SectionTitle>Impact & Results</SectionTitle>
         
         <div className="max-w-4xl">
@@ -1987,7 +2018,7 @@ export default function NarblCaseStudy() {
 
       {/* Reflection */}
       <Section>
-        <SectionLabel>05</SectionLabel>
+        <SectionLabel>07</SectionLabel>
         <SectionTitle>Reflection</SectionTitle>
         
         <div className="max-w-3xl">
@@ -2028,8 +2059,8 @@ export default function NarblCaseStudy() {
 
       {/* Final Product Showcase - Looping Slideshow */}
       <Section>
-        <SectionLabel>06</SectionLabel>
-        <SectionTitle>Final Product</SectionTitle>
+        <SectionLabel>08</SectionLabel>
+        <SectionTitle>Product Walkthrough</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
           Browse through the final high-fidelity designs showcasing Narbl's core features and glassmorphism aesthetic.
         </p>
@@ -2103,11 +2134,11 @@ export default function NarblCaseStudy() {
       </Section>
 
       {/* Back to Portfolio */}
-      <section className="relative py-32 px-8">
+      <section ref={footerRef} className="relative py-32 px-8">
         <div className="max-w-6xl mx-auto">
           <Link
             href="/"
-            className="inline-flex items-center gap-3 px-6 py-3 bg-[#3b82f6] hover:bg-[#2563eb] text-white font-semibold rounded-full transition-all"
+            className="relative z-30 inline-flex items-center gap-3 px-6 py-3 bg-[#3b82f6] hover:bg-[#2563eb] text-white font-semibold rounded-full transition-all touch-manipulation"
           >
             Back to Portfolio
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2180,7 +2211,7 @@ function Section({ children }: { children: React.ReactNode }) {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-blue-400/40 text-sm font-mono mb-4">{children}</p>
+    <p className="text-[#60a5fa]/60 text-sm font-mono mb-4">{children}</p>
   )
 }
 

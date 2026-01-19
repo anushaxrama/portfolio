@@ -11,6 +11,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -32,8 +33,12 @@ body {
 
 /* Subtle micro-interactions */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { 
+    transform: translateY(0px) translateZ(0); 
+  }
+  50% { 
+    transform: translateY(-10px) translateZ(0); 
+  }
 }
 
 @keyframes pulse-subtle {
@@ -110,6 +115,26 @@ body {
   width: 100%;
 }
 
+/* ========== MOBILE TOUCH FIX ========== */
+
+/* Touch manipulation utility */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure all interactive elements are clickable on mobile */
+a, button, [role="button"] {
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Ensure particles and decorative elements never block interactions */
+.pointer-events-none {
+  pointer-events: none !important;
+}
 
 /* ========== MOBILE PERFORMANCE OPTIMIZATIONS ========== */
 
@@ -124,15 +149,20 @@ body {
 
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
-  /* Disable expensive blur effects on mobile */
-  .blur-3xl, .blur-2xl, .blur-xl {
-    filter: none !important;
-    backdrop-filter: none !important;
+  /* Touch-friendly button sizing */
+  a, button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
   }
   
-  /* Reduce blur intensity */
-  [class*="blur-"] {
-    filter: blur(10px) !important;
+  /* Ensure nav links are easily tappable */
+  nav a, nav button {
+    padding: 12px 16px !important;
+  }
+
+  /* Disable expensive blur effects on mobile */
+  .blur-3xl, .blur-2xl, .blur-xl {
+    filter: blur(20px) !important;
   }
   
   /* Simplify gradients on mobile */
@@ -149,34 +179,6 @@ body {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
   }
-}
-
-/* Ensure particles never block interactions */
-.pointer-events-none {
-  pointer-events: none !important;
-}
-
-/* Optimize animations for GPU */
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) translateZ(0); 
-  }
-  50% { 
-    transform: translateY(-10px) translateZ(0); 
-  }
-}
-
-/* Touch-friendly button sizing */
-@media (max-width: 768px) {
-  button, a, [role="button"] {
-    min-height: 44px;
-    min-width: 44px;
-  }
-}
-
-/* Smooth scrolling performance */
-html {
-  -webkit-overflow-scrolling: touch;
 }
 
 /* Prevent layout shifts */

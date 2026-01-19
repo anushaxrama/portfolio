@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -12,16 +12,69 @@ import Link from 'next/link'
  * - Premium MacBook-style 3D laptop mockups with keyboard facing user
  * - iPhone-style 3D phone mockups
  * - Alternating left/right layouts with mirrored laptop angles
+ * - Auto-slideshow with manual navigation
  */
+
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  duration: number;
+  delay: number;
+  opacity: number;
+}
 
 export default function RecentWork() {
   const [activeSlides, setActiveSlides] = useState<{ [key: number]: number }>({})
   const [visibleProjects, setVisibleProjects] = useState<Set<number>>(new Set())
   const [activeProject, setActiveProject] = useState(0)
+  const [isPaused, setIsPaused] = useState<{ [key: number]: boolean }>({})
+  const [isMobile, setIsMobile] = useState(false)
   const projectRefs = useRef<(HTMLElement | null)[]>([])
   const sectionRef = useRef<HTMLElement>(null)
+  const autoSlideTimers = useRef<{ [key: number]: NodeJS.Timeout | null }>({})
+  
+  // Check for mobile on mount
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
+
+  // Generate floating particles - continues from hero
+  const particles: Particle[] = useMemo(() => {
+    const count = isMobile ? 15 : 40
+    return Array.from({ length: count }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 0.5,
+      duration: Math.random() * 12 + 8,
+      delay: Math.random() * 5,
+      opacity: Math.random() * 0.35 + 0.1,
+    }));
+  }, [isMobile]);
 
   const projects = [
+    {
+      title: 'Narbl',
+      subtitle: 'AI Developer Platform',
+      description: 'Comparing AI models used to mean opening twelve browser tabs. Narbl puts them all in one place so developers can test prompts, compare responses side by side, and actually figure out which model works best. Clean interface, less chaos.',
+      demoImages: [
+        { src: '/narbl/narbl-1.png', label: 'Build with Intelligence' },
+        { src: '/narbl/narbl-3.png', label: 'Compare Side by Side' },
+        { src: '/narbl/narbl-4.png', label: 'Chat with Any Model' },
+        { src: '/narbl/narbl-5.png', label: 'Build Custom AI Agents' },
+        { src: '/narbl/narbl-6.png', label: 'Powerful AI Products' },
+        { src: '/narbl/narbl-7.png', label: 'User Dashboard' },
+      ],
+      figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
+      githubLink: null,
+      caseStudyLink: '/case-study/narbl',
+      deviceType: 'laptop' as const,
+      number: '01',
+      accentHue: 210,
+      laptopAngle: 'right' as const, // Keyboard faces user, angled to show right side
+    },
     {
       title: 'NeuraNote',
       subtitle: 'AI-Powered Cognitive Note-Taking',
@@ -39,28 +92,8 @@ export default function RecentWork() {
       githubLink: 'https://github.com/anushaxrama/neuranote',
       caseStudyLink: '/case-study/neuranote',
       deviceType: 'laptop' as const,
-      number: '01',
-      accentHue: 270,
-      laptopAngle: 'right' as const, // Keyboard faces user, angled to show right side
-    },
-    {
-      title: 'Narbl',
-      subtitle: 'AI Developer Platform',
-      description: 'Comparing AI models used to mean opening twelve browser tabs. Narbl puts them all in one place so developers can test prompts, compare responses side by side, and actually figure out which model works best. Clean interface, less chaos.',
-      demoImages: [
-        { src: '/narbl/narbl-1.png', label: 'Build with Intelligence' },
-        { src: '/narbl/narbl-3.png', label: 'Compare Side by Side' },
-        { src: '/narbl/narbl-4.png', label: 'Chat with Any Model' },
-        { src: '/narbl/narbl-5.png', label: 'Build Custom AI Agents' },
-        { src: '/narbl/narbl-6.png', label: 'Powerful AI Products' },
-        { src: '/narbl/narbl-7.png', label: 'User Dashboard' },
-      ],
-      figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
-      githubLink: null,
-      caseStudyLink: '/case-study/narbl',
-      deviceType: 'laptop' as const,
       number: '02',
-      accentHue: 210,
+      accentHue: 270,
       laptopAngle: 'left' as const, // Keyboard faces user, angled to show left side (mirrored)
     },
     {
@@ -144,26 +177,62 @@ export default function RecentWork() {
     }
   }, [])
 
-  const goToPrevSlide = (projectIndex: number, totalImages: number) => {
+  const goToPrevSlide = useCallback((projectIndex: number, totalImages: number) => {
     setActiveSlides(prev => {
       const currentSlide = prev[projectIndex] || 0
       return { ...prev, [projectIndex]: (currentSlide - 1 + totalImages) % totalImages }
     })
-  }
+    // Pause auto-slide briefly when manually navigating
+    setIsPaused(prev => ({ ...prev, [projectIndex]: true }))
+    setTimeout(() => setIsPaused(prev => ({ ...prev, [projectIndex]: false })), 5000)
+  }, [])
 
-  const goToNextSlide = (projectIndex: number, totalImages: number) => {
+  const goToNextSlide = useCallback((projectIndex: number, totalImages: number) => {
     setActiveSlides(prev => {
       const currentSlide = prev[projectIndex] || 0
       return { ...prev, [projectIndex]: (currentSlide + 1) % totalImages }
     })
-  }
+    // Pause auto-slide briefly when manually navigating
+    setIsPaused(prev => ({ ...prev, [projectIndex]: true }))
+    setTimeout(() => setIsPaused(prev => ({ ...prev, [projectIndex]: false })), 5000)
+  }, [])
+
+  // Auto-slideshow effect - advances every 4 seconds
+  useEffect(() => {
+    projects.forEach((project, index) => {
+      if (project.demoImages.length <= 1) return // Skip single-image projects
+      if (isPaused[index]) return // Skip if manually paused
+      
+      // Clear existing timer
+      if (autoSlideTimers.current[index]) {
+        clearInterval(autoSlideTimers.current[index]!)
+      }
+      
+      // Set new timer
+      autoSlideTimers.current[index] = setInterval(() => {
+        if (!isPaused[index]) {
+          setActiveSlides(prev => {
+            const currentSlide = prev[index] || 0
+            return { ...prev, [index]: (currentSlide + 1) % project.demoImages.length }
+          })
+        }
+      }, 4000) // 4 seconds per slide
+    })
+
+    // Cleanup on unmount
+    return () => {
+      Object.values(autoSlideTimers.current).forEach(timer => {
+        if (timer) clearInterval(timer)
+      })
+    }
+  }, [isPaused])
 
   const setProjectRef = (index: number) => (el: HTMLElement | null) => {
     projectRefs.current[index] = el
   }
 
-  // Get current accent color based on active project
-  const currentHue = projects[activeProject]?.accentHue || 270
+  // Get current accent color based on active project (defaults to Narbl's blue)
+  const currentHue = projects[activeProject]?.accentHue || 210
 
   // Clean MacBook Pro Mockup - Matches reference image exactly
   const LaptopMockup = ({ project, index, isVisible }: { project: typeof projects[0], index: number, isVisible: boolean }) => {
@@ -218,35 +287,58 @@ export default function RecentWork() {
                   {project.demoImages.map((image, imgIndex) => (
                     <div
                       key={imgIndex}
-                      className={`absolute inset-0 transition-opacity duration-500 flex items-center justify-center ${
-                        (activeSlides[index] || 0) === imgIndex ? 'opacity-100' : 'opacity-0'
+                      className={`absolute inset-0 flex items-center justify-center will-change-opacity ${
+                        (activeSlides[index] || 0) === imgIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
                       }`}
+                      style={{ 
+                        transition: 'opacity 0.4s ease-out',
+                        transform: 'translateZ(0)', // Hardware acceleration
+                      }}
                     >
                       <Image
                         src={image.src}
                         alt={image.label}
                         fill
                         className="object-contain"
-                        sizes="500px"
+                        sizes="(max-width: 768px) 90vw, 500px"
                         priority={index === 0 && imgIndex === 0}
+                        loading={index === 0 && imgIndex === 0 ? 'eager' : 'lazy'}
                       />
                     </div>
                   ))}
 
-                  {/* Navigation Arrows */}
+                  {/* Navigation Arrows - Visible on mobile */}
                   <button
-                    onClick={() => goToPrevSlide(index, project.demoImages.length)}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-20"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      goToPrevSlide(index, project.demoImages.length)
+                    }}
+                    onTouchEnd={(e) => {
+                      e.preventDefault()
+                      goToPrevSlide(index, project.demoImages.length)
+                    }}
+                    className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 w-11 h-11 md:w-9 md:h-9 rounded-full bg-black/70 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white active:bg-black active:scale-95 transition-all opacity-80 md:opacity-0 md:group-hover:opacity-100 cursor-pointer z-30 touch-manipulation select-none"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
                   <button
-                    onClick={() => goToNextSlide(index, project.demoImages.length)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-20"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      goToNextSlide(index, project.demoImages.length)
+                    }}
+                    onTouchEnd={(e) => {
+                      e.preventDefault()
+                      goToNextSlide(index, project.demoImages.length)
+                    }}
+                    className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 w-11 h-11 md:w-9 md:h-9 rounded-full bg-black/70 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white active:bg-black active:scale-95 transition-all opacity-80 md:opacity-0 md:group-hover:opacity-100 cursor-pointer z-30 touch-manipulation select-none"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                     </svg>
                   </button>
@@ -256,8 +348,12 @@ export default function RecentWork() {
                     {project.demoImages.map((_, dotIndex) => (
                       <button
                         key={dotIndex}
-                        onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
-                        className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                        onClick={() => {
+                          setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))
+                          setIsPaused(prev => ({ ...prev, [index]: true }))
+                          setTimeout(() => setIsPaused(prev => ({ ...prev, [index]: false })), 5000)
+                        }}
+                        className={`h-1.5 rounded-full transition-all cursor-pointer touch-manipulation ${
                           (activeSlides[index] || 0) === dotIndex 
                             ? 'bg-white w-4' 
                             : 'bg-white/40 w-1.5 hover:bg-white/60'
@@ -353,21 +449,26 @@ export default function RecentWork() {
 
             {/* Screen */}
             <div className="relative aspect-[9/19.5] group">
-              {project.demoImages.map((image, imgIndex) => (
-                <div
-                  key={imgIndex}
-                  className={`absolute inset-0 transition-all duration-700 ${
-                    (activeSlides[index] || 0) === imgIndex 
-                      ? 'opacity-100 scale-100' 
-                      : 'opacity-0 scale-[1.02]'
-                  }`}
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.label}
-                    fill
-                    className="object-cover object-top"
-                    sizes="220px"
+                {project.demoImages.map((image, imgIndex) => (
+                  <div
+                    key={imgIndex}
+                    className={`absolute inset-0 will-change-opacity ${
+                      (activeSlides[index] || 0) === imgIndex 
+                        ? 'opacity-100 z-10' 
+                        : 'opacity-0 z-0'
+                    }`}
+                    style={{ 
+                      transition: 'opacity 0.4s ease-out',
+                      transform: 'translateZ(0)', // Hardware acceleration
+                    }}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.label}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 70vw, 220px"
+                    loading={imgIndex === 0 ? 'eager' : 'lazy'}
                   />
                 </div>
               ))}
@@ -380,20 +481,38 @@ export default function RecentWork() {
                 }}
               />
 
-              {/* Navigation arrows - Bigger & More Visible */}
+              {/* Navigation arrows - Visible on mobile */}
               <button
-                onClick={() => goToPrevSlide(index, project.demoImages.length)}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-20"
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  goToPrevSlide(index, project.demoImages.length)
+                }}
+                onTouchEnd={(e) => {
+                  e.preventDefault()
+                  goToPrevSlide(index, project.demoImages.length)
+                }}
+                className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 w-12 h-12 md:w-10 md:h-10 rounded-full bg-black/70 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white active:bg-black active:scale-95 transition-all opacity-80 md:opacity-0 md:group-hover:opacity-100 cursor-pointer z-30 touch-manipulation select-none"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
-                onClick={() => goToNextSlide(index, project.demoImages.length)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-black/80 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 cursor-pointer z-20"
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  goToNextSlide(index, project.demoImages.length)
+                }}
+                onTouchEnd={(e) => {
+                  e.preventDefault()
+                  goToNextSlide(index, project.demoImages.length)
+                }}
+                className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 w-12 h-12 md:w-10 md:h-10 rounded-full bg-black/70 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white active:bg-black active:scale-95 transition-all opacity-80 md:opacity-0 md:group-hover:opacity-100 cursor-pointer z-30 touch-manipulation select-none"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -403,8 +522,12 @@ export default function RecentWork() {
                 {project.demoImages.map((_, dotIndex) => (
                   <button
                     key={dotIndex}
-                    onClick={() => setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))}
-                    className={`h-1 rounded-full transition-all ${
+                    onClick={() => {
+                      setActiveSlides(prev => ({ ...prev, [index]: dotIndex }))
+                      setIsPaused(prev => ({ ...prev, [index]: true }))
+                      setTimeout(() => setIsPaused(prev => ({ ...prev, [index]: false })), 5000)
+                    }}
+                    className={`h-1 rounded-full transition-all touch-manipulation ${
                       (activeSlides[index] || 0) === dotIndex 
                         ? 'bg-white w-4' 
                         : 'bg-white/40 w-1 hover:bg-white/60'
@@ -460,32 +583,52 @@ export default function RecentWork() {
 
   return (
     <section id="work" ref={sectionRef} className="relative">
-      {/* Dynamic ombre gradient background - colors shift as you scroll */}
-      <div className="fixed inset-0 -z-10 pointer-events-none transition-all duration-1000">
+      {/* Dynamic ombre gradient background - covers entire page, colors shift as you scroll */}
+      <div className="fixed inset-0 -z-10 pointer-events-none transition-all duration-[1500ms]">
+        {/* Solid base */}
         <div className="absolute inset-0 bg-[#050507]" />
-        {/* Main color orb that changes with active project */}
+        {/* Main color orb - centered in viewport */}
         <div 
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full blur-[200px] transition-all duration-1000 ease-out"
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[1100px] h-[1100px] rounded-full blur-[200px] transition-all duration-[1500ms] ease-out"
           style={{ 
-            backgroundColor: `hsla(${currentHue}, 70%, 35%, 0.25)`,
+            backgroundColor: `hsla(${currentHue}, 70%, 35%, 0.3)`,
           }}
         />
         {/* Secondary accent orb */}
         <div 
-          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[150px] transition-all duration-1000 ease-out"
+          className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-[150px] transition-all duration-[1500ms] ease-out"
           style={{ 
-            backgroundColor: `hsla(${currentHue + 30}, 60%, 30%, 0.18)`,
+            backgroundColor: `hsla(${currentHue + 30}, 60%, 30%, 0.2)`,
           }}
         />
-        {/* Subtle top gradient */}
+        {/* Third orb for depth */}
         <div 
-          className="absolute top-0 left-0 right-0 h-[50vh] transition-all duration-1000"
-          style={{
-            background: `linear-gradient(180deg, hsla(${currentHue}, 60%, 20%, 0.2) 0%, transparent 100%)`,
+          className="absolute top-1/2 left-1/5 w-[450px] h-[450px] rounded-full blur-[130px] transition-all duration-[1500ms] ease-out"
+          style={{ 
+            backgroundColor: `hsla(${currentHue - 20}, 50%, 25%, 0.15)`,
           }}
         />
       </div>
 
+      {/* Floating particles - continues from hero */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            className="absolute rounded-full"
+            style={{
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              opacity: particle.opacity,
+              backgroundColor: particle.id % 4 === 0 ? `hsla(${currentHue}, 60%, 70%, 0.8)` : '#ffffff',
+              animation: `float ${particle.duration}s ease-in-out ${particle.delay}s infinite`,
+              transition: 'background-color 1.5s ease-out',
+            }}
+          />
+        ))}
+      </div>
 
       {/* Full-page project sections */}
       {projects.map((project, index) => {
@@ -565,7 +708,7 @@ export default function RecentWork() {
                     {project.caseStudyLink && (
                       <Link
                         href={project.caseStudyLink}
-                        className="group inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 hover-lift transition-all"
+                        className="group relative z-30 inline-flex items-center gap-2 px-5 py-3 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 hover-lift transition-all touch-manipulation"
                       >
                         <span>View Case Study</span>
                         <svg 

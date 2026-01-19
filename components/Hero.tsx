@@ -31,15 +31,15 @@ export default function Hero() {
 
   // Generate floating white particles (star specs) - reduced on mobile
   const particles: Particle[] = useMemo(() => {
-    const count = isMobile ? 15 : 50 // Reduce particles on mobile
+    const count = isMobile ? 20 : 60 // More vibrant stars
     return Array.from({ length: count }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 2 + 1,
+      size: Math.random() * 2.5 + 1, // Slightly larger
       duration: Math.random() * 10 + 6,
       delay: Math.random() * 5,
-      opacity: Math.random() * 0.4 + 0.1,
+      opacity: Math.random() * 0.5 + 0.2, // More visible
     }));
   }, [isMobile]);
 
@@ -155,10 +155,7 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/5 via-transparent to-blue-900/5" />
-      </div>
+      {/* Removed - background is now handled by RecentWork's fixed background */}
 
       {/* Main content - centered */}
       <div 

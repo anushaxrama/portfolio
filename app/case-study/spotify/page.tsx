@@ -27,10 +27,28 @@ export default function SpotifyCaseStudy() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [showBackButton, setShowBackButton] = useState(true)
+  const footerRef = useRef<HTMLElement>(null)
 
   // Check for mobile on mount
   useEffect(() => {
     setIsMobile(window.innerWidth < 768)
+  }, [])
+
+  // Hide back button when footer is visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowBackButton(!entry.isIntersecting)
+      },
+      { threshold: 0.1 }
+    )
+    
+    if (footerRef.current) {
+      observer.observe(footerRef.current)
+    }
+    
+    return () => observer.disconnect()
   }, [])
 
   const particles: Particle[] = useMemo(() => {
@@ -48,6 +66,14 @@ export default function SpotifyCaseStudy() {
 
   useEffect(() => {
     setIsLoaded(true)
+  }, [])
+
+  // Auto-advance slideshow every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % demoImages.length)
+    }, 4000)
+    return () => clearInterval(interval)
   }, [])
 
   const goToPrevSlide = () => {
@@ -80,7 +106,7 @@ export default function SpotifyCaseStudy() {
       </div>
 
       {/* Back button */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-8">
+      <nav className={`fixed top-0 left-0 right-0 z-50 px-8 py-8 transition-opacity duration-300 ${showBackButton ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <Link 
           href="/"
           className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors text-sm tracking-wide"
@@ -168,13 +194,14 @@ export default function SpotifyCaseStudy() {
 
       {/* Overview Section */}
       <Section>
-        <SectionLabel>Overview</SectionLabel>
+        <SectionLabel>01</SectionLabel>
+        <SectionTitle>Overview</SectionTitle>
         <div className="max-w-3xl">
           <p className="text-2xl md:text-3xl text-white/80 font-light leading-relaxed mb-8">
             Spotify helps you find more music. But what if it helped you understand why you listen?
           </p>
           <p className="text-lg text-white/50 leading-relaxed mb-12">
-            I noticed a pattern in my own listening: saved songs became forgotten archives, recommendations felt random, and music turned into background noise. This redesign explores what Spotify could look like if it prioritized meaningful listening over infinite discovery. I introduced a concept called <span className="text-[#1db954]">Listening Threads</span>: finite, behavior-driven collections that explain why they exist and help you rediscover music that matters.
+            I noticed a pattern in my own listening: saved songs became forgotten archives, recommendations felt random, and music turned into background noise. This <strong className="text-white/70">concept redesign</strong> explores what Spotify could look like if it prioritized <strong className="text-white/70">meaningful listening</strong> over infinite discovery. I introduced a concept called <span className="text-[#1db954] font-medium">Listening Threads</span>: finite, <strong className="text-white/70">behavior-driven collections</strong> that explain why they exist and help you rediscover music that matters.
           </p>
           
           {/* Problem Statement Box */}
@@ -206,7 +233,8 @@ export default function SpotifyCaseStudy() {
 
       {/* Design Process Timeline */}
       <Section>
-        <SectionLabel>Design Process</SectionLabel>
+        <SectionLabel>02</SectionLabel>
+        <SectionTitle>Design Process</SectionTitle>
         <p className="text-white/40 text-sm mb-12">2-Week Sprint</p>
         
         <div className="relative max-w-5xl">
@@ -356,18 +384,19 @@ export default function SpotifyCaseStudy() {
 
       {/* Research Section */}
       <Section>
+        <SectionLabel>03</SectionLabel>
         <SectionTitle>Research</SectionTitle>
         
         <div className="max-w-3xl mb-16">
-          <h3 className="text-xl md:text-2xl font-semibold text-white mb-6">Research Goals</h3>
+          <h3 className="text-xl md:text-2xl font-semibold text-[#1db954] mb-6">Research Goals</h3>
           <p className="text-lg text-white/60 leading-relaxed">
-            I wanted to understand how people actually feel about their relationship with music streaming. Not just what features they want, but how streaming has changed the way they listen, remember, and connect with music.
+            I wanted to understand how people actually feel about their relationship with music streaming. Not just what features they want, but <strong className="text-white/80">how streaming has changed the way they listen, remember, and connect</strong> with music.
           </p>
         </div>
 
         {/* User Surveys */}
         <div className="mb-8">
-          <h3 className="text-xl md:text-2xl font-semibold text-white mb-8">User Surveys</h3>
+          <h3 className="text-xl md:text-2xl font-semibold text-[#1db954] mb-8">User Surveys</h3>
           <p className="text-white/40 text-sm mb-12">Survey sample: n = 24 Spotify users</p>
         </div>
 
@@ -500,7 +529,7 @@ export default function SpotifyCaseStudy() {
 
         {/* Key Takeaways */}
         <div className="max-w-3xl mt-16 pt-12 border-t border-white/10">
-          <h4 className="text-white/80 text-lg font-medium mb-4">Key Takeaways</h4>
+          <h4 className="text-[#1db954] text-lg font-medium mb-4">Key Takeaways</h4>
           <div className="space-y-4 text-white/50 leading-relaxed">
             <p>
               <span className="text-white/70 font-medium">Music has become wallpaper.</span>{' '}
@@ -779,14 +808,14 @@ export default function SpotifyCaseStudy() {
             </div>
           </div>
 
-          {/* Affinity Mapping Summary */}
+          {/* Synthesis */}
           <div className="max-w-3xl mt-12">
-            <h4 className="text-[#1db954] text-lg font-medium mb-4">What This Revealed</h4>
+            <h4 className="text-[#1db954] text-lg font-medium mb-4">Key Insight</h4>
             <p className="text-white/50 leading-relaxed mb-4">
-              A consistent pattern emerged: users have lost their personal relationship with music. Streaming made access easy but stripped away the context, intention, and emotional connection that made music meaningful.
+              A clear pattern emerged from the research: <strong className="text-white/70">users have lost their personal relationship with music</strong>. Streaming made access effortless but stripped away the context, intention, and emotional connection that made listening meaningful.
             </p>
             <p className="text-white/50 leading-relaxed">
-              <span className="text-white/70 font-medium">The opportunity:</span> Transform Spotify from a music player into a music memory system—one that helps users rediscover not just songs, but the feelings and moments attached to them.
+              <span className="text-white/70 font-medium">The opportunity:</span> Transform Spotify from a music player into a <strong className="text-white/70">music memory system</strong> that helps users rediscover not just songs, but the feelings and moments attached to them.
             </p>
           </div>
         </div>
@@ -794,31 +823,37 @@ export default function SpotifyCaseStudy() {
 
       {/* Before & After */}
       <Section>
+        <SectionLabel>04</SectionLabel>
         <SectionTitle>Before & After</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-          Spotify's current discovery relies on algorithmic carousels that often feel impersonal. My redesign shifts the focus from "what to play" to "why you listen."
+          Spotify's current discovery relies on algorithmic carousels that often feel impersonal. My redesign shifts the focus from <strong className="text-white/70">"what to play"</strong> to <strong className="text-white/70">"why you listen."</strong>
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
           {/* Before */}
           <div className="group">
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] p-6">
-              <p className="text-red-400/80 text-xs font-medium uppercase tracking-wider mb-4">Current Experience</p>
-              <ul className="space-y-3 text-white/50 text-sm">
-                <li className="flex items-start gap-3">
-                  <span className="text-red-400/60 mt-0.5">✕</span>
+            <div className="relative rounded-2xl overflow-hidden border border-red-500/20 bg-gradient-to-br from-red-500/[0.08] to-transparent p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center">
+                  <span className="text-red-400 text-lg">✕</span>
+                </div>
+                <p className="text-red-400 text-sm font-semibold uppercase tracking-wider">Current Experience</p>
+              </div>
+              <ul className="space-y-4 text-white/50 text-sm">
+                <li className="flex items-start gap-4 p-3 rounded-lg bg-white/[0.02]">
+                  <span className="text-red-400/80 mt-0.5 text-lg">•</span>
                   <span>Endless carousels with no context on why songs are recommended</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-red-400/60 mt-0.5">✕</span>
+                <li className="flex items-start gap-4 p-3 rounded-lg bg-white/[0.02]">
+                  <span className="text-red-400/80 mt-0.5 text-lg">•</span>
                   <span>Saved songs become forgotten in a growing library</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-red-400/60 mt-0.5">✕</span>
+                <li className="flex items-start gap-4 p-3 rounded-lg bg-white/[0.02]">
+                  <span className="text-red-400/80 mt-0.5 text-lg">•</span>
                   <span>No way to attach memories or meaning to music</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-red-400/60 mt-0.5">✕</span>
+                <li className="flex items-start gap-4 p-3 rounded-lg bg-white/[0.02]">
+                  <span className="text-red-400/80 mt-0.5 text-lg">•</span>
                   <span>Passive listening with little intentional engagement</span>
                 </li>
               </ul>
@@ -827,24 +862,29 @@ export default function SpotifyCaseStudy() {
 
           {/* After */}
           <div className="group">
-            <div className="relative rounded-2xl overflow-hidden border border-[#1db954]/30 bg-[#1db954]/[0.05] p-6">
-              <p className="text-[#1db954] text-xs font-medium uppercase tracking-wider mb-4">Redesigned Experience</p>
-              <ul className="space-y-3 text-white/60 text-sm">
-                <li className="flex items-start gap-3">
-                  <span className="text-[#1db954] mt-0.5">✓</span>
-                  <span><strong className="text-white/80">Listening Memory</strong> shows when, where, and how often you play songs</span>
+            <div className="relative rounded-2xl overflow-hidden border border-[#1db954]/30 bg-gradient-to-br from-[#1db954]/[0.12] to-transparent p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-full bg-[#1db954]/20 flex items-center justify-center">
+                  <span className="text-[#1db954] text-lg">✓</span>
+                </div>
+                <p className="text-[#1db954] text-sm font-semibold uppercase tracking-wider">Redesigned Experience</p>
+              </div>
+              <ul className="space-y-4 text-white/60 text-sm">
+                <li className="flex items-start gap-4 p-3 rounded-lg bg-[#1db954]/[0.05] border border-[#1db954]/10">
+                  <span className="text-[#1db954] mt-0.5 text-lg">→</span>
+                  <span><strong className="text-white/90">Listening Memory</strong> shows when, where, and how often you play songs</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#1db954] mt-0.5">✓</span>
-                  <span><strong className="text-white/80">Threads</strong> are curated collections that explain why each song matters</span>
+                <li className="flex items-start gap-4 p-3 rounded-lg bg-[#1db954]/[0.05] border border-[#1db954]/10">
+                  <span className="text-[#1db954] mt-0.5 text-lg">→</span>
+                  <span><strong className="text-white/90">Threads</strong> are curated collections that explain why each song matters</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#1db954] mt-0.5">✓</span>
-                  <span><strong className="text-white/80">Emotional Clusters</strong> organize music by feeling, not just genre</span>
+                <li className="flex items-start gap-4 p-3 rounded-lg bg-[#1db954]/[0.05] border border-[#1db954]/10">
+                  <span className="text-[#1db954] mt-0.5 text-lg">→</span>
+                  <span><strong className="text-white/90">Emotional Clusters</strong> organize music by feeling, not just genre</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[#1db954] mt-0.5">✓</span>
-                  <span>Intentional listening modes that bring back active engagement</span>
+                <li className="flex items-start gap-4 p-3 rounded-lg bg-[#1db954]/[0.05] border border-[#1db954]/10">
+                  <span className="text-[#1db954] mt-0.5 text-lg">→</span>
+                  <span>Intentional listening modes that bring back <strong className="text-white/90">active engagement</strong></span>
                 </li>
               </ul>
             </div>
@@ -852,16 +892,17 @@ export default function SpotifyCaseStudy() {
         </div>
 
         {/* Key Design Decision */}
-        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-[#1db954]/10 to-transparent border-l-2 border-[#1db954] max-w-3xl">
-          <p className="text-[#1db954] text-xs font-medium uppercase tracking-wider mb-2">Key Design Decision</p>
-          <p className="text-white/70 leading-relaxed">
-            I chose "Threads" over traditional playlists because user research showed people wanted <strong className="text-white">narrative context</strong>, not just song collections. Threads tell a story about why songs belong together.
+        <div className="mt-12 p-8 rounded-2xl bg-white/[0.02] border border-white/10 max-w-3xl">
+          <p className="text-[#1db954] text-xs font-semibold uppercase tracking-widest mb-4">Key Design Decision</p>
+          <p className="text-white/70 text-lg leading-relaxed">
+            I chose <strong className="text-white font-semibold">"Threads" over traditional playlists</strong> because user research showed people wanted narrative context, not just song collections. Threads tell a story about why songs belong together.
           </p>
         </div>
       </Section>
 
       {/* User Flows */}
       <Section>
+        <SectionLabel>05</SectionLabel>
         <SectionTitle>User Flows</SectionTitle>
         <p className="text-white/40 text-sm mb-10">Core journeys through the redesigned experience</p>
 
@@ -870,12 +911,12 @@ export default function SpotifyCaseStudy() {
           <div 
             className="rounded-2xl p-6 border border-white/[0.06]"
             style={{
-              background: 'linear-gradient(145deg, rgba(6,182,212,0.06) 0%, rgba(6,182,212,0.02) 100%)',
+              background: 'linear-gradient(145deg, rgba(29,185,84,0.06) 0%, rgba(29,185,84,0.02) 100%)',
             }}
           >
-            <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Browse & Play Threads</p>
+            <p className="text-[#1db954] text-sm font-medium mb-5 tracking-wide">Browse & Play Threads</p>
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#1db954] text-white">Home</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#15803d] text-white">Home</span>
               <span className="text-white/30 text-sm">→</span>
               <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Your Threads</span>
               <span className="text-white/30 text-sm">→</span>
@@ -883,50 +924,50 @@ export default function SpotifyCaseStudy() {
               <span className="text-white/30 text-sm">→</span>
               <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Thread Detail</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fbbf24] text-[#0a0a0a]">Play</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fbbf24] text-black">Play</span>
             </div>
         </div>
-        
+
           {/* Listening Memory Flow */}
           <div 
             className="rounded-2xl p-6 border border-white/[0.06]"
             style={{
-              background: 'linear-gradient(145deg, rgba(167,139,250,0.06) 0%, rgba(167,139,250,0.02) 100%)',
+              background: 'linear-gradient(145deg, rgba(29,185,84,0.06) 0%, rgba(29,185,84,0.02) 100%)',
             }}
           >
-            <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Explore Listening Memory</p>
+            <p className="text-[#1db954] text-sm font-medium mb-5 tracking-wide">Explore Listening Memory</p>
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#1db954] text-white">Home</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#15803d] text-white">Home</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a78bfa] text-white">Memory Tab</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Memory Tab</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a78bfa] text-white">Emotional Clusters</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Emotional Clusters</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a78bfa] text-white">Weekly Patterns</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Weekly Patterns</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fbbf24] text-[#0a0a0a]">Play Cluster</span>
-            </div>
-        </div>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fbbf24] text-black">Play Cluster</span>
+          </div>
+          </div>
 
           {/* Now Playing Context Flow */}
           <div 
             className="rounded-2xl p-6 border border-white/[0.06]"
             style={{
-              background: 'linear-gradient(145deg, rgba(244,114,182,0.06) 0%, rgba(244,114,182,0.02) 100%)',
+              background: 'linear-gradient(145deg, rgba(29,185,84,0.06) 0%, rgba(29,185,84,0.02) 100%)',
             }}
           >
-            <p className="text-white/80 text-sm font-medium mb-5 tracking-wide">Contextual Now Playing</p>
+            <p className="text-[#1db954] text-sm font-medium mb-5 tracking-wide">Contextual Now Playing</p>
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#1db954] text-white">Now Playing</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#15803d] text-white">Now Playing</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#f472b6] text-white">Memory Insight</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Memory Insight</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#f472b6] text-white">Related Tracks</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Related Tracks</span>
               <span className="text-white/30 text-sm">→</span>
               <div className="flex flex-col gap-1.5">
-                <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.08] text-white/60 border border-white/10">Add to Thread</span>
-                <span className="px-3 py-1.5 rounded-md text-[11px] bg-white/[0.08] text-white/60 border border-white/10">View Full Memory</span>
-          </div>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-black border border-white/10">Add to Thread</span>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-black border border-white/10">View Full Memory</span>
+              </div>
             </div>
           </div>
         </div>
@@ -934,24 +975,20 @@ export default function SpotifyCaseStudy() {
         {/* Legend */}
         <div className="flex flex-wrap gap-6 mt-10 text-xs">
           <div className="flex items-center gap-2">
-            <span className="w-4 h-4 rounded-full bg-[#1db954]"></span>
+            <span className="w-4 h-4 rounded-full bg-[#15803d]"></span>
             <span className="text-white/50">Entry Point</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-4 h-4 rounded-lg bg-[#06b6d4]"></span>
-            <span className="text-white/50">Threads</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-4 h-4 rounded-lg bg-[#a78bfa]"></span>
-            <span className="text-white/50">Memory</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-4 h-4 rounded-lg bg-[#f472b6]"></span>
-            <span className="text-white/50">Context</span>
+            <span className="text-white/50">Screen</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-4 h-4 rounded-full bg-[#fbbf24]"></span>
             <span className="text-white/50">Action</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-4 h-4 rounded-lg bg-[#a3a3a3]"></span>
+            <span className="text-white/50">Option</span>
           </div>
         </div>
 
@@ -964,7 +1001,8 @@ export default function SpotifyCaseStudy() {
 
       {/* Lo-Fi Designs */}
       <Section>
-        <SectionTitle>Low Fidelity Designs</SectionTitle>
+        <SectionLabel>06</SectionLabel>
+        <SectionTitle>Lo-Fi Wireframes</SectionTitle>
         <p className="text-white/40 text-sm mb-6">Early Explorations</p>
         
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
@@ -1129,6 +1167,7 @@ export default function SpotifyCaseStudy() {
 
       {/* Mid-Fi Prototypes */}
       <Section>
+        <SectionLabel>07</SectionLabel>
         <SectionTitle>Mid-Fidelity Prototypes</SectionTitle>
         <p className="text-white/40 text-sm mb-6">Refining the Experience</p>
         
@@ -1376,6 +1415,7 @@ export default function SpotifyCaseStudy() {
 
       {/* Core Features */}
       <Section>
+        <SectionLabel>08</SectionLabel>
         <SectionTitle>Core Features</SectionTitle>
         
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
@@ -1435,186 +1475,145 @@ export default function SpotifyCaseStudy() {
 
       {/* Design System */}
       <Section>
+        <SectionLabel>09</SectionLabel>
         <SectionTitle>Design System</SectionTitle>
-        <p className="text-white/40 text-sm mb-10">Building on Spotify's foundation with intention-focused additions</p>
+        <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
+          Building on Spotify's established visual language while introducing new components for <strong className="text-white/70">memory</strong>, <strong className="text-white/70">context</strong>, and <strong className="text-white/70">intentional listening</strong>. Every element respects the existing brand while extending it meaningfully.
+        </p>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mb-12">
           {/* Colors */}
           <div 
-            className="rounded-2xl p-6 border border-[#1db954]/20"
+            className="rounded-2xl p-8 border border-[#1db954]/20"
             style={{
               background: 'linear-gradient(145deg, #0d1f0d 0%, #0a0a0a 100%)',
             }}
           >
-            <h4 className="text-white/90 text-sm font-medium mb-6">Color Palette</h4>
+            <h4 className="text-[#1db954] text-sm font-medium mb-8">Color Palette</h4>
             
             {/* Spotify Green */}
-            <p className="text-[#1db954]/60 text-xs mb-3">Primary</p>
-            <div className="flex gap-2 mb-6">
+            <p className="text-white/40 text-xs mb-3 uppercase tracking-wider">Primary</p>
+            <div className="flex gap-3 mb-8">
               {['#1db954', '#1ed760', '#4ade80', '#86efac'].map((color, i) => (
-                <div 
-                  key={i}
-                  className="w-12 h-12 rounded-lg"
-                  style={{ 
-                    backgroundColor: color,
-                    boxShadow: `0 4px 12px ${color}40`
-                  }}
-                />
+                <div key={i} className="text-center">
+                  <div 
+                    className="w-14 h-14 rounded-xl mb-2"
+                    style={{ 
+                      backgroundColor: color,
+                      boxShadow: `0 4px 16px ${color}40`
+                    }}
+                  />
+                  <p className="text-white/30 text-[10px]">{color}</p>
+                </div>
               ))}
-        </div>
+            </div>
 
             {/* Backgrounds */}
-            <p className="text-[#1db954]/60 text-xs mb-3">Backgrounds</p>
-            <div className="flex gap-2 mb-6">
+            <p className="text-white/40 text-xs mb-3 uppercase tracking-wider">Backgrounds</p>
+            <div className="flex gap-3 mb-8">
               {['#000000', '#121212', '#181818', '#282828'].map((color, i) => (
-                <div 
-                  key={i}
-                  className="w-12 h-12 rounded-lg border border-white/10"
-                  style={{ backgroundColor: color }}
-                />
+                <div key={i} className="text-center">
+                  <div 
+                    className="w-14 h-14 rounded-xl border border-white/10 mb-2"
+                    style={{ backgroundColor: color }}
+                  />
+                  <p className="text-white/30 text-[10px]">{color}</p>
+                </div>
               ))}
-        </div>
+            </div>
 
-            {/* Accents */}
-            <p className="text-[#1db954]/60 text-xs mb-3">Emotional Accents</p>
-            <div className="flex gap-2">
-              {['#6366f1', '#ec4899', '#f59e0b', '#ef4444'].map((color, i) => (
-                <div 
-                  key={i}
-                  className="w-12 h-12 rounded-lg"
-                  style={{ 
-                    backgroundColor: color,
-                    boxShadow: `0 4px 12px ${color}30`
-                  }}
-                />
+            {/* Emotional Accents */}
+            <p className="text-white/40 text-xs mb-3 uppercase tracking-wider">Emotional Clusters</p>
+            <div className="flex gap-3">
+              {[
+                { color: '#6366f1', label: 'Focus' },
+                { color: '#ec4899', label: 'Energy' },
+                { color: '#f59e0b', label: 'Nostalgia' },
+                { color: '#ef4444', label: 'Passion' }
+              ].map((item, i) => (
+                <div key={i} className="text-center">
+                  <div 
+                    className="w-14 h-14 rounded-xl mb-2"
+                    style={{ 
+                      backgroundColor: item.color,
+                      boxShadow: `0 4px 16px ${item.color}30`
+                    }}
+                  />
+                  <p className="text-white/40 text-[10px]">{item.label}</p>
+                </div>
               ))}
           </div>
         </div>
 
           {/* Typography */}
           <div 
-            className="rounded-2xl p-6 border border-[#1db954]/20"
+            className="rounded-2xl p-8 border border-[#1db954]/20"
             style={{
               background: 'linear-gradient(145deg, #0d1f0d 0%, #0a0a0a 100%)',
             }}
           >
-            <h4 className="text-white/90 text-sm font-medium mb-6">Typography</h4>
+            <h4 className="text-[#1db954] text-sm font-medium mb-8">Typography</h4>
             
             <div className="space-y-0">
-              <div className="flex items-center justify-between py-4 border-b border-[#1db954]/10">
+              <div className="flex items-center justify-between py-5 border-b border-[#1db954]/10">
                 <div>
                   <p className="text-white/90 text-sm font-medium">Display</p>
-                  <p className="text-[#1db954]/50 text-xs mt-0.5">Circular · Bold · 32px</p>
-                </div>
+                  <p className="text-white/30 text-xs mt-1">Circular Std · Bold · 32px</p>
+          </div>
                 <p className="text-white text-2xl font-bold">Threads</p>
-              </div>
+        </div>
 
-              <div className="flex items-center justify-between py-4 border-b border-[#1db954]/10">
+              <div className="flex items-center justify-between py-5 border-b border-[#1db954]/10">
                 <div>
                   <p className="text-white/90 text-sm font-medium">Heading</p>
-                  <p className="text-[#1db954]/50 text-xs mt-0.5">Circular · SemiBold · 18px</p>
+                  <p className="text-white/30 text-xs mt-1">Circular Std · SemiBold · 18px</p>
                 </div>
-                <p className="text-white text-lg font-semibold">Heading</p>
+                <p className="text-white text-lg font-semibold">Memory</p>
               </div>
 
-              <div className="flex items-center justify-between py-4 border-b border-[#1db954]/10">
+              <div className="flex items-center justify-between py-5 border-b border-[#1db954]/10">
                 <div>
                   <p className="text-white/90 text-sm font-medium">Body</p>
-                  <p className="text-[#1db954]/50 text-xs mt-0.5">Circular · Regular · 14px</p>
+                  <p className="text-white/30 text-xs mt-1">Circular Std · Regular · 14px</p>
                 </div>
-                <p className="text-white/70 text-sm">Body text</p>
-              </div>
+                <p className="text-white/70 text-sm">Song context</p>
+        </div>
 
-              <div className="flex items-center justify-between py-4">
+              <div className="flex items-center justify-between py-5">
                 <div>
-                  <p className="text-white/90 text-sm font-medium">Context</p>
-                  <p className="text-[#1db954]/50 text-xs mt-0.5">Circular · Medium · 12px</p>
+                  <p className="text-white/90 text-sm font-medium">Context Label</p>
+                  <p className="text-white/30 text-xs mt-1">Circular Std · Medium · 11px</p>
                 </div>
-                <span className="text-[#1db954] text-xs bg-[#1db954]/10 px-2 py-1 rounded">WHY: Context</span>
+                <span className="text-[#1db954] text-xs bg-[#1db954]/10 px-3 py-1.5 rounded-full">From: Late Night</span>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Components */}
+        <div className="max-w-5xl">
+          <h4 className="text-[#1db954] text-sm font-medium mb-6">Key Components</h4>
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="p-5 rounded-xl bg-white/[0.02] border border-white/5">
+              <p className="text-white/80 text-sm font-medium mb-2">Thread Card</p>
+              <p className="text-white/40 text-xs leading-relaxed">Curated playlists with visible context about why songs belong together</p>
+          </div>
+            <div className="p-5 rounded-xl bg-white/[0.02] border border-white/5">
+              <p className="text-white/80 text-sm font-medium mb-2">Memory Badge</p>
+              <p className="text-white/40 text-xs leading-relaxed">Small pill showing when and where you first discovered a track</p>
+            </div>
+            <div className="p-5 rounded-xl bg-white/[0.02] border border-white/5">
+              <p className="text-white/80 text-sm font-medium mb-2">Cluster Bubble</p>
+              <p className="text-white/40 text-xs leading-relaxed">Visual grouping of songs by emotional state or listening pattern</p>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* Product Walkthrough */}
-      <Section>
-        <SectionTitle>Product Walkthrough</SectionTitle>
-        <p className="text-white/40 text-sm mb-12">Explore the redesigned Spotify experience</p>
-        
-        <div className="flex flex-col items-center">
-          <div className="relative group" style={{ width: '300px' }}>
-            {/* Phone Frame */}
-            <div className="relative bg-[#1a1a1a] rounded-[3rem] p-3 shadow-2xl border border-white/10">
-              {/* Dynamic Island */}
-              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-7 bg-black rounded-full z-20" />
-              
-              {/* Screen */}
-              <div className="relative rounded-[2.5rem] overflow-hidden bg-[#121212]" style={{ aspectRatio: '9/19.5' }}>
-                {demoImages.map((image, index) => (
-                  <Image
-                    key={index}
-                    src={image.src}
-                    alt={image.label}
-                    fill
-                    className={`object-cover object-top transition-opacity duration-500 ${
-                      activeSlide === index ? 'opacity-100' : 'opacity-0'
-                    }`}
-                    sizes="300px"
-                  />
-                ))}
-
-                {/* Navigation arrows */}
-                <button
-                  onClick={goToPrevSlide}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all z-10"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button
-                  onClick={goToNextSlide}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all z-10"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-
-                {/* Slide dots */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                  {demoImages.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setActiveSlide(index)}
-                      className={`h-2 rounded-full transition-all ${
-                        activeSlide === index 
-                          ? 'bg-[#1db954] w-5' 
-                          : 'bg-white/40 w-2 hover:bg-white/60'
-                      }`}
-                    />
-                  ))}
-                </div>
-        </div>
-
-              {/* Home Indicator */}
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-28 h-1 bg-white/20 rounded-full" />
-        </div>
-
-            {/* Glow effect */}
-            <div className="absolute -inset-12 bg-gradient-to-t from-[#1db954]/25 via-[#1db954]/10 to-transparent rounded-3xl blur-3xl -z-10" />
-          </div>
-
-          {/* Current slide label */}
-          <p className="text-center text-white/60 text-lg mt-8 font-medium">{demoImages[activeSlide].label}</p>
-          <p className="text-center text-white/30 text-sm mt-2">Click arrows to explore</p>
-        </div>
-      </Section>
-
       {/* Results */}
       <Section>
-        <SectionTitle>Results & Impact</SectionTitle>
+        <SectionLabel>10</SectionLabel>
+        <SectionTitle>Impact & Results</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
           While this is a concept redesign, I validated the designs through user testing sessions with Spotify users.
         </p>
@@ -1645,6 +1644,7 @@ export default function SpotifyCaseStudy() {
 
       {/* Reflection */}
       <Section>
+        <SectionLabel>11</SectionLabel>
         <SectionTitle>Reflection</SectionTitle>
         
         <div className="max-w-3xl">
@@ -1666,7 +1666,7 @@ export default function SpotifyCaseStudy() {
               </ul>
             </div>
             <div>
-              <h3 className="text-[#1db954] font-medium mb-3">Future Exploration</h3>
+              <h3 className="text-[#1db954] font-medium mb-3">Next Time</h3>
               <ul className="space-y-2 text-white/60 text-sm">
                 <li>Social features for shared listening</li>
                 <li>Mood-based contextual discovery</li>
@@ -1683,13 +1683,89 @@ export default function SpotifyCaseStudy() {
         </div>
       </Section>
 
+      {/* Product Walkthrough */}
+      <Section>
+        <SectionLabel>12</SectionLabel>
+        <SectionTitle>Product Walkthrough</SectionTitle>
+        <p className="text-white/50 leading-relaxed max-w-3xl mb-12">Explore the redesigned Spotify experience with auto-playing screens showcasing Threads, Listening Memory, and Emotional Clusters.</p>
+        
+        <div className="flex flex-col items-center">
+          <div className="relative group" style={{ width: '300px' }}>
+            {/* Phone Frame */}
+            <div className="relative bg-[#1a1a1a] rounded-[3rem] p-3 shadow-2xl border border-white/10">
+              {/* Dynamic Island */}
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-7 bg-black rounded-full z-20" />
+              
+              {/* Screen */}
+              <div className="relative rounded-[2.5rem] overflow-hidden bg-[#121212]" style={{ aspectRatio: '9/19.5' }}>
+                {demoImages.map((image, index) => (
+                  <Image
+                    key={index}
+                    src={image.src}
+                    alt={image.label}
+                    fill
+                    className={`object-cover object-top transition-opacity duration-500 ${
+                      activeSlide === index ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    sizes="300px"
+                  />
+                ))}
+
+                {/* Navigation arrows */}
+                <button
+                  onClick={goToPrevSlide}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all z-10 touch-manipulation"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={goToNextSlide}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all z-10 touch-manipulation"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Slide dots */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                  {demoImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveSlide(index)}
+                      className={`h-2 rounded-full transition-all touch-manipulation ${
+                        activeSlide === index 
+                          ? 'bg-[#1db954] w-5' 
+                          : 'bg-white/40 w-2 hover:bg-white/60'
+                      }`}
+                    />
+                  ))}
+          </div>
+              </div>
+
+              {/* Home Indicator */}
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-28 h-1 bg-white/20 rounded-full" />
+            </div>
+
+            {/* Glow effect */}
+            <div className="absolute -inset-12 bg-gradient-to-t from-[#1db954]/25 via-[#1db954]/10 to-transparent rounded-3xl blur-3xl -z-10" />
+          </div>
+
+          {/* Current slide label */}
+          <p className="text-center text-white/60 text-lg mt-8 font-medium">{demoImages[activeSlide].label}</p>
+          <p className="text-center text-white/30 text-sm mt-2">Auto-advances every 4 seconds</p>
+        </div>
+      </Section>
+
       {/* Footer */}
-      <section className="relative py-32 px-8">
+      <section ref={footerRef} className="relative py-32 px-8">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap gap-6">
             <Link
               href="/"
-              className="inline-flex items-center gap-3 px-6 py-3 bg-[#1db954] hover:bg-[#1ed760] text-black font-semibold rounded-full transition-all"
+              className="relative z-30 inline-flex items-center gap-3 px-6 py-3 bg-[#1db954] hover:bg-[#1ed760] text-black font-semibold rounded-full transition-all touch-manipulation"
             >
               Back to Portfolio
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
