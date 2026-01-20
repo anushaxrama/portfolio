@@ -748,12 +748,6 @@ export default function RecentWork() {
         )
       })}
 
-      {/* End indicator */}
-      <div className="py-32 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-white/30 text-sm tracking-widest uppercase">End of Projects</p>
-        </div>
-      </div>
     </section>
   )
 }
