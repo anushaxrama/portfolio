@@ -924,7 +924,7 @@ export default function SpotifyCaseStudy() {
               <span className="text-white/30 text-sm">→</span>
               <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Thread Detail</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fbbf24] text-black">Play</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fbbf24] text-white">Play</span>
             </div>
         </div>
 
@@ -945,7 +945,7 @@ export default function SpotifyCaseStudy() {
               <span className="text-white/30 text-sm">→</span>
               <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Weekly Patterns</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fbbf24] text-black">Play Cluster</span>
+              <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#fbbf24] text-white">Play Cluster</span>
           </div>
           </div>
 
@@ -965,8 +965,8 @@ export default function SpotifyCaseStudy() {
               <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Related Tracks</span>
               <span className="text-white/30 text-sm">→</span>
               <div className="flex flex-col gap-1.5">
-                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-black border border-white/10">Add to Thread</span>
-                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-black border border-white/10">View Full Memory</span>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-white border border-white/10">Add to Thread</span>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-white border border-white/10">View Full Memory</span>
               </div>
             </div>
           </div>
