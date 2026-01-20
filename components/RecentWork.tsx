@@ -97,21 +97,6 @@ export default function RecentWork() {
       laptopAngle: 'left' as const, // Keyboard faces user, angled to show left side (mirrored)
     },
     {
-      title: 'HABITat',
-      subtitle: 'Gamified Habit Tracking for College Students',
-      description: 'Most habit apps get abandoned in two weeks. HABITat changes that through gamification and social accountability: maintain streaks to unlock collectible animals, build your own habitat, and invite friends to keep you on track. Because staying consistent shouldn\'t feel like a chore.',
-      demoImages: [
-        { src: '/habitat/habitat-hero.png', label: 'HABITat Preview' },
-      ],
-      figmaLink: null,
-      githubLink: null,
-      caseStudyLink: '/case-study/habitat',
-      deviceType: 'hero-image' as const,
-      number: '03',
-      accentHue: 30,
-      laptopAngle: 'left' as const,
-    },
-    {
       title: 'Spotify',
       subtitle: 'Listening Threads — Intent-Based Discovery',
       description: 'A concept redesign exploring how Spotify could help users rediscover their relationship with music. Through user research and affinity mapping, I identified key pain points around passive listening and designed features like Listening Memory, Threads, and Emotional Clusters to bring intention back to music discovery.',
@@ -127,9 +112,24 @@ export default function RecentWork() {
       githubLink: 'https://github.com/anushaxrama/your-music-journey',
       caseStudyLink: '/case-study/spotify',
       deviceType: 'phone' as const,
-      number: '04',
+      number: '03',
       accentHue: 145,
       laptopAngle: 'right' as const,
+    },
+    {
+      title: 'HABITat',
+      subtitle: 'Gamified Habit Tracking for College Students',
+      description: 'Most habit apps get abandoned in two weeks. HABITat changes that through gamification and social accountability: maintain streaks to unlock collectible animals, build your own habitat, and invite friends to keep you on track. Because staying consistent shouldn\'t feel like a chore.',
+      demoImages: [
+        { src: '/habitat/habitat-hero.png', label: 'HABITat Preview' },
+      ],
+      figmaLink: null,
+      githubLink: null,
+      caseStudyLink: '/case-study/habitat',
+      deviceType: 'hero-image' as const,
+      number: '04',
+      accentHue: 30,
+      laptopAngle: 'left' as const,
     },
   ]
 
