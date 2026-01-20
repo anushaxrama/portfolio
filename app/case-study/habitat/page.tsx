@@ -559,11 +559,11 @@ export default function HabitatCaseStudy() {
             <div className="flex items-center gap-3 flex-wrap">
               <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#f97316] text-white">Launch App</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Welcome</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-white">Welcome</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Sign Up</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-white">Sign Up</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Setup Profile</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-white">Setup Profile</span>
               <span className="text-white/30 text-sm">→</span>
               <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Home Dashboard</span>
             </div>
@@ -580,14 +580,14 @@ export default function HabitatCaseStudy() {
               <span className="text-white/30 text-sm">→</span>
               <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#f97316] text-white">+ Add Habit</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Name Habit</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-white">Name Habit</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Set Frequency</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-white">Set Frequency</span>
               <span className="text-white/30 text-sm">→</span>
               <div className="flex flex-col gap-1.5">
-                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-black border border-white/10">Daily</span>
-                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-black border border-white/10">Weekly</span>
-                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-black border border-white/10">Custom</span>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-white border border-white/10">Daily</span>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-white border border-white/10">Weekly</span>
+                <span className="px-3 py-1.5 rounded-md text-[11px] bg-[#a3a3a3] text-white border border-white/10">Custom</span>
               </div>
               <span className="text-white/30 text-sm">→</span>
               <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Save</span>
@@ -603,13 +603,13 @@ export default function HabitatCaseStudy() {
             <div className="flex items-center gap-3 flex-wrap">
               <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Home</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">View Habits</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-white">View Habits</span>
               <span className="text-white/30 text-sm">→</span>
               <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#f97316] text-white">Tap Complete</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Streak +1</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-white">Streak +1</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a3a3a3] text-black">Milestone?</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a3a3a3] text-white">Milestone?</span>
               <span className="text-white/30 text-sm">→</span>
               <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Unlock Animal!</span>
             </div>
@@ -622,17 +622,17 @@ export default function HabitatCaseStudy() {
           >
             <p className="text-[#fb923c] text-sm font-medium mb-5 tracking-wide">Shared Habits</p>
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Profile</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-white">Profile</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Friends</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-white">Friends</span>
               <span className="text-white/30 text-sm">→</span>
               <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Invite Friend</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">Start Shared Habit</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-white">Start Shared Habit</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-black">View Progress</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#fbbf24] text-white">View Progress</span>
               <span className="text-white/30 text-sm">→</span>
-              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a3a3a3] text-black">Friend missed?</span>
+              <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#a3a3a3] text-white">Friend missed?</span>
               <span className="text-white/30 text-sm">→</span>
               <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Send Reminder</span>
             </div>
