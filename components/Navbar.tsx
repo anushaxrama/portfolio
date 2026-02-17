@@ -14,15 +14,6 @@ export default function Navbar() {
           <span className="absolute bottom-1 left-3 right-3 h-[1px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
         </Link>
         <a
-          href="/Anusha_Ramachandran_Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative px-3 py-2 text-white/80 text-sm font-medium tracking-wide hover:text-white transition-colors duration-300 touch-manipulation"
-        >
-          Resume
-          <span className="absolute bottom-1 left-3 right-3 h-[1px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-        </a>
-        <a
           href="https://www.linkedin.com/in/anusha-ramachandran-45882724a"
           target="_blank"
           rel="noopener noreferrer"

@@ -265,9 +265,9 @@ export default function RecentWork() {
         <div className={`w-full max-w-[500px] ${isLeftAngle ? 'mr-auto' : 'ml-auto'}`}>
           <div className="relative transition-all duration-500 hover:translate-y-[-8px] hover:scale-[1.02]">
             
-            {/* Subtle ambient glow */}
+            {/* Subtle ambient glow - Hidden on mobile for performance */}
             <div 
-              className="absolute -inset-20 rounded-full blur-[120px] opacity-20 transition-colors duration-1000"
+              className="hidden md:block absolute -inset-20 rounded-full blur-[120px] opacity-20 transition-colors duration-1000"
               style={{ backgroundColor: `hsl(${project.accentHue}, 50%, 50%)` }}
             />
 
@@ -305,12 +305,11 @@ export default function RecentWork() {
                   {project.demoImages.map((image, imgIndex) => (
                     <div
                       key={imgIndex}
-                      className={`absolute inset-0 flex items-center justify-center will-change-opacity ${
+                      className={`absolute inset-0 ${
                         (activeSlides[index] || 0) === imgIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
                       }`}
                       style={{ 
-                        transition: 'opacity 0.4s ease-out',
-                        transform: 'translateZ(0)', // Hardware acceleration
+                        transition: 'opacity 0.5s ease-in-out',
                       }}
                     >
                       <Image
@@ -318,14 +317,14 @@ export default function RecentWork() {
                         alt={image.label}
                         fill
                         className="object-contain"
-                        sizes="(max-width: 768px) 90vw, 500px"
+                        sizes="(max-width: 768px) 85vw, 500px"
                         priority={index === 0 && imgIndex === 0}
-                        loading={index === 0 && imgIndex === 0 ? 'eager' : 'lazy'}
+                        loading={index === 0 ? 'eager' : 'lazy'}
                       />
                     </div>
                   ))}
 
-                  {/* Navigation Arrows - Only show if multiple images */}
+                  {/* Navigation Arrows - Hidden on mobile, show on desktop hover */}
                   {project.demoImages.length > 1 && (
                     <>
                       <button
@@ -334,11 +333,10 @@ export default function RecentWork() {
                           e.stopPropagation()
                           goToPrevSlide(index, project.demoImages.length)
                         }}
-                        className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 w-11 h-11 md:w-9 md:h-9 rounded-full bg-black/70 border border-white/30 flex items-center justify-center text-white active:bg-black active:scale-95 opacity-80 md:opacity-0 md:group-hover:opacity-100 cursor-pointer z-30 touch-manipulation select-none"
-                        style={{ WebkitTapHighlightColor: 'transparent' }}
+                        className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 border border-white/20 items-center justify-center text-white opacity-0 group-hover:opacity-100 hover:bg-black/80 cursor-pointer z-30 transition-opacity"
                       >
-                        <svg className="w-5 h-5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                       </button>
                       <button
@@ -347,16 +345,15 @@ export default function RecentWork() {
                           e.stopPropagation()
                           goToNextSlide(index, project.demoImages.length)
                         }}
-                        className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 w-11 h-11 md:w-9 md:h-9 rounded-full bg-black/70 border border-white/30 flex items-center justify-center text-white active:bg-black active:scale-95 opacity-80 md:opacity-0 md:group-hover:opacity-100 cursor-pointer z-30 touch-manipulation select-none"
-                        style={{ WebkitTapHighlightColor: 'transparent' }}
+                        className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 border border-white/20 items-center justify-center text-white opacity-0 group-hover:opacity-100 hover:bg-black/80 cursor-pointer z-30 transition-opacity"
                       >
-                        <svg className="w-5 h-5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </button>
 
-                      {/* Slideshow dots - Only show if multiple images */}
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/50 rounded-full px-2.5 py-1.5 z-20">
+                      {/* Slideshow dots - Minimal on mobile, slightly larger on desktop */}
+                      <div className="absolute bottom-2 md:bottom-3 left-1/2 -translate-x-1/2 flex gap-1 md:gap-1.5 bg-black/40 md:bg-black/50 rounded-full px-2 py-1 md:px-2.5 md:py-1.5 z-20">
                         {project.demoImages.map((_, dotIndex) => (
                           <button
                             key={dotIndex}
@@ -365,11 +362,12 @@ export default function RecentWork() {
                               setIsPaused(prev => ({ ...prev, [index]: true }))
                               setTimeout(() => setIsPaused(prev => ({ ...prev, [index]: false })), 5000)
                             }}
-                            className={`h-1.5 rounded-full cursor-pointer touch-manipulation ${
+                            className={`rounded-full cursor-pointer touch-manipulation transition-all ${
                               (activeSlides[index] || 0) === dotIndex 
-                                ? 'bg-white w-4' 
-                                : 'bg-white/40 w-1.5'
+                                ? 'bg-white w-3 md:w-4 h-1 md:h-1.5' 
+                                : 'bg-white/40 w-1 md:w-1.5 h-1 md:h-1.5'
                             }`}
+                            style={{ WebkitTapHighlightColor: 'transparent' }}
                           />
                         ))}
                       </div>
@@ -424,9 +422,9 @@ export default function RecentWork() {
           transform: 'rotateX(5deg) rotateY(8deg) rotateZ(-1deg)',
         }}
       >
-        {/* Ambient glow */}
+        {/* Ambient glow - Hidden on mobile for performance */}
         <div 
-          className="absolute -inset-16 rounded-full blur-[80px] opacity-25 transition-colors duration-1000"
+          className="hidden md:block absolute -inset-16 rounded-full blur-[80px] opacity-25 transition-colors duration-1000"
           style={{ backgroundColor: `hsl(${project.accentHue}, 60%, 50%)` }}
         />
 
@@ -466,14 +464,13 @@ export default function RecentWork() {
                 {project.demoImages.map((image, imgIndex) => (
                   <div
                     key={imgIndex}
-                    className={`absolute inset-0 will-change-opacity ${
+                    className={`absolute inset-0 ${
                       (activeSlides[index] || 0) === imgIndex 
                         ? 'opacity-100 z-10' 
                         : 'opacity-0 z-0'
                     }`}
                     style={{ 
-                      transition: 'opacity 0.4s ease-out',
-                      transform: 'translateZ(0)', // Hardware acceleration
+                      transition: 'opacity 0.5s ease-in-out',
                     }}
                   >
                     <Image
@@ -481,9 +478,9 @@ export default function RecentWork() {
                       alt={image.label}
                       fill
                       className="object-cover object-top"
-                      sizes="(max-width: 768px) 70vw, 220px"
-                    loading={imgIndex === 0 ? 'eager' : 'lazy'}
-                  />
+                      sizes="(max-width: 768px) 60vw, 220px"
+                      loading="eager"
+                    />
                 </div>
               ))}
 
@@ -495,7 +492,7 @@ export default function RecentWork() {
                 }}
               />
 
-              {/* Navigation arrows - Only show if multiple images */}
+              {/* Navigation arrows - Hidden on mobile, show on desktop hover */}
               {project.demoImages.length > 1 && (
                 <>
                   <button
@@ -504,11 +501,10 @@ export default function RecentWork() {
                       e.stopPropagation()
                       goToPrevSlide(index, project.demoImages.length)
                     }}
-                    className="absolute left-2 md:left-3 top-1/2 -translate-y-1/2 w-12 h-12 md:w-10 md:h-10 rounded-full bg-black/70 border border-white/30 flex items-center justify-center text-white active:bg-black active:scale-95 opacity-80 md:opacity-0 md:group-hover:opacity-100 cursor-pointer z-30 touch-manipulation select-none"
-                    style={{ WebkitTapHighlightColor: 'transparent' }}
+                    className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 border border-white/20 items-center justify-center text-white opacity-0 group-hover:opacity-100 hover:bg-black/80 cursor-pointer z-30 transition-opacity"
                   >
-                    <svg className="w-6 h-6 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
                   <button
@@ -517,16 +513,15 @@ export default function RecentWork() {
                       e.stopPropagation()
                       goToNextSlide(index, project.demoImages.length)
                     }}
-                    className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 w-12 h-12 md:w-10 md:h-10 rounded-full bg-black/70 border border-white/30 flex items-center justify-center text-white active:bg-black active:scale-95 opacity-80 md:opacity-0 md:group-hover:opacity-100 cursor-pointer z-30 touch-manipulation select-none"
-                    style={{ WebkitTapHighlightColor: 'transparent' }}
+                    className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 border border-white/20 items-center justify-center text-white opacity-0 group-hover:opacity-100 hover:bg-black/80 cursor-pointer z-30 transition-opacity"
                   >
-                    <svg className="w-6 h-6 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </button>
 
-                  {/* Dots - Only show if multiple images */}
-                  <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/30 rounded-full px-2.5 py-1 z-20">
+                  {/* Dots - Minimal styling */}
+                  <div className="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 flex gap-1 bg-black/30 rounded-full px-2 py-1 z-20">
                     {project.demoImages.map((_, dotIndex) => (
                       <button
                         key={dotIndex}
@@ -535,11 +530,12 @@ export default function RecentWork() {
                           setIsPaused(prev => ({ ...prev, [index]: true }))
                           setTimeout(() => setIsPaused(prev => ({ ...prev, [index]: false })), 5000)
                         }}
-                        className={`h-1 rounded-full cursor-pointer touch-manipulation ${
+                        className={`rounded-full cursor-pointer touch-manipulation transition-all ${
                           (activeSlides[index] || 0) === dotIndex 
-                            ? 'bg-white w-4' 
-                            : 'bg-white/40 w-1'
+                            ? 'bg-white w-3 h-1' 
+                            : 'bg-white/40 w-1 h-1'
                         }`}
+                        style={{ WebkitTapHighlightColor: 'transparent' }}
                       />
                     ))}
                   </div>
@@ -569,9 +565,9 @@ export default function RecentWork() {
       }`}
     >
       <div className="relative w-full max-w-[550px]">
-        {/* Ambient glow */}
+        {/* Ambient glow - Hidden on mobile for performance */}
         <div 
-          className="absolute -inset-16 rounded-full blur-[100px] opacity-30 transition-colors duration-1000"
+          className="hidden md:block absolute -inset-16 rounded-full blur-[100px] opacity-30 transition-colors duration-1000"
           style={{ backgroundColor: `hsl(${project.accentHue}, 60%, 50%)` }}
         />
 

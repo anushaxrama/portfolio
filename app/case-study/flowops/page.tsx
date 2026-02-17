@@ -150,7 +150,7 @@ export default function FlowOpsCaseStudy() {
                 </div>
                 <div>
                   <p className="text-white/30 uppercase tracking-wider mb-1">Tools</p>
-                  <p className="text-white/80">Figma, Cursor</p>
+                  <p className="text-white/80">Figma, Adobe Creative Suite</p>
                 </div>
                 <div>
                   <p className="text-white/30 uppercase tracking-wider mb-1">Deliverable</p>
