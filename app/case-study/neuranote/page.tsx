@@ -452,7 +452,7 @@ export default function NeuranNoteCaseStudy() {
                       className="h-full rounded-full transition-all duration-1000"
                       style={{ width: `${item.value}%`, backgroundColor: item.color }}
                     />
-                  </div>
+          </div>
                   <span className="text-white/50 text-xs w-10 text-right">{item.value}%</span>
                 </div>
               ))}
@@ -481,7 +481,7 @@ export default function NeuranNoteCaseStudy() {
                       className="h-full rounded-full transition-all duration-1000"
                       style={{ width: `${item.value}%`, backgroundColor: item.color }}
                     />
-                  </div>
+          </div>
                   <span className="text-white/50 text-xs w-8 text-right">{item.value}%</span>
                 </div>
               ))}
@@ -489,7 +489,7 @@ export default function NeuranNoteCaseStudy() {
             <p className="text-white/30 text-xs mt-4 leading-relaxed">
               This highlighted an opportunity to design beyond organization toward learning-focused workflows.
             </p>
-          </div>
+        </div>
 
           {/* Note-Taking Purpose - Pie Chart */}
           <div>
@@ -1456,7 +1456,7 @@ export default function NeuranNoteCaseStudy() {
           <div className="text-center p-5 rounded-xl bg-white/[0.03] border border-white/5">
             <p className="text-3xl font-bold text-white mb-1">92%</p>
             <p className="text-white/40 text-sm">Task Success</p>
-        </div>
+          </div>
         </div>
 
         {/* Key Findings */}
@@ -1469,7 +1469,7 @@ export default function NeuranNoteCaseStudy() {
               <p className="text-white/50 text-sm">
                 <span className="text-white/70 font-medium">Navigation was intuitive.</span> All participants successfully located Notes, Concept Map, and Review without guidance.
               </p>
-            </div>
+          </div>
             <div className="flex items-center gap-4 px-5 py-4 rounded-lg bg-white/[0.02] border border-white/5">
               <span className="text-green-400 text-lg flex-shrink-0">+</span>
               <p className="text-white/50 text-sm">
@@ -1569,7 +1569,7 @@ export default function NeuranNoteCaseStudy() {
             </div>
 
             {/* Tertiary - Feature Colors */}
-            <div>
+          <div>
               <p className="text-white/60 text-xs uppercase tracking-[0.2em] mb-4 font-medium">Feature Accents</p>
               <div className="grid grid-cols-5 gap-3">
                 <div className="w-11 h-11 rounded-xl bg-[#9C89CE] shadow-lg shadow-[#9C89CE]/25"></div>
@@ -1582,7 +1582,7 @@ export default function NeuranNoteCaseStudy() {
                 <div className="w-11 h-11 rounded-xl bg-[#7ED9B0] shadow-lg shadow-[#7ED9B0]/25"></div>
                 <div className="w-11 h-11 rounded-xl bg-[#F5D76E] shadow-lg shadow-[#F5D76E]/25"></div>
                 <div className="w-11 h-11 rounded-xl bg-[#7EC8D9] shadow-lg shadow-[#7EC8D9]/25"></div>
-              </div>
+          </div>
             </div>
           </div>
 
@@ -1598,12 +1598,12 @@ export default function NeuranNoteCaseStudy() {
             <div className="space-y-0">
               {/* Heading */}
               <div className="flex items-center justify-between py-4 border-b border-white/10">
-                <div>
+          <div>
                   <p className="text-white/80 text-sm font-medium">Heading</p>
                   <p className="text-white/40 text-xs mt-0.5">Poppins SemiBold · 30px</p>
-                </div>
+          </div>
                 <p className="text-white text-2xl font-semibold" style={{ fontFamily: 'Poppins, sans-serif' }}>Heading</p>
-              </div>
+        </div>
 
               {/* Display / Cursive */}
               <div className="flex items-center justify-between py-4 border-b border-white/10">

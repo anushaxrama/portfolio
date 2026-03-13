@@ -56,20 +56,22 @@ export default function RecentWork() {
 
   const projects = [
     {
-      title: 'Narbl',
-      subtitle: 'AI Developer Platform',
-      description: 'Comparing AI models used to mean opening twelve browser tabs. Narbl puts them all in one place so developers can test prompts, compare responses side by side, and actually figure out which model works best. Clean interface, less chaos.',
+      title: 'Nexus',
+      subtitle: 'AI Research Platform for Students',
+      description: 'One question, one verified answer. Nexus runs multiple AI models in parallel, cross-checks their responses, and surfaces only the most accurate, agreed-upon information. No tab hopping, no conflicting answers.',
       demoImages: [
-        { src: '/narbl/narbl-1.png', label: 'Build with Intelligence' },
-        { src: '/narbl/narbl-3.png', label: 'Compare Side by Side' },
-        { src: '/narbl/narbl-4.png', label: 'Chat with Any Model' },
-        { src: '/narbl/narbl-5.png', label: 'Build Custom AI Agents' },
-        { src: '/narbl/narbl-6.png', label: 'Powerful AI Products' },
-        { src: '/narbl/narbl-7.png', label: 'User Dashboard' },
+        { src: '/narbl/narbl-1.png', label: 'Everything You Need. One Nexus.' },
+        { src: '/narbl/narbl-2.png', label: 'Scanning for Better Answers' },
+        { src: '/narbl/narbl-3.png', label: 'Smarter Homework, Faster Results' },
+        { src: '/narbl/narbl-4.png', label: 'Homework Intelligence' },
+        { src: '/narbl/narbl-5.png', label: 'Success Stories' },
+        { src: '/narbl/narbl-6.png', label: 'Trusted by Top Students' },
+        { src: '/narbl/narbl-7.png', label: 'Seamless Integrations' },
+        { src: '/narbl/narbl-8.png', label: 'Why Choose Nexus' },
       ],
       figmaLink: 'https://www.figma.com/design/NtgiV1MafNfjTq04FH44RB/ai-chat-prototype?node-id=0-1&t=dbfdUH3zr8fzKsfx-1',
       githubLink: null,
-      caseStudyLink: '/case-study/narbl',
+      caseStudyLink: '/case-study/nexus',
       deviceType: 'laptop' as const,
       number: '01',
       accentHue: 210,
@@ -249,7 +251,7 @@ export default function RecentWork() {
     projectRefs.current[index] = el
   }
 
-  // Get current accent color based on active project (defaults to Narbl's blue)
+  // Get current accent color based on active project (defaults to Nexus blue)
   const currentHue = projects[activeProject]?.accentHue || 210
 
   // Clean MacBook Pro Mockup - Matches reference image exactly
@@ -297,7 +299,7 @@ export default function RecentWork() {
                   className="relative rounded-[8px] overflow-hidden group" 
                   style={{ 
                     aspectRatio: '16/10',
-                    backgroundColor: project.title === 'Narbl' ? '#000000' : '#faf8f6'
+                    backgroundColor: project.title === 'Nexus' ? '#000000' : '#faf8f6'
                   }}
                 >
                   
@@ -742,7 +744,7 @@ export default function RecentWork() {
               <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
                 <span className="text-white/60 text-xs uppercase tracking-widest">Scroll</span>
                 <div className="w-px h-10 bg-gradient-to-b from-white/60 to-transparent animate-pulse" />
-              </div>
+        </div>
             )}
           </section>
         )

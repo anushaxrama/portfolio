@@ -1035,242 +1035,328 @@ export default function SpotifyCaseStudy() {
           Moving from sketches to Figma wireframes, I focused on information hierarchy, component structure, and establishing the visual system that would carry into hi-fi designs.
         </p>
 
-        {/* Multi-screen wireframe display */}
+        {/* Figma-style wireframe export */}
         <div 
-          className="rounded-xl p-4 md:p-6 overflow-hidden"
+          className="rounded-2xl overflow-hidden"
           style={{ 
-            background: 'linear-gradient(145deg, rgba(29,185,84,0.08) 0%, rgba(29,185,84,0.02) 100%)',
-            border: '1px solid rgba(29,185,84,0.15)',
+            background: 'linear-gradient(180deg, #0a0a0a 0%, #111111 100%)',
+            border: '1px solid rgba(255,255,255,0.06)',
           }}
         >
-          <p className="text-white/60 text-xs mb-4 font-medium">Core Screens Overview</p>
-          <div className="relative w-full rounded-lg overflow-hidden bg-[#080808] p-4">
-            <svg viewBox="0 0 960 300" className="w-full h-auto">
-              <defs>
-                <marker id="arrowSpotifyMid" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                  <polygon points="0 0, 8 3, 0 6" fill="#1db954"/>
-                </marker>
-              </defs>
+          {/* Header bar - mimics Figma frame */}
+          <div className="px-6 py-4 border-b border-white/[0.06] flex items-center justify-between">
+            <p className="text-white/70 text-sm font-medium tracking-wide">Core Screens Overview</p>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-white/20"></div>
+              <span className="text-white/30 text-xs">Figma Export</span>
+            </div>
+          </div>
+          
+          {/* Main content area */}
+          <div className="p-6 md:p-10 overflow-x-auto">
+            <div className="flex items-start gap-4 md:gap-6 min-w-[900px]">
               
               {/* Screen 1: Your Threads */}
-              <g transform="translate(5, 20)">
-                <text x="0" y="-6" fill="#1db954" fontSize="9" fontWeight="500">Your Threads</text>
-                <rect width="140" height="260" rx="16" fill="#121212" stroke="#252525" strokeWidth="1"/>
-                <rect x="40" y="5" width="60" height="4" rx="2" fill="#333"/>
-                
-                <text x="10" y="28" fill="#fff" fontSize="9" fontWeight="600">Your Threads</text>
-                <text x="10" y="40" fill="#555" fontSize="6">Based on how you listen</text>
-                
-                {/* Cards */}
-                <rect x="8" y="48" width="124" height="54" rx="7" fill="#1a1a1a"/>
-                <rect x="14" y="54" width="32" height="32" rx="4" fill="#282828"/>
-                <rect x="20" y="62" width="20" height="14" rx="2" fill="#1db954" fillOpacity="0.3"/>
-                <text x="52" y="68" fill="#fff" fontSize="7" fontWeight="500">Late Night Focus</text>
-                <text x="52" y="80" fill="#666" fontSize="5">12 songs · 45 min</text>
-                <rect x="52" y="86" width="68" height="10" rx="5" fill="#1db954" fillOpacity="0.1" stroke="#1db954" strokeWidth="0.3"/>
-                <text x="58" y="94" fill="#1db954" fontSize="4">When you need to focus</text>
-                
-                <rect x="8" y="108" width="124" height="54" rx="7" fill="#1a1a1a"/>
-                <rect x="14" y="114" width="32" height="32" rx="4" fill="#282828"/>
-                <rect x="20" y="122" width="20" height="14" rx="2" fill="#f59e0b" fillOpacity="0.3"/>
-                <text x="52" y="128" fill="#fff" fontSize="7" fontWeight="500">Morning Energy</text>
-                <text x="52" y="140" fill="#666" fontSize="5">8 songs · 32 min</text>
-                <rect x="52" y="146" width="60" height="10" rx="5" fill="#f59e0b" fillOpacity="0.1" stroke="#f59e0b" strokeWidth="0.3"/>
-                <text x="58" y="154" fill="#f59e0b" fontSize="4">Upbeat start to day</text>
-                
-                <rect x="8" y="168" width="124" height="54" rx="7" fill="#1a1a1a"/>
-                <rect x="14" y="174" width="32" height="32" rx="4" fill="#282828"/>
-                <rect x="20" y="182" width="20" height="14" rx="2" fill="#a78bfa" fillOpacity="0.3"/>
-                <text x="52" y="188" fill="#fff" fontSize="7" fontWeight="500">Chill Vibes</text>
-                <text x="52" y="200" fill="#666" fontSize="5">15 songs · 58 min</text>
-                <rect x="52" y="206" width="56" height="10" rx="5" fill="#a78bfa" fillOpacity="0.1" stroke="#a78bfa" strokeWidth="0.3"/>
-                <text x="58" y="214" fill="#a78bfa" fontSize="4">Relaxing evenings</text>
-                
-                <rect x="8" y="232" width="124" height="20" rx="10" fill="#1a1a1a"/>
-                <circle cx="35" cy="242" r="2.5" fill="#555"/>
-                <circle cx="70" cy="242" r="2.5" fill="#1db954"/>
-                <circle cx="105" cy="242" r="2.5" fill="#555"/>
-              </g>
-              
-              <path d="M 155 150 L 175 150" stroke="#1db954" strokeWidth="1.5" markerEnd="url(#arrowSpotifyMid)"/>
-              
+              <div className="flex flex-col items-center">
+                <p className="text-[#1db954] text-xs font-medium mb-3 tracking-wide">Your Threads</p>
+                <div className="relative">
+                  {/* Phone frame */}
+                  <div className="w-[140px] bg-[#1a1a1a] rounded-[20px] p-2 border border-white/10">
+                    <div className="bg-[#121212] rounded-[14px] overflow-hidden">
+                      {/* Status bar */}
+                      <div className="h-5 bg-[#121212] flex items-center justify-center">
+                        <div className="w-16 h-[3px] bg-black rounded-full"></div>
+                      </div>
+                      {/* Content */}
+                      <div className="p-2 space-y-2">
+                        <p className="text-white text-[8px] font-semibold">Your Threads</p>
+                        <p className="text-white/40 text-[5px]">Based on how you listen</p>
+                        
+                        {/* Thread cards */}
+                        {[
+                          { name: 'Late Night Focus', songs: '12 songs', color: '#1db954', tag: 'When you need to focus' },
+                          { name: 'Morning Energy', songs: '8 songs', color: '#f59e0b', tag: 'Upbeat start to day' },
+                          { name: 'Chill Vibes', songs: '15 songs', color: '#a78bfa', tag: 'Relaxing evenings' },
+                        ].map((thread, i) => (
+                          <div key={i} className="bg-[#1a1a1a] rounded-lg p-1.5 flex gap-1.5">
+                            <div className="w-8 h-8 rounded bg-[#282828] flex items-center justify-center">
+                              <div className="w-4 h-3 rounded-sm" style={{ backgroundColor: thread.color, opacity: 0.4 }}></div>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-white text-[6px] font-medium truncate">{thread.name}</p>
+                              <p className="text-white/40 text-[4px]">{thread.songs}</p>
+                              <div className="mt-0.5 px-1 py-0.5 rounded-full text-[4px] inline-block" style={{ backgroundColor: `${thread.color}15`, color: thread.color, border: `0.5px solid ${thread.color}30` }}>
+                                {thread.tag}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      {/* Nav bar */}
+                      <div className="h-6 bg-[#1a1a1a] flex items-center justify-center gap-6 mt-1">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#1db954]"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Arrow 1 */}
+              <div className="flex items-center self-center mt-6">
+                <svg width="32" height="12" viewBox="0 0 32 12" fill="none">
+                  <path d="M0 6H28M28 6L23 1M28 6L23 11" stroke="#1db954" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+
               {/* Screen 2: Thread Detail */}
-              <g transform="translate(190, 20)">
-                <text x="0" y="-6" fill="#1db954" fontSize="9" fontWeight="500">Thread Detail</text>
-                <rect width="140" height="260" rx="16" fill="#121212" stroke="#252525" strokeWidth="1"/>
-                <rect x="40" y="5" width="60" height="4" rx="2" fill="#333"/>
-                
-                <text x="10" y="26" fill="#555" fontSize="8">←</text>
-                <text x="22" y="26" fill="#fff" fontSize="8" fontWeight="500">Late Night Focus</text>
-                
-                {/* Hero card */}
-                <rect x="8" y="34" width="124" height="56" rx="7" fill="#1a1a1a"/>
-                {/* Album art */}
-                <rect x="14" y="40" width="40" height="40" rx="5" fill="#282828"/>
-                <rect x="20" y="50" width="28" height="20" rx="2" fill="#1db954" fillOpacity="0.3"/>
-                {/* Title and subtitle - positioned to not overlap with play button */}
-                <text x="60" y="52" fill="#fff" fontSize="7" fontWeight="600">Late Night Focus</text>
-                <text x="60" y="62" fill="#666" fontSize="5">12 songs · 45 min</text>
-                {/* Play button - positioned below the text */}
-                <circle cx="80" cy="78" r="10" fill="#1db954"/>
-                <path d="M 77 74 L 77 82 L 85 78 Z" fill="#000"/>
-                
-                <rect x="8" y="96" width="124" height="30" rx="5" fill="#0d1f0d" stroke="#1db954" strokeWidth="0.3"/>
-                <text x="14" y="108" fill="#1db954" fontSize="5" fontWeight="500">WHY THIS EXISTS</text>
-                <text x="14" y="118" fill="#999" fontSize="4">Songs you return to when you need deep focus</text>
-                
-                <rect x="8" y="132" width="124" height="26" rx="4" fill="#1a1a1a"/>
-                <rect x="14" y="138" width="12" height="12" rx="2" fill="#282828"/>
-                <text x="32" y="146" fill="#fff" fontSize="6">Midnight City</text>
-                <text x="32" y="154" fill="#555" fontSize="4">M83</text>
-                
-                <rect x="8" y="162" width="124" height="26" rx="4" fill="#1a1a1a"/>
-                <rect x="14" y="168" width="12" height="12" rx="2" fill="#282828"/>
-                <text x="32" y="176" fill="#fff" fontSize="6">Intro</text>
-                <text x="32" y="184" fill="#555" fontSize="4">The xx</text>
-                
-                <rect x="8" y="192" width="124" height="26" rx="4" fill="#1a1a1a"/>
-                <rect x="14" y="198" width="12" height="12" rx="2" fill="#282828"/>
-                <text x="32" y="206" fill="#fff" fontSize="6">Electric Feel</text>
-                <text x="32" y="214" fill="#555" fontSize="4">MGMT</text>
-                
-                <rect x="8" y="232" width="124" height="20" rx="10" fill="#1a1a1a"/>
-                <circle cx="35" cy="242" r="2.5" fill="#1db954"/>
-                <circle cx="70" cy="242" r="2.5" fill="#555"/>
-                <circle cx="105" cy="242" r="2.5" fill="#555"/>
-              </g>
-              
-              <path d="M 340 150 L 360 150" stroke="#1db954" strokeWidth="1.5" markerEnd="url(#arrowSpotifyMid)"/>
-              
-              {/* Screen 3: Memory */}
-              <g transform="translate(375, 20)">
-                <text x="0" y="-6" fill="#1db954" fontSize="9" fontWeight="500">Listening Memory</text>
-                <rect width="140" height="260" rx="16" fill="#121212" stroke="#252525" strokeWidth="1"/>
-                <rect x="40" y="5" width="60" height="4" rx="2" fill="#333"/>
-                
-                <text x="10" y="28" fill="#fff" fontSize="9" fontWeight="600">Your Memory</text>
-                <text x="10" y="40" fill="#555" fontSize="5">How music fits your life</text>
-                
-                {/* Time toggle */}
-                <g transform="translate(20, 46)">
-                  <rect width="100" height="14" rx="7" fill="#282828"/>
-                  <rect x="2" y="2" width="28" height="10" rx="5" fill="#333"/>
-                  <text x="10" y="10" fill="#888" fontSize="4">Week</text>
-                  <rect x="36" y="2" width="28" height="10" rx="5" fill="#fff"/>
-                  <text x="42" y="10" fill="#000" fontSize="4" fontWeight="500">Month</text>
-                  <text x="78" y="10" fill="#888" fontSize="4">Year</text>
-                </g>
-                
-                {/* Insight card */}
-                <rect x="8" y="66" width="124" height="42" rx="6" fill="#1a1a1a"/>
-                <g transform="translate(12, 72)">
-                  <text x="0" y="6" fill="#666" fontSize="4">THIS MONTH</text>
-                  <text x="0" y="18" fill="#fff" fontSize="6" fontWeight="500">Deep Focus increased 40%</text>
-                  <text x="0" y="28" fill="#555" fontSize="4">More ambient music than usual</text>
-                </g>
-                
-                {/* Line graph */}
-                <rect x="8" y="114" width="124" height="58" rx="5" fill="#1a1a1a"/>
-                <text x="14" y="126" fill="#666" fontSize="4">HOW YOU'VE BEEN LISTENING</text>
-                {/* Graph lines */}
-                <path d="M 18 158 Q 35 148, 50 155 Q 70 138, 90 145 Q 110 135, 122 140" stroke="#8b5cf6" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                <path d="M 18 162 Q 40 155, 55 165 Q 75 148, 100 158 Q 115 150, 122 155" stroke="#3b82f6" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                <path d="M 18 165 Q 45 160, 60 168 Q 85 155, 105 163 Q 118 158, 122 162" stroke="#f59e0b" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                {/* X-axis labels */}
-                <text x="22" y="170" fill="#555" fontSize="3">W1</text>
-                <text x="52" y="170" fill="#555" fontSize="3">W2</text>
-                <text x="82" y="170" fill="#555" fontSize="3">W3</text>
-                <text x="112" y="170" fill="#555" fontSize="3">W4</text>
-                
-                {/* Cluster cards */}
-                <rect x="8" y="178" width="124" height="46" rx="5" fill="#1a1a1a"/>
-                <text x="14" y="190" fill="#666" fontSize="4">YOUR EMOTIONAL CLUSTERS</text>
-                <g transform="translate(14, 196)">
-                  <circle cx="4" cy="4" r="3" fill="#8b5cf6"/>
-                  <text x="10" y="6" fill="#fff" fontSize="4">Deep Focus</text>
-                  <circle cx="60" cy="4" r="3" fill="#3b82f6"/>
-                  <text x="66" y="6" fill="#fff" fontSize="4">Night Drives</text>
-                </g>
-                <g transform="translate(14, 210)">
-                  <circle cx="4" cy="4" r="3" fill="#f59e0b"/>
-                  <text x="10" y="6" fill="#fff" fontSize="4">Morning Energy</text>
-                </g>
-                
-                <rect x="8" y="232" width="124" height="20" rx="10" fill="#1a1a1a"/>
-                <circle cx="35" cy="242" r="2.5" fill="#555"/>
-                <circle cx="70" cy="242" r="2.5" fill="#1db954"/>
-                <circle cx="105" cy="242" r="2.5" fill="#555"/>
-              </g>
-              
-              <path d="M 525 150 L 545 150" stroke="#1db954" strokeWidth="1.5" markerEnd="url(#arrowSpotifyMid)"/>
-              
-              {/* Screen 4: Intent */}
-              <g transform="translate(560, 20)">
-                <text x="0" y="-6" fill="#1db954" fontSize="9" fontWeight="500">Intent Selector</text>
-                <rect width="140" height="260" rx="16" fill="#121212" stroke="#252525" strokeWidth="1"/>
-                <rect x="40" y="5" width="60" height="4" rx="2" fill="#333"/>
-                
-                <text x="10" y="28" fill="#fff" fontSize="9" fontWeight="600">What do you need?</text>
-                <text x="10" y="40" fill="#555" fontSize="5">We'll find the right music</text>
-                
-                <rect x="8" y="48" width="124" height="36" rx="6" fill="#1db954" fillOpacity="0.1" stroke="#1db954" strokeWidth="0.6"/>
-                <text x="16" y="64" fill="#1db954" fontSize="7" fontWeight="500">🎯 Focus deeply</text>
-                <text x="16" y="76" fill="#666" fontSize="5">Concentration mode</text>
-                
-                <rect x="8" y="90" width="124" height="36" rx="6" fill="#1a1a1a"/>
-                <text x="16" y="106" fill="#fff" fontSize="7" fontWeight="500">⚡ Get energized</text>
-                <text x="16" y="118" fill="#666" fontSize="5">Upbeat and active</text>
-                
-                <rect x="8" y="132" width="124" height="36" rx="6" fill="#1a1a1a"/>
-                <text x="16" y="148" fill="#fff" fontSize="7" fontWeight="500">😌 Wind down</text>
-                <text x="16" y="160" fill="#666" fontSize="5">Relax and decompress</text>
-                
-                <rect x="8" y="174" width="124" height="36" rx="6" fill="#1a1a1a"/>
-                <text x="16" y="190" fill="#fff" fontSize="7" fontWeight="500">🎲 Surprise me</text>
-                <text x="16" y="202" fill="#666" fontSize="5">Based on your patterns</text>
-                
-                <rect x="8" y="232" width="124" height="20" rx="10" fill="#1a1a1a"/>
-                <circle cx="35" cy="242" r="2.5" fill="#555"/>
-                <circle cx="70" cy="242" r="2.5" fill="#555"/>
-                <circle cx="105" cy="242" r="2.5" fill="#555"/>
-              </g>
-              
-              <path d="M 710 150 L 730 150" stroke="#1db954" strokeWidth="1.5" markerEnd="url(#arrowSpotifyMid)"/>
-              
+              <div className="flex flex-col items-center">
+                <p className="text-[#1db954] text-xs font-medium mb-3 tracking-wide">Thread Detail</p>
+                <div className="relative">
+                  <div className="w-[140px] bg-[#1a1a1a] rounded-[20px] p-2 border border-white/10">
+                    <div className="bg-[#121212] rounded-[14px] overflow-hidden">
+                      <div className="h-5 bg-[#121212] flex items-center justify-center">
+                        <div className="w-16 h-[3px] bg-black rounded-full"></div>
+                      </div>
+                      <div className="p-2 space-y-2">
+                        <div className="flex items-center gap-1">
+                          <span className="text-white/40 text-[6px]">←</span>
+                          <p className="text-white text-[7px] font-medium">Late Night Focus</p>
+                        </div>
+                        
+                        {/* Hero card */}
+                        <div className="bg-[#1a1a1a] rounded-lg p-2 flex items-center gap-2">
+                          <div className="w-10 h-10 rounded bg-[#282828] flex items-center justify-center shrink-0">
+                            <div className="w-6 h-4 rounded-sm bg-[#1db954]/30"></div>
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-white text-[6px] font-semibold">Late Night Focus</p>
+                            <p className="text-white/40 text-[4px]">12 songs · 45 min</p>
+                          </div>
+                          <div className="w-5 h-5 rounded-full bg-[#1db954] flex items-center justify-center shrink-0">
+                            <div className="w-0 h-0 border-t-[3px] border-t-transparent border-b-[3px] border-b-transparent border-l-[4px] border-l-black ml-0.5"></div>
+                          </div>
+                        </div>
+
+                        {/* Why section */}
+                        <div className="bg-[#0d1f0d] border border-[#1db954]/20 rounded p-1.5">
+                          <p className="text-[#1db954] text-[4px] font-semibold">WHY THIS EXISTS</p>
+                          <p className="text-white/50 text-[4px]">Songs you return to when you need deep focus</p>
+                        </div>
+
+                        {/* Track list */}
+                        {['Midnight City', 'Intro', 'Electric Feel'].map((track, i) => (
+                          <div key={i} className="bg-[#1a1a1a] rounded p-1.5 flex items-center gap-1.5">
+                            <div className="w-4 h-4 rounded bg-[#282828]"></div>
+                            <div>
+                              <p className="text-white text-[5px]">{track}</p>
+                              <p className="text-white/40 text-[4px]">{['M83', 'The xx', 'MGMT'][i]}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="h-6 bg-[#1a1a1a] flex items-center justify-center gap-6 mt-1">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#1db954]"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Arrow 2 */}
+              <div className="flex items-center self-center mt-6">
+                <svg width="32" height="12" viewBox="0 0 32 12" fill="none">
+                  <path d="M0 6H28M28 6L23 1M28 6L23 11" stroke="#1db954" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+
+              {/* Screen 3: Listening Memory */}
+              <div className="flex flex-col items-center">
+                <p className="text-[#1db954] text-xs font-medium mb-3 tracking-wide">Listening Memory</p>
+                <div className="relative">
+                  <div className="w-[140px] bg-[#1a1a1a] rounded-[20px] p-2 border border-white/10">
+                    <div className="bg-[#121212] rounded-[14px] overflow-hidden">
+                      <div className="h-5 bg-[#121212] flex items-center justify-center">
+                        <div className="w-16 h-[3px] bg-black rounded-full"></div>
+                      </div>
+                      <div className="p-2 space-y-2">
+                        <p className="text-white text-[8px] font-semibold">Your Memory</p>
+                        <p className="text-white/40 text-[5px]">How music fits your life</p>
+                        
+                        {/* Toggle */}
+                        <div className="flex bg-[#282828] rounded-full p-0.5">
+                          <span className="text-[4px] text-white/40 px-2 py-0.5">Week</span>
+                          <span className="text-[4px] text-black bg-white rounded-full px-2 py-0.5 font-medium">Month</span>
+                          <span className="text-[4px] text-white/40 px-2 py-0.5">Year</span>
+                        </div>
+
+                        {/* Insight card */}
+                        <div className="bg-[#1a1a1a] rounded-lg p-2">
+                          <p className="text-white/40 text-[4px]">THIS MONTH</p>
+                          <p className="text-white text-[6px] font-medium">Deep Focus increased 40%</p>
+                          <p className="text-white/40 text-[4px]">More ambient music than usual</p>
+                        </div>
+
+                        {/* Graph */}
+                        <div className="bg-[#1a1a1a] rounded-lg p-2">
+                          <p className="text-white/40 text-[4px] mb-2">HOW YOU'VE BEEN LISTENING</p>
+                          <svg viewBox="0 0 100 40" className="w-full h-8">
+                            <path d="M5 30 Q20 22, 35 28 Q55 15, 75 20 Q90 12, 95 16" stroke="#8b5cf6" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                            <path d="M5 32 Q25 28, 40 35 Q60 22, 85 30 Q92 26, 95 28" stroke="#3b82f6" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                            <path d="M5 35 Q30 32, 45 36 Q70 28, 88 34 Q93 32, 95 33" stroke="#f59e0b" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                          </svg>
+                        </div>
+
+                        {/* Clusters */}
+                        <div className="bg-[#1a1a1a] rounded-lg p-2">
+                          <p className="text-white/40 text-[4px] mb-1">YOUR EMOTIONAL CLUSTERS</p>
+                          <div className="flex flex-wrap gap-1">
+                            <div className="flex items-center gap-0.5">
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#8b5cf6]"></div>
+                              <span className="text-white text-[4px]">Deep Focus</span>
+                            </div>
+                            <div className="flex items-center gap-0.5">
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#3b82f6]"></div>
+                              <span className="text-white text-[4px]">Night Drives</span>
+                            </div>
+                            <div className="flex items-center gap-0.5">
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></div>
+                              <span className="text-white text-[4px]">Morning Energy</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="h-6 bg-[#1a1a1a] flex items-center justify-center gap-6 mt-1">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#1db954]"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Arrow 3 */}
+              <div className="flex items-center self-center mt-6">
+                <svg width="32" height="12" viewBox="0 0 32 12" fill="none">
+                  <path d="M0 6H28M28 6L23 1M28 6L23 11" stroke="#1db954" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+
+              {/* Screen 4: Intent Selector */}
+              <div className="flex flex-col items-center">
+                <p className="text-[#1db954] text-xs font-medium mb-3 tracking-wide">Intent Selector</p>
+                <div className="relative">
+                  <div className="w-[140px] bg-[#1a1a1a] rounded-[20px] p-2 border border-white/10">
+                    <div className="bg-[#121212] rounded-[14px] overflow-hidden">
+                      <div className="h-5 bg-[#121212] flex items-center justify-center">
+                        <div className="w-16 h-[3px] bg-black rounded-full"></div>
+                      </div>
+                      <div className="p-2 space-y-2">
+                        <p className="text-white text-[8px] font-semibold">What do you need?</p>
+                        <p className="text-white/40 text-[5px]">We'll find the right music</p>
+                        
+                        {/* Intent options */}
+                        {[
+                          { icon: '🎯', label: 'Focus deeply', sub: 'Concentration mode', selected: true },
+                          { icon: '⚡', label: 'Get energized', sub: 'Upbeat and active', selected: false },
+                          { icon: '😌', label: 'Wind down', sub: 'Relax and decompress', selected: false },
+                          { icon: '🎲', label: 'Surprise me', sub: 'Based on your patterns', selected: false },
+                        ].map((option, i) => (
+                          <div 
+                            key={i} 
+                            className={`rounded-lg p-2 ${option.selected ? 'bg-[#1db954]/10 border border-[#1db954]/30' : 'bg-[#1a1a1a]'}`}
+                          >
+                            <p className={`text-[6px] font-medium ${option.selected ? 'text-[#1db954]' : 'text-white'}`}>
+                              {option.icon} {option.label}
+                            </p>
+                            <p className="text-white/40 text-[4px]">{option.sub}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="h-6 bg-[#1a1a1a] flex items-center justify-center gap-6 mt-1">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/30"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Arrow 4 */}
+              <div className="flex items-center self-center mt-6">
+                <svg width="32" height="12" viewBox="0 0 32 12" fill="none">
+                  <path d="M0 6H28M28 6L23 1M28 6L23 11" stroke="#1db954" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+
               {/* Screen 5: Now Playing */}
-              <g transform="translate(745, 20)">
-                <text x="0" y="-6" fill="#1db954" fontSize="9" fontWeight="500">Now Playing</text>
-                <rect width="140" height="260" rx="16" fill="#121212" stroke="#252525" strokeWidth="1"/>
-                <rect x="40" y="5" width="60" height="4" rx="2" fill="#333"/>
-                <rect x="55" y="12" width="30" height="3" rx="1.5" fill="#444"/>
-                
-                <rect x="12" y="24" width="116" height="100" rx="6" fill="#1a1a1a"/>
-                <rect x="35" y="52" width="70" height="44" rx="4" fill="#282828"/>
-                <rect x="50" y="68" width="40" height="14" rx="2" fill="#1db954" fillOpacity="0.3"/>
-                
-                <text x="32" y="140" fill="#fff" fontSize="9" fontWeight="600">Midnight City</text>
-                <text x="52" y="152" fill="#666" fontSize="6">M83</text>
-                
-                <rect x="10" y="162" width="120" height="22" rx="11" fill="#0d1f0d" stroke="#1db954" strokeWidth="0.3"/>
-                <text x="22" y="176" fill="#1db954" fontSize="5">From: Late Night Focus</text>
-                
-                <rect x="12" y="194" width="116" height="3" rx="1.5" fill="#282828"/>
-                <rect x="12" y="194" width="38" height="3" rx="1.5" fill="#1db954"/>
-                <text x="12" y="206" fill="#555" fontSize="4">1:24</text>
-                <text x="114" y="206" fill="#555" fontSize="4">4:02</text>
-                
-                <circle cx="42" cy="232" r="9" fill="none" stroke="#555" strokeWidth="0.6"/>
-                <circle cx="70" cy="232" r="12" fill="#fff"/>
-                <path d="M 67 227 L 67 237 L 76 232 Z" fill="#000"/>
-                <circle cx="98" cy="232" r="9" fill="none" stroke="#555" strokeWidth="0.6"/>
-              </g>
-            </svg>
+              <div className="flex flex-col items-center">
+                <p className="text-[#1db954] text-xs font-medium mb-3 tracking-wide">Now Playing</p>
+                <div className="relative">
+                  <div className="w-[140px] bg-[#1a1a1a] rounded-[20px] p-2 border border-white/10">
+                    <div className="bg-[#121212] rounded-[14px] overflow-hidden">
+                      <div className="h-5 bg-[#121212] flex items-center justify-center">
+                        <div className="w-16 h-[3px] bg-black rounded-full"></div>
+                      </div>
+                      <div className="p-2 flex flex-col items-center">
+                        {/* Handle */}
+                        <div className="w-8 h-1 bg-white/20 rounded-full mb-2"></div>
+                        
+                        {/* Album art */}
+                        <div className="w-24 h-24 rounded-lg bg-[#1a1a1a] flex items-center justify-center mb-3">
+                          <div className="w-16 h-12 rounded bg-[#282828] flex items-center justify-center">
+                            <div className="w-8 h-4 rounded-sm bg-[#1db954]/30"></div>
+                          </div>
+                        </div>
+
+                        {/* Track info */}
+                        <p className="text-white text-[8px] font-semibold">Midnight City</p>
+                        <p className="text-white/40 text-[6px]">M83</p>
+
+                        {/* Context badge */}
+                        <div className="mt-2 px-2 py-1 rounded-full bg-[#0d1f0d] border border-[#1db954]/20">
+                          <p className="text-[#1db954] text-[5px]">From: Late Night Focus</p>
+                        </div>
+
+                        {/* Progress bar */}
+                        <div className="w-full mt-3">
+                          <div className="h-1 bg-[#282828] rounded-full">
+                            <div className="h-1 w-1/3 bg-[#1db954] rounded-full"></div>
+                          </div>
+                          <div className="flex justify-between mt-1">
+                            <span className="text-white/40 text-[4px]">1:24</span>
+                            <span className="text-white/40 text-[4px]">4:02</span>
+                          </div>
+                        </div>
+
+                        {/* Controls */}
+                        <div className="flex items-center gap-4 mt-2">
+                          <div className="w-5 h-5 rounded-full border border-white/20"></div>
+                          <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center">
+                            <div className="w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[7px] border-l-black ml-0.5"></div>
+                          </div>
+                          <div className="w-5 h-5 rounded-full border border-white/20"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer caption */}
+          <div className="px-6 py-4 border-t border-white/[0.06]">
+            <p className="text-white/40 text-xs italic">
+              These wireframes refined layout and hierarchy. Key decisions: replace play counts with meaningful context, single primary action per screen, and "Why" always visible.
+            </p>
           </div>
         </div>
-
-        <p className="text-white/50 text-sm leading-relaxed max-w-2xl mt-6">
-          These wireframes refined layout and hierarchy. Key decisions: replace play counts with meaningful context, single primary action per screen, and "Why" always visible.
-        </p>
       </Section>
 
       {/* Core Features */}
