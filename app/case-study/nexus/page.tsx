@@ -20,6 +20,7 @@ const demoImages = [
   { src: '/narbl/narbl-3.png', label: 'Smarter Homework, Faster Results' },
   { src: '/narbl/narbl-4.png', label: 'Homework Intelligence' },
   { src: '/narbl/narbl-5.png', label: 'Success Stories' },
+  { src: '/narbl/narbl-9.png', label: 'Final Platform' },
   { src: '/narbl/narbl-6.png', label: 'Trusted by Top Students' },
   { src: '/narbl/narbl-7.png', label: 'Seamless Integrations' },
   { src: '/narbl/narbl-8.png', label: 'Why Choose Nexus' },
@@ -134,14 +135,14 @@ export default function NexusCaseStudy() {
               </h1>
               
               <p className={`text-lg md:text-xl text-white/50 mb-10 leading-relaxed transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                Everything you need. One Nexus. One question, one verified answer backed by multiple AIs.
+                Everything you need. One Nexus. One question, one answer powered by multiple AI models.
               </p>
 
               {/* Project Meta */}
               <div className={`grid grid-cols-2 gap-x-8 gap-y-4 text-sm transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div>
                   <p className="text-white/30 uppercase tracking-wider mb-1">Role</p>
-                  <p className="text-white/80">UX/UI Designer</p>
+                  <p className="text-white/80">Product Designer</p>
                 </div>
                 <div>
                   <p className="text-white/30 uppercase tracking-wider mb-1">Duration</p>
@@ -287,7 +288,7 @@ export default function NexusCaseStudy() {
             <p className="text-xl md:text-2xl lg:text-[1.7rem] text-white/90 leading-relaxed font-light">
               How might we design an AI platform that{' '}
               <span className="text-[#60a5fa]">aggregates</span> and{' '}
-              <span className="text-[#60a5fa]">cross-checks</span>{' '}
+              <span className="text-[#60a5fa]">compares</span>{' '}
               responses from multiple AI models to surface only the most{' '}
               <span className="text-[#60a5fa]">accurate</span>,{' '}
               <span className="text-[#60a5fa]">agreed-upon</span> information for students?
@@ -452,9 +453,9 @@ export default function NexusCaseStudy() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
-          {/* Primary AI Tools Used */}
+          {/* AI Tools Students Use for Studying */}
           <div>
-            <h4 className="text-white/80 text-sm font-medium mb-6">Primary AI Tools Used</h4>
+            <h4 className="text-white/80 text-sm font-medium mb-6">AI Tools Students Use for Studying</h4>
             <div className="space-y-4">
               {[
                 { label: 'ChatGPT', value: 82, color: '#3b82f6' },
@@ -474,7 +475,7 @@ export default function NexusCaseStudy() {
                 </div>
               ))}
             </div>
-            <p className="text-white/30 text-xs mt-4 leading-relaxed">
+            <p className="text-white/60 text-xs mt-4 leading-relaxed">
               Most students use multiple AI tools but waste time switching between them.
             </p>
           </div>
@@ -485,7 +486,7 @@ export default function NexusCaseStudy() {
             <div className="space-y-3">
               {[
                 { label: 'Conflicting answers', value: 72, color: '#2563eb' },
-                { label: 'Verifying accuracy', value: 65, color: '#3b82f6' },
+                { label: 'Fact-checking AI answers', value: 65, color: '#3b82f6' },
                 { label: 'Tab hopping', value: 58, color: '#3b82f6' },
                 { label: 'Slow research', value: 45, color: '#60a5fa' },
                 { label: 'Wrong model choice', value: 38, color: '#93c5fd' },
@@ -503,8 +504,8 @@ export default function NexusCaseStudy() {
                 </div>
               ))}
             </div>
-            <p className="text-white/30 text-xs mt-4 leading-relaxed">
-              Conflicting answers and manual verification are the biggest friction points.
+            <p className="text-white/60 text-xs mt-4 leading-relaxed">
+              Conflicting answers and manual comparison are the biggest friction points.
             </p>
           </div>
 
@@ -515,34 +516,34 @@ export default function NexusCaseStudy() {
               {/* Pie Chart */}
               <div className="relative w-32 h-32 shrink-0">
                 <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                  {/* Code Generation 40% */}
+                  {/* Homework help 38% */}
                   <circle
                     cx="50" cy="50" r="40"
                     fill="transparent"
                     stroke="#2563eb"
                     strokeWidth="20"
-                    strokeDasharray="100.5 251.2"
+                    strokeDasharray="95.5 251.2"
                     strokeDashoffset="0"
                   />
-                  {/* Chat/Assistance 30% */}
+                  {/* Research & fact-checking 30% */}
                   <circle
                     cx="50" cy="50" r="40"
                     fill="transparent"
                     stroke="#3b82f6"
                     strokeWidth="20"
                     strokeDasharray="75.4 251.2"
-                    strokeDashoffset="-100.5"
+                    strokeDashoffset="-95.5"
                   />
-                  {/* Content Creation 18% */}
+                  {/* Studying & explanations 20% */}
                   <circle
                     cx="50" cy="50" r="40"
                     fill="transparent"
                     stroke="#93c5fd"
                     strokeWidth="20"
-                    strokeDasharray="45.2 251.2"
-                    strokeDashoffset="-175.9"
+                    strokeDasharray="50.2 251.2"
+                    strokeDashoffset="-170.9"
                   />
-                  {/* Other 12% */}
+                  {/* Writing support 12% */}
                   <circle
                     cx="50" cy="50" r="40"
                     fill="transparent"
@@ -557,10 +558,10 @@ export default function NexusCaseStudy() {
               {/* Legend */}
               <div className="space-y-2">
                 {[
-                  { label: 'Code Gen', value: '40%', color: '#2563eb' },
-                  { label: 'Chat', value: '30%', color: '#3b82f6' },
-                  { label: 'Content', value: '18%', color: '#93c5fd' },
-                  { label: 'Other', value: '12%', color: '#bfdbfe' },
+                  { label: 'Homework help', value: '38%', color: '#2563eb' },
+                  { label: 'Research', value: '30%', color: '#3b82f6' },
+                  { label: 'Studying', value: '20%', color: '#93c5fd' },
+                  { label: 'Writing', value: '12%', color: '#bfdbfe' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <div 
@@ -573,10 +574,18 @@ export default function NexusCaseStudy() {
                 ))}
               </div>
             </div>
-            <p className="text-white/30 text-xs mt-4 leading-relaxed">
-              Code generation and chat are primary, but needs vary by task.
+            <p className="text-white/60 text-xs mt-4 leading-relaxed">
+              Students use AI across their academic workflow, from homework to writing.
             </p>
           </div>
+        </div>
+
+        {/* Key Insight */}
+        <div className="mt-12 p-6 rounded-xl bg-[#60a5fa]/5 border border-[#60a5fa]/20 max-w-3xl">
+          <p className="text-[#60a5fa] text-xs font-semibold uppercase tracking-widest mb-3">Key Insight</p>
+          <p className="text-white/70 leading-relaxed">
+            Students rely heavily on AI for learning, but inconsistent answers across models create uncertainty and force them to manually verify information.
+          </p>
         </div>
 
         {/* Survey Summary */}
@@ -592,7 +601,7 @@ export default function NexusCaseStudy() {
               72% cited conflicting AI answers as a major pain point. Students don't know which response to trust when different models give different information.
             </p>
             <p>
-              <span className="text-white/70 font-medium">Verification is manual and slow.</span>{' '}
+              <span className="text-white/70 font-medium">Comparison is manual and slow.</span>{' '}
               Students end up copying prompts between tabs, reading multiple responses, and trying to figure out what's actually correct on their own.
             </p>
           </div>
@@ -608,8 +617,8 @@ export default function NexusCaseStudy() {
             <div className="grid grid-cols-5 gap-4 mb-6 pb-4 border-b border-white/10">
               <div className="text-white/40 text-xs uppercase tracking-wider">Platform</div>
               <div className="text-white/40 text-xs uppercase tracking-wider">Multi-Model</div>
-              <div className="text-white/40 text-xs uppercase tracking-wider">Verification</div>
-              <div className="text-white/40 text-xs uppercase tracking-wider">Trust Signals</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Multi-Model</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Answer Output</div>
               <div className="text-white/40 text-xs uppercase tracking-wider">Gap</div>
             </div>
 
@@ -652,7 +661,7 @@ export default function NexusCaseStudy() {
                 <span className="text-red-400">○</span>
                 <span className="text-white/50 text-sm">Self-reported</span>
               </div>
-              <p className="text-white/40 text-sm">No cross-check</p>
+              <p className="text-white/40 text-sm">Single model only</p>
             </div>
 
             {/* Poe */}
@@ -671,9 +680,9 @@ export default function NexusCaseStudy() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-yellow-400">◐</span>
-                <span className="text-white/50 text-sm">Varies by model</span>
+                <span className="text-white/50 text-sm">Separate model outputs</span>
               </div>
-              <p className="text-white/40 text-sm">No consensus</p>
+              <p className="text-white/40 text-sm">User must compare responses manually</p>
             </div>
 
             {/* OpenRouter */}
@@ -694,7 +703,7 @@ export default function NexusCaseStudy() {
                 <span className="text-red-400">○</span>
                 <span className="text-white/50 text-sm">Raw output</span>
               </div>
-              <p className="text-white/40 text-sm">Dev-only, no UI</p>
+              <p className="text-white/40 text-sm">Infrastructure only, no answer synthesis</p>
             </div>
 
             {/* Nexus (The Solution) */}
@@ -709,7 +718,7 @@ export default function NexusCaseStudy() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-green-400">●</span>
-                <span className="text-white/50 text-sm">Auto-verified</span>
+                <span className="text-white/50 text-sm">Aggregated</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-green-400">●</span>
@@ -722,7 +731,7 @@ export default function NexusCaseStudy() {
           {/* Key Finding */}
           <div className="max-w-3xl mt-12 p-6 rounded-2xl bg-white/[0.02] border border-white/10">
             <p className="text-white/50 leading-relaxed mb-4">
-              A clear pattern emerged: platforms either offer <strong className="text-white/70">polished UX for one model</strong> (ChatGPT, Claude) or <strong className="text-white/70">multi-model access with clunky interfaces</strong> (Poe, OpenRouter). None actually <strong className="text-white/70">verify information across models</strong> to give users one trusted answer.
+              A clear pattern emerged: platforms either offer <strong className="text-white/70">polished UX for one model</strong> (ChatGPT, Claude) or <strong className="text-white/70">multi-model access with separate outputs</strong> (Poe, OpenRouter). None actually <strong className="text-white/70">aggregate responses across models</strong> to give users one consolidated answer.
             </p>
             <p className="text-white/50 leading-relaxed">
               This <strong className="text-white/70">validated our hypothesis</strong>: there's room for a platform that runs multiple AIs behind the scenes and surfaces only what they <strong className="text-white/70">agree on</strong>.
@@ -741,22 +750,22 @@ export default function NexusCaseStudy() {
           
           <div className="max-w-3xl mb-12 space-y-3">
             <p className="text-white/50 leading-relaxed">
-              <span className="text-white/80 font-medium">Trust:</span> Students don't trust a single AI's answer. They want confidence that the information is actually correct.
+              <span className="text-white/80 font-medium">Confidence:</span> Students don't trust a single AI's answer. They want more confidence before using AI-generated information.
             </p>
             <p className="text-white/50 leading-relaxed">
-              <span className="text-white/80 font-medium">Verification:</span> Cross-checking information manually is exhausting. Students need a tool that does this automatically.
+              <span className="text-white/80 font-medium">Comparison:</span> Comparing answers manually across tools is exhausting. Students need a tool that does this automatically.
             </p>
             <p className="text-white/50 leading-relaxed">
-              <span className="text-white/80 font-medium">Simplicity:</span> One clear answer is better than multiple conflicting responses. Students want verified facts, not more choices.
+              <span className="text-white/80 font-medium">Simplicity:</span> One clear answer is better than multiple conflicting responses. Students want a single best answer, not more choices.
             </p>
           </div>
 
           {/* Affinity Map Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             
-            {/* Trust Column */}
+            {/* Confidence Column */}
             <div>
-              <h4 className="text-2xl font-bold text-[#60a5fa] mb-8 text-center">Trust</h4>
+              <h4 className="text-2xl font-bold text-[#60a5fa] mb-8 text-center">Confidence</h4>
               <div className="grid grid-cols-2 gap-3">
                 {/* User Behavior - Pink */}
                 <div 
@@ -811,7 +820,7 @@ export default function NexusCaseStudy() {
                   }}
                 >
                   <p className="font-bold text-gray-800 mb-1">UX Principle</p>
-                  <p className="text-gray-700 leading-snug">Trust comes from consensus. If multiple AIs agree, the answer is more likely correct.</p>
+                  <p className="text-gray-700 leading-snug">Confidence comes from consensus. If multiple AIs agree, the answer is more likely correct.</p>
                 </div>
                 {/* Opportunity - Orange */}
                 <div 
@@ -822,14 +831,14 @@ export default function NexusCaseStudy() {
                   }}
                 >
                   <p className="font-bold text-gray-800 mb-1">Opportunity</p>
-                  <p className="text-gray-700 leading-snug">Show confidence scores based on model agreement. Surface only verified, consensus answers.</p>
+                  <p className="text-gray-700 leading-snug">Show which models contributed. Surface the strongest consensus-based answer.</p>
                 </div>
               </div>
             </div>
 
-            {/* Verification Column */}
+            {/* Comparison Column */}
             <div>
-              <h4 className="text-2xl font-bold text-[#60a5fa] mb-8 text-center">Verification</h4>
+              <h4 className="text-2xl font-bold text-[#60a5fa] mb-8 text-center">Comparison</h4>
               <div className="grid grid-cols-2 gap-3">
                 {/* User Behavior - Pink */}
                 <div 
@@ -851,7 +860,7 @@ export default function NexusCaseStudy() {
                   }}
                 >
                   <p className="font-bold text-gray-800 mb-1">Needs / Goals</p>
-                  <p className="text-gray-700 leading-snug">Wants confidence that answers are accurate, not just fast. Needs verified facts for schoolwork.</p>
+                  <p className="text-gray-700 leading-snug">Wants confidence that answers are accurate, not just fast. Needs reliable information for schoolwork.</p>
                 </div>
                 {/* Pain Point - Yellow */}
                 <div 
@@ -873,7 +882,7 @@ export default function NexusCaseStudy() {
                   }}
                 >
                   <p className="font-bold text-gray-800 mb-1">Pain Point</p>
-                  <p className="text-gray-700 leading-snug">"I spend 20 minutes cross-checking answers. That's longer than just Googling it."</p>
+                  <p className="text-gray-700 leading-snug">"I spend 20 minutes comparing answers across tools. That's longer than just Googling it."</p>
                 </div>
                 {/* UX Principle - Blue */}
                 <div 
@@ -884,7 +893,7 @@ export default function NexusCaseStudy() {
                   }}
                 >
                   <p className="font-bold text-gray-800 mb-1">UX Principle</p>
-                  <p className="text-gray-700 leading-snug">Verification should happen automatically. Users want one trusted answer, not multiple options.</p>
+                  <p className="text-gray-700 leading-snug">Comparison should happen automatically. Users want one clear answer, not multiple options to sort through.</p>
                 </div>
                 {/* Opportunity - Orange */}
                 <div 
@@ -895,7 +904,7 @@ export default function NexusCaseStudy() {
                   }}
                 >
                   <p className="font-bold text-gray-800 mb-1">Opportunity</p>
-                  <p className="text-gray-700 leading-snug">Run multiple AIs behind the scenes, cross-check responses, surface only agreed-upon facts.</p>
+                  <p className="text-gray-700 leading-snug">Run multiple AIs behind the scenes, compare responses, surface the strongest consensus answer.</p>
                 </div>
               </div>
             </div>
@@ -968,7 +977,7 @@ export default function NexusCaseStudy() {
                   }}
                 >
                   <p className="font-bold text-gray-800 mb-1">Opportunity</p>
-                  <p className="text-gray-700 leading-snug">One input, one verified output. All the AI magic happens invisibly in the background.</p>
+                  <p className="text-gray-700 leading-snug">One input, one consolidated output. All the multi-model processing happens invisibly in the background.</p>
                 </div>
               </div>
             </div>
@@ -1002,7 +1011,7 @@ export default function NexusCaseStudy() {
           <div className="max-w-3xl mt-12">
             <h4 className="text-[#60a5fa] text-lg font-medium mb-4">Key Insight</h4>
             <p className="text-white/50 leading-relaxed mb-4">
-              A clear pattern emerged: students <strong className="text-white/70">don't want to choose between AI models</strong>. They want <strong className="text-white/70">one verified answer</strong> they can trust. The work of cross-checking should happen automatically.
+              A clear pattern emerged: students <strong className="text-white/70">don't want to choose between AI models</strong>. They want <strong className="text-white/70">one clear answer</strong> they can feel confident about. The work of comparing responses should happen automatically.
             </p>
             <p className="text-white/50 leading-relaxed">
               This shaped our solution: <span className="text-white/70">a platform that runs multiple AIs behind the scenes</span>, finds where they agree, and surfaces only the most accurate, consensus-backed answer.
@@ -1012,8 +1021,8 @@ export default function NexusCaseStudy() {
 
         {/* User Flows */}
         <div className="mt-20 pt-12 border-t border-white/10">
-          <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-2">User Flows & Core Features</h3>
-          <p className="text-white/40 text-sm mb-10">Three core journeys mapped from research insights</p>
+          <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-2">Core Product Flow</h3>
+          <p className="text-white/40 text-sm mb-10">Two core journeys mapped from research insights</p>
 
           {/* Condensed User Flows Grid */}
           <div className="space-y-4">
@@ -1037,47 +1046,24 @@ export default function NexusCaseStudy() {
               </div>
             </div>
 
-            {/* Verification Flow */}
+            {/* Ask & Compare Flow */}
             <div 
               className="rounded-2xl p-6 border border-white/[0.06]"
               style={{
                 background: 'linear-gradient(145deg, rgba(59,130,246,0.06) 0%, rgba(59,130,246,0.02) 100%)',
               }}
             >
-              <p className="text-[#60a5fa] text-sm font-medium mb-5 tracking-wide">Ask & Verify</p>
+              <p className="text-[#60a5fa] text-sm font-medium mb-5 tracking-wide">Ask & Compare</p>
               <div className="flex items-center gap-3 flex-wrap">
                 <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#3b82f6] text-white">Dashboard</span>
                 <span className="text-white/30 text-sm">→</span>
                 <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Enter Question</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">AIs Processing</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Run AI Models</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Cross-Check</span>
+                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Compare Responses</span>
                 <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Verified Answer</span>
-              </div>
-            </div>
-
-            {/* Research Flow */}
-            <div 
-              className="rounded-2xl p-6 border border-white/[0.06]"
-              style={{
-                background: 'linear-gradient(145deg, rgba(59,130,246,0.06) 0%, rgba(59,130,246,0.02) 100%)',
-              }}
-            >
-              <p className="text-[#60a5fa] text-sm font-medium mb-5 tracking-wide">Deep Research</p>
-              <div className="flex items-center gap-3 flex-wrap">
-                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#3b82f6] text-white">Dashboard</span>
-                <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Enter Topic</span>
-                <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Scan Sources</span>
-                <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Verify Facts</span>
-                <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">View Sources</span>
-                <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Export</span>
+                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Final Answer</span>
               </div>
             </div>
           </div>
@@ -1098,14 +1084,14 @@ export default function NexusCaseStudy() {
             </div>
             <div className="flex items-center gap-2">
               <span className="w-4 h-4 rounded-full bg-[#22c55e]"></span>
-              <span className="text-white/50">Verified Result</span>
+              <span className="text-white/50">Final Answer</span>
             </div>
           </div>
 
           {/* User Flows Summary */}
           <div className="max-w-3xl mt-12">
             <p className="text-white/50 leading-relaxed">
-              I mapped research insights to three core journeys: onboarding, quick Q&A with verification, and deep research. Each flow hides the complexity of multi-model processing behind a simple, one-input interface.
+              I mapped research insights to two core journeys: onboarding and the main product flow. Each flow hides the complexity of multi-model processing behind a simple, one-input interface.
             </p>
           </div>
         </div>
@@ -1116,7 +1102,7 @@ export default function NexusCaseStudy() {
           <p className="text-white/40 text-sm mb-6">Early Explorations</p>
           
           <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-            I started sketching user flows around two core experiences: <span className="text-white/70">quick Q&A with instant verification</span> and <span className="text-white/70">deep research with source tracking</span>. The key challenge was hiding multi-model complexity while showing users why they can trust the answer.
+            I started sketching user flows around the core experience: <span className="text-white/70">ask a question, get one consolidated answer</span>. The key challenge was hiding multi-model complexity while giving users confidence in the result.
           </p>
 
           {/* Lo-Fi Wireframe Flows - Hand-drawn Sketches */}
@@ -1337,7 +1323,7 @@ export default function NexusCaseStudy() {
 
           {/* Lo-Fi Description */}
           <p className="text-white/50 text-sm leading-relaxed max-w-2xl mt-6">
-            These rough sketches helped me explore layout options and user flows before committing to any specific design direction. I focused on mapping out the core interactions: entering a question, watching the verification process, and receiving a trusted answer. Quick pen-and-paper iterations let me test ideas fast and validate the one-input concept early.
+            These rough sketches helped me explore layout options and user flows before committing to any specific design direction. I focused on mapping out the core interactions: entering a question, seeing which models are running, and receiving a consolidated answer. Quick iPad sketches let me test ideas fast and validate the one-input concept early.
           </p>
         </div>
 
@@ -1565,9 +1551,9 @@ export default function NexusCaseStudy() {
           <div className="max-w-3xl mt-12">
             <h4 className="text-[#60a5fa] text-lg font-medium mb-4">Key Refinements</h4>
             <div className="space-y-3 text-white/50 leading-relaxed">
-              <p><span className="text-white/70 font-medium">Confidence indicators:</span> Show users why they can trust the answer (e.g., "3/3 AIs agree").</p>
-              <p><span className="text-white/70 font-medium">Hidden complexity:</span> AI processing happens behind the scenes; users just see the result.</p>
-              <p><span className="text-white/70 font-medium">Source transparency:</span> Badge each contributing AI so users know where verification came from.</p>
+              <p><span className="text-white/70 font-medium">Model visibility:</span> Show which AI models are being used so users understand where the answer is coming from.</p>
+              <p><span className="text-white/70 font-medium">Simple interface:</span> Users only enter one question while the system runs multiple AI models behind the scenes.</p>
+              <p><span className="text-white/70 font-medium">Multi-model comparison:</span> The platform runs several models in parallel and compares responses before returning the final answer.</p>
             </div>
           </div>
 
@@ -1624,9 +1610,9 @@ export default function NexusCaseStudy() {
             <div className="max-w-3xl">
               <h4 className="text-[#60a5fa] text-lg font-medium mb-4">Iteration Insights</h4>
               <div className="space-y-3 text-white/50 leading-relaxed">
-                <p><span className="text-white/70 font-medium">Flow simplification:</span> Early versions had too many steps. I streamlined onboarding to get users to their first verified answer faster.</p>
-                <p><span className="text-white/70 font-medium">Visual hierarchy:</span> Tested multiple ways to present AI sources before landing on the badge system that shows verification at a glance.</p>
-                <p><span className="text-white/70 font-medium">Trust signals:</span> Added confidence indicators after user testing revealed students wanted to know "why" they could trust the answer.</p>
+                <p><span className="text-white/70 font-medium">Flow simplification:</span> Early versions had too many steps. I streamlined onboarding to get users to their first answer faster.</p>
+                <p><span className="text-white/70 font-medium">Visual hierarchy:</span> Tested multiple ways to present AI sources before landing on the badge system that shows which models contributed.</p>
+                <p><span className="text-white/70 font-medium">Model transparency:</span> Added indicators showing which AI models were used, so students understand where the answer comes from.</p>
               </div>
             </div>
           </div>
@@ -1638,46 +1624,46 @@ export default function NexusCaseStudy() {
         <SectionLabel>04</SectionLabel>
         <SectionTitle>Core Features</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-          Four integrated features that give students verified, trustworthy answers without the complexity of managing multiple AI tools.
+          Four integrated features that give students clear, consolidated answers without the complexity of managing multiple AI tools.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl">
-          {/* Feature 1: One Question, Verified Answer */}
+          {/* Feature 1: One Question, Best Answer */}
           <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-cyan-500/20 transition-all duration-300 hover:bg-white/[0.05]">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-700 flex items-center justify-center mb-4">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
               </svg>
             </div>
-            <h3 className="text-white text-lg font-semibold mb-3">One Question, Verified Answer</h3>
+            <h3 className="text-white text-lg font-semibold mb-3">One Question, Best Answer</h3>
             <p className="text-white/40 text-sm leading-relaxed">
-              Ask anything. Nexus queries multiple AIs behind the scenes, finds where they agree, and gives you one trusted answer.
+              Ask anything. Nexus runs multiple AI models in parallel, compares their responses, and surfaces the strongest answer.
             </p>
           </div>
 
-          {/* Feature 2: Automatic Verification */}
+          {/* Feature 2: Multi-Model Comparison */}
           <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-blue-500/20 transition-all duration-300 hover:bg-white/[0.05]">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-4">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-white text-lg font-semibold mb-3">Automatic Verification</h3>
+            <h3 className="text-white text-lg font-semibold mb-3">Multi-Model Comparison</h3>
             <p className="text-white/40 text-sm leading-relaxed">
-              No more second-guessing AI answers. If multiple models agree, you know the information is accurate. Confidence scores included.
+              No more second-guessing AI answers. The system compares responses across models and surfaces where they agree.
             </p>
           </div>
 
-          {/* Feature 3: Source Transparency */}
+          {/* Feature 3: Model Transparency */}
           <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-pink-500/20 transition-all duration-300 hover:bg-white/[0.05]">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500 to-pink-700 flex items-center justify-center mb-4">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-white text-lg font-semibold mb-3">Source Transparency</h3>
+            <h3 className="text-white text-lg font-semibold mb-3">Model Transparency</h3>
             <p className="text-white/40 text-sm leading-relaxed">
-              See which AIs contributed to your answer and how they agreed. Full transparency into the verification process.
+              See which AI models contributed to your answer. Full transparency into which models were used in the process.
             </p>
           </div>
 
@@ -1690,7 +1676,7 @@ export default function NexusCaseStudy() {
             </div>
             <h3 className="text-white text-lg font-semibold mb-3">Homework Intelligence</h3>
             <p className="text-white/40 text-sm leading-relaxed">
-              Built for students. Get verified answers for research, essays, and problem sets. Study smarter, not harder.
+              Built for students. Get clear answers for research, essays, and problem sets. Study smarter, not harder.
             </p>
           </div>
         </div>
@@ -1698,7 +1684,7 @@ export default function NexusCaseStudy() {
         {/* Features Summary */}
         <div className="max-w-3xl mt-12">
           <p className="text-white/50 leading-relaxed">
-            Each feature works together to eliminate the uncertainty of AI research. Ask one question, get one verified answer backed by the consensus of multiple AI models. No tab hopping, no conflicting information.
+            Each feature works together to simplify AI research. Ask one question, get one consolidated answer powered by multiple AI models. No tab hopping, no conflicting information.
           </p>
         </div>
       </Section>
@@ -1708,7 +1694,7 @@ export default function NexusCaseStudy() {
         <SectionLabel>05</SectionLabel>
         <SectionTitle>Design System</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-          I designed a <strong className="text-white/70">minimal, monochromatic system</strong> that feels both sophisticated and trustworthy. The near-black theme <strong className="text-white/70">reduces eye strain</strong> during long study sessions while the clean white typography and subtle blue accents create a <strong className="text-white/70">professional, focused experience</strong> that lets the content shine.
+          I designed a <strong className="text-white/70">minimal, monochromatic system</strong> that feels both sophisticated and focused. The near-black theme <strong className="text-white/70">reduces eye strain</strong> during long study sessions while the clean white typography and subtle blue accents create a <strong className="text-white/70">professional, clear experience</strong> that lets the content shine.
         </p>
 
         {/* Design System */}
@@ -1889,7 +1875,7 @@ export default function NexusCaseStudy() {
         <div className="mt-16 p-8 rounded-2xl bg-white/[0.02] border border-white/10 max-w-3xl">
           <p className="text-[#60a5fa] text-xs font-semibold uppercase tracking-widest mb-4">Key Design Decision</p>
           <p className="text-white/70 text-lg leading-relaxed">
-            I designed a <strong className="text-white font-semibold">single-answer interface instead of showing multiple AI responses</strong> because student research showed they just want the right answer, not more choices. All the verification happens behind the scenes, so users just see what matters: one trusted result.
+            I designed a <strong className="text-white font-semibold">single-answer interface instead of showing multiple AI responses</strong> because student research showed they just want one clear answer, not more choices to sort through. All the multi-model comparison happens behind the scenes, so users just see what matters: one consolidated result.
           </p>
         </div>
       </Section>
@@ -1918,27 +1904,6 @@ export default function NexusCaseStudy() {
               <p className="text-white/70 text-sm">Active users on designs shipped to production</p>
             </div>
           </div>
-
-          {/* Testimonial */}
-          <div className="relative p-8 rounded-2xl bg-gradient-to-br from-[#60a5fa]/10 to-transparent border border-[#60a5fa]/20">
-            <svg className="absolute top-6 left-6 w-8 h-8 text-[#60a5fa]/30" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-            </svg>
-            <div className="pl-12">
-              <p className="text-white/80 text-lg leading-relaxed mb-4 italic">
-                "Anusha consistently delivered designs that balanced user needs with our technical constraints. Her ability to take feedback, iterate quickly, and communicate design decisions made her an invaluable part of the team. The onboarding redesign she led directly contributed to our growth metrics."
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#60a5fa]/20 flex items-center justify-center text-[#60a5fa] font-semibold">
-                  JK
-                </div>
-                <div>
-                  <p className="text-white font-medium text-sm">Engineering Lead</p>
-                  <p className="text-white/50 text-xs">Nexus</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </Section>
 
@@ -1960,7 +1925,7 @@ export default function NexusCaseStudy() {
             <div>
               <h3 className="text-[#60a5fa] font-medium mb-3">Challenges</h3>
               <ul className="space-y-2 text-white/60 text-sm">
-                <li>Communicating trust through UI (confidence scores)</li>
+                <li>Communicating model transparency through UI</li>
                 <li>Handling unpredictable AI response times</li>
                 <li>Balancing input from multiple stakeholders</li>
               </ul>
@@ -1969,7 +1934,7 @@ export default function NexusCaseStudy() {
               <h3 className="text-[#60a5fa] font-medium mb-3">Next Time</h3>
               <ul className="space-y-2 text-white/60 text-sm">
                 <li>Test with diverse student populations earlier</li>
-                <li>Design mobile verification flows sooner</li>
+                <li>Design mobile flows sooner</li>
                 <li>Explore study group collaboration features</li>
               </ul>
             </div>

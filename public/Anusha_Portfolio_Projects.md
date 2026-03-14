@@ -8,7 +8,7 @@
 **AI Research Platform for Students**
 
 ### Overview
-One question, one verified answer. Nexus runs multiple AI models in parallel, cross-checks their responses, and surfaces only the most accurate, agreed-upon information. Students ask once and get the answer backed by consensus, no tab hopping, no conflicting responses, no uncertainty.
+One question, one answer. Nexus runs multiple AI models in parallel, compares their responses, and surfaces the strongest consensus-based result. Students ask once and get a consolidated answer, no tab hopping, no conflicting responses, no confusion.
 
 ### Project Details
 | Field | Details |
@@ -24,7 +24,7 @@ One question, one verified answer. Nexus runs multiple AI models in parallel, cr
 - **Homework Intelligence** - Questions matched to best AI models per subject
 - **6x Faster** - Multiple models run in parallel
 - **Single Source** - Ask once, get the best answer across all models
-- **Smarter Studying** - Verified answers, clearer explanations
+- **Smarter Studying** - Consolidated answers, clearer explanations
 - **Seamless Integrations** - Works with your favorite tools
 
 ### Key Stats

@@ -58,7 +58,7 @@ export default function RecentWork() {
     {
       title: 'Nexus',
       subtitle: 'AI Research Platform for Students',
-      description: 'One question, one verified answer. Nexus runs multiple AI models in parallel, cross-checks their responses, and surfaces only the most accurate, agreed-upon information. No tab hopping, no conflicting answers.',
+      description: 'One question, one answer. Nexus runs multiple AI models in parallel, compares their responses, and surfaces the strongest consensus-based result. No tab hopping, no conflicting answers.',
       demoImages: [
         { src: '/narbl/narbl-1.png', label: 'Everything You Need. One Nexus.' },
         { src: '/narbl/narbl-2.png', label: 'Scanning for Better Answers' },
