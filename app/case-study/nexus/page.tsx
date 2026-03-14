@@ -1105,220 +1105,205 @@ export default function NexusCaseStudy() {
             I started sketching user flows around the core experience: <span className="text-white/70">ask a question, get one consolidated answer</span>. The key challenge was hiding multi-model complexity while giving users confidence in the result.
           </p>
 
-          {/* Lo-Fi Wireframe Flows - Hand-drawn Sketches */}
-          <div className="rounded-xl overflow-hidden bg-[#fefcf8] p-6 md:p-8 mb-12 border border-[#e8e4dc]">
-            <svg viewBox="0 0 880 460" className="w-full h-auto">
-              <defs>
-                <filter id="pencilSketch" x="-5%" y="-5%" width="110%" height="110%">
-                  <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
-                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
-                </filter>
-                <marker id="sketchArrow" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
-                  <path d="M 0 1 Q 4 3.5, 0 6 L 9 3.5 Z" fill="#666" filter="url(#pencilSketch)"/>
-                </marker>
-              </defs>
-              
-              {/* Hand-written labels */}
-              <text x="110" y="18" fill="#777" fontSize="12" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">hero</text>
-              <text x="400" y="18" fill="#777" fontSize="12" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">features</text>
-              <text x="700" y="18" fill="#777" fontSize="12" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">AI sources</text>
-              
-              {/* Screen 1: Hero - Hand drawn */}
-              <g transform="translate(15, 28)">
-                {/* Sketchy browser frame */}
-                <path d="M 3 2 Q 1 5, 2 178 Q 4 183, 257 181 Q 262 178, 260 5 Q 257 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="2" filter="url(#pencilSketch)"/>
-                {/* Wobbly browser dots */}
-                <circle cx="16" cy="12" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="30" cy="11" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="44" cy="12" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                
-                {/* Sketchy nav */}
-                <path d="M 12 28 Q 35 26, 52 30" stroke="#555" strokeWidth="2" filter="url(#pencilSketch)"/>
-                <path d="M 200 27 Q 218 25, 230 29" stroke="#aaa" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <path d="M 235 26 Q 250 24, 254 35 Q 252 40, 238 39 Q 233 35, 235 26" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
-                
-                {/* Sketchy center icon */}
-                <circle cx="130" cy="58" r="12" fill="none" stroke="#777" strokeWidth="1.8" filter="url(#pencilSketch)"/>
-                <path d="M 130 50 L 130 66" stroke="#777" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <path d="M 122 58 L 138 58" stroke="#777" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                
-                {/* Sketchy headlines */}
-                <path d="M 48 82 Q 130 78, 212 85" stroke="#444" strokeWidth="2.5" filter="url(#pencilSketch)"/>
-                <path d="M 72 98 Q 130 94, 188 100" stroke="#555" strokeWidth="2" filter="url(#pencilSketch)"/>
-                
-                {/* Subtitle squiggle */}
-                <path d="M 58 115 Q 130 110, 202 118" stroke="#bbb" strokeWidth="1" filter="url(#pencilSketch)"/>
-                
-                {/* Wobbly avatars */}
-                <circle cx="102" cy="135" r="6" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <circle cx="118" cy="134" r="6" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <circle cx="134" cy="135" r="6" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <path d="M 148 133 Q 175 130, 195 136" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
-                
-                {/* Sketchy input */}
-                <path d="M 32 155 Q 35 150, 228 152 Q 235 158, 230 172 Q 225 178, 38 175 Q 32 170, 32 155" fill="none" stroke="#666" strokeWidth="2" filter="url(#pencilSketch)"/>
-                <path d="M 50 163 Q 95 160, 140 166" stroke="#ccc" strokeWidth="1" filter="url(#pencilSketch)"/>
-                <circle cx="215" cy="163" r="8" fill="none" stroke="#555" strokeWidth="1.8" filter="url(#pencilSketch)"/>
-              </g>
-              
-              {/* Sketchy Arrow 1 */}
-              <path d="M 285 115 Q 300 112, 315 118" stroke="#666" strokeWidth="1.8" fill="none" markerEnd="url(#sketchArrow)" filter="url(#pencilSketch)"/>
-              
-              {/* Screen 2: Features */}
-              <g transform="translate(325, 28)">
-                <path d="M 4 3 Q 1 6, 2 176 Q 5 181, 232 179 Q 238 175, 236 6 Q 233 2, 6 4 Z" fill="none" stroke="#666" strokeWidth="2" filter="url(#pencilSketch)"/>
-                <circle cx="14" cy="11" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="28" cy="12" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="42" cy="11" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                
-                {/* Header squiggles */}
-                <path d="M 62 35 Q 118 30, 175 38" stroke="#444" strokeWidth="2.2" filter="url(#pencilSketch)"/>
-                <path d="M 78 50 Q 118 46, 158 52" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
-                
-                {/* Three sketchy cards */}
-                <path d="M 18 70 Q 22 66, 72 68 Q 78 72, 76 122 Q 72 128, 22 125 Q 18 120, 18 70" fill="none" stroke="#888" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <rect x="28" y="82" width="8" height="22" fill="none" stroke="#aaa" strokeWidth="1" filter="url(#pencilSketch)"/>
-                <rect x="40" y="88" width="8" height="16" fill="none" stroke="#aaa" strokeWidth="1" filter="url(#pencilSketch)"/>
-                <rect x="52" y="85" width="8" height="19" fill="none" stroke="#aaa" strokeWidth="1" filter="url(#pencilSketch)"/>
-                <path d="M 25 115 Q 48 112, 68 118" stroke="#bbb" strokeWidth="0.8" filter="url(#pencilSketch)"/>
-                
-                <path d="M 88 70 Q 92 66, 152 68 Q 158 72, 156 122 Q 152 128, 95 125 Q 88 120, 88 70" fill="none" stroke="#888" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <path d="M 102 98 Q 122 80, 142 98" fill="none" stroke="#aaa" strokeWidth="2" filter="url(#pencilSketch)"/>
-                <path d="M 122 98 L 132 86" stroke="#888" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <path d="M 95 115 Q 122 112, 148 118" stroke="#bbb" strokeWidth="0.8" filter="url(#pencilSketch)"/>
-                
-                <path d="M 165 70 Q 168 66, 220 68 Q 226 72, 224 122 Q 220 128, 170 125 Q 165 120, 165 70" fill="none" stroke="#888" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="195" cy="90" r="8" fill="none" stroke="#aaa" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <circle cx="180" cy="100" r="4" fill="none" stroke="#aaa" strokeWidth="1" filter="url(#pencilSketch)"/>
-                <circle cx="210" cy="100" r="4" fill="none" stroke="#aaa" strokeWidth="1" filter="url(#pencilSketch)"/>
-                <path d="M 172 115 Q 195 112, 218 118" stroke="#bbb" strokeWidth="0.8" filter="url(#pencilSketch)"/>
-                
-                {/* Bottom squiggles */}
-                <path d="M 45 145 Q 70 142, 92 148" stroke="#999" strokeWidth="1" filter="url(#pencilSketch)"/>
-                <path d="M 100 145 Q 125 142, 150 148" stroke="#999" strokeWidth="1" filter="url(#pencilSketch)"/>
-                
-                <text x="75" y="170" fill="#888" fontSize="9" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"3 cards"</text>
-              </g>
-              
-              {/* Sketchy Arrow 2 */}
-              <path d="M 572 115 Q 590 110, 608 118" stroke="#666" strokeWidth="1.8" fill="none" markerEnd="url(#sketchArrow)" filter="url(#pencilSketch)"/>
-              
-              {/* Screen 3: AI Sources */}
-              <g transform="translate(618, 28)">
-                <path d="M 3 2 Q 0 6, 2 176 Q 5 182, 247 179 Q 253 175, 250 6 Q 247 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="2" filter="url(#pencilSketch)"/>
-                <circle cx="15" cy="12" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="29" cy="11" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="43" cy="12" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                
-                {/* Two cards */}
-                <path d="M 12 30 Q 16 26, 110 28 Q 116 32, 114 102 Q 110 108, 18 105 Q 12 100, 12 30" fill="none" stroke="#777" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <path d="M 22 42 Q 55 38, 85 45" stroke="#555" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <path d="M 22 56 Q 50 52, 95 58" stroke="#bbb" strokeWidth="0.8" filter="url(#pencilSketch)"/>
-                {/* Stacked pill badges */}
-                <path d="M 25 68 Q 28 64, 65 66 Q 70 70, 68 80 Q 64 84, 28 82 Q 25 78, 25 68" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <path d="M 32 85 Q 35 81, 72 83 Q 77 87, 75 97 Q 71 101, 35 99 Q 32 95, 32 85" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                
-                <path d="M 125 30 Q 128 26, 238 28 Q 244 32, 242 102 Q 238 108, 130 105 Q 125 100, 125 30" fill="none" stroke="#777" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <path d="M 135 42 Q 175 38, 220 45" stroke="#555" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                {/* Sketchy grid icons */}
-                <rect x="140" y="58" width="16" height="16" fill="none" stroke="#aaa" strokeWidth="1" rx="2" filter="url(#pencilSketch)"/>
-                <rect x="165" y="58" width="16" height="16" fill="none" stroke="#aaa" strokeWidth="1" rx="2" filter="url(#pencilSketch)"/>
-                <rect x="190" y="58" width="16" height="16" fill="none" stroke="#aaa" strokeWidth="1" rx="2" filter="url(#pencilSketch)"/>
-                <circle cx="178" cy="88" r="10" fill="none" stroke="#999" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                
-                {/* Bottom */}
-                <path d="M 50 125 Q 125 120, 200 128" stroke="#444" strokeWidth="1.8" filter="url(#pencilSketch)"/>
-                <path d="M 30 145 Q 125 140, 220 148" stroke="#bbb" strokeWidth="0.8" filter="url(#pencilSketch)"/>
-                {/* Tag pills */}
-                <path d="M 55 160 Q 58 156, 100 158 Q 105 162, 102 170 Q 98 174, 58 172 Q 55 168, 55 160" fill="none" stroke="#999" strokeWidth="1" filter="url(#pencilSketch)"/>
-                <path d="M 115 160 Q 118 156, 160 158 Q 165 162, 162 170 Q 158 174, 118 172 Q 115 168, 115 160" fill="none" stroke="#999" strokeWidth="1" filter="url(#pencilSketch)"/>
-              </g>
-              
-              {/* Row 2 labels */}
-              <text x="110" y="242" fill="#777" fontSize="12" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">quote</text>
-              <text x="400" y="242" fill="#777" fontSize="12" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">stories</text>
-              <text x="700" y="242" fill="#777" fontSize="12" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">input</text>
-              
-              {/* Screen 4: Testimonial */}
-              <g transform="translate(15, 255)">
-                <path d="M 4 2 Q 1 6, 2 158 Q 5 164, 257 161 Q 263 156, 260 6 Q 256 1, 6 3 Z" fill="none" stroke="#666" strokeWidth="2" filter="url(#pencilSketch)"/>
-                <circle cx="15" cy="11" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="29" cy="12" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="43" cy="11" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                
-                {/* Big quote mark */}
-                <text x="35" y="52" fill="#ddd" fontSize="36" fontFamily="Georgia, serif">"</text>
-                
-                {/* Quote lines */}
-                <path d="M 62 45 Q 140 40, 230 48" stroke="#666" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <path d="M 55 62 Q 145 56, 238 65" stroke="#666" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <path d="M 60 79 Q 140 74, 215 82" stroke="#666" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                
-                {/* Author */}
-                <circle cx="130" cy="110" r="16" fill="none" stroke="#888" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <path d="M 95 135 Q 130 130, 165 138" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <path d="M 85 150 Q 130 145, 175 152" stroke="#bbb" strokeWidth="0.8" filter="url(#pencilSketch)"/>
-              </g>
-              
-              {/* Arrow 3 */}
-              <path d="M 285 335 Q 302 330, 320 338" stroke="#666" strokeWidth="1.8" fill="none" markerEnd="url(#sketchArrow)" filter="url(#pencilSketch)"/>
-              
-              {/* Screen 5: Success Stories */}
-              <g transform="translate(325, 255)">
-                <path d="M 3 3 Q 0 7, 2 156 Q 6 162, 232 159 Q 238 154, 235 7 Q 231 2, 5 4 Z" fill="none" stroke="#666" strokeWidth="2" filter="url(#pencilSketch)"/>
-                <circle cx="14" cy="12" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="28" cy="11" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="42" cy="12" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                
-                {/* Header */}
-                <path d="M 58 32 Q 118 27, 178 35" stroke="#444" strokeWidth="2" filter="url(#pencilSketch)"/>
-                
-                {/* Stacked cards */}
-                <path d="M 42 52 Q 45 48, 195 50 Q 200 54, 198 62 Q 195 66, 45 64 Q 42 60, 42 52" fill="none" stroke="#ccc" strokeWidth="1" filter="url(#pencilSketch)"/>
-                <path d="M 35 60 Q 38 56, 200 58 Q 206 62, 204 72 Q 200 76, 40 74 Q 35 70, 35 60" fill="none" stroke="#bbb" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <path d="M 28 70 Q 32 65, 208 68 Q 215 74, 212 142 Q 208 148, 35 145 Q 28 140, 28 70" fill="none" stroke="#777" strokeWidth="1.8" filter="url(#pencilSketch)"/>
-                
-                {/* Card content */}
-                <circle cx="178" cy="100" r="18" fill="none" stroke="#aaa" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <path d="M 45 90 Q 85 86, 120 93" stroke="#555" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <path d="M 45 105 Q 95 100, 140 108" stroke="#bbb" strokeWidth="0.8" filter="url(#pencilSketch)"/>
-                <path d="M 45 118 Q 90 114, 130 121" stroke="#bbb" strokeWidth="0.8" filter="url(#pencilSketch)"/>
-                
-                {/* Stats boxes */}
-                <path d="M 50 130 Q 53 126, 95 128 Q 100 132, 98 142 Q 94 146, 53 144 Q 50 140, 50 130" fill="none" stroke="#999" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <path d="M 108 130 Q 111 126, 153 128 Q 158 132, 156 142 Q 152 146, 111 144 Q 108 140, 108 130" fill="none" stroke="#999" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-              </g>
-              
-              {/* Arrow 4 */}
-              <path d="M 572 335 Q 590 330, 608 338" stroke="#666" strokeWidth="1.8" fill="none" markerEnd="url(#sketchArrow)" filter="url(#pencilSketch)"/>
-              
-              {/* Screen 6: Input State */}
-              <g transform="translate(618, 255)">
-                <path d="M 2 3 Q -1 7, 1 156 Q 4 162, 248 159 Q 254 154, 251 7 Q 247 2, 4 4 Z" fill="none" stroke="#666" strokeWidth="2" filter="url(#pencilSketch)"/>
-                <circle cx="14" cy="11" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="28" cy="12" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                <circle cx="42" cy="11" r="4" fill="none" stroke="#999" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                
-                {/* Logo */}
-                <path d="M 15 32 Q 45 28, 65 35" stroke="#555" strokeWidth="1.8" filter="url(#pencilSketch)"/>
-                
-                {/* Active input - emphasized */}
-                <path d="M 22 55 Q 26 48, 228 52 Q 236 58, 232 78 Q 226 85, 28 82 Q 22 76, 22 55" fill="none" stroke="#444" strokeWidth="2.5" filter="url(#pencilSketch)"/>
-                <path d="M 38 65 Q 85 62, 130 68" stroke="#666" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                <path d="M 138 58 L 138 76" stroke="#333" strokeWidth="2" filter="url(#pencilSketch)"/>
-                
-                {/* Spinner */}
-                <circle cx="125" cy="115" r="14" fill="none" stroke="#aaa" strokeWidth="2" strokeDasharray="10,6" filter="url(#pencilSketch)"/>
-                
-                <path d="M 65 140 Q 125 135, 185 143" stroke="#bbb" strokeWidth="0.8" filter="url(#pencilSketch)"/>
-                
-                <text x="70" y="158" fill="#888" fontSize="9" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"scanning..."</text>
-              </g>
-              
-              {/* Hand-drawn annotation */}
-              <path d="M 295 45 Q 308 28, 335 35" stroke="#aaa" strokeWidth="1" strokeDasharray="4,3" fill="none" filter="url(#pencilSketch)"/>
-              <text x="340" y="38" fill="#999" fontSize="9" fontFamily="Comic Sans MS, cursive">scroll →</text>
-            </svg>
+          {/* Lo-Fi Wireframe Flows - Hand-drawn iPad Sketches */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {/* Onboarding Lo-Fi */}
+            <div>
+              <p className="text-[#60a5fa] text-sm font-medium mb-4 tracking-wide">Onboarding Flow</p>
+              <div className="rounded-xl overflow-hidden bg-[#fefcf8] p-6 border border-[#e8e4dc]">
+                <svg viewBox="0 0 400 280" className="w-full h-auto">
+                  <defs>
+                    <filter id="pencilSketch" x="-5%" y="-5%" width="110%" height="110%">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+                    </filter>
+                  </defs>
+                  
+                  {/* Label */}
+                  <text x="15" y="18" fill="#777" fontSize="11" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">landing page</text>
+                  <text x="220" y="18" fill="#777" fontSize="11" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">sign up</text>
+                  
+                  {/* Screen 1: Landing Page */}
+                  <g transform="translate(10, 28)">
+                    <path d="M 3 2 Q 1 5, 2 118 Q 4 123, 172 121 Q 177 118, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    
+                    {/* Nav bar */}
+                    <path d="M 12 15 Q 30 13, 45 17" stroke="#555" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    <path d="M 140 14 Q 155 12, 165 18 Q 168 24, 155 26 Q 142 24, 140 14" fill="none" stroke="#666" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    
+                    {/* Hero headline */}
+                    <path d="M 30 42 Q 88 38, 145 45" stroke="#444" strokeWidth="2.2" filter="url(#pencilSketch)"/>
+                    <path d="M 45 55 Q 88 51, 130 58" stroke="#555" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    
+                    {/* Subtitle */}
+                    <path d="M 35 68 Q 88 64, 140 70" stroke="#bbb" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    
+                    {/* User avatars */}
+                    <circle cx="72" cy="82" r="4" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <circle cx="82" cy="82" r="4" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <circle cx="92" cy="82" r="4" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <path d="M 100 80 Q 115 78, 130 82" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    
+                    {/* Input field */}
+                    <path d="M 22 95 Q 25 90, 152 92 Q 158 96, 155 108 Q 150 114, 28 112 Q 22 108, 22 95" fill="none" stroke="#555" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    <path d="M 35 102 Q 70 99, 100 104" stroke="#ccc" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <circle cx="142" cy="102" r="6" fill="none" stroke="#444" strokeWidth="1.5" filter="url(#pencilSketch)"/>
+                    
+                    <text x="55" y="135" fill="#888" fontSize="8" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"one nexus"</text>
+                  </g>
+                  
+                  {/* Arrow */}
+                  <path d="M 195 85 Q 205 82, 215 88" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
+                  <path d="M 212 82 L 218 88 L 210 92" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch)"/>
+                  
+                  {/* Screen 2: Sign Up */}
+                  <g transform="translate(215, 28)">
+                    <path d="M 3 2 Q 1 5, 2 118 Q 4 123, 172 121 Q 177 118, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    
+                    {/* Modal box */}
+                    <path d="M 25 25 Q 28 20, 150 22 Q 156 28, 154 105 Q 150 112, 30 108 Q 25 102, 25 25" fill="none" stroke="#555" strokeWidth="1.5" filter="url(#pencilSketch)"/>
+                    
+                    {/* Title */}
+                    <path d="M 55 38 Q 88 34, 120 40" stroke="#444" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    
+                    {/* Form fields */}
+                    <path d="M 38 52 Q 42 48, 138 50 Q 142 54, 140 62 Q 136 66, 42 64 Q 38 60, 38 52" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 38 70 Q 42 66, 138 68 Q 142 72, 140 80 Q 136 84, 42 82 Q 38 78, 38 70" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    
+                    {/* Submit button */}
+                    <path d="M 55 90 Q 58 85, 122 87 Q 128 92, 125 100 Q 120 105, 60 102 Q 55 98, 55 90" fill="none" stroke="#444" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    
+                    <text x="60" y="135" fill="#888" fontSize="8" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"create acct"</text>
+                  </g>
+                  
+                  {/* Row 2 */}
+                  <text x="15" y="175" fill="#777" fontSize="11" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">pricing</text>
+                  
+{/* Screen 3: Pricing */}
+                  <g transform="translate(10, 185)">
+                    <path d="M 3 2 Q 1 5, 2 88 Q 4 93, 172 91 Q 177 88, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+
+                    {/* Pricing cards */}
+                    <path d="M 15 15 Q 18 11, 55 13 Q 60 17, 58 55 Q 54 61, 20 58 Q 15 53, 15 15" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 22 22 Q 40 19, 50 24" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 25 34 Q 35 32, 48 36" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    <path d="M 25 44 Q 35 42, 48 46" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+
+                    <path d="M 68 15 Q 72 11, 108 13 Q 114 17, 112 55 Q 108 61, 74 58 Q 68 53, 68 15" fill="none" stroke="#444" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    <path d="M 75 22 Q 92 19, 105 24" stroke="#444" strokeWidth="1.5" filter="url(#pencilSketch)"/>
+
+                    <path d="M 122 15 Q 126 11, 162 13 Q 168 17, 166 55 Q 162 61, 128 58 Q 122 53, 122 15" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+
+                    <text x="65" y="78" fill="#888" fontSize="8" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"pick plan"</text>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            
+            {/* Product Experience Lo-Fi */}
+            <div>
+              <p className="text-[#60a5fa] text-sm font-medium mb-4 tracking-wide">Product Experience</p>
+              <div className="rounded-xl overflow-hidden bg-[#fefcf8] p-6 border border-[#e8e4dc]">
+                <svg viewBox="0 0 400 280" className="w-full h-auto">
+                  <defs>
+                    <filter id="pencilSketch2" x="-5%" y="-5%" width="110%" height="110%">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+                    </filter>
+                  </defs>
+                  
+                  {/* Label */}
+                  <text x="15" y="18" fill="#777" fontSize="11" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">chat interface</text>
+                  <text x="220" y="18" fill="#777" fontSize="11" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">model selector</text>
+                  
+                  {/* Screen 1: Chat Interface */}
+                  <g transform="translate(10, 28)">
+                    <path d="M 3 2 Q 1 5, 2 118 Q 4 123, 172 121 Q 177 118, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch2)"/>
+                    
+                    {/* Sidebar */}
+                    <path d="M 8 8 Q 10 5, 45 7 Q 48 10, 46 115 Q 43 118, 10 116 Q 8 112, 8 8" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch2)"/>
+                    <path d="M 15 18 Q 25 16, 38 20" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch2)"/>
+                    <path d="M 15 28 Q 28 26, 40 30" stroke="#bbb" strokeWidth="0.6" filter="url(#pencilSketch2)"/>
+                    <path d="M 15 38 Q 28 36, 40 40" stroke="#bbb" strokeWidth="0.6" filter="url(#pencilSketch2)"/>
+                    
+                    {/* Top bar */}
+                    <path d="M 55 12 Q 70 10, 95 14 Q 100 18, 95 22 Q 85 24, 58 20" fill="none" stroke="#666" strokeWidth="1" filter="url(#pencilSketch2)"/>
+                    <path d="M 105 12 Q 118 10, 128 14 Q 132 18, 128 22 Q 120 24, 108 20" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch2)"/>
+                    
+                    {/* Greeting */}
+                    <path d="M 70 55 Q 110 52, 150 58" stroke="#555" strokeWidth="1.5" filter="url(#pencilSketch2)"/>
+                    <path d="M 85 68 Q 110 65, 135 70" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch2)"/>
+                    
+                    {/* Message input */}
+                    <path d="M 55 90 Q 58 85, 165 87 Q 172 92, 168 105 Q 162 112, 62 108 Q 55 102, 55 90" fill="none" stroke="#444" strokeWidth="1.8" filter="url(#pencilSketch2)"/>
+                    <path d="M 68 98 Q 95 95, 120 100" stroke="#ccc" strokeWidth="1" filter="url(#pencilSketch2)"/>
+                    <circle cx="158" cy="98" r="5" fill="none" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch2)"/>
+                    
+                    {/* Model indicator */}
+                    <path d="M 85 115 Q 88 112, 135 114 Q 140 118, 135 122 Q 128 124, 90 122 Q 85 118, 85 115" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch2)"/>
+                    <circle cx="95" cy="118" r="3" fill="none" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch2)"/>
+                    <circle cx="105" cy="118" r="3" fill="none" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch2)"/>
+                    
+                    <text x="50" y="138" fill="#888" fontSize="8" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"good afternoon"</text>
+                  </g>
+                  
+                  {/* Arrow */}
+                  <path d="M 195 85 Q 205 82, 215 88" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch2)"/>
+                  <path d="M 212 82 L 218 88 L 210 92" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch2)"/>
+                  
+{/* Screen 2: Model Selector */}
+                  <g transform="translate(215, 28)">
+                    <path d="M 3 2 Q 1 5, 2 118 Q 4 123, 172 121 Q 177 118, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch2)"/>
+
+                    {/* Dropdown panel */}
+                    <path d="M 25 30 Q 28 25, 150 27 Q 156 32, 154 110 Q 150 116, 30 113 Q 25 108, 25 30" fill="none" stroke="#555" strokeWidth="1.5" filter="url(#pencilSketch2)"/>
+
+                    {/* Title */}
+                    <path d="M 35 40 Q 88 36, 140 42" stroke="#888" strokeWidth="1" filter="url(#pencilSketch2)"/>
+
+                    {/* Model options - simple circles with text */}
+                    <circle cx="45" cy="55" r="5" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch2)"/>
+                    <path d="M 55 52 Q 85 49, 110 55" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch2)"/>
+
+                    <circle cx="45" cy="72" r="5" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch2)"/>
+                    <path d="M 55 69 Q 85 66, 105 72" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch2)"/>
+
+                    <circle cx="45" cy="89" r="5" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch2)"/>
+                    <path d="M 55 86 Q 75 83, 90 89" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch2)"/>
+
+                    {/* Fourth model option */}
+                    <circle cx="45" cy="103" r="5" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch2)"/>
+                    <path d="M 55 100 Q 95 97, 130 103" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch2)"/>
+
+                    <text x="45" y="135" fill="#888" fontSize="8" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"5 models"</text>
+                  </g>
+                  
+                  {/* Row 2 */}
+                  <text x="15" y="175" fill="#777" fontSize="11" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">response</text>
+                  
+                  {/* Screen 3: Response View */}
+                  <g transform="translate(10, 185)">
+                    <path d="M 3 2 Q 1 5, 2 78 Q 4 83, 172 81 Q 177 78, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch2)"/>
+                    
+                    {/* Sidebar hint */}
+                    <path d="M 8 8 Q 10 5, 45 7 Q 48 10, 46 75" fill="none" stroke="#ccc" strokeWidth="0.8" filter="url(#pencilSketch2)"/>
+                    
+                    {/* Response bubble */}
+                    <path d="M 55 15 Q 58 10, 165 12 Q 172 18, 168 58 Q 162 65, 62 62 Q 55 56, 55 15" fill="none" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch2)"/>
+                    <path d="M 65 25 Q 110 22, 155 28" stroke="#888" strokeWidth="1" filter="url(#pencilSketch2)"/>
+                    <path d="M 65 35 Q 120 32, 158 38" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch2)"/>
+                    <path d="M 65 45 Q 100 42, 130 48" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch2)"/>
+                    
+                    {/* Model badges */}
+                    <circle cx="72" cy="72" r="4" fill="none" stroke="#888" strokeWidth="0.8" filter="url(#pencilSketch2)"/>
+                    <circle cx="85" cy="72" r="4" fill="none" stroke="#888" strokeWidth="0.8" filter="url(#pencilSketch2)"/>
+                    <circle cx="98" cy="72" r="4" fill="none" stroke="#888" strokeWidth="0.8" filter="url(#pencilSketch2)"/>
+                    
+                    <text x="55" y="95" fill="#888" fontSize="8" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"consolidated answer"</text>
+                  </g>
+                </svg>
+              </div>
+            </div>
           </div>
 
           {/* Lo-Fi Description */}
@@ -1337,214 +1322,253 @@ export default function NexusCaseStudy() {
           </p>
 
           {/* Mid-Fi Wireframes - Clean Digital Mockups */}
-          <div className="rounded-xl overflow-hidden bg-[#faf9f7] p-6 md:p-8 mb-12 border border-[#e5e3df]">
-            <svg viewBox="0 0 880 460" className="w-full h-auto">
-              <defs>
-                <marker id="cleanArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                  <path d="M 0 0 L 8 3 L 0 6 Z" fill="#888"/>
-                </marker>
-              </defs>
-              
-              {/* Row 1 - Three screens */}
-              {/* Screen 1: Hero/Landing */}
-              <g transform="translate(15, 25)">
-                <text x="0" y="-8" fill="#666" fontSize="10" fontFamily="system-ui, sans-serif" fontWeight="500">Hero Section</text>
-                <rect x="0" y="0" width="260" height="180" rx="4" fill="#fff" stroke="#bbb" strokeWidth="1.5"/>
-                {/* Browser dots */}
-                <circle cx="12" cy="10" r="3" fill="#ddd"/>
-                <circle cx="22" cy="10" r="3" fill="#ddd"/>
-                <circle cx="32" cy="10" r="3" fill="#ddd"/>
-                {/* URL bar */}
-                <rect x="45" y="6" width="120" height="8" rx="4" fill="#f0f0f0"/>
-                
-                {/* Nav */}
-                <rect x="10" y="25" width="40" height="6" rx="1" fill="#444"/>
-                <rect x="200" y="25" width="25" height="6" rx="1" fill="#ccc"/>
-                <rect x="230" y="24" width="22" height="10" rx="5" fill="#555"/>
-                
-                {/* Center icon */}
-                <circle cx="130" cy="55" r="10" fill="none" stroke="#888" strokeWidth="1.5"/>
-                
-                {/* Headlines */}
-                <rect x="50" y="75" width="160" height="10" rx="1" fill="#333"/>
-                <rect x="70" y="92" width="120" height="8" rx="1" fill="#555"/>
-                
-                {/* Subtitle */}
-                <rect x="60" y="108" width="140" height="5" rx="1" fill="#bbb"/>
-                
-                {/* Avatars */}
-                <circle cx="105" cy="128" r="5" fill="#e0e0e0"/>
-                <circle cx="117" cy="128" r="5" fill="#d5d5d5"/>
-                <circle cx="129" cy="128" r="5" fill="#ccc"/>
-                <rect x="140" y="125" width="45" height="5" rx="1" fill="#ccc"/>
-                
-                {/* Input */}
-                <rect x="30" y="148" width="200" height="22" rx="11" fill="none" stroke="#888" strokeWidth="1.5"/>
-                <rect x="45" y="156" width="80" height="5" rx="1" fill="#ddd"/>
-                <circle cx="210" cy="159" r="7" fill="#666"/>
-              </g>
-              
-              {/* Arrow 1 */}
-              <path d="M 285 115 L 310 115" stroke="#888" strokeWidth="1.5" markerEnd="url(#cleanArrow)"/>
-              
-              {/* Screen 2: Features */}
-              <g transform="translate(320, 25)">
-                <text x="0" y="-8" fill="#666" fontSize="10" fontFamily="system-ui, sans-serif" fontWeight="500">Features</text>
-                <rect x="0" y="0" width="240" height="180" rx="4" fill="#fff" stroke="#bbb" strokeWidth="1.5"/>
-                <circle cx="12" cy="10" r="3" fill="#ddd"/>
-                <circle cx="22" cy="10" r="3" fill="#ddd"/>
-                <circle cx="32" cy="10" r="3" fill="#ddd"/>
-                
-                {/* Section header */}
-                <rect x="60" y="30" width="120" height="8" rx="1" fill="#333"/>
-                <rect x="70" y="44" width="100" height="6" rx="1" fill="#666"/>
-                
-                {/* Three cards */}
-                <rect x="15" y="62" width="65" height="55" rx="4" fill="#f5f5f5" stroke="#ddd" strokeWidth="1"/>
-                <rect x="25" y="72" width="6" height="20" rx="1" fill="#ccc"/>
-                <rect x="34" y="78" width="6" height="14" rx="1" fill="#ccc"/>
-                <rect x="43" y="75" width="6" height="17" rx="1" fill="#ccc"/>
-                <rect x="22" y="100" width="50" height="5" rx="1" fill="#888"/>
-                <rect x="22" y="108" width="45" height="4" rx="1" fill="#bbb"/>
-                
-                <rect x="88" y="62" width="65" height="55" rx="4" fill="#f5f5f5" stroke="#ddd" strokeWidth="1"/>
-                <path d="M 102 82 Q 120 68, 138 82" fill="none" stroke="#ccc" strokeWidth="4" strokeLinecap="round"/>
-                <path d="M 120 82 L 128 72" stroke="#999" strokeWidth="2"/>
-                <rect x="95" y="100" width="50" height="5" rx="1" fill="#888"/>
-                <rect x="95" y="108" width="45" height="4" rx="1" fill="#bbb"/>
-                
-                <rect x="160" y="62" width="65" height="55" rx="4" fill="#f5f5f5" stroke="#ddd" strokeWidth="1"/>
-                <circle cx="192" cy="78" r="6" fill="#ddd"/>
-                <circle cx="180" cy="86" r="3" fill="#ccc"/>
-                <circle cx="204" cy="86" r="3" fill="#ccc"/>
-                <rect x="167" y="100" width="50" height="5" rx="1" fill="#888"/>
-                <rect x="167" y="108" width="45" height="4" rx="1" fill="#bbb"/>
-                
-                {/* Bottom tabs */}
-                <rect x="40" y="135" width="40" height="5" rx="1" fill="#aaa"/>
-                <rect x="90" y="135" width="40" height="5" rx="1" fill="#aaa"/>
-                <rect x="140" y="135" width="40" height="5" rx="1" fill="#aaa"/>
-                
-                <text x="85" y="165" fill="#888" fontSize="8" fontFamily="system-ui, sans-serif" fontStyle="italic">3 value props</text>
-              </g>
-              
-              {/* Arrow 2 */}
-              <path d="M 570 115 L 595 115" stroke="#888" strokeWidth="1.5" markerEnd="url(#cleanArrow)"/>
-              
-              {/* Screen 3: AI Sources */}
-              <g transform="translate(605, 25)">
-                <text x="0" y="-8" fill="#666" fontSize="10" fontFamily="system-ui, sans-serif" fontWeight="500">AI Sources</text>
-                <rect x="0" y="0" width="260" height="180" rx="4" fill="#fff" stroke="#bbb" strokeWidth="1.5"/>
-                <circle cx="12" cy="10" r="3" fill="#ddd"/>
-                <circle cx="22" cy="10" r="3" fill="#ddd"/>
-                <circle cx="32" cy="10" r="3" fill="#ddd"/>
-                
-                {/* Two cards side by side */}
-                <rect x="10" y="28" width="115" height="80" rx="4" fill="#f8f8f8" stroke="#e0e0e0" strokeWidth="1"/>
-                <rect x="20" y="38" width="60" height="6" rx="1" fill="#444"/>
-                <rect x="20" y="50" width="90" height="4" rx="1" fill="#bbb"/>
-                {/* Stacked badges */}
-                <rect x="22" y="62" width="50" height="14" rx="7" fill="#f0f0f0" stroke="#ddd" strokeWidth="1"/>
-                <rect x="30" y="80" width="50" height="14" rx="7" fill="#f0f0f0" stroke="#ddd" strokeWidth="1"/>
-                <rect x="38" y="98" width="50" height="14" rx="7" fill="#f0f0f0" stroke="#ddd" strokeWidth="1"/>
-                
-                <rect x="135" y="28" width="115" height="80" rx="4" fill="#f8f8f8" stroke="#e0e0e0" strokeWidth="1"/>
-                <rect x="145" y="38" width="70" height="6" rx="1" fill="#444"/>
-                {/* Grid icons */}
-                <rect x="148" y="52" width="18" height="18" rx="3" fill="#eee"/>
-                <rect x="172" y="52" width="18" height="18" rx="3" fill="#eee"/>
-                <rect x="196" y="52" width="18" height="18" rx="3" fill="#eee"/>
-                <rect x="148" y="76" width="18" height="18" rx="3" fill="#eee"/>
-                <circle cx="181" cy="85" r="10" fill="#e5e5e5" stroke="#ddd" strokeWidth="1"/>
-                <rect x="196" y="76" width="18" height="18" rx="3" fill="#eee"/>
-                
-                {/* Bottom section */}
-                <rect x="50" y="120" width="160" height="8" rx="1" fill="#333"/>
-                <rect x="30" y="138" width="200" height="5" rx="1" fill="#bbb"/>
-                {/* Tags */}
-                <rect x="50" y="155" width="45" height="12" rx="6" fill="#f0f0f0" stroke="#ddd" strokeWidth="1"/>
-                <rect x="105" y="155" width="45" height="12" rx="6" fill="#f0f0f0" stroke="#ddd" strokeWidth="1"/>
-                <rect x="160" y="155" width="45" height="12" rx="6" fill="#f0f0f0" stroke="#ddd" strokeWidth="1"/>
-              </g>
-              
-              {/* Row 2 - Three more screens */}
-              {/* Screen 4: Testimonial */}
-              <g transform="translate(15, 250)">
-                <text x="0" y="-8" fill="#666" fontSize="10" fontFamily="system-ui, sans-serif" fontWeight="500">Testimonial</text>
-                <rect x="0" y="0" width="260" height="160" rx="4" fill="#fff" stroke="#bbb" strokeWidth="1.5"/>
-                <circle cx="12" cy="10" r="3" fill="#ddd"/>
-                <circle cx="22" cy="10" r="3" fill="#ddd"/>
-                <circle cx="32" cy="10" r="3" fill="#ddd"/>
-                
-                {/* Quote */}
-                <text x="30" y="45" fill="#e0e0e0" fontSize="28" fontFamily="Georgia, serif">"</text>
-                <rect x="55" y="35" width="180" height="5" rx="1" fill="#666"/>
-                <rect x="50" y="48" width="190" height="5" rx="1" fill="#666"/>
-                <rect x="55" y="61" width="170" height="5" rx="1" fill="#666"/>
-                
-                {/* Author */}
-                <circle cx="130" cy="95" r="15" fill="#e8e8e8"/>
-                <rect x="95" y="118" width="70" height="6" rx="1" fill="#555"/>
-                <rect x="85" y="130" width="90" height="4" rx="1" fill="#bbb"/>
-              </g>
-              
-              {/* Arrow 3 */}
-              <path d="M 285 330 L 310 330" stroke="#888" strokeWidth="1.5" markerEnd="url(#cleanArrow)"/>
-              
-              {/* Screen 5: Success Stories */}
-              <g transform="translate(320, 250)">
-                <text x="0" y="-8" fill="#666" fontSize="10" fontFamily="system-ui, sans-serif" fontWeight="500">Success Stories</text>
-                <rect x="0" y="0" width="240" height="160" rx="4" fill="#fff" stroke="#bbb" strokeWidth="1.5"/>
-                <circle cx="12" cy="10" r="3" fill="#ddd"/>
-                <circle cx="22" cy="10" r="3" fill="#ddd"/>
-                <circle cx="32" cy="10" r="3" fill="#ddd"/>
-                
-                {/* Header */}
-                <rect x="60" y="28" width="120" height="8" rx="1" fill="#333"/>
-                
-                {/* Stacked cards */}
-                <rect x="35" y="48" width="170" height="10" rx="3" fill="#f0f0f0" stroke="#e0e0e0" strokeWidth="1"/>
-                <rect x="30" y="55" width="180" height="12" rx="3" fill="#f5f5f5" stroke="#ddd" strokeWidth="1"/>
-                <rect x="25" y="65" width="190" height="75" rx="4" fill="#fff" stroke="#ccc" strokeWidth="1.5"/>
-                
-                {/* Card content */}
-                <circle cx="180" cy="90" r="18" fill="#eee"/>
-                <rect x="40" y="80" width="70" height="6" rx="1" fill="#555"/>
-                <rect x="40" y="92" width="100" height="4" rx="1" fill="#aaa"/>
-                <rect x="40" y="102" width="90" height="4" rx="1" fill="#aaa"/>
-                {/* Stats */}
-                <rect x="45" y="118" width="45" height="14" rx="4" fill="#f5f5f5" stroke="#ddd" strokeWidth="1"/>
-                <rect x="98" y="118" width="45" height="14" rx="4" fill="#f5f5f5" stroke="#ddd" strokeWidth="1"/>
-              </g>
-              
-              {/* Arrow 4 */}
-              <path d="M 570 330 L 595 330" stroke="#888" strokeWidth="1.5" markerEnd="url(#cleanArrow)"/>
-              
-              {/* Screen 6: Input State */}
-              <g transform="translate(605, 250)">
-                <text x="0" y="-8" fill="#666" fontSize="10" fontFamily="system-ui, sans-serif" fontWeight="500">Input State</text>
-                <rect x="0" y="0" width="260" height="160" rx="4" fill="#fff" stroke="#bbb" strokeWidth="1.5"/>
-                <circle cx="12" cy="10" r="3" fill="#ddd"/>
-                <circle cx="22" cy="10" r="3" fill="#ddd"/>
-                <circle cx="32" cy="10" r="3" fill="#ddd"/>
-                
-                {/* Logo */}
-                <rect x="10" y="28" width="50" height="8" rx="1" fill="#444"/>
-                
-                {/* Active input */}
-                <rect x="20" y="50" width="220" height="28" rx="14" fill="#fff" stroke="#555" strokeWidth="2"/>
-                <rect x="35" y="60" width="100" height="6" rx="1" fill="#666"/>
-                <rect x="140" y="55" width="2" height="16" fill="#333"/>
-                
-                {/* Processing indicator */}
-                <circle cx="130" cy="105" r="12" fill="none" stroke="#aaa" strokeWidth="2" strokeDasharray="8,4"/>
-                
-                <rect x="70" y="128" width="120" height="5" rx="1" fill="#bbb"/>
-                <rect x="85" y="140" width="90" height="4" rx="1" fill="#ccc"/>
-                
-                <text x="75" y="155" fill="#888" fontSize="8" fontFamily="system-ui, sans-serif" fontStyle="italic">scanning AIs...</text>
-              </g>
-            </svg>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {/* Onboarding Mid-Fi */}
+            <div>
+              <p className="text-[#60a5fa] text-sm font-medium mb-4 tracking-wide">Onboarding Flow</p>
+              <div className="rounded-xl overflow-hidden bg-[#1e1e1e] p-6 border border-[#333]">
+                <svg viewBox="0 0 400 300" className="w-full h-auto">
+                  <defs>
+                    <marker id="cleanArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                      <path d="M 0 0 L 8 3 L 0 6 Z" fill="#666"/>
+                    </marker>
+                  </defs>
+                  
+                  {/* Figma-style background grid */}
+                  <pattern id="grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2a2a2a" strokeWidth="0.5"/>
+                  </pattern>
+                  <rect width="400" height="300" fill="url(#grid1)"/>
+                  
+                  {/* Frame labels */}
+                  <text x="15" y="18" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Landing Page</text>
+                  <text x="215" y="18" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Sign Up Modal</text>
+                  
+                  {/* Screen 1: Landing */}
+                  <g transform="translate(10, 25)">
+                    <rect x="0" y="0" width="175" height="120" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    
+                    {/* Nav */}
+                    <rect x="8" y="8" width="35" height="5" rx="1" fill="#fff"/>
+                    <rect x="130" y="7" width="18" height="7" rx="1" fill="#333"/>
+                    <rect x="152" y="7" width="18" height="7" rx="3.5" fill="#fff"/>
+                    
+                    {/* Hero content */}
+                    <rect x="35" y="32" width="105" height="8" rx="1" fill="#fff"/>
+                    <rect x="50" y="45" width="75" height="6" rx="1" fill="#666"/>
+                    
+                    {/* Subtitle */}
+                    <rect x="40" y="58" width="95" height="4" rx="1" fill="#444"/>
+                    
+                    {/* Avatars */}
+                    <circle cx="70" cy="72" r="4" fill="#333"/>
+                    <circle cx="80" cy="72" r="4" fill="#444"/>
+                    <circle cx="90" cy="72" r="4" fill="#555"/>
+                    <rect x="98" y="70" width="30" height="4" rx="1" fill="#444"/>
+                    
+                    {/* Input */}
+                    <rect x="25" y="85" width="125" height="18" rx="9" fill="#1a1a1a" stroke="#333" strokeWidth="1"/>
+                    <rect x="35" y="92" width="60" height="4" rx="1" fill="#555"/>
+                    <circle cx="138" cy="94" r="5" fill="#fff"/>
+                    
+                    {/* Model badge */}
+                    <rect x="55" y="108" width="65" height="8" rx="4" fill="#1a1a1a" stroke="#333" strokeWidth="0.5"/>
+                    <circle cx="68" cy="112" r="2" fill="#4ade80"/>
+                    <circle cx="78" cy="112" r="2" fill="#60a5fa"/>
+                    <circle cx="88" cy="112" r="2" fill="#f472b6"/>
+                  </g>
+                  
+                  {/* Arrow */}
+                  <path d="M 195 85 L 205 85" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
+                  
+                  {/* Screen 2: Sign Up */}
+                  <g transform="translate(210, 25)">
+                    <rect x="0" y="0" width="175" height="120" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    
+                    {/* Dimmed background */}
+                    <rect x="0" y="0" width="175" height="120" rx="3" fill="rgba(0,0,0,0.6)"/>
+                    
+                    {/* Modal */}
+                    <rect x="20" y="15" width="135" height="90" rx="6" fill="#141414" stroke="#333" strokeWidth="1"/>
+                    
+                    {/* Modal title */}
+                    <rect x="55" y="25" width="65" height="6" rx="1" fill="#fff"/>
+                    
+                    {/* Form fields */}
+                    <rect x="32" y="40" width="111" height="12" rx="2" fill="#1a1a1a" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="38" y="44" width="40" height="4" rx="1" fill="#555"/>
+                    
+                    <rect x="32" y="58" width="111" height="12" rx="2" fill="#1a1a1a" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="38" y="62" width="50" height="4" rx="1" fill="#555"/>
+                    
+                    {/* Button */}
+                    <rect x="45" y="78" width="85" height="14" rx="7" fill="#fff"/>
+                    <rect x="65" y="83" width="45" height="4" rx="1" fill="#000"/>
+                  </g>
+                  
+                  {/* Row 2 */}
+                  <text x="15" y="168" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Pricing Plans</text>
+                  
+                  {/* Screen 3: Pricing */}
+                  <g transform="translate(10, 175)">
+                    <rect x="0" y="0" width="175" height="110" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    
+                    {/* Header */}
+                    <rect x="50" y="10" width="75" height="6" rx="1" fill="#fff"/>
+                    
+                    {/* Pricing cards */}
+                    <rect x="10" y="25" width="48" height="75" rx="4" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="18" y="32" width="30" height="5" rx="1" fill="#666"/>
+                    <rect x="18" y="42" width="25" height="4" rx="1" fill="#444"/>
+                    <rect x="15" y="52" width="35" height="3" rx="1" fill="#333"/>
+                    <rect x="15" y="58" width="35" height="3" rx="1" fill="#333"/>
+                    <rect x="15" y="64" width="35" height="3" rx="1" fill="#333"/>
+                    <rect x="15" y="85" width="38" height="10" rx="5" fill="#333"/>
+                    
+                    <rect x="64" y="22" width="48" height="81" rx="4" fill="#141414" stroke="#60a5fa" strokeWidth="1"/>
+                    <rect x="72" y="30" width="30" height="5" rx="1" fill="#fff"/>
+                    <rect x="72" y="40" width="25" height="4" rx="1" fill="#60a5fa"/>
+                    <rect x="69" y="50" width="35" height="3" rx="1" fill="#444"/>
+                    <rect x="69" y="56" width="35" height="3" rx="1" fill="#444"/>
+                    <rect x="69" y="62" width="35" height="3" rx="1" fill="#444"/>
+                    <rect x="69" y="68" width="35" height="3" rx="1" fill="#444"/>
+                    <rect x="69" y="87" width="38" height="12" rx="6" fill="#fff"/>
+                    
+                    <rect x="118" y="25" width="48" height="75" rx="4" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="126" y="32" width="30" height="5" rx="1" fill="#666"/>
+                    <rect x="126" y="42" width="25" height="4" rx="1" fill="#444"/>
+                    <rect x="123" y="52" width="35" height="3" rx="1" fill="#333"/>
+                    <rect x="123" y="58" width="35" height="3" rx="1" fill="#333"/>
+                    <rect x="123" y="85" width="38" height="10" rx="5" fill="#333"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            
+            {/* Product Experience Mid-Fi */}
+            <div>
+              <p className="text-[#60a5fa] text-sm font-medium mb-4 tracking-wide">Product Experience</p>
+              <div className="rounded-xl overflow-hidden bg-[#1e1e1e] p-6 border border-[#333]">
+                <svg viewBox="0 0 400 300" className="w-full h-auto">
+                  {/* Figma-style background grid */}
+                  <pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2a2a2a" strokeWidth="0.5"/>
+                  </pattern>
+                  <rect width="400" height="300" fill="url(#grid2)"/>
+                  
+                  {/* Frame labels */}
+                  <text x="15" y="18" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Chat Interface</text>
+                  <text x="215" y="18" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Model Selector</text>
+                  
+                  {/* Screen 1: Chat Interface */}
+                  <g transform="translate(10, 25)">
+                    <rect x="0" y="0" width="175" height="120" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    
+                    {/* Sidebar */}
+                    <rect x="0" y="0" width="40" height="120" rx="3" fill="#0d0d0d"/>
+                    <rect x="6" y="8" width="28" height="6" rx="1" fill="#1a1a1a"/>
+                    <rect x="8" y="20" width="24" height="3" rx="1" fill="#333"/>
+                    <rect x="8" y="28" width="26" height="3" rx="1" fill="#333"/>
+                    <rect x="8" y="36" width="22" height="3" rx="1" fill="#333"/>
+                    
+                    {/* Top bar */}
+                    <rect x="48" y="6" width="50" height="8" rx="2" fill="#1a1a1a"/>
+                    <rect x="52" y="9" width="25" height="3" rx="1" fill="#666"/>
+                    <rect x="105" y="6" width="28" height="8" rx="2" fill="#1a1a1a"/>
+                    <rect x="140" y="6" width="28" height="8" rx="4" fill="#333"/>
+                    
+                    {/* Greeting */}
+                    <rect x="70" y="45" width="80" height="6" rx="1" fill="#666"/>
+                    <rect x="85" y="55" width="50" height="5" rx="1" fill="#fff"/>
+                    
+                    {/* Input field */}
+                    <rect x="48" y="78" width="120" height="22" rx="4" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="56" y="87" width="55" height="4" rx="1" fill="#444"/>
+                    <circle cx="156" cy="89" r="6" fill="#60a5fa"/>
+                    
+                    {/* Model indicator */}
+                    <rect x="68" y="105" width="60" height="10" rx="5" fill="#1a1a1a" stroke="#333" strokeWidth="0.5"/>
+                    <circle cx="82" cy="110" r="3" fill="#4ade80"/>
+                    <circle cx="92" cy="110" r="3" fill="#60a5fa"/>
+                    <rect x="100" y="108" width="20" height="4" rx="1" fill="#555"/>
+                  </g>
+                  
+                  {/* Arrow */}
+                  <path d="M 195 85 L 205 85" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
+                  
+                  {/* Screen 2: Model Selector */}
+                  <g transform="translate(210, 25)">
+                    <rect x="0" y="0" width="175" height="120" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    
+                    {/* Sidebar hint */}
+                    <rect x="0" y="0" width="40" height="120" rx="3" fill="#0d0d0d"/>
+                    
+                    {/* Dropdown panel */}
+                    <rect x="50" y="25" width="115" height="90" rx="4" fill="#141414" stroke="#333" strokeWidth="1"/>
+                    
+                    {/* Header */}
+                    <rect x="58" y="32" width="80" height="4" rx="1" fill="#666"/>
+                    
+                    {/* Model options */}
+                    <g transform="translate(58, 42)">
+                      <circle cx="6" cy="6" r="5" fill="#ef4444"/>
+                      <rect x="16" y="3" width="45" height="4" rx="1" fill="#fff"/>
+                      <rect x="68" y="2" width="30" height="8" rx="4" fill="#ef4444" fillOpacity="0.2"/>
+                      <rect x="72" y="4" width="22" height="4" rx="1" fill="#ef4444"/>
+                    </g>
+                    
+                    <g transform="translate(58, 58)">
+                      <circle cx="6" cy="6" r="5" fill="#60a5fa"/>
+                      <rect x="16" y="3" width="50" height="4" rx="1" fill="#fff"/>
+                      <rect x="68" y="2" width="30" height="8" rx="4" fill="#60a5fa" fillOpacity="0.2"/>
+                    </g>
+                    
+                    <g transform="translate(58, 74)">
+                      <circle cx="6" cy="6" r="5" fill="#4ade80"/>
+                      <rect x="16" y="3" width="25" height="4" rx="1" fill="#fff"/>
+                      <rect x="48" y="2" width="30" height="8" rx="4" fill="#4ade80" fillOpacity="0.2"/>
+                    </g>
+                    
+                    {/* Selected option */}
+                    <g transform="translate(58, 90)">
+                      <path d="M 3 6 L 6 9 L 12 3" stroke="#4ade80" strokeWidth="1.5" fill="none"/>
+                      <circle cx="22" cy="6" r="5" fill="#4ade80"/>
+                      <rect x="32" y="3" width="65" height="4" rx="1" fill="#fff"/>
+                      <rect x="32" y="10" width="55" height="3" rx="1" fill="#555"/>
+                    </g>
+                  </g>
+                  
+                  {/* Row 2 */}
+                  <text x="15" y="168" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Response View</text>
+                  
+                  {/* Screen 3: Response */}
+                  <g transform="translate(10, 175)">
+                    <rect x="0" y="0" width="175" height="110" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    
+                    {/* Sidebar */}
+                    <rect x="0" y="0" width="40" height="110" rx="3" fill="#0d0d0d"/>
+                    
+                    {/* Response content */}
+                    <rect x="48" y="12" width="118" height="65" rx="4" fill="#141414"/>
+                    <rect x="56" y="20" width="100" height="4" rx="1" fill="#fff"/>
+                    <rect x="56" y="28" width="95" height="3" rx="1" fill="#666"/>
+                    <rect x="56" y="35" width="100" height="3" rx="1" fill="#666"/>
+                    <rect x="56" y="42" width="85" height="3" rx="1" fill="#666"/>
+                    <rect x="56" y="49" width="90" height="3" rx="1" fill="#666"/>
+                    <rect x="56" y="56" width="70" height="3" rx="1" fill="#666"/>
+                    
+                    {/* Model badges */}
+                    <rect x="56" y="65" width="20" height="6" rx="3" fill="#1a1a1a"/>
+                    <rect x="80" y="65" width="20" height="6" rx="3" fill="#1a1a1a"/>
+                    <rect x="104" y="65" width="20" height="6" rx="3" fill="#1a1a1a"/>
+                    
+                    {/* Input at bottom */}
+                    <rect x="48" y="88" width="120" height="16" rx="8" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="56" y="94" width="45" height="4" rx="1" fill="#444"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
           </div>
 
           {/* Mid-Fi Summary */}
