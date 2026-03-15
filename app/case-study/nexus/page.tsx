@@ -1111,7 +1111,7 @@ export default function NexusCaseStudy() {
             <div>
               <p className="text-[#60a5fa] text-sm font-medium mb-4 tracking-wide">Onboarding Flow</p>
               <div className="rounded-xl overflow-hidden bg-[#fefcf8] p-6 border border-[#e8e4dc]">
-                <svg viewBox="0 0 400 280" className="w-full h-auto">
+                <svg viewBox="0 0 400 480" className="w-full h-auto">
                   <defs>
                     <filter id="pencilSketch" x="-5%" y="-5%" width="110%" height="110%">
                       <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
@@ -1119,82 +1119,183 @@ export default function NexusCaseStudy() {
                     </filter>
                   </defs>
                   
-                  {/* Label */}
-                  <text x="15" y="18" fill="#777" fontSize="11" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">landing page</text>
-                  <text x="220" y="18" fill="#777" fontSize="11" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">sign up</text>
+                  {/* Row 1 Labels */}
+                  <text x="15" y="16" fill="#777" fontSize="10" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">hero</text>
+                  <text x="220" y="16" fill="#777" fontSize="10" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">features</text>
                   
-                  {/* Screen 1: Landing Page */}
-                  <g transform="translate(10, 28)">
-                    <path d="M 3 2 Q 1 5, 2 118 Q 4 123, 172 121 Q 177 118, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                  {/* Screen 1: Hero/Landing Page */}
+                  <g transform="translate(10, 24)">
+                    <path d="M 3 2 Q 1 5, 2 88 Q 4 93, 172 91 Q 177 88, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
                     
                     {/* Nav bar */}
-                    <path d="M 12 15 Q 30 13, 45 17" stroke="#555" strokeWidth="1.8" filter="url(#pencilSketch)"/>
-                    <path d="M 140 14 Q 155 12, 165 18 Q 168 24, 155 26 Q 142 24, 140 14" fill="none" stroke="#666" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 12 10 Q 30 8, 45 12" stroke="#555" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    <path d="M 140 9 Q 155 7, 165 13 Q 168 19, 155 21 Q 142 19, 140 9" fill="none" stroke="#666" strokeWidth="1.2" filter="url(#pencilSketch)"/>
                     
                     {/* Hero headline */}
-                    <path d="M 30 42 Q 88 38, 145 45" stroke="#444" strokeWidth="2.2" filter="url(#pencilSketch)"/>
-                    <path d="M 45 55 Q 88 51, 130 58" stroke="#555" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    <path d="M 30 30 Q 88 26, 145 33" stroke="#444" strokeWidth="2.2" filter="url(#pencilSketch)"/>
+                    <path d="M 45 42 Q 88 38, 130 45" stroke="#555" strokeWidth="1.8" filter="url(#pencilSketch)"/>
                     
                     {/* Subtitle */}
-                    <path d="M 35 68 Q 88 64, 140 70" stroke="#bbb" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <path d="M 35 54 Q 88 50, 140 56" stroke="#bbb" strokeWidth="1" filter="url(#pencilSketch)"/>
                     
                     {/* User avatars */}
-                    <circle cx="72" cy="82" r="4" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
-                    <circle cx="82" cy="82" r="4" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
-                    <circle cx="92" cy="82" r="4" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
-                    <path d="M 100 80 Q 115 78, 130 82" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    <circle cx="72" cy="66" r="4" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <circle cx="82" cy="66" r="4" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <circle cx="92" cy="66" r="4" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
                     
                     {/* Input field */}
-                    <path d="M 22 95 Q 25 90, 152 92 Q 158 96, 155 108 Q 150 114, 28 112 Q 22 108, 22 95" fill="none" stroke="#555" strokeWidth="1.8" filter="url(#pencilSketch)"/>
-                    <path d="M 35 102 Q 70 99, 100 104" stroke="#ccc" strokeWidth="1" filter="url(#pencilSketch)"/>
-                    <circle cx="142" cy="102" r="6" fill="none" stroke="#444" strokeWidth="1.5" filter="url(#pencilSketch)"/>
-                    
-                    <text x="55" y="135" fill="#888" fontSize="8" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"one nexus"</text>
+                    <path d="M 25 76 Q 28 71, 148 73 Q 154 77, 151 84 Q 146 90, 31 88 Q 25 84, 25 76" fill="none" stroke="#555" strokeWidth="1.5" filter="url(#pencilSketch)"/>
+                    <circle cx="140" cy="80" r="4" fill="none" stroke="#444" strokeWidth="1.2" filter="url(#pencilSketch)"/>
                   </g>
                   
                   {/* Arrow */}
-                  <path d="M 195 85 Q 205 82, 215 88" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
-                  <path d="M 212 82 L 218 88 L 210 92" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch)"/>
+                  <path d="M 195 68 Q 205 65, 215 71" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
+                  <path d="M 212 65 L 218 71 L 210 75" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch)"/>
                   
-                  {/* Screen 2: Sign Up */}
-                  <g transform="translate(215, 28)">
-                    <path d="M 3 2 Q 1 5, 2 118 Q 4 123, 172 121 Q 177 118, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                  {/* Screen 2: Features Section */}
+                  <g transform="translate(215, 24)">
+                    <path d="M 3 2 Q 1 5, 2 88 Q 4 93, 172 91 Q 177 88, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
                     
-                    {/* Modal box */}
-                    <path d="M 25 25 Q 28 20, 150 22 Q 156 28, 154 105 Q 150 112, 30 108 Q 25 102, 25 25" fill="none" stroke="#555" strokeWidth="1.5" filter="url(#pencilSketch)"/>
+                    {/* Section title */}
+                    <path d="M 40 15 Q 88 11, 135 17" stroke="#444" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    <path d="M 55 26 Q 88 22, 120 28" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
                     
-                    {/* Title */}
-                    <path d="M 55 38 Q 88 34, 120 40" stroke="#444" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    {/* Three feature cards */}
+                    <path d="M 15 40 Q 18 36, 52 38 Q 56 42, 54 68 Q 50 72, 18 70 Q 15 66, 15 40" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <path d="M 25 50 Q 35 48, 45 52" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
                     
-                    {/* Form fields */}
-                    <path d="M 38 52 Q 42 48, 138 50 Q 142 54, 140 62 Q 136 66, 42 64 Q 38 60, 38 52" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                    <path d="M 38 70 Q 42 66, 138 68 Q 142 72, 140 80 Q 136 84, 42 82 Q 38 78, 38 70" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 62 40 Q 65 36, 110 38 Q 115 42, 113 68 Q 108 72, 66 70 Q 62 66, 62 40" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <path d="M 72 50 Q 88 48, 102 52" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
                     
-                    {/* Submit button */}
-                    <path d="M 55 90 Q 58 85, 122 87 Q 128 92, 125 100 Q 120 105, 60 102 Q 55 98, 55 90" fill="none" stroke="#444" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    <path d="M 120 40 Q 123 36, 162 38 Q 167 42, 165 68 Q 160 72, 125 70 Q 120 66, 120 40" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
                     
-                    <text x="60" y="135" fill="#888" fontSize="8" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"create acct"</text>
+                    {/* Model icons row */}
+                    <circle cx="50" cy="82" r="4" fill="none" stroke="#777" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    <circle cx="70" cy="82" r="4" fill="none" stroke="#777" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    <circle cx="90" cy="82" r="4" fill="none" stroke="#777" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    <circle cx="110" cy="82" r="4" fill="none" stroke="#777" strokeWidth="0.8" filter="url(#pencilSketch)"/>
                   </g>
                   
-                  {/* Row 2 */}
-                  <text x="15" y="175" fill="#777" fontSize="11" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">pricing</text>
+                  {/* Row 2 Labels */}
+                  <text x="15" y="130" fill="#777" fontSize="10" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">testimonial</text>
+                  <text x="220" y="130" fill="#777" fontSize="10" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">success stories</text>
                   
-{/* Screen 3: Pricing */}
-                  <g transform="translate(10, 185)">
+                  {/* Screen 3: Testimonial */}
+                  <g transform="translate(10, 138)">
+                    <path d="M 3 2 Q 1 5, 2 88 Q 4 93, 172 91 Q 177 88, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    
+                    {/* Big quote mark */}
+                    <text x="18" y="30" fill="#ccc" fontSize="24" fontFamily="Georgia, serif">"</text>
+                    
+                    {/* Quote lines */}
+                    <path d="M 42 20 Q 100 16, 155 23" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 38 32 Q 100 28, 160 35" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 42 44 Q 100 40, 145 47" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    
+                    {/* Author */}
+                    <circle cx="88" cy="62" r="9" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 60 78 Q 88 74, 115 80" stroke="#666" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <path d="M 55 85" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                  </g>
+                  
+                  {/* Arrow */}
+                  <path d="M 195 182 Q 205 179, 215 185" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
+                  <path d="M 212 179 L 218 185 L 210 189" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch)"/>
+                  
+                  {/* Screen 4: Success Stories */}
+                  <g transform="translate(215, 138)">
+                    <path d="M 3 2 Q 1 5, 2 88 Q 4 93, 172 91 Q 177 88, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    
+                    {/* Header */}
+                    <path d="M 40 12 Q 88 8, 135 15" stroke="#444" strokeWidth="1.5" filter="url(#pencilSketch)"/>
+                    
+                    {/* Story cards stacked */}
+                    <path d="M 25 26 Q 28 22, 150 24 Q 155 28, 153 62 Q 148 68, 30 65 Q 25 60, 25 26" fill="none" stroke="#666" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    
+                    {/* Avatar */}
+                    <circle cx="140" cy="42" r="10" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    
+                    {/* Text lines */}
+                    <path d="M 35 35 Q 70 32, 100 38" stroke="#555" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <path d="M 35 45 Q 80 42, 115 48" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    <path d="M 35 55 Q 75 52, 105 58" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    
+                    {/* Stats */}
+                    <path d="M 40 72 Q 43 68, 75 70 Q 78 74, 76 82 Q 72 86, 43 84 Q 40 80, 40 72" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <path d="M 85 72 Q 88 68, 120 70 Q 123 74, 121 82 Q 117 86, 88 84 Q 85 80, 85 72" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                  </g>
+                  
+                  {/* Row 3 Labels */}
+                  <text x="15" y="244" fill="#777" fontSize="10" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">reviews</text>
+                  <text x="220" y="244" fill="#777" fontSize="10" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">sign up</text>
+                  
+                  {/* Screen 5: Reviews */}
+                  <g transform="translate(10, 252)">
+                    <path d="M 3 2 Q 1 5, 2 88 Q 4 93, 172 91 Q 177 88, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    
+                    {/* Header */}
+                    <path d="M 30 12 Q 88 8, 145 15" stroke="#444" strokeWidth="1.5" filter="url(#pencilSketch)"/>
+                    
+                    {/* Review cards row */}
+                    <path d="M 12 26 Q 15 22, 52 24 Q 56 28, 54 68 Q 50 72, 16 70 Q 12 66, 12 26" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <circle cx="33" cy="38" r="5" fill="none" stroke="#777" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    <path d="M 18 50 Q 33 47, 48 53" stroke="#aaa" strokeWidth="0.6" filter="url(#pencilSketch)"/>
+                    <path d="M 18 58 Q 33 55, 45 61" stroke="#bbb" strokeWidth="0.5" filter="url(#pencilSketch)"/>
+                    
+                    <path d="M 62 26 Q 65 22, 112 24 Q 117 28, 115 68 Q 110 72, 66 70 Q 62 66, 62 26" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <circle cx="88" cy="38" r="5" fill="none" stroke="#777" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    <path d="M 68 50 Q 88 47, 108 53" stroke="#aaa" strokeWidth="0.6" filter="url(#pencilSketch)"/>
+                    
+                    <path d="M 122 26 Q 125 22, 165 24 Q 170 28, 168 68 Q 163 72, 126 70 Q 122 66, 122 26" fill="none" stroke="#888" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <circle cx="145" cy="38" r="5" fill="none" stroke="#777" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    <path d="M 128 50 Q 145 47, 162 53" stroke="#aaa" strokeWidth="0.6" filter="url(#pencilSketch)"/>
+                    
+                    {/* Stars hint */}
+                    <path d="M 60 80 Q 72 77, 88 82 Q 100 77, 115 82" stroke="#bbb" strokeWidth="0.6" filter="url(#pencilSketch)"/>
+                  </g>
+                  
+                  {/* Arrow */}
+                  <path d="M 195 296 Q 205 293, 215 299" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
+                  <path d="M 212 293 L 218 299 L 210 303" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch)"/>
+                  
+                  {/* Screen 6: Sign Up */}
+                  <g transform="translate(215, 252)">
+                    <path d="M 3 2 Q 1 5, 2 88 Q 4 93, 172 91 Q 177 88, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    
+                    {/* Modal box */}
+                    <path d="M 20 15 Q 23 10, 155 12 Q 161 18, 159 78 Q 154 85, 25 82 Q 20 76, 20 15" fill="none" stroke="#555" strokeWidth="1.5" filter="url(#pencilSketch)"/>
+                    
+                    {/* Title */}
+                    <path d="M 50 26 Q 88 22, 125 29" stroke="#444" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    
+                    {/* Form fields */}
+                    <path d="M 32 40 Q 36 36, 142 38 Q 146 42, 144 50 Q 140 54, 36 52 Q 32 48, 32 40" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 32 58 Q 36 54, 142 56 Q 146 60, 144 68 Q 140 72, 36 70 Q 32 66, 32 58" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                  </g>
+                  
+                  {/* Row 4 Labels */}
+                  <text x="15" y="358" fill="#777" fontSize="10" fontFamily="Comic Sans MS, Marker Felt, cursive" fontStyle="italic">pricing</text>
+                  
+                  {/* Screen 7: Pricing */}
+                  <g transform="translate(10, 366)">
                     <path d="M 3 2 Q 1 5, 2 88 Q 4 93, 172 91 Q 177 88, 175 5 Q 172 1, 5 3 Z" fill="none" stroke="#666" strokeWidth="1.8" filter="url(#pencilSketch)"/>
 
                     {/* Pricing cards */}
-                    <path d="M 15 15 Q 18 11, 55 13 Q 60 17, 58 55 Q 54 61, 20 58 Q 15 53, 15 15" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                    <path d="M 22 22 Q 40 19, 50 24" stroke="#555" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-                    <path d="M 25 34 Q 35 32, 48 36" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
-                    <path d="M 25 44 Q 35 42, 48 46" stroke="#aaa" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    <path d="M 15 12 Q 18 8, 52 10 Q 56 14, 54 65 Q 50 71, 18 68 Q 15 63, 15 12" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 22 20 Q 38 17, 48 22" stroke="#555" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    <path d="M 25 32 Q 35 30, 45 34" stroke="#aaa" strokeWidth="0.6" filter="url(#pencilSketch)"/>
+                    <path d="M 25 42 Q 35 40, 45 44" stroke="#aaa" strokeWidth="0.6" filter="url(#pencilSketch)"/>
+                    <path d="M 22 56 Q 35 53, 48 58" stroke="#bbb" strokeWidth="0.8" filter="url(#pencilSketch)"/>
 
-                    <path d="M 68 15 Q 72 11, 108 13 Q 114 17, 112 55 Q 108 61, 74 58 Q 68 53, 68 15" fill="none" stroke="#444" strokeWidth="1.8" filter="url(#pencilSketch)"/>
-                    <path d="M 75 22 Q 92 19, 105 24" stroke="#444" strokeWidth="1.5" filter="url(#pencilSketch)"/>
+                    <path d="M 62 12 Q 66 8, 115 10 Q 120 14, 118 65 Q 113 71, 68 68 Q 62 63, 62 12" fill="none" stroke="#444" strokeWidth="1.8" filter="url(#pencilSketch)"/>
+                    <path d="M 72 20 Q 92 17, 108 22" stroke="#444" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 75 32 Q 88 30, 105 34" stroke="#666" strokeWidth="0.8" filter="url(#pencilSketch)"/>
+                    <path d="M 75 42 Q 88 40, 105 44" stroke="#666" strokeWidth="0.8" filter="url(#pencilSketch)"/>
 
-                    <path d="M 122 15 Q 126 11, 162 13 Q 168 17, 166 55 Q 162 61, 128 58 Q 122 53, 122 15" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
-
-                    <text x="65" y="78" fill="#888" fontSize="8" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"pick plan"</text>
+                    <path d="M 125 12 Q 128 8, 162 10 Q 167 14, 165 65 Q 160 71, 130 68 Q 125 63, 125 12" fill="none" stroke="#888" strokeWidth="1.2" filter="url(#pencilSketch)"/>
+                    <path d="M 132 20 Q 148 17, 158 22" stroke="#555" strokeWidth="1" filter="url(#pencilSketch)"/>
+                    
+                    <text x="65" y="82" fill="#888" fontSize="7" fontFamily="Comic Sans MS, cursive" fontStyle="italic">"pick plan"</text>
                   </g>
                 </svg>
               </div>
@@ -1327,7 +1428,7 @@ export default function NexusCaseStudy() {
             <div>
               <p className="text-[#60a5fa] text-sm font-medium mb-4 tracking-wide">Onboarding Flow</p>
               <div className="rounded-xl overflow-hidden bg-[#1e1e1e] p-6 border border-[#333]">
-                <svg viewBox="0 0 400 300" className="w-full h-auto">
+                <svg viewBox="0 0 400 520" className="w-full h-auto">
                   <defs>
                     <marker id="cleanArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
                       <path d="M 0 0 L 8 3 L 0 6 Z" fill="#666"/>
@@ -1338,108 +1439,226 @@ export default function NexusCaseStudy() {
                   <pattern id="grid1" width="20" height="20" patternUnits="userSpaceOnUse">
                     <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2a2a2a" strokeWidth="0.5"/>
                   </pattern>
-                  <rect width="400" height="300" fill="url(#grid1)"/>
+                  <rect width="400" height="520" fill="url(#grid1)"/>
                   
-                  {/* Frame labels */}
-                  <text x="15" y="18" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Landing Page</text>
-                  <text x="215" y="18" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Sign Up Modal</text>
+                  {/* Row 1 Labels */}
+                  <text x="15" y="18" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Hero</text>
+                  <text x="215" y="18" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Features</text>
                   
-                  {/* Screen 1: Landing */}
+                  {/* Screen 1: Hero */}
                   <g transform="translate(10, 25)">
-                    <rect x="0" y="0" width="175" height="120" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    <rect x="0" y="0" width="175" height="100" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
                     
                     {/* Nav */}
-                    <rect x="8" y="8" width="35" height="5" rx="1" fill="#fff"/>
-                    <rect x="130" y="7" width="18" height="7" rx="1" fill="#333"/>
-                    <rect x="152" y="7" width="18" height="7" rx="3.5" fill="#fff"/>
+                    <rect x="8" y="6" width="35" height="5" rx="1" fill="#fff"/>
+                    <rect x="130" y="5" width="18" height="7" rx="1" fill="#333"/>
+                    <rect x="152" y="5" width="18" height="7" rx="3.5" fill="#fff"/>
                     
                     {/* Hero content */}
-                    <rect x="35" y="32" width="105" height="8" rx="1" fill="#fff"/>
-                    <rect x="50" y="45" width="75" height="6" rx="1" fill="#666"/>
+                    <rect x="30" y="25" width="115" height="7" rx="1" fill="#fff"/>
+                    <rect x="45" y="37" width="85" height="5" rx="1" fill="#666"/>
                     
                     {/* Subtitle */}
-                    <rect x="40" y="58" width="95" height="4" rx="1" fill="#444"/>
+                    <rect x="35" y="48" width="105" height="4" rx="1" fill="#444"/>
                     
                     {/* Avatars */}
-                    <circle cx="70" cy="72" r="4" fill="#333"/>
-                    <circle cx="80" cy="72" r="4" fill="#444"/>
-                    <circle cx="90" cy="72" r="4" fill="#555"/>
-                    <rect x="98" y="70" width="30" height="4" rx="1" fill="#444"/>
+                    <circle cx="68" cy="60" r="4" fill="#333"/>
+                    <circle cx="78" cy="60" r="4" fill="#444"/>
+                    <circle cx="88" cy="60" r="4" fill="#555"/>
+                    <rect x="96" y="58" width="30" height="4" rx="1" fill="#444"/>
                     
                     {/* Input */}
-                    <rect x="25" y="85" width="125" height="18" rx="9" fill="#1a1a1a" stroke="#333" strokeWidth="1"/>
-                    <rect x="35" y="92" width="60" height="4" rx="1" fill="#555"/>
-                    <circle cx="138" cy="94" r="5" fill="#fff"/>
+                    <rect x="25" y="72" width="125" height="14" rx="7" fill="#1a1a1a" stroke="#333" strokeWidth="1"/>
+                    <rect x="35" y="77" width="55" height="4" rx="1" fill="#555"/>
+                    <circle cx="140" cy="79" r="4" fill="#fff"/>
                     
                     {/* Model badge */}
-                    <rect x="55" y="108" width="65" height="8" rx="4" fill="#1a1a1a" stroke="#333" strokeWidth="0.5"/>
-                    <circle cx="68" cy="112" r="2" fill="#4ade80"/>
-                    <circle cx="78" cy="112" r="2" fill="#60a5fa"/>
-                    <circle cx="88" cy="112" r="2" fill="#f472b6"/>
+                    <rect x="55" y="90" width="65" height="6" rx="3" fill="#1a1a1a" stroke="#333" strokeWidth="0.5"/>
                   </g>
                   
                   {/* Arrow */}
-                  <path d="M 195 85 L 205 85" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
+                  <path d="M 195 75 L 205 75" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
                   
-                  {/* Screen 2: Sign Up */}
+                  {/* Screen 2: Features */}
                   <g transform="translate(210, 25)">
-                    <rect x="0" y="0" width="175" height="120" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    <rect x="0" y="0" width="175" height="100" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
                     
-                    {/* Dimmed background */}
-                    <rect x="0" y="0" width="175" height="120" rx="3" fill="rgba(0,0,0,0.6)"/>
+                    {/* Section header */}
+                    <rect x="35" y="10" width="105" height="6" rx="1" fill="#fff"/>
+                    <rect x="50" y="20" width="75" height="4" rx="1" fill="#666"/>
                     
-                    {/* Modal */}
-                    <rect x="20" y="15" width="135" height="90" rx="6" fill="#141414" stroke="#333" strokeWidth="1"/>
+                    {/* Three feature cards */}
+                    <rect x="10" y="32" width="48" height="45" rx="3" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="18" y="40" width="30" height="4" rx="1" fill="#888"/>
+                    <rect x="16" y="50" width="35" height="3" rx="1" fill="#444"/>
+                    <rect x="16" y="56" width="32" height="3" rx="1" fill="#444"/>
+                    <rect x="16" y="68" width="36" height="6" rx="3" fill="#333"/>
                     
-                    {/* Modal title */}
-                    <rect x="55" y="25" width="65" height="6" rx="1" fill="#fff"/>
+                    <rect x="64" y="32" width="48" height="45" rx="3" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="72" y="40" width="30" height="4" rx="1" fill="#888"/>
+                    <rect x="70" y="50" width="35" height="3" rx="1" fill="#444"/>
+                    <rect x="70" y="56" width="32" height="3" rx="1" fill="#444"/>
                     
-                    {/* Form fields */}
-                    <rect x="32" y="40" width="111" height="12" rx="2" fill="#1a1a1a" stroke="#333" strokeWidth="0.5"/>
-                    <rect x="38" y="44" width="40" height="4" rx="1" fill="#555"/>
+                    <rect x="118" y="32" width="48" height="45" rx="3" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="126" y="40" width="30" height="4" rx="1" fill="#888"/>
+                    <rect x="124" y="50" width="35" height="3" rx="1" fill="#444"/>
                     
-                    <rect x="32" y="58" width="111" height="12" rx="2" fill="#1a1a1a" stroke="#333" strokeWidth="0.5"/>
-                    <rect x="38" y="62" width="50" height="4" rx="1" fill="#555"/>
-                    
-                    {/* Button */}
-                    <rect x="45" y="78" width="85" height="14" rx="7" fill="#fff"/>
-                    <rect x="65" y="83" width="45" height="4" rx="1" fill="#000"/>
+                    {/* Model icons */}
+                    <circle cx="50" cy="88" r="5" fill="#333"/>
+                    <circle cx="70" cy="88" r="5" fill="#444"/>
+                    <circle cx="90" cy="88" r="5" fill="#555"/>
+                    <circle cx="110" cy="88" r="5" fill="#333"/>
                   </g>
                   
-                  {/* Row 2 */}
-                  <text x="15" y="168" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Pricing Plans</text>
+                  {/* Row 2 Labels */}
+                  <text x="15" y="148" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Testimonial</text>
+                  <text x="215" y="148" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Success Stories</text>
                   
-                  {/* Screen 3: Pricing */}
-                  <g transform="translate(10, 175)">
-                    <rect x="0" y="0" width="175" height="110" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                  {/* Screen 3: Testimonial */}
+                  <g transform="translate(10, 155)">
+                    <rect x="0" y="0" width="175" height="100" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    
+                    {/* Quote mark */}
+                    <text x="15" y="30" fill="#333" fontSize="24" fontFamily="Georgia, serif">"</text>
+                    
+                    {/* Quote lines */}
+                    <rect x="40" y="18" width="120" height="4" rx="1" fill="#888"/>
+                    <rect x="35" y="28" width="130" height="4" rx="1" fill="#666"/>
+                    <rect x="40" y="38" width="115" height="4" rx="1" fill="#666"/>
+                    
+                    {/* Author */}
+                    <circle cx="88" cy="58" r="10" fill="#333"/>
+                    <rect x="60" y="72" width="55" height="5" rx="1" fill="#fff"/>
+                    <rect x="55" y="80" width="65" height="4" rx="1" fill="#555"/>
+                    <rect x="50" y="88" width="75" height="3" rx="1" fill="#444"/>
+                  </g>
+                  
+                  {/* Arrow */}
+                  <path d="M 195 205 L 205 205" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
+                  
+                  {/* Screen 4: Success Stories */}
+                  <g transform="translate(210, 155)">
+                    <rect x="0" y="0" width="175" height="100" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
                     
                     {/* Header */}
-                    <rect x="50" y="10" width="75" height="6" rx="1" fill="#fff"/>
+                    <rect x="35" y="8" width="105" height="5" rx="1" fill="#fff"/>
+                    
+                    {/* Story card */}
+                    <rect x="15" y="22" width="145" height="55" rx="4" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    
+                    {/* Avatar */}
+                    <circle cx="145" cy="42" r="15" fill="#333"/>
+                    
+                    {/* Text */}
+                    <rect x="25" y="32" width="70" height="5" rx="1" fill="#fff"/>
+                    <rect x="25" y="42" width="90" height="3" rx="1" fill="#666"/>
+                    <rect x="25" y="50" width="80" height="3" rx="1" fill="#666"/>
+                    <rect x="25" y="58" width="70" height="3" rx="1" fill="#555"/>
+                    
+                    {/* Stats */}
+                    <rect x="25" y="82" width="50" height="12" rx="3" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="32" y="86" width="35" height="4" rx="1" fill="#4ade80"/>
+                    
+                    <rect x="82" y="82" width="50" height="12" rx="3" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="89" y="86" width="35" height="4" rx="1" fill="#60a5fa"/>
+                  </g>
+                  
+                  {/* Row 3 Labels */}
+                  <text x="15" y="278" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Reviews</text>
+                  <text x="215" y="278" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Sign Up</text>
+                  
+                  {/* Screen 5: Reviews */}
+                  <g transform="translate(10, 285)">
+                    <rect x="0" y="0" width="175" height="100" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    
+                    {/* Header */}
+                    <rect x="25" y="8" width="125" height="5" rx="1" fill="#fff"/>
+                    
+                    {/* Review cards */}
+                    <rect x="8" y="22" width="52" height="65" rx="3" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <circle cx="34" cy="35" r="8" fill="#333"/>
+                    <rect x="18" y="48" width="32" height="4" rx="1" fill="#fff"/>
+                    <rect x="14" y="56" width="40" height="3" rx="1" fill="#555"/>
+                    <rect x="16" y="62" width="36" height="3" rx="1" fill="#555"/>
+                    <rect x="18" y="70" width="32" height="3" rx="1" fill="#555"/>
+                    
+                    <rect x="65" y="22" width="52" height="65" rx="3" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <circle cx="91" cy="35" r="8" fill="#444"/>
+                    <rect x="75" y="48" width="32" height="4" rx="1" fill="#fff"/>
+                    <rect x="71" y="56" width="40" height="3" rx="1" fill="#555"/>
+                    <rect x="73" y="62" width="36" height="3" rx="1" fill="#555"/>
+                    
+                    <rect x="122" y="22" width="45" height="65" rx="3" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <circle cx="144" cy="35" r="8" fill="#555"/>
+                    <rect x="128" y="48" width="32" height="4" rx="1" fill="#fff"/>
+                    <rect x="126" y="56" width="36" height="3" rx="1" fill="#555"/>
+                    
+                    {/* Stars row */}
+                    <rect x="55" y="92" width="65" height="4" rx="2" fill="#333"/>
+                  </g>
+                  
+                  {/* Arrow */}
+                  <path d="M 195 335 L 205 335" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
+                  
+                  {/* Screen 6: Sign Up */}
+                  <g transform="translate(210, 285)">
+                    <rect x="0" y="0" width="175" height="100" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    
+                    {/* Dimmed background */}
+                    <rect x="0" y="0" width="175" height="100" rx="3" fill="rgba(0,0,0,0.6)"/>
+                    
+                    {/* Modal */}
+                    <rect x="15" y="10" width="145" height="80" rx="6" fill="#141414" stroke="#333" strokeWidth="1"/>
+                    
+                    {/* Modal title */}
+                    <rect x="50" y="18" width="75" height="6" rx="1" fill="#fff"/>
+                    
+                    {/* Form fields */}
+                    <rect x="28" y="32" width="119" height="12" rx="2" fill="#1a1a1a" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="34" y="36" width="40" height="4" rx="1" fill="#555"/>
+                    
+                    <rect x="28" y="50" width="119" height="12" rx="2" fill="#1a1a1a" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="34" y="54" width="50" height="4" rx="1" fill="#555"/>
+                    
+                    {/* Button */}
+                    <rect x="40" y="70" width="95" height="14" rx="7" fill="#fff"/>
+                    <rect x="62" y="75" width="51" height="4" rx="1" fill="#000"/>
+                  </g>
+                  
+                  {/* Row 4 Label */}
+                  <text x="15" y="408" fill="#666" fontSize="9" fontFamily="system-ui, sans-serif">Pricing</text>
+                  
+                  {/* Screen 7: Pricing */}
+                  <g transform="translate(10, 415)">
+                    <rect x="0" y="0" width="175" height="95" rx="3" fill="#0a0a0a" stroke="#444" strokeWidth="1"/>
+                    
+                    {/* Header */}
+                    <rect x="45" y="8" width="85" height="5" rx="1" fill="#fff"/>
                     
                     {/* Pricing cards */}
-                    <rect x="10" y="25" width="48" height="75" rx="4" fill="#141414" stroke="#333" strokeWidth="0.5"/>
-                    <rect x="18" y="32" width="30" height="5" rx="1" fill="#666"/>
-                    <rect x="18" y="42" width="25" height="4" rx="1" fill="#444"/>
-                    <rect x="15" y="52" width="35" height="3" rx="1" fill="#333"/>
-                    <rect x="15" y="58" width="35" height="3" rx="1" fill="#333"/>
-                    <rect x="15" y="64" width="35" height="3" rx="1" fill="#333"/>
-                    <rect x="15" y="85" width="38" height="10" rx="5" fill="#333"/>
+                    <rect x="8" y="20" width="50" height="68" rx="4" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="16" y="27" width="32" height="5" rx="1" fill="#666"/>
+                    <rect x="16" y="36" width="28" height="4" rx="1" fill="#444"/>
+                    <rect x="14" y="45" width="38" height="3" rx="1" fill="#333"/>
+                    <rect x="14" y="51" width="38" height="3" rx="1" fill="#333"/>
+                    <rect x="14" y="57" width="38" height="3" rx="1" fill="#333"/>
+                    <rect x="14" y="75" width="40" height="10" rx="5" fill="#333"/>
                     
-                    <rect x="64" y="22" width="48" height="81" rx="4" fill="#141414" stroke="#60a5fa" strokeWidth="1"/>
-                    <rect x="72" y="30" width="30" height="5" rx="1" fill="#fff"/>
-                    <rect x="72" y="40" width="25" height="4" rx="1" fill="#60a5fa"/>
-                    <rect x="69" y="50" width="35" height="3" rx="1" fill="#444"/>
-                    <rect x="69" y="56" width="35" height="3" rx="1" fill="#444"/>
-                    <rect x="69" y="62" width="35" height="3" rx="1" fill="#444"/>
-                    <rect x="69" y="68" width="35" height="3" rx="1" fill="#444"/>
-                    <rect x="69" y="87" width="38" height="12" rx="6" fill="#fff"/>
+                    <rect x="63" y="18" width="50" height="72" rx="4" fill="#141414" stroke="#60a5fa" strokeWidth="1"/>
+                    <rect x="71" y="26" width="32" height="5" rx="1" fill="#fff"/>
+                    <rect x="71" y="35" width="28" height="4" rx="1" fill="#60a5fa"/>
+                    <rect x="69" y="44" width="38" height="3" rx="1" fill="#444"/>
+                    <rect x="69" y="50" width="38" height="3" rx="1" fill="#444"/>
+                    <rect x="69" y="56" width="38" height="3" rx="1" fill="#444"/>
+                    <rect x="69" y="62" width="38" height="3" rx="1" fill="#444"/>
+                    <rect x="69" y="77" width="40" height="10" rx="5" fill="#fff"/>
                     
-                    <rect x="118" y="25" width="48" height="75" rx="4" fill="#141414" stroke="#333" strokeWidth="0.5"/>
-                    <rect x="126" y="32" width="30" height="5" rx="1" fill="#666"/>
-                    <rect x="126" y="42" width="25" height="4" rx="1" fill="#444"/>
-                    <rect x="123" y="52" width="35" height="3" rx="1" fill="#333"/>
-                    <rect x="123" y="58" width="35" height="3" rx="1" fill="#333"/>
-                    <rect x="123" y="85" width="38" height="10" rx="5" fill="#333"/>
+                    <rect x="118" y="20" width="50" height="68" rx="4" fill="#141414" stroke="#333" strokeWidth="0.5"/>
+                    <rect x="126" y="27" width="32" height="5" rx="1" fill="#666"/>
+                    <rect x="126" y="36" width="28" height="4" rx="1" fill="#444"/>
+                    <rect x="124" y="45" width="38" height="3" rx="1" fill="#333"/>
+                    <rect x="124" y="51" width="38" height="3" rx="1" fill="#333"/>
+                    <rect x="124" y="75" width="40" height="10" rx="5" fill="#333"/>
                   </g>
                 </svg>
               </div>
