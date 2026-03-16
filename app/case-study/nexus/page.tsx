@@ -17,14 +17,13 @@ interface Particle {
 
 const demoImages = [
   { src: '/narbl/narbl-1.png', label: 'Everything You Need. One Nexus.' },
-  { src: '/narbl/narbl-2.png', label: 'Scanning for Better Answers' },
   { src: '/narbl/narbl-3.png', label: 'Smarter Homework, Faster Results' },
   { src: '/narbl/narbl-4.png', label: 'Homework Intelligence' },
   { src: '/narbl/narbl-5.png', label: 'Success Stories' },
-  { src: '/narbl/narbl-9.png', label: 'Final Platform' },
   { src: '/narbl/narbl-6.png', label: 'Trusted by Top Students' },
   { src: '/narbl/narbl-7.png', label: 'Seamless Integrations' },
   { src: '/narbl/narbl-8.png', label: 'Why Choose Nexus' },
+  { src: '/narbl/narbl-9.png?v=5', label: 'Final Platform' },
 ]
 
 export default function NexusCaseStudy() {
@@ -111,7 +110,7 @@ export default function NexusCaseStudy() {
       <CaseStudyNav showBackButton={showBackButton} />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center px-8 pt-32 pb-20">
+      <section className="relative min-h-screen flex items-center px-4 md:px-8 pt-32 pb-20">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left side - Title and info */}
@@ -183,10 +182,10 @@ export default function NexusCaseStudy() {
                           </div>
                         ))}
 
-                        {/* Navigation arrows */}
+                        {/* Navigation arrows - visible on mobile, hover on desktop */}
                         <button
                           onClick={goToPrevSlide}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+                          className="absolute left-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 touch-manipulation"
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -194,7 +193,7 @@ export default function NexusCaseStudy() {
                         </button>
                         <button
                           onClick={goToNextSlide}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 touch-manipulation"
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -2323,7 +2322,7 @@ export default function NexusCaseStudy() {
       </Section>
 
       {/* Back to Portfolio */}
-      <section ref={footerRef} className="relative py-32 px-8">
+      <section ref={footerRef} className="relative py-24 md:py-32 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <Link
             href="/"
@@ -2389,7 +2388,7 @@ function Section({ children, id }: { children: React.ReactNode; id?: string }) {
     <section 
       ref={ref}
       id={id}
-      className={`relative z-10 py-24 px-8 border-t border-white/5 transition-all duration-700 ease-out ${id ? 'scroll-mt-24' : ''} ${
+      className={`relative z-10 py-16 md:py-24 px-4 md:px-8 border-t border-white/5 transition-all duration-700 ease-out ${id ? 'scroll-mt-24' : ''} ${
         isVisible 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 translate-y-8'

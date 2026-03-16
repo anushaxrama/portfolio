@@ -109,7 +109,7 @@ export default function SpotifyCaseStudy() {
       <CaseStudyNav showBackButton={showBackButton} />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center px-8 pt-32 pb-20">
+      <section className="relative min-h-screen flex items-center px-4 md:px-8 pt-32 pb-20">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left side - Title and info */}
@@ -1043,7 +1043,7 @@ export default function SpotifyCaseStudy() {
           </div>
           
           {/* Main content area */}
-          <div className="p-6 md:p-10 overflow-x-auto">
+          <div className="p-4 md:p-10 overflow-x-auto scrollbar-hide">
             <div className="flex items-start gap-4 md:gap-6 min-w-[900px]">
               
               {/* Screen 1: Your Threads */}
@@ -1696,7 +1696,7 @@ export default function SpotifyCaseStudy() {
       </Section>
 
       {/* Footer */}
-      <section ref={footerRef} className="relative py-32 px-8">
+      <section ref={footerRef} className="relative py-24 md:py-32 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap gap-6">
             <Link
@@ -1761,7 +1761,7 @@ function Section({ children }: { children: React.ReactNode }) {
   return (
     <section 
       ref={ref}
-      className={`relative py-24 px-8 border-t border-white/5 transition-all duration-1000 ease-out ${
+      className={`relative py-16 md:py-24 px-4 md:px-8 border-t border-white/5 transition-all duration-1000 ease-out ${
         isVisible 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 translate-y-12'

@@ -124,14 +124,13 @@ const SECTIONS = [
 
 const NEXUS_IMAGES = [
   { src: '/narbl/narbl-1.png', label: 'Landing: Everything You Need. One Nexus.' },
-  { src: '/narbl/narbl-2.png', label: 'Scanning for Better Answers' },
   { src: '/narbl/narbl-3.png', label: 'Smarter Homework, Faster Results' },
   { src: '/narbl/narbl-4.png', label: 'Homework Intelligence' },
   { src: '/narbl/narbl-5.png', label: 'Success Stories' },
-  { src: '/narbl/narbl-9.png', label: 'Final Platform' },
   { src: '/narbl/narbl-6.png', label: 'Trusted by Top Students' },
   { src: '/narbl/narbl-7.png', label: 'Seamless Integrations' },
   { src: '/narbl/narbl-8.png', label: 'Why Choose Nexus' },
+  { src: '/narbl/narbl-9.png?v=5', label: 'Final Platform' },
 ]
 
 const FIGMA_IMAGES = [
@@ -341,11 +340,11 @@ function FlowingLinesBackground() {
 
 export default function CrusoeCaseStudy() {
   const [activeSection, setActiveSection] = useState('hero')
-  const [iterationVersion, setIterationVersion] = useState<'v1' | 'v2' | 'v3'>('v3')
+  const [iterationVersion, setIterationVersion] = useState<'v1' | 'v2' | 'v3'>('v1')
   const [barAnimated, setBarAnimated] = useState(false)
   const [walkthroughIndex, setWalkthroughIndex] = useState(0)
   const [figmaIndex, setFigmaIndex] = useState(0)
-  const [fidelityLevel, setFidelityLevel] = useState<'lofi' | 'midfi' | 'hifi'>('hifi')
+  const [fidelityLevel, setFidelityLevel] = useState<'lofi' | 'midfi' | 'hifi'>('lofi')
   const [expandedPrinciple, setExpandedPrinciple] = useState<number | null>(null)
 
   // Track active section on scroll
@@ -383,14 +382,14 @@ export default function CrusoeCaseStudy() {
     <main className="min-h-screen bg-[#0a0a0a] text-white crusoe-cursor-context">
       <CustomCursor />
       {/* Sticky Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-5xl mx-auto flex flex-wrap gap-2 justify-center">
+      <nav className="fixed top-0 left-0 right-0 z-50 py-3 md:py-4 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/5 overflow-x-auto scrollbar-hide">
+        <div className="min-w-max flex gap-2 justify-center px-6 md:px-10 py-1">
           {SECTIONS.map((s) => (
             <a
               key={s.id}
               href={`#${s.id}`}
               data-cursor-hover
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 hover:scale-110 ${
+              className={`shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center px-4 py-3 rounded-full text-xs font-medium transition-all duration-300 hover:scale-110 touch-manipulation ${
                 activeSection === s.id
                   ? 'bg-white/10 text-white'
                   : 'text-white/50 hover:text-white/80 hover:bg-white/5'
@@ -405,7 +404,7 @@ export default function CrusoeCaseStudy() {
       {/* Hero */}
       <section
         id="hero"
-        className="relative min-h-screen flex flex-col justify-center px-6 pt-24 pb-20 overflow-hidden"
+        className="relative min-h-screen flex flex-col justify-center px-4 pt-32 pb-20 md:px-6 md:pt-24 overflow-hidden"
       >
         <FlowingLinesBackground />
         <div className="relative z-10 max-w-3xl">
@@ -414,7 +413,7 @@ export default function CrusoeCaseStudy() {
           </p>
           <p className="text-white/40 text-sm mb-2">Anusha Ramachandran</p>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">Nexus</h1>
-          <p className="text-xl md:text-2xl text-white/60 italic mb-12 font-serif min-h-[3rem]">
+          <p className="text-lg md:text-2xl text-white/60 italic mb-12 font-serif min-h-[3rem]">
             <TypingEffect />
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
@@ -439,7 +438,7 @@ export default function CrusoeCaseStudy() {
       </section>
 
       {/* About Me - Personal & Crusoe Excitement */}
-      <section id="about-me" className="py-24 px-6 border-t border-white/5">
+      <section id="about-me" className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5">
         <FadeIn>
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6">The Fit</h2>
@@ -450,7 +449,7 @@ export default function CrusoeCaseStudy() {
             What gets me excited about Crusoe is the energy-first mindset. Turning flare gas into compute instead of burning it. Building AI infrastructure that runs on renewables. That&apos;s not just smart engineering, it&apos;s the kind of work that matters. I want to be part of a team that&apos;s rethinking how we power the future!
           </p>
           <CrusoeConnection>
-            Crusoe&apos;s mission: accelerate the abundance of energy and intelligence. Nexus accelerated access to trustworthy AI for students. Both: make powerful systems accessible without the complexity.
+            Crusoe&apos;s mission: accelerate energy and intelligence. Nexus did that for students—trustworthy AI, one answer. Same direction: make powerful systems accessible.
           </CrusoeConnection>
         </div>
         </FadeIn>
@@ -459,13 +458,13 @@ export default function CrusoeCaseStudy() {
       {/* Problem */}
       <section
         id="problem"
-        className="py-24 px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
       >
         <FadeIn>
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6">The Problem</h2>
           <p className="text-white/70 leading-relaxed mb-8">
-            Students rely on AI for homework and research, but they don&apos;t trust a single model&apos;s answer. They copy prompts between ChatGPT, Claude, and Gemini, then manually compare responses. It&apos;s slow, exhausting, and creates a trust gap: which answer is actually right?
+            As a student myself, I find myself needing to double check answers through multiple models, especially for harder subjects. One AI might give me a wrong formula for physics or a shaky explanation for calculus. Students rely on AI for homework and research, but we don&apos;t trust a single model&apos;s answer. We copy prompts between ChatGPT, Claude, and Gemini, then manually compare responses. It&apos;s slow, exhausting, and creates a trust gap: which answer is actually right?
           </p>
           <div
             className="rounded-xl p-8 border transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgba(34,197,94,0.3)]"
@@ -480,7 +479,7 @@ export default function CrusoeCaseStudy() {
             </p>
           </div>
           <CrusoeConnection>
-            Crusoe is tackling the challenge of how to make powerful GPU infrastructure effectively invisible so developers can focus on building AI products instead of managing complex systems.
+            Students juggle models; developers juggle infrastructure. Crusoe takes that off developers&apos; plates. Same idea: less friction, more focus.
           </CrusoeConnection>
         </div>
         </FadeIn>
@@ -489,12 +488,15 @@ export default function CrusoeCaseStudy() {
       {/* Research */}
       <section
         id="research"
-        className="py-24 px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
       >
         <FadeIn>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-12">Research</h2>
-          <p className="text-white/50 text-sm mb-8">Survey: n = 48 college students. Top 3 pain points:</p>
+          <p className="text-white/70 leading-relaxed mb-6">
+            To validate the problem and understand how students actually use AI for homework and research, I ran a survey with 48 college students. I asked about their current workflows: which tools they use, how often they cross-check answers across models, and where they run into friction. The goal was to quantify the trust gap and identify the biggest pain points.
+          </p>
+          <p className="text-white/50 text-sm mb-8">Top 3 pain points from the survey:</p>
 
           {/* Animated bars */}
           <div className="space-y-6 mb-16">
@@ -548,7 +550,7 @@ export default function CrusoeCaseStudy() {
             </p>
           </div>
           <CrusoeConnection>
-            AI tools were fragmented: single models or raw APIs. Nexus unified models and comparison into one output. Crusoe unified energy, compute, and cloud into one stack. Both built the foundational layer that everything else runs on.
+            Nexus brought multiple models into one answer. Crusoe brought energy, compute, and cloud into one stack. Both became the foundation everything else builds on.
           </CrusoeConnection>
         </div>
         </FadeIn>
@@ -557,7 +559,7 @@ export default function CrusoeCaseStudy() {
       {/* Design Principles */}
       <section
         id="principles"
-        className="py-24 px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
       >
         <FadeIn>
         <div className="max-w-5xl mx-auto">
@@ -569,28 +571,26 @@ export default function CrusoeCaseStudy() {
                 quote: '"ChatGPT gave me a wrong formula for my physics exam. Never trusting one AI again."',
                 principle: 'Confidence comes from consensus. If multiple AIs agree, the answer is more likely correct.',
                 icon: '✓',
-                crusoeConnection: 'Trust comes from knowing the source. Crusoe builds trust through renewable-powered infrastructure. Developers know where the compute comes from. We built trust through consensus across models.',
+                crusoeConnection: 'Trust comes from knowing the source. Crusoe: developers know where the compute comes from (renewables, flare gas). Nexus: students know where the answer comes from (consensus across models).',
               },
               {
                 theme: 'Comparison',
                 quote: '"I spend 20 minutes comparing answers across tools. That\'s longer than just Googling it."',
                 principle: 'Comparison should happen automatically. Users want one clear answer, not multiple options to sort through.',
                 icon: '⇄',
-                crusoeConnection: 'One output from many inputs. Crusoe aggregates energy sources (flare gas, renewables) into one compute platform. We aggregated models into one answer.',
+                crusoeConnection: 'One output from many inputs. Crusoe aggregates energy sources into one compute platform. We aggregated models into one answer. Same pattern.',
               },
               {
                 theme: 'Simplicity',
                 quote: '"I have 6 tabs open just to do homework. It\'s exhausting."',
                 principle: 'Complexity should happen behind the scenes. Users just want the answer.',
                 icon: '◉',
-                crusoeConnection: 'Developers don\'t provision GPUs or manage cooling. Students don\'t juggle models or compare outputs. Both: complexity stays behind the scenes.',
+                crusoeConnection: 'Developers don\'t manage infrastructure. Students don\'t juggle models. Complexity stays behind the scenes so users get what they need.',
               },
             ].map((card, i) => (
-              <button
+              <div
                 key={i}
-                data-cursor-hover
-                onClick={() => setExpandedPrinciple(expandedPrinciple === i ? null : i)}
-                className={`p-6 rounded-xl bg-white/[0.03] border text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_-15px_rgba(34,197,94,0.2)] hover:border-white/20 ${
+                className={`p-6 rounded-xl bg-white/[0.03] border text-left transition-all duration-300 hover:border-white/20 ${
                   expandedPrinciple === i ? 'border-white/30' : 'border-white/10'
                 }`}
                 style={expandedPrinciple === i ? { boxShadow: `0 0 0 1px ${ACCENT}40` } : {}}
@@ -599,18 +599,33 @@ export default function CrusoeCaseStudy() {
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center text-xl shrink-0" style={{ backgroundColor: `${ACCENT}20`, color: ACCENT }}>
                     {card.icon}
                   </div>
-                  <span className="text-white/40 text-xs shrink-0">{expandedPrinciple === i ? '▲ collapse' : '▼ expand'}</span>
+                  <button
+                    data-cursor-hover
+                    onClick={(e) => { e.stopPropagation(); setExpandedPrinciple(expandedPrinciple === i ? null : i); }}
+                    className={`shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-300 touch-manipulation ${
+                      expandedPrinciple === i
+                        ? 'text-white/60 bg-white/5'
+                        : 'text-white/90 bg-white/10 hover:bg-white/15 border border-white/20 animate-subtle-pulse'
+                    }`}
+                    style={expandedPrinciple !== i ? { color: ACCENT, borderColor: `${ACCENT}60` } : {}}
+                  >
+                    {expandedPrinciple === i ? '▲ collapse' : '▼ expand'}
+                  </button>
                 </div>
                 <h3 className="text-lg font-semibold mb-3" style={{ color: ACCENT }}>{card.theme}</h3>
-                <p className="text-white/60 italic text-sm mb-4">&quot;{card.quote}&quot;</p>
-                <p className="text-white/80 text-sm leading-relaxed">{card.principle}</p>
-                {expandedPrinciple === i && (
-                  <div className="mt-4 pt-4 border-t border-white/10">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>Crusoe Connection</p>
-                    <p className="text-white/70 text-sm">{card.crusoeConnection}</p>
-                  </div>
+                {expandedPrinciple === i ? (
+                  <>
+                    <p className="text-white/60 italic text-sm mb-4">&quot;{card.quote}&quot;</p>
+                    <p className="text-white/80 text-sm leading-relaxed mb-4">{card.principle}</p>
+                    <div className="pt-4 border-t border-white/10">
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>Crusoe Connection</p>
+                      <p className="text-white/70 text-sm">{card.crusoeConnection}</p>
+                    </div>
+                  </>
+                ) : (
+                  <p className="text-white/50 text-sm">Click expand to read more</p>
                 )}
-              </button>
+              </div>
             ))}
           </div>
         </div>
@@ -620,7 +635,7 @@ export default function CrusoeCaseStudy() {
       {/* Key Iteration - Model Selector */}
       <section
         id="iteration"
-        className="py-24 px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
       >
         <FadeIn>
         <div className="max-w-5xl mx-auto">
@@ -628,18 +643,19 @@ export default function CrusoeCaseStudy() {
           <p className="text-white/50 text-sm mb-12">How we landed on the final model attribution pattern</p>
 
           {/* Version tabs */}
-          <div className="flex gap-2 mb-12">
+          <p className="text-white/40 text-xs mb-3">Click to explore each iteration</p>
+          <div className="flex flex-wrap gap-2 mb-12">
             {(['v1', 'v2', 'v3'] as const).map((v) => (
               <button
                 key={v}
                 data-cursor-hover
                 onClick={() => setIterationVersion(v)}
-                className={`px-6 py-3 rounded-lg font-medium text-sm transition-all duration-300 hover:scale-105 ${
+                className={`px-6 py-3 rounded-lg font-medium text-sm transition-all duration-300 border touch-manipulation ${
                   iterationVersion === v
-                    ? 'text-black'
-                    : 'text-white/60 hover:text-white/90 bg-white/5 hover:bg-white/10'
+                    ? 'text-black border-transparent shadow-[0_0_20px_-5px_rgba(34,197,94,0.4)] hover:shadow-[0_0_24px_-5px_rgba(34,197,94,0.5)]'
+                    : 'text-white/90 hover:text-white bg-white/10 hover:bg-white/15 border-white/20 hover:border-white/40 hover:shadow-[0_0_20px_-8px_rgba(255,255,255,0.25)] hover:-translate-y-0.5 animate-subtle-pulse'
                 }`}
-                style={iterationVersion === v ? { backgroundColor: ACCENT } : {}}
+                style={iterationVersion === v ? { backgroundColor: ACCENT } : { borderColor: `${ACCENT}40` }}
               >
                 {v === 'v1' ? 'V1: Full Panel' : v === 'v2' ? 'V2: Expand to Reveal' : 'V3: Model Selector ✓'}
               </button>
@@ -771,14 +787,14 @@ export default function CrusoeCaseStudy() {
             </div>
           </div>
           <CrusoeConnection>
-            We iterated until model attribution was frictionless. Crusoe iterated until developers could run models without provisioning GPUs or managing power. Same goal: show what matters, hide the rest.
+            We kept refining until the model selector felt right. Crusoe does the same with infrastructure—refining until developers can run models without thinking about it. Iteration is how both ship.
           </CrusoeConnection>
         </div>
         </FadeIn>
       </section>
 
       {/* Interactive Product Walkthrough */}
-      <section id="walkthrough" className="py-24 px-6 border-t border-white/5">
+      <section id="walkthrough" className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5">
         <FadeIn>
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">Explore the Product</h2>
@@ -799,56 +815,59 @@ export default function CrusoeCaseStudy() {
                 <button
                   data-cursor-hover
                   onClick={() => setWalkthroughIndex((i) => (i - 1 + NEXUS_IMAGES.length) % NEXUS_IMAGES.length)}
-                  className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:scale-105"
+                  className="min-h-[44px] min-w-[44px] px-4 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 touch-manipulation"
                 >
                   ← Prev
                 </button>
                 <button
                   data-cursor-hover
                   onClick={() => setWalkthroughIndex((i) => (i + 1) % NEXUS_IMAGES.length)}
-                  className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:scale-105"
+                  className="min-h-[44px] min-w-[44px] px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 touch-manipulation"
                   style={{ backgroundColor: ACCENT, color: '#000' }}
                 >
                   Next →
                 </button>
               </div>
             </div>
-            <div className="flex gap-1 p-2 overflow-x-auto">
+            <div className="flex gap-2 p-2 overflow-x-auto scrollbar-hide">
               {NEXUS_IMAGES.map((img, i) => (
                 <button
                   key={i}
                   data-cursor-hover
                   onClick={() => setWalkthroughIndex(i)}
-                  className={`shrink-0 w-16 h-10 rounded overflow-hidden border-2 transition-all duration-300 hover:scale-110 ${
+                  className={`shrink-0 w-20 h-12 md:w-16 md:h-10 min-h-[44px] rounded overflow-hidden border-2 transition-all duration-300 hover:scale-110 touch-manipulation ${
                     walkthroughIndex === i ? 'border-white' : 'border-transparent opacity-50 hover:opacity-80'
                   }`}
                 >
-                  <Image src={img.src} alt={img.label} width={64} height={40} className="w-full h-full object-cover" />
+                  <Image src={img.src} alt={img.label} width={80} height={48} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
           </div>
           <CrusoeConnection>
-            Crusoe Cloud: deploy and run models without touching data centers or power. Nexus: ask a question and get one answer without touching model APIs. Both: the interface is simple because the infrastructure does the work.
+            Crusoe Cloud: deploy without touching data centers. Nexus: one answer without touching model APIs. The interface stays simple because the infrastructure does the work.
           </CrusoeConnection>
         </div>
         </FadeIn>
       </section>
 
       {/* Figma Design Process - Interactive */}
-      <section id="figma-process" className="py-24 px-6 border-t border-white/5">
+      <section id="figma-process" className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5">
         <FadeIn>
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">Design Process: Lo-Fi to Final</h2>
-          <p className="text-white/50 text-sm mb-6">Lo-fi sketches → mid-fi wireframes → hi-fi Figma. Select a stage to explore.</p>
-          <div className="flex gap-2 mb-6">
+          <p className="text-white/50 text-sm mb-3">Lo-fi sketches → mid-fi wireframes → hi-fi Figma.</p>
+          <p className="text-white/40 text-xs mb-4">Click each stage to explore the design evolution</p>
+          <div className="flex flex-wrap gap-2 mb-6">
             {(['lofi', 'midfi', 'hifi'] as const).map((level) => (
               <button
                 key={level}
                 data-cursor-hover
                 onClick={() => setFidelityLevel(level)}
-                className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 ${
-                  fidelityLevel === level ? 'text-black' : 'text-white/60 hover:text-white/90 bg-white/5'
+                className={`min-h-[44px] px-5 py-3 rounded-lg font-medium text-sm transition-all duration-300 border touch-manipulation ${
+                  fidelityLevel === level
+                    ? 'text-black border-transparent shadow-[0_0_20px_-5px_rgba(34,197,94,0.4)]'
+                    : 'text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border-white/15 hover:border-white/30 hover:shadow-[0_0_20px_-8px_rgba(255,255,255,0.2)] hover:-translate-y-0.5'
                 }`}
                 style={fidelityLevel === level ? { backgroundColor: ACCENT } : {}}
               >
@@ -856,8 +875,8 @@ export default function CrusoeCaseStudy() {
               </button>
             ))}
           </div>
-          <div className="rounded-xl overflow-hidden bg-[#111] border border-white/10">
-            <div className="relative aspect-[16/10] bg-[#0a0a0a]">
+          <div className="rounded-xl overflow-hidden bg-[#0a0a0a] overflow-x-hidden">
+            <div className="relative aspect-[16/9] min-h-[280px] md:min-h-0 bg-[#0a0a0a]">
               {fidelityLevel === 'lofi' && (
                 <div className="absolute inset-0 flex items-center justify-center p-6 overflow-auto">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
@@ -1264,16 +1283,20 @@ export default function CrusoeCaseStudy() {
                 </div>
               )}
               {fidelityLevel === 'hifi' && (
-                <Image
-                  src={FIGMA_IMAGES[figmaIndex].src}
-                  alt={FIGMA_IMAGES[figmaIndex].label}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 800px"
-                />
+                <div className="absolute inset-4 md:inset-8">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={FIGMA_IMAGES[figmaIndex].src}
+                      alt={FIGMA_IMAGES[figmaIndex].label}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, 800px"
+                    />
+                  </div>
+                </div>
               )}
             </div>
-            <div className="p-4 bg-[#0a0a0a] border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+            <div className="p-4 bg-[#0a0a0a] border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
               <p className="text-white/80 text-sm font-medium">
                 {fidelityLevel === 'lofi' ? 'Lo-Fi: Hand-drawn sketches' : fidelityLevel === 'midfi' ? 'Mid-Fi: Grayscale wireframes' : FIGMA_IMAGES[figmaIndex].label}
               </p>
@@ -1282,14 +1305,14 @@ export default function CrusoeCaseStudy() {
                   <button
                     data-cursor-hover
                     onClick={() => setFigmaIndex((i) => (i - 1 + FIGMA_IMAGES.length) % FIGMA_IMAGES.length)}
-                    className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:scale-105"
+                    className="min-h-[44px] min-w-[44px] px-4 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 touch-manipulation"
                   >
                     ← Prev
                   </button>
                   <button
                     data-cursor-hover
                     onClick={() => setFigmaIndex((i) => (i + 1) % FIGMA_IMAGES.length)}
-                    className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:scale-105"
+                    className="min-h-[44px] min-w-[44px] px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 touch-manipulation"
                     style={{ backgroundColor: ACCENT, color: '#000' }}
                   >
                     Next →
@@ -1298,17 +1321,19 @@ export default function CrusoeCaseStudy() {
               )}
             </div>
             {fidelityLevel === 'hifi' && (
-              <div className="flex gap-1 p-2 overflow-x-auto">
+              <div className="flex gap-2 p-3 overflow-x-auto scrollbar-hide">
                 {FIGMA_IMAGES.map((img, i) => (
                   <button
                     key={i}
                     data-cursor-hover
                     onClick={() => setFigmaIndex(i)}
-                    className={`shrink-0 w-16 h-10 rounded overflow-hidden border-2 transition-all duration-300 hover:scale-110 ${
-                      figmaIndex === i ? 'border-white' : 'border-transparent opacity-50 hover:opacity-80'
+                    className={`shrink-0 aspect-video w-24 md:w-20 min-h-[44px] rounded-lg overflow-hidden transition-all duration-300 hover:opacity-100 touch-manipulation ${
+                      figmaIndex === i
+                        ? 'ring-2 ring-white ring-offset-2 ring-offset-[#0a0a0a] opacity-100'
+                        : 'opacity-60 hover:opacity-80'
                     }`}
                   >
-                    <Image src={img.src} alt={img.label} width={64} height={40} className="w-full h-full object-cover" />
+                    <Image src={img.src} alt={img.label} width={96} height={54} className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>
@@ -1332,7 +1357,7 @@ export default function CrusoeCaseStudy() {
       {/* Final Solution */}
       <section
         id="solution"
-        className="py-24 px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
       >
         <FadeIn>
         <div className="max-w-5xl mx-auto">
@@ -1351,7 +1376,7 @@ export default function CrusoeCaseStudy() {
             ))}
           </div>
           <CrusoeConnection>
-            Crusoe owns energy → compute → cloud. One company, full stack. Nexus owned question → models → answer. One interface, full flow. Both remove the need to stitch together fragmented tools.
+            Crusoe: energy → compute → cloud. Nexus: question → models → answer. One flow, end to end. No stitching together separate tools.
           </CrusoeConnection>
         </div>
         </FadeIn>
@@ -1360,7 +1385,7 @@ export default function CrusoeCaseStudy() {
       {/* Design System */}
       <section
         id="design-system"
-        className="py-24 px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
       >
         <FadeIn>
         <div className="max-w-4xl mx-auto">
@@ -1386,9 +1411,6 @@ export default function CrusoeCaseStudy() {
               Dark theme reduces eye strain during long sessions. Monochromatic palette keeps focus on the answer. Blue accents for trust without distraction.
             </p>
           </div>
-          <CrusoeConnection>
-            Crusoe&apos;s cloud platform needs a design system. We built Nexus&apos;s from scratch. Same goal: consistency so everything feels like one product.
-          </CrusoeConnection>
         </div>
         </FadeIn>
       </section>
@@ -1396,7 +1418,7 @@ export default function CrusoeCaseStudy() {
       {/* Impact */}
       <section
         id="impact"
-        className="py-24 px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
       >
         <FadeIn>
         <div className="max-w-5xl mx-auto">
@@ -1415,7 +1437,7 @@ export default function CrusoeCaseStudy() {
             ))}
           </div>
           <CrusoeConnection>
-            Crusoe measures impact in compute delivered, energy repurposed, carbon avoided. We measured sign-ups, onboarding speed, and trust. Same goal: ship things that scale and that people actually use.
+            Crusoe tracks compute delivered, carbon avoided. We tracked sign-ups and trust. Both care about what actually scales and gets used.
           </CrusoeConnection>
         </div>
         </FadeIn>
@@ -1424,7 +1446,7 @@ export default function CrusoeCaseStudy() {
       {/* Why Crusoe */}
       <section
         id="why-crusoe"
-        className="py-24 px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
       >
         <FadeIn>
         <div className="max-w-3xl mx-auto">

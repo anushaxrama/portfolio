@@ -107,7 +107,7 @@ export default function FlowOpsCaseStudy() {
       <CaseStudyNav showBackButton={showBackButton} />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center px-8 pt-32 pb-20">
+      <section className="relative min-h-screen flex items-center px-4 md:px-8 pt-32 pb-20">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left side - Title and info */}
@@ -186,7 +186,7 @@ export default function FlowOpsCaseStudy() {
                         {/* Navigation arrows */}
                         <button
                           onClick={goToPrevSlide}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                          className="absolute left-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] rounded-full bg-black/50 flex items-center justify-center text-white opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity z-10 touch-manipulation"
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -194,7 +194,7 @@ export default function FlowOpsCaseStudy() {
                         </button>
                         <button
                           onClick={goToNextSlide}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] rounded-full bg-black/50 flex items-center justify-center text-white opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity z-10 touch-manipulation"
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -1701,7 +1701,7 @@ export default function FlowOpsCaseStudy() {
                   {/* Navigation arrows */}
                   <button
                     onClick={goToPrevSlide}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] rounded-full bg-black/50 flex items-center justify-center text-white opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity z-10 touch-manipulation"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -1709,7 +1709,7 @@ export default function FlowOpsCaseStudy() {
                   </button>
                   <button
                     onClick={goToNextSlide}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] rounded-full bg-black/50 flex items-center justify-center text-white opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity z-10 touch-manipulation"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -1784,7 +1784,7 @@ export default function FlowOpsCaseStudy() {
       </Section>
 
       {/* Footer */}
-      <section ref={footerRef} className="relative py-32 px-8">
+      <section ref={footerRef} className="relative py-24 md:py-32 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <Link
             href="/"
@@ -1827,7 +1827,7 @@ function Section({ children }: { children: React.ReactNode }) {
   return (
     <section 
       ref={ref}
-      className={`relative py-24 px-8 border-t border-white/5 transition-all duration-1000 ease-out ${
+      className={`relative py-16 md:py-24 px-4 md:px-8 border-t border-white/5 transition-all duration-1000 ease-out ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}
     >

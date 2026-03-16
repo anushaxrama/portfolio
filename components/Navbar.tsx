@@ -27,7 +27,7 @@ export default function Navbar() {
       <div className="flex items-center gap-2 md:gap-8">
         <button
           onClick={toggleFullscreen}
-          className="p-2 text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+          className="min-h-[44px] min-w-[44px] flex items-center justify-center p-3 text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/5 touch-manipulation"
           title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen (hide browser tabs for screen share)'}
         >
           {isFullscreen ? (
@@ -42,7 +42,7 @@ export default function Navbar() {
         </button>
         <Link
           href="/about"
-          className="group relative px-3 py-2 text-white/80 text-sm font-medium tracking-wide hover:text-white transition-colors duration-300 touch-manipulation"
+          className="group relative min-h-[44px] flex items-center px-4 py-3 text-white/80 text-sm font-medium tracking-wide hover:text-white transition-colors duration-300 touch-manipulation"
         >
           About
           <span className="absolute bottom-1 left-3 right-3 h-[1px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -51,14 +51,14 @@ export default function Navbar() {
           href="https://www.linkedin.com/in/anusha-ramachandran-45882724a"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative px-3 py-2 text-white/80 text-sm font-medium tracking-wide hover:text-white transition-colors duration-300 touch-manipulation"
+          className="group relative min-h-[44px] flex items-center px-4 py-3 text-white/80 text-sm font-medium tracking-wide hover:text-white transition-colors duration-300 touch-manipulation"
         >
           LinkedIn
           <span className="absolute bottom-1 left-3 right-3 h-[1px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
         </a>
         <a
           href="mailto:arama@ucdavis.edu"
-          className="group relative px-3 py-2 text-white/80 text-sm font-medium tracking-wide hover:text-white transition-colors duration-300 touch-manipulation"
+          className="group relative min-h-[44px] flex items-center px-4 py-3 text-white/80 text-sm font-medium tracking-wide hover:text-white transition-colors duration-300 touch-manipulation"
         >
           Email
           <span className="absolute bottom-1 left-3 right-3 h-[1px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />

@@ -61,7 +61,7 @@ export default function RecentWork() {
       description: 'One question, one answer. Nexus runs multiple AI models in parallel, compares their responses, and surfaces the strongest consensus-based result. No tab hopping, no conflicting answers.',
       demoImages: [
         { src: '/narbl/narbl-1.png', label: 'Everything You Need. One Nexus.' },
-        { src: '/narbl/narbl-2.png', label: 'Scanning for Better Answers' },
+        { src: '/narbl/narbl-2.png?v=4', label: 'Scanning for Better Answers' },
         { src: '/narbl/narbl-3.png', label: 'Smarter Homework, Faster Results' },
         { src: '/narbl/narbl-4.png', label: 'Homework Intelligence' },
         { src: '/narbl/narbl-5.png', label: 'Success Stories' },
