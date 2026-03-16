@@ -41,6 +41,64 @@ body {
   }
 }
 
+@keyframes flow {
+  0%, 100% { 
+    stroke-dashoffset: 0;
+    opacity: 0.3;
+  }
+  50% { 
+    stroke-dashoffset: 40;
+    opacity: 0.6;
+  }
+}
+
+@keyframes flowDash {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 24; }
+}
+
+/* Crusoe page: custom cursor & interactive background */
+.crusoe-cursor-context {
+  cursor: none;
+}
+
+@media (max-width: 1024px), (pointer: coarse) {
+  .crusoe-cursor-context {
+    cursor: auto;
+  }
+}
+
+@keyframes cursorPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes glowOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+  50% { transform: translate(10px, -10px) scale(1.2); opacity: 0.35; }
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.06; }
+}
+
+@keyframes heroOrbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  33% { transform: translate(15px, -20px) scale(1.15); opacity: 0.6; }
+  66% { transform: translate(-10px, 15px) scale(0.95); opacity: 0.5; }
+}
+
+@keyframes heroBlob {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.15; }
+  50% { transform: scale(1.2) rotate(5deg); opacity: 0.25; }
+}
+
+@keyframes heroPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
 @keyframes pulse-subtle {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }

@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import CaseStudyNav from '@/components/CaseStudyNav'
 
 interface Particle {
   id: number;
@@ -105,18 +106,7 @@ export default function SpotifyCaseStudy() {
         ))}
       </div>
 
-      {/* Back button */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 px-8 py-8 transition-opacity duration-300 ${showBackButton ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <Link 
-          href="/"
-          className="inline-flex items-center gap-2 text-white/40 hover:text-white transition-colors text-sm tracking-wide"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-          </svg>
-          <span>Back</span>
-        </Link>
-      </nav>
+      <CaseStudyNav showBackButton={showBackButton} />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center px-8 pt-32 pb-20">
