@@ -354,8 +354,8 @@ export default function RecentWork() {
                         </svg>
                       </button>
 
-                      {/* Slideshow dots - Minimal on mobile, slightly larger on desktop */}
-                      <div className="absolute bottom-2 md:bottom-3 left-1/2 -translate-x-1/2 flex gap-1 md:gap-1.5 bg-black/40 md:bg-black/50 rounded-full px-2 py-1 md:px-2.5 md:py-1.5 z-20">
+                      {/* Slideshow dots - Hidden on mobile (auto-advance only), visible on desktop */}
+                      <div className="hidden md:flex absolute bottom-2 md:bottom-3 left-1/2 -translate-x-1/2 gap-1 md:gap-1.5 bg-black/40 md:bg-black/50 rounded-full px-2 py-1 md:px-2.5 md:py-1.5 z-20">
                         {project.demoImages.map((_, dotIndex) => (
                           <button
                             key={dotIndex}
@@ -522,8 +522,8 @@ export default function RecentWork() {
                     </svg>
                   </button>
 
-                  {/* Dots - Minimal styling */}
-                  <div className="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 flex gap-1 bg-black/30 rounded-full px-2 py-1 z-20">
+                  {/* Dots - Hidden on mobile (auto-advance only), visible on desktop */}
+                  <div className="hidden md:flex absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 gap-1 bg-black/30 rounded-full px-2 py-1 z-20">
                     {project.demoImages.map((_, dotIndex) => (
                       <button
                         key={dotIndex}

@@ -340,12 +340,30 @@ function FlowingLinesBackground() {
 
 export default function CrusoeCaseStudy() {
   const [activeSection, setActiveSection] = useState('hero')
-  const [iterationVersion, setIterationVersion] = useState<'v1' | 'v2' | 'v3'>('v1')
+  const [iterationVersion, setIterationVersion] = useState<'v1' | 'v2' | 'v3'>('v1') // V1 first by default
   const [barAnimated, setBarAnimated] = useState(false)
   const [walkthroughIndex, setWalkthroughIndex] = useState(0)
   const [figmaIndex, setFigmaIndex] = useState(0)
-  const [fidelityLevel, setFidelityLevel] = useState<'lofi' | 'midfi' | 'hifi'>('lofi')
+  const [isMobile, setIsMobile] = useState(false)
+  const [fidelityLevel, setFidelityLevel] = useState<'lofi' | 'midfi' | 'hifi'>('lofi') // Lo-Fi first by default
   const [expandedPrinciple, setExpandedPrinciple] = useState<number | null>(null)
+
+  // Mobile detection
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
+  // Auto-advance Product walkthrough on mobile (every 4s)
+  useEffect(() => {
+    if (!isMobile) return
+    const interval = setInterval(() => {
+      setWalkthroughIndex((i) => (i + 1) % NEXUS_IMAGES.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [isMobile])
 
   // Track active section on scroll
   useEffect(() => {
@@ -811,7 +829,7 @@ export default function CrusoeCaseStudy() {
             </div>
             <div className="p-4 bg-[#0a0a0a] border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
               <p className="text-white/80 text-sm font-medium">{NEXUS_IMAGES[walkthroughIndex].label}</p>
-              <div className="flex gap-2">
+              <div className="hidden md:flex gap-2">
                 <button
                   data-cursor-hover
                   onClick={() => setWalkthroughIndex((i) => (i - 1 + NEXUS_IMAGES.length) % NEXUS_IMAGES.length)}
@@ -829,7 +847,7 @@ export default function CrusoeCaseStudy() {
                 </button>
               </div>
             </div>
-            <div className="flex gap-2 p-2 overflow-x-auto scrollbar-hide">
+            <div className="hidden md:flex gap-2 p-2 overflow-x-auto scrollbar-hide">
               {NEXUS_IMAGES.map((img, i) => (
                 <button
                   key={i}
@@ -876,11 +894,11 @@ export default function CrusoeCaseStudy() {
             ))}
           </div>
           <div className="rounded-xl overflow-hidden bg-[#0a0a0a] overflow-x-hidden">
-            <div className="relative aspect-[16/9] min-h-[280px] md:min-h-0 bg-[#0a0a0a]">
+            <div className="relative min-h-[520px] md:min-h-0 md:aspect-[16/9] bg-[#0a0a0a]">
               {fidelityLevel === 'lofi' && (
-                <div className="absolute inset-0 flex items-center justify-center p-6 overflow-auto">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
-                    <div className="rounded-xl overflow-hidden bg-[#fefcf8] p-6 border border-[#e8e4dc]">
+                <div className="absolute inset-0 flex items-start md:items-center justify-center p-4 md:p-6 overflow-auto overscroll-contain">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full max-w-5xl min-w-0 py-4 md:py-0">
+                    <div className="rounded-xl overflow-hidden bg-[#fefcf8] p-4 md:p-6 border border-[#e8e4dc] min-w-0">
                       <p className="text-[#555] text-xs font-semibold mb-4 uppercase tracking-wider">Onboarding</p>
                       <svg viewBox="0 0 400 480" className="w-full h-auto">
                         <defs>
@@ -989,7 +1007,7 @@ export default function CrusoeCaseStudy() {
                         </g>
                       </svg>
                     </div>
-                    <div className="rounded-xl overflow-hidden bg-[#fefcf8] p-6 border border-[#e8e4dc]">
+                    <div className="rounded-xl overflow-hidden bg-[#fefcf8] p-4 md:p-6 border border-[#e8e4dc] min-w-0">
                       <p className="text-[#555] text-xs font-semibold mb-4 uppercase tracking-wider">Core Chat Interface</p>
                       <svg viewBox="0 0 400 280" className="w-full h-auto">
                         <defs>
@@ -1053,9 +1071,9 @@ export default function CrusoeCaseStudy() {
                 </div>
               )}
               {fidelityLevel === 'midfi' && (
-                <div className="absolute inset-0 flex items-center justify-center p-6 overflow-auto">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
-                    <div className="rounded-xl overflow-hidden bg-[#1e1e1e] p-6 border border-[#333]">
+                <div className="absolute inset-0 flex items-start md:items-center justify-center p-4 md:p-6 overflow-auto overscroll-contain">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full max-w-5xl min-w-0 py-4 md:py-0">
+                    <div className="rounded-xl overflow-hidden bg-[#1e1e1e] p-4 md:p-6 border border-[#333] min-w-0">
                       <p className="text-[#666] text-xs font-semibold mb-4 uppercase tracking-wider">Onboarding</p>
                       <svg viewBox="0 0 400 520" className="w-full h-auto">
                         <defs>
@@ -1199,7 +1217,7 @@ export default function CrusoeCaseStudy() {
                         </g>
                       </svg>
                     </div>
-                    <div className="rounded-xl overflow-hidden bg-[#1e1e1e] p-6 border border-[#333]">
+                    <div className="rounded-xl overflow-hidden bg-[#1e1e1e] p-4 md:p-6 border border-[#333] min-w-0">
                       <p className="text-[#666] text-xs font-semibold mb-4 uppercase tracking-wider">Core Chat Interface</p>
                       <svg viewBox="0 0 400 300" className="w-full h-auto">
                         <defs>

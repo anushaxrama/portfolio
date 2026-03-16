@@ -201,8 +201,8 @@ export default function FlowOpsCaseStudy() {
                           </svg>
                         </button>
                         
-                        {/* Dots */}
-                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                        {/* Dots - Hidden on mobile (auto-advance only) */}
+                        <div className="hidden md:flex absolute bottom-2 left-1/2 -translate-x-1/2 gap-1.5 z-10">
                           {demoImages.map((_, dotIndex) => (
                             <button
                               key={dotIndex}
@@ -1716,8 +1716,8 @@ export default function FlowOpsCaseStudy() {
                     </svg>
                   </button>
                   
-                  {/* Dots */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                  {/* Dots - Hidden on mobile (auto-advance only) */}
+                  <div className="hidden md:flex absolute bottom-4 left-1/2 -translate-x-1/2 gap-2 z-10">
                     {demoImages.map((_, dotIndex) => (
                       <button
                         key={dotIndex}

@@ -197,8 +197,8 @@ export default function NeuranNoteCaseStudy() {
                           </svg>
                         </button>
 
-                        {/* Slide dots */}
-                        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                        {/* Slide dots - Hidden on mobile (auto-advance only) */}
+                        <div className="hidden md:flex absolute bottom-3 left-1/2 -translate-x-1/2 gap-1.5">
                           {demoImages.map((_, index) => (
                             <button
                               key={index}

@@ -1665,8 +1665,8 @@ export default function SpotifyCaseStudy() {
                   </svg>
                 </button>
 
-                {/* Slide dots */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {/* Slide dots - Hidden on mobile (auto-advance only) */}
+                <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 gap-2 z-10">
                   {demoImages.map((_, index) => (
                     <button
                       key={index}

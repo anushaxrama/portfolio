@@ -200,8 +200,8 @@ export default function NexusCaseStudy() {
                           </svg>
                         </button>
 
-                        {/* Slide dots */}
-                        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                        {/* Slide dots - Hidden on mobile (auto-advance only) */}
+                        <div className="hidden md:flex absolute bottom-3 left-1/2 -translate-x-1/2 gap-1.5">
                           {demoImages.map((_, index) => (
                             <button
                               key={index}
@@ -2297,8 +2297,8 @@ export default function NexusCaseStudy() {
               {/* Bottom gradient overlay */}
               <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 to-transparent" />
               
-              {/* Slide indicator dots */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {/* Slide indicator dots - Hidden on mobile (auto-advance only) */}
+              <div className="hidden md:flex absolute bottom-4 left-1/2 -translate-x-1/2 gap-2">
                 {demoImages.map((_, index) => (
                   <button
                     key={index}
