@@ -705,7 +705,7 @@ export default function NeuranNoteCaseStudy() {
           {/* Key Finding */}
           <div className="max-w-3xl mt-12 p-6 rounded-2xl bg-white/[0.02] border border-white/10">
             <p className="text-white/50 leading-relaxed mb-4">
-              A clear pattern emerged: existing tools excel at either capture or organization, but <strong className="text-white/70">none prioritize learning</strong>. Spaced repetition, concept linking, and metacognitive prompts are absent across the board.
+              The research pointed to a gap: existing tools excel at either capture or organization, but <strong className="text-white/70">none prioritize learning</strong>. Spaced repetition, concept linking, and metacognitive prompts are absent across the board.
             </p>
             <p className="text-white/50 leading-relaxed">
               This <strong className="text-white/70">validated my hypothesis</strong>: there's room for a tool that bridges note-taking and understanding, treating notes as the <strong className="text-white/70">starting point for deeper learning</strong>.

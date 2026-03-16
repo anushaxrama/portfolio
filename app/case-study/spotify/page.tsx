@@ -812,7 +812,7 @@ export default function SpotifyCaseStudy() {
           <div className="max-w-3xl mt-12">
             <h4 className="text-[#1db954] text-lg font-medium mb-4">Key Insight</h4>
             <p className="text-white/50 leading-relaxed mb-4">
-              A clear pattern emerged from the research: <strong className="text-white/70">users have lost their personal relationship with music</strong>. Streaming made access effortless but stripped away the context, intention, and emotional connection that made listening meaningful.
+              The research converged on one insight: <strong className="text-white/70">users have lost their personal relationship with music</strong>. Streaming made access effortless but stripped away the context, intention, and emotional connection that made listening meaningful.
             </p>
             <p className="text-white/50 leading-relaxed">
               <span className="text-white/70 font-medium">The opportunity:</span> Transform Spotify from a music player into a <strong className="text-white/70">music memory system</strong> that helps users rediscover not just songs, but the feelings and moments attached to them.

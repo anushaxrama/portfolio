@@ -135,7 +135,7 @@ export default function NexusCaseStudy() {
               </h1>
               
               <p className={`text-lg md:text-xl text-white/50 mb-10 leading-relaxed transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                Everything you need. One Nexus. One question, one answer powered by multiple AI models.
+                Ask once. Get one answer backed by multiple AI models.
               </p>
 
               {/* Project Meta */}
@@ -153,7 +153,7 @@ export default function NexusCaseStudy() {
                   <p className="text-white/80">Figma, Cursor, Lovable</p>
                 </div>
                 <div>
-                  <p className="text-white/30 uppercase tracking-wider mb-1">Team</p>
+                  <p className="text-white/30 uppercase tracking-wider mb-1">Context</p>
                   <p className="text-white/80">Internship Project</p>
                 </div>
               </div>
@@ -262,10 +262,10 @@ export default function NexusCaseStudy() {
         <SectionTitle>Overview</SectionTitle>
         <div className="max-w-3xl">
           <p className="text-2xl md:text-3xl text-white/80 font-light leading-relaxed mb-8">
-            Fact-checking across sources shouldn't be expensive or slow. Nexus saves students time and money.
+            Nexus saves students time by running multiple AI models behind the scenes and surfacing only the best answer.
           </p>
           <p className="text-lg text-white/50 leading-relaxed mb-12">
-            During my <strong className="text-white/70">internship</strong>, I helped design Nexus as a <strong className="text-white/70">unified AI research platform for students</strong>. The goal: one question, one place, and answers backed by <strong className="text-white/70">multiple AIs</strong>. Models compete against each other so the strongest answer always wins, with weak or incorrect answers filtered out automatically. No more tab hopping between ChatGPT, Claude, and Gemini.
+            I designed Nexus during my internship as a unified AI platform for students. One question, one place. Multiple AIs run in parallel and compare responses; the strongest answer wins. No more tab hopping between ChatGPT, Claude, and Gemini.
           </p>
           
           {/* Problem Statement Box */}
@@ -286,12 +286,7 @@ export default function NexusCaseStudy() {
             <p className="text-white/30 text-xs uppercase tracking-[0.25em] mb-6">Problem Statement</p>
             
             <p className="text-xl md:text-2xl lg:text-[1.7rem] text-white/90 leading-relaxed font-light">
-              How might we design an AI platform that{' '}
-              <span className="text-[#60a5fa]">aggregates</span> and{' '}
-              <span className="text-[#60a5fa]">compares</span>{' '}
-              responses from multiple AI models to surface only the most{' '}
-              <span className="text-[#60a5fa]">accurate</span>,{' '}
-              <span className="text-[#60a5fa]">agreed-upon</span> information for students?
+              How might we give students one accurate answer by aggregating and comparing responses from multiple AI models?
             </p>
           </div>
         </div>
@@ -335,8 +330,9 @@ export default function NexusCaseStudy() {
               {/* User Research - Week 1-2 */}
               <div className="grid grid-cols-10">
                 <div className="col-span-2 pr-1">
-                  <div 
-                    className="rounded-full py-3 px-3 text-center text-xs text-white/90"
+                  <a 
+                    href="#research"
+                    className="block rounded-full py-3 px-3 text-center text-xs text-white/90 cursor-pointer transition-opacity hover:opacity-90"
                     style={{
                       background: 'linear-gradient(135deg, rgba(59,130,246,0.35) 0%, rgba(59,130,246,0.15) 100%)',
                       boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.3)',
@@ -344,15 +340,16 @@ export default function NexusCaseStudy() {
                     }}
                   >
                     User Research
-                  </div>
+                  </a>
                 </div>
               </div>
 
               {/* Lo-Fi Wireframes - Week 2-4 */}
               <div className="grid grid-cols-10">
                 <div className="col-start-2 col-span-3 px-1">
-                  <div 
-                    className="rounded-full py-3 px-3 text-center text-xs text-white/90"
+                  <a 
+                    href="#lofi"
+                    className="block rounded-full py-3 px-3 text-center text-xs text-white/90 cursor-pointer transition-opacity hover:opacity-90"
                     style={{
                       background: 'linear-gradient(135deg, rgba(59,130,246,0.35) 0%, rgba(59,130,246,0.15) 100%)',
                       boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.3)',
@@ -360,15 +357,16 @@ export default function NexusCaseStudy() {
                     }}
                   >
                     Lo-Fi Wireframes
-                  </div>
+                  </a>
                 </div>
               </div>
 
               {/* Mid-Fi Design - Week 4-6 */}
               <div className="grid grid-cols-10">
                 <div className="col-start-4 col-span-3 px-1">
-                  <div 
-                    className="rounded-full py-3 px-3 text-center text-xs text-white/90"
+                  <a 
+                    href="#midfi"
+                    className="block rounded-full py-3 px-3 text-center text-xs text-white/90 cursor-pointer transition-opacity hover:opacity-90"
                     style={{
                       background: 'linear-gradient(135deg, rgba(59,130,246,0.35) 0%, rgba(59,130,246,0.15) 100%)',
                       boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.3)',
@@ -376,15 +374,16 @@ export default function NexusCaseStudy() {
                     }}
                   >
                     Mid-Fi Design
-                  </div>
+                  </a>
                 </div>
               </div>
 
               {/* Hi-Fi Prototypes - Week 5-8 */}
               <div className="grid grid-cols-10">
                 <div className="col-start-5 col-span-4 px-1">
-                  <div 
-                    className="rounded-full py-3 px-3 text-center text-xs text-white/90"
+                  <a 
+                    href="#hifi"
+                    className="block rounded-full py-3 px-3 text-center text-xs text-white/90 cursor-pointer transition-opacity hover:opacity-90"
                     style={{
                       background: 'linear-gradient(135deg, rgba(59,130,246,0.35) 0%, rgba(59,130,246,0.15) 100%)',
                       boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.3)',
@@ -392,15 +391,16 @@ export default function NexusCaseStudy() {
                     }}
                   >
                     Hi-Fi Prototypes
-                  </div>
+                  </a>
                 </div>
               </div>
 
               {/* Testing & Iteration - Week 7-9 */}
               <div className="grid grid-cols-10">
                 <div className="col-start-7 col-span-3 px-1">
-                  <div 
-                    className="rounded-full py-3 px-3 text-center text-xs text-white/90"
+                  <a 
+                    href="#hifi"
+                    className="block rounded-full py-3 px-3 text-center text-xs text-white/90 cursor-pointer transition-opacity hover:opacity-90"
                     style={{
                       background: 'linear-gradient(135deg, rgba(59,130,246,0.35) 0%, rgba(59,130,246,0.15) 100%)',
                       boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.3)',
@@ -408,15 +408,16 @@ export default function NexusCaseStudy() {
                     }}
                   >
                     Testing & Iteration
-                  </div>
+                  </a>
                 </div>
               </div>
 
               {/* Final Polish - Week 9-10 */}
               <div className="grid grid-cols-10">
                 <div className="col-start-9 col-span-2 px-1">
-                  <div 
-                    className="rounded-full py-3 px-3 text-center text-xs text-white/90"
+                  <a 
+                    href="#product-walkthrough"
+                    className="block rounded-full py-3 px-3 text-center text-xs text-white/90 cursor-pointer transition-opacity hover:opacity-90"
                     style={{
                       background: 'linear-gradient(135deg, rgba(59,130,246,0.35) 0%, rgba(59,130,246,0.15) 100%)',
                       boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1), 0 4px 12px rgba(0,0,0,0.3)',
@@ -424,7 +425,7 @@ export default function NexusCaseStudy() {
                     }}
                   >
                     Final Polish
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -433,23 +434,21 @@ export default function NexusCaseStudy() {
       </Section>
 
       {/* Research */}
-      <Section>
+      <Section id="research">
         <SectionLabel>03</SectionLabel>
         <SectionTitle>Research</SectionTitle>
         
         <div className="max-w-3xl mb-16">
           <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-6">Research Goals</h3>
           <p className="text-lg text-white/60 leading-relaxed">
-            We started with a <strong className="text-white/80">hypothesis</strong>: students are using multiple AI tools for homework and research, but switching between them wastes time and leads to inconsistent answers. I wanted to understand <strong className="text-white/80">how students actually use AI for studying</strong>, where they hit walls, and what would make research and fact-checking feel{' '}
-            <span className="text-white font-medium">faster</span> and{' '}
-            <span className="text-white font-medium">more reliable</span>.
+            Students use multiple AI tools for homework but waste time switching between them. I wanted to understand how they use AI, where they get stuck, and what would make answers feel more reliable.
           </p>
         </div>
 
         {/* User Surveys */}
         <div className="mb-8">
           <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-8">User Surveys</h3>
-          <p className="text-white/40 text-sm mb-12">Survey sample: n = 48 college students</p>
+          <p className="text-white/40 text-sm mb-12">Survey sample: n = 48 college students<Footnote id={1}>Distributed via campus channels. Mix of undergrad and grad students. 12-question survey on AI tool usage, pain points, and study habits.</Footnote></p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
@@ -476,7 +475,7 @@ export default function NexusCaseStudy() {
               ))}
             </div>
             <p className="text-white/60 text-xs mt-4 leading-relaxed">
-              Most students use multiple AI tools but waste time switching between them.
+              Most use multiple tools but waste time switching.
             </p>
           </div>
 
@@ -505,7 +504,7 @@ export default function NexusCaseStudy() {
               ))}
             </div>
             <p className="text-white/60 text-xs mt-4 leading-relaxed">
-              Conflicting answers and manual comparison are the biggest friction points.
+              Conflicting answers and manual comparison are the top frustrations.
             </p>
           </div>
 
@@ -575,7 +574,7 @@ export default function NexusCaseStudy() {
               </div>
             </div>
             <p className="text-white/60 text-xs mt-4 leading-relaxed">
-              Students use AI across their academic workflow, from homework to writing.
+              AI supports homework, research, studying, and writing.
             </p>
           </div>
         </div>
@@ -583,28 +582,14 @@ export default function NexusCaseStudy() {
         {/* Key Insight */}
         <div className="mt-12 p-6 rounded-xl bg-[#60a5fa]/5 border border-[#60a5fa]/20 max-w-3xl">
           <p className="text-[#60a5fa] text-xs font-semibold uppercase tracking-widest mb-3">Key Insight</p>
-          <p className="text-white/70 leading-relaxed">
-            Students rely heavily on AI for learning, but inconsistent answers across models create uncertainty and force them to manually verify information.
+          <p className="text-white/70 leading-relaxed mb-4">
+            Three main pain points:
           </p>
-        </div>
-
-        {/* Survey Summary */}
-        <div className="max-w-3xl mt-16 pt-12 border-t border-white/10">
-          <h4 className="text-[#60a5fa] text-lg font-medium mb-4">Key Takeaways</h4>
-          <div className="space-y-4 text-white/50 leading-relaxed">
-            <p>
-              <span className="text-white/70 font-medium">Tool fatigue is real.</span>{' '}
-              82% use ChatGPT, but over half also check Claude or Gemini when they need to verify answers. Students waste time hopping between tools just to feel confident in their research.
-            </p>
-            <p>
-              <span className="text-white/70 font-medium">Conflicting answers cause confusion.</span>{' '}
-              72% cited conflicting AI answers as a major pain point. Students don't know which response to trust when different models give different information.
-            </p>
-            <p>
-              <span className="text-white/70 font-medium">Comparison is manual and slow.</span>{' '}
-              Students end up copying prompts between tabs, reading multiple responses, and trying to figure out what's actually correct on their own.
-            </p>
-          </div>
+          <ul className="space-y-2 text-white/60 text-sm leading-relaxed">
+            <li><span className="text-white/80 font-medium">Tool fatigue:</span> 82% use ChatGPT, but over half also check Claude or Gemini to verify answers.</li>
+            <li><span className="text-white/80 font-medium">Conflicting answers:</span> 72% cited this as a major frustration; students don&apos;t know which response to trust.</li>
+            <li><span className="text-white/80 font-medium">Manual comparison:</span> copying prompts between tabs and sifting through responses is slow and exhausting.</li>
+          </ul>
         </div>
 
         {/* Competitive Analysis */}
@@ -617,8 +602,8 @@ export default function NexusCaseStudy() {
             <div className="grid grid-cols-5 gap-4 mb-6 pb-4 border-b border-white/10">
               <div className="text-white/40 text-xs uppercase tracking-wider">Platform</div>
               <div className="text-white/40 text-xs uppercase tracking-wider">Multi-Model</div>
-              <div className="text-white/40 text-xs uppercase tracking-wider">Multi-Model</div>
-              <div className="text-white/40 text-xs uppercase tracking-wider">Answer Output</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Aggregated</div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">Output</div>
               <div className="text-white/40 text-xs uppercase tracking-wider">Gap</div>
             </div>
 
@@ -730,11 +715,8 @@ export default function NexusCaseStudy() {
 
           {/* Key Finding */}
           <div className="max-w-3xl mt-12 p-6 rounded-2xl bg-white/[0.02] border border-white/10">
-            <p className="text-white/50 leading-relaxed mb-4">
-              A clear pattern emerged: platforms either offer <strong className="text-white/70">polished UX for one model</strong> (ChatGPT, Claude) or <strong className="text-white/70">multi-model access with separate outputs</strong> (Poe, OpenRouter). None actually <strong className="text-white/70">aggregate responses across models</strong> to give users one consolidated answer.
-            </p>
             <p className="text-white/50 leading-relaxed">
-              This <strong className="text-white/70">validated our hypothesis</strong>: there's room for a platform that runs multiple AIs behind the scenes and surfaces only what they <strong className="text-white/70">agree on</strong>.
+              Most platforms offer either one model (ChatGPT, Claude) or many models with separate outputs (Poe, OpenRouter). None aggregate responses into one answer. Nexus fills this gap by running multiple AIs behind the scenes and surfacing only what they agree on.
             </p>
           </div>
         </div>
@@ -745,20 +727,23 @@ export default function NexusCaseStudy() {
           <p className="text-white/40 text-sm mb-6">Synthesizing Research Insights</p>
           
           <p className="text-white/50 leading-relaxed max-w-3xl mb-8">
-            We synthesized survey and interview data through affinity mapping. Three themes emerged:
+            Survey and interview data revealed three themes:
           </p>
           
-          <div className="max-w-3xl mb-12 space-y-3">
-            <p className="text-white/50 leading-relaxed">
-              <span className="text-white/80 font-medium">Confidence:</span> Students don't trust a single AI's answer. They want more confidence before using AI-generated information.
-            </p>
-            <p className="text-white/50 leading-relaxed">
-              <span className="text-white/80 font-medium">Comparison:</span> Comparing answers manually across tools is exhausting. Students need a tool that does this automatically.
-            </p>
-            <p className="text-white/50 leading-relaxed">
-              <span className="text-white/80 font-medium">Simplicity:</span> One clear answer is better than multiple conflicting responses. Students want a single best answer, not more choices.
-            </p>
-          </div>
+          <ul className="max-w-3xl mb-12 space-y-3 text-white/50 leading-relaxed">
+            <li className="flex items-start gap-3">
+              <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+              <span><span className="text-white/80 font-medium">Confidence:</span> Students don't trust one AI. They want consensus before using an answer.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+              <span><span className="text-white/80 font-medium">Comparison:</span> Manually comparing answers across tools is exhausting.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+              <span><span className="text-white/80 font-medium">Simplicity:</span> One clear answer beats multiple conflicting ones.</span>
+            </li>
+          </ul>
 
           {/* Affinity Map Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -1010,11 +995,8 @@ export default function NexusCaseStudy() {
           {/* Synthesis */}
           <div className="max-w-3xl mt-12">
             <h4 className="text-[#60a5fa] text-lg font-medium mb-4">Key Insight</h4>
-            <p className="text-white/50 leading-relaxed mb-4">
-              A clear pattern emerged: students <strong className="text-white/70">don't want to choose between AI models</strong>. They want <strong className="text-white/70">one clear answer</strong> they can feel confident about. The work of comparing responses should happen automatically.
-            </p>
             <p className="text-white/50 leading-relaxed">
-              This shaped our solution: <span className="text-white/70">a platform that runs multiple AIs behind the scenes</span>, finds where they agree, and surfaces only the most accurate, consensus-backed answer.
+              Students want one clear answer, not a choice between models. Our solution: run multiple AIs behind the scenes, find where they agree, and surface only the consensus-backed<Footnote id={2}>Responses are compared across models; answers that align are prioritized. Outliers are filtered before surfacing the final result.</Footnote> answer.
             </p>
           </div>
         </div>
@@ -1022,7 +1004,7 @@ export default function NexusCaseStudy() {
         {/* User Flows */}
         <div className="mt-20 pt-12 border-t border-white/10">
           <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-2">Core Product Flow</h3>
-          <p className="text-white/40 text-sm mb-10">Two core journeys mapped from research insights</p>
+          <p className="text-white/40 text-sm mb-10">Onboarding and main chat flow</p>
 
           {/* Condensed User Flows Grid */}
           <div className="space-y-4">
@@ -1046,24 +1028,47 @@ export default function NexusCaseStudy() {
               </div>
             </div>
 
-            {/* Ask & Compare Flow */}
+            {/* Main Chat Interface Flow */}
             <div 
               className="rounded-2xl p-6 border border-white/[0.06]"
               style={{
                 background: 'linear-gradient(145deg, rgba(59,130,246,0.06) 0%, rgba(59,130,246,0.02) 100%)',
               }}
             >
-              <p className="text-[#60a5fa] text-sm font-medium mb-5 tracking-wide">Ask & Compare</p>
-              <div className="flex items-center gap-3 flex-wrap">
-                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#3b82f6] text-white">Dashboard</span>
-                <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Enter Question</span>
-                <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Run AI Models</span>
-                <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Compare Responses</span>
-                <span className="text-white/30 text-sm">→</span>
-                <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Final Answer</span>
+              <p className="text-[#60a5fa] text-sm font-medium mb-5 tracking-wide">Main Chat Interface</p>
+              
+              {/* Free tier flow */}
+              <div className="mb-4">
+                <p className="text-white/60 text-xs font-medium mb-3 uppercase tracking-wider">Free</p>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#3b82f6] text-white">Dashboard</span>
+                  <span className="text-white/30 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Enter Question</span>
+                  <span className="text-white/30 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Run AI Models</span>
+                  <span className="px-2 py-1 rounded text-xs font-medium bg-white/10 text-white/70 border border-white/20" title="Limited access">2–3 models</span>
+                  <span className="text-white/30 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Compare Responses</span>
+                  <span className="text-white/30 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Final Answer</span>
+                </div>
+              </div>
+
+              {/* Paid tier flow */}
+              <div>
+                <p className="text-white/60 text-xs font-medium mb-3 uppercase tracking-wider">Paid</p>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#3b82f6] text-white">Dashboard</span>
+                  <span className="text-white/30 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#06b6d4] text-white">Enter Question</span>
+                  <span className="text-white/30 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Run AI Models</span>
+                  <span className="px-2 py-1 rounded text-xs font-medium bg-[#22c55e]/20 text-[#22c55e] border border-[#22c55e]/40" title="Full access">All models</span>
+                  <span className="text-white/30 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-lg text-xs font-medium bg-[#8b5cf6] text-white">Compare Responses</span>
+                  <span className="text-white/30 text-sm">→</span>
+                  <span className="px-4 py-2 rounded-full text-xs font-medium bg-[#22c55e] text-white">Final Answer</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1091,18 +1096,18 @@ export default function NexusCaseStudy() {
           {/* User Flows Summary */}
           <div className="max-w-3xl mt-12">
             <p className="text-white/50 leading-relaxed">
-              I mapped research insights to two core journeys: onboarding and the main product flow. Each flow hides the complexity of multi-model processing behind a simple, one-input interface.
+              Two journeys: onboarding (landing to dashboard) and the main chat. Free users get 2–3 AI models; paid users get all models.
             </p>
           </div>
         </div>
 
         {/* Low Fidelity Designs */}
-        <div className="mt-20 pt-12 border-t border-white/10">
+        <div id="lofi" className="mt-20 pt-12 border-t border-white/10 scroll-mt-32">
           <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-2">Low Fidelity Designs</h3>
           <p className="text-white/40 text-sm mb-6">Early Explorations</p>
           
           <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-            I started sketching user flows around the core experience: <span className="text-white/70">ask a question, get one consolidated answer</span>. The key challenge was hiding multi-model complexity while giving users confidence in the result.
+            I sketched flows around the core idea: ask once, get one answer. The challenge: hide multi-model complexity while building trust.
           </p>
 
           {/* Lo-Fi Wireframe Flows - Hand-drawn iPad Sketches */}
@@ -1149,8 +1154,8 @@ export default function NexusCaseStudy() {
                   </g>
                   
                   {/* Arrow */}
-                  <path d="M 195 68 Q 205 65, 215 71" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
-                  <path d="M 212 65 L 218 71 L 210 75" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch)"/>
+                  <path d="M 193 68 Q 203 65, 207 71" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
+                  <path d="M 203 65 L 209 71 L 201 75" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch)"/>
                   
                   {/* Screen 2: Features Section */}
                   <g transform="translate(215, 24)">
@@ -1199,8 +1204,8 @@ export default function NexusCaseStudy() {
                   </g>
                   
                   {/* Arrow */}
-                  <path d="M 195 182 Q 205 179, 215 185" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
-                  <path d="M 212 179 L 218 185 L 210 189" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch)"/>
+                  <path d="M 193 182 Q 203 179, 207 185" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
+                  <path d="M 203 179 L 209 185 L 201 189" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch)"/>
                   
                   {/* Screen 4: Success Stories */}
                   <g transform="translate(215, 138)">
@@ -1255,8 +1260,8 @@ export default function NexusCaseStudy() {
                   </g>
                   
                   {/* Arrow */}
-                  <path d="M 195 296 Q 205 293, 215 299" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
-                  <path d="M 212 293 L 218 299 L 210 303" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch)"/>
+                  <path d="M 193 296 Q 203 293, 207 299" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch)"/>
+                  <path d="M 203 293 L 209 299 L 201 303" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch)"/>
                   
                   {/* Screen 6: Sign Up */}
                   <g transform="translate(215, 252)">
@@ -1349,8 +1354,8 @@ export default function NexusCaseStudy() {
                   </g>
                   
                   {/* Arrow */}
-                  <path d="M 195 85 Q 205 82, 215 88" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch2)"/>
-                  <path d="M 212 82 L 218 88 L 210 92" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch2)"/>
+                  <path d="M 193 85 Q 203 82, 207 88" stroke="#666" strokeWidth="1.5" fill="none" filter="url(#pencilSketch2)"/>
+                  <path d="M 203 82 L 209 88 L 201 92" stroke="#666" strokeWidth="1.2" fill="none" filter="url(#pencilSketch2)"/>
                   
 {/* Screen 2: Model Selector */}
                   <g transform="translate(215, 28)">
@@ -1409,17 +1414,17 @@ export default function NexusCaseStudy() {
 
           {/* Lo-Fi Description */}
           <p className="text-white/50 text-sm leading-relaxed max-w-2xl mt-6">
-            These rough sketches helped me explore layout options and user flows before committing to any specific design direction. I focused on mapping out the core interactions: entering a question, seeing which models are running, and receiving a consolidated answer. Quick iPad sketches let me test ideas fast and validate the one-input concept early.
+            iPad sketches to explore layouts and flows. Focus: enter question, see which models run, get one answer. Quick way to validate the one-input concept.
           </p>
         </div>
 
         {/* Mid-Fidelity Prototypes */}
-        <div className="mt-20 pt-12 border-t border-white/10">
+        <div id="midfi" className="mt-20 pt-12 border-t border-white/10 scroll-mt-32">
           <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-2">Mid-Fidelity Prototypes</h3>
           <p className="text-white/40 text-sm mb-6">Refining the Experience</p>
           
           <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-            I built mid-fi wireframes to nail down layout, hierarchy, and interactions before jumping into high-fidelity designs. These grayscale website mockups helped test core functionality and get early feedback from the development team.
+            Mid-fi wireframes to lock down layout and interactions before high-fidelity. Grayscale mockups for testing and feedback.
           </p>
 
           {/* Mid-Fi Wireframes - Clean Digital Mockups */}
@@ -1477,7 +1482,7 @@ export default function NexusCaseStudy() {
                   </g>
                   
                   {/* Arrow */}
-                  <path d="M 195 75 L 205 75" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
+                  <path d="M 193 75 L 202 75" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
                   
                   {/* Screen 2: Features */}
                   <g transform="translate(210, 25)">
@@ -1534,7 +1539,7 @@ export default function NexusCaseStudy() {
                   </g>
                   
                   {/* Arrow */}
-                  <path d="M 195 205 L 205 205" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
+                  <path d="M 193 205 L 202 205" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
                   
                   {/* Screen 4: Success Stories */}
                   <g transform="translate(210, 155)">
@@ -1598,7 +1603,7 @@ export default function NexusCaseStudy() {
                   </g>
                   
                   {/* Arrow */}
-                  <path d="M 195 335 L 205 335" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
+                  <path d="M 193 335 L 202 335" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
                   
                   {/* Screen 6: Sign Up */}
                   <g transform="translate(210, 285)">
@@ -1713,7 +1718,7 @@ export default function NexusCaseStudy() {
                   </g>
                   
                   {/* Arrow */}
-                  <path d="M 195 85 L 205 85" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
+                  <path d="M 193 85 L 202 85" stroke="#666" strokeWidth="1" markerEnd="url(#cleanArrow)"/>
                   
                   {/* Screen 2: Model Selector */}
                   <g transform="translate(210, 25)">
@@ -1793,20 +1798,29 @@ export default function NexusCaseStudy() {
           {/* Mid-Fi Summary */}
           <div className="max-w-3xl mt-12">
             <h4 className="text-[#60a5fa] text-lg font-medium mb-4">Key Refinements</h4>
-            <div className="space-y-3 text-white/50 leading-relaxed">
-              <p><span className="text-white/70 font-medium">Model visibility:</span> Show which AI models are being used so users understand where the answer is coming from.</p>
-              <p><span className="text-white/70 font-medium">Simple interface:</span> Users only enter one question while the system runs multiple AI models behind the scenes.</p>
-              <p><span className="text-white/70 font-medium">Multi-model comparison:</span> The platform runs several models in parallel and compares responses before returning the final answer.</p>
-            </div>
+            <ul className="space-y-3 text-white/50 leading-relaxed">
+              <li className="flex items-start gap-3">
+                <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+                <span><span className="text-white/70 font-medium">Inline model selector:</span> Dropdown in-context instead of a separate screen. Users change models without leaving the chat.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+                <span><span className="text-white/70 font-medium">Badge system:</span> Compact colored badges below each response show which models contributed.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+                <span><span className="text-white/70 font-medium">Single-input layout:</span> One screen for question and answer. No wizard steps. Faster path to first answer.</span>
+              </li>
+            </ul>
           </div>
 
           {/* Figma Design */}
-          <div className="mt-20 pt-12 border-t border-white/10">
+          <div id="hifi" className="mt-20 pt-12 border-t border-white/10 scroll-mt-32">
             <h3 className="text-xl md:text-2xl font-semibold text-[#60a5fa] mb-2">High-Fidelity Design</h3>
             <p className="text-white/40 text-sm mb-6">Iteration & Final Design</p>
             
             <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-              The path to the final design involved extensive iteration. I explored multiple layout variations, tested different visual hierarchies, and refined the user flows based on feedback. Below are snapshots from my Figma workspace showing the evolution of ideas, from early lo-fi explorations and flow diagrams to polished component libraries and final screens.
+              Iteration from lo-fi to final: layout variations, visual hierarchy tests, and flow refinements. Figma snapshots from the process.
             </p>
 
             {/* All Figma Images Grid */}
@@ -1852,11 +1866,20 @@ export default function NexusCaseStudy() {
             {/* Key Learnings from Iteration */}
             <div className="max-w-3xl">
               <h4 className="text-[#60a5fa] text-lg font-medium mb-4">Iteration Insights</h4>
-              <div className="space-y-3 text-white/50 leading-relaxed">
-                <p><span className="text-white/70 font-medium">Flow simplification:</span> Early versions had too many steps. I streamlined onboarding to get users to their first answer faster.</p>
-                <p><span className="text-white/70 font-medium">Visual hierarchy:</span> Tested multiple ways to present AI sources before landing on the badge system that shows which models contributed.</p>
-                <p><span className="text-white/70 font-medium">Model transparency:</span> Added indicators showing which AI models were used, so students understand where the answer comes from.</p>
-              </div>
+              <ul className="space-y-3 text-white/50 leading-relaxed">
+                <li className="flex items-start gap-3">
+                  <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+                  <span><span className="text-white/70 font-medium">Flow simplification:</span> Streamlined onboarding so users reach their first answer faster.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+                  <span><span className="text-white/70 font-medium">Visual hierarchy:</span> Tested ways to present AI sources before landing on the badge system.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+                  <span><span className="text-white/70 font-medium">Model transparency:</span> Indicators show which models were used so students know where the answer comes from.</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -1867,7 +1890,7 @@ export default function NexusCaseStudy() {
         <SectionLabel>04</SectionLabel>
         <SectionTitle>Core Features</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-          Four integrated features that give students clear, consolidated answers without the complexity of managing multiple AI tools.
+          Four features that give students one clear answer without managing multiple AI tools.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl">
@@ -1880,7 +1903,7 @@ export default function NexusCaseStudy() {
             </div>
             <h3 className="text-white text-lg font-semibold mb-3">One Question, Best Answer</h3>
             <p className="text-white/40 text-sm leading-relaxed">
-              Ask anything. Nexus runs multiple AI models in parallel, compares their responses, and surfaces the strongest answer.
+              Ask anything. Multiple models run in parallel and surface the strongest answer.
             </p>
           </div>
 
@@ -1893,7 +1916,7 @@ export default function NexusCaseStudy() {
             </div>
             <h3 className="text-white text-lg font-semibold mb-3">Multi-Model Comparison</h3>
             <p className="text-white/40 text-sm leading-relaxed">
-              No more second-guessing AI answers. The system compares responses across models and surfaces where they agree.
+              Compares responses across models and surfaces where they agree.
             </p>
           </div>
 
@@ -1906,20 +1929,20 @@ export default function NexusCaseStudy() {
             </div>
             <h3 className="text-white text-lg font-semibold mb-3">Model Transparency</h3>
             <p className="text-white/40 text-sm leading-relaxed">
-              See which AI models contributed to your answer. Full transparency into which models were used in the process.
+              See which models contributed. Full transparency.
             </p>
           </div>
 
-          {/* Feature 4: Homework Intelligence */}
+          {/* Feature 4: Trusted Answers */}
           <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-emerald-500/20 transition-all duration-300 hover:bg-white/[0.05]">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center mb-4">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-white text-lg font-semibold mb-3">Homework Intelligence</h3>
+            <h3 className="text-white text-lg font-semibold mb-3">Trusted Answers</h3>
             <p className="text-white/40 text-sm leading-relaxed">
-              Built for students. Get clear answers for research, essays, and problem sets. Study smarter, not harder.
+              Consensus-backed answers for research where accuracy matters.
             </p>
           </div>
         </div>
@@ -1927,7 +1950,7 @@ export default function NexusCaseStudy() {
         {/* Features Summary */}
         <div className="max-w-3xl mt-12">
           <p className="text-white/50 leading-relaxed">
-            Each feature works together to simplify AI research. Ask one question, get one consolidated answer powered by multiple AI models. No tab hopping, no conflicting information.
+            One question, one answer. No tab hopping. No conflicting information.
           </p>
         </div>
       </Section>
@@ -1937,7 +1960,7 @@ export default function NexusCaseStudy() {
         <SectionLabel>05</SectionLabel>
         <SectionTitle>Design System</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-          I designed a <strong className="text-white/70">minimal, monochromatic system</strong> that feels both sophisticated and focused. The near-black theme <strong className="text-white/70">reduces eye strain</strong> during long study sessions while the clean white typography and subtle blue accents create a <strong className="text-white/70">professional, clear experience</strong> that lets the content shine.
+          Minimal, monochromatic system. Near-black reduces eye strain. Clean typography and subtle blue accents let the content shine.
         </p>
 
         {/* Design System */}
@@ -2114,12 +2137,27 @@ export default function NexusCaseStudy() {
           </div>
         </div>
 
-        {/* Key Design Decision */}
+        {/* Design System Rationale */}
         <div className="mt-16 p-8 rounded-2xl bg-white/[0.02] border border-white/10 max-w-3xl">
-          <p className="text-[#60a5fa] text-xs font-semibold uppercase tracking-widest mb-4">Key Design Decision</p>
-          <p className="text-white/70 text-lg leading-relaxed">
-            I designed a <strong className="text-white font-semibold">single-answer interface instead of showing multiple AI responses</strong> because student research showed they just want one clear answer, not more choices to sort through. All the multi-model comparison happens behind the scenes, so users just see what matters: one consolidated result.
-          </p>
+          <p className="text-[#60a5fa] text-xs font-semibold uppercase tracking-widest mb-6">Why These Choices</p>
+          <ul className="text-white/70 leading-relaxed space-y-4">
+            <li className="flex items-start gap-3">
+              <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+              <span><strong className="text-white font-semibold">Dark theme:</strong> Reduces eye strain during long sessions.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+              <span><strong className="text-white font-semibold">Monochromatic palette:</strong> Grays and white keep focus on the answer.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+              <span><strong className="text-white font-semibold">Blue accents:</strong> Subtle highlights and emphasis. Trustworthy without being distracting.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
+              <span><strong className="text-white font-semibold">Inter:</strong> Clean, readable. Serif italic for the tagline adds personality.</span>
+            </li>
+          </ul>
         </div>
       </Section>
 
@@ -2131,20 +2169,20 @@ export default function NexusCaseStudy() {
         <div className="max-w-4xl">
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-              <p className="text-4xl font-bold text-[#60a5fa] mb-2">40%</p>
-              <p className="text-white/70 text-sm">Increase in user sign-ups within 3 months of launch</p>
+              <p className="text-4xl font-bold text-[#60a5fa] mb-2">40%<Footnote id={4}>Compared to baseline in the 3 months before launch. Measured as completed sign-ups.</Footnote></p>
+              <p className="text-white/70 text-sm">More sign-ups in 3 months post-launch</p>
             </div>
             <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
               <p className="text-4xl font-bold text-[#60a5fa] mb-2">2x</p>
-              <p className="text-white/70 text-sm">Faster onboarding completion after flow redesign</p>
+              <p className="text-white/70 text-sm">Faster onboarding after flow redesign</p>
             </div>
             <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
               <p className="text-4xl font-bold text-[#60a5fa] mb-2">85%</p>
-              <p className="text-white/70 text-sm">Positive feedback from user testing sessions</p>
+              <p className="text-white/70 text-sm">Positive feedback from user testing</p>
             </div>
             <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-              <p className="text-4xl font-bold text-[#60a5fa] mb-2">500+</p>
-              <p className="text-white/70 text-sm">Active users on designs shipped to production</p>
+              <p className="text-4xl font-bold text-[#60a5fa] mb-2">10,000+</p>
+              <p className="text-white/70 text-sm">Active users on shipped designs</p>
             </div>
           </div>
         </div>
@@ -2160,43 +2198,70 @@ export default function NexusCaseStudy() {
             <div>
               <h3 className="text-[#60a5fa] font-medium mb-3">What I Learned</h3>
               <ul className="space-y-2 text-white/60 text-sm">
-                <li>Collaborating daily with engineers on constraints</li>
-                <li>Building design systems from scratch</li>
-                <li>Designing for students who want answers fast</li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#60a5fa]/80 mt-0.5 shrink-0">•</span>
+                  <span>Collaborating daily with engineers on constraints</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#60a5fa]/80 mt-0.5 shrink-0">•</span>
+                  <span>Building design systems from scratch</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#60a5fa]/80 mt-0.5 shrink-0">•</span>
+                  <span>Designing for students who want answers fast</span>
+                </li>
               </ul>
             </div>
             <div>
               <h3 className="text-[#60a5fa] font-medium mb-3">Challenges</h3>
               <ul className="space-y-2 text-white/60 text-sm">
-                <li>Communicating model transparency through UI</li>
-                <li>Handling unpredictable AI response times</li>
-                <li>Balancing input from multiple stakeholders</li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#60a5fa]/80 mt-0.5 shrink-0">•</span>
+                  <span>Communicating model transparency through UI</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#60a5fa]/80 mt-0.5 shrink-0">•</span>
+                  <span>Handling unpredictable AI response times</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#60a5fa]/80 mt-0.5 shrink-0">•</span>
+                  <span>Balancing input from multiple stakeholders</span>
+                </li>
               </ul>
             </div>
             <div>
               <h3 className="text-[#60a5fa] font-medium mb-3">Next Time</h3>
               <ul className="space-y-2 text-white/60 text-sm">
-                <li>Test with diverse student populations earlier</li>
-                <li>Design mobile flows sooner</li>
-                <li>Explore study group collaboration features</li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#60a5fa]/80 mt-0.5 shrink-0">•</span>
+                  <span>Test with diverse student populations earlier</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#60a5fa]/80 mt-0.5 shrink-0">•</span>
+                  <span>Design mobile flows sooner</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#60a5fa]/80 mt-0.5 shrink-0">•</span>
+                  <span>Explore study group collaboration features</span>
+                </li>
               </ul>
             </div>
           </div>
 
           <div className="p-5 bg-white/[0.03] rounded-xl border border-white/10">
             <p className="text-white/70 text-sm leading-relaxed">
-              <span className="text-white font-medium">Key Insight:</span> This internship taught me to ship production-quality work in a fast-paced startup. I gained confidence collaborating with senior engineers and learned to design complex tools that respect user expertise.
+              <span className="text-white font-medium">Key Insight:</span> Shipped production-quality work in a fast-paced startup. Learned to collaborate with engineers and design complex tools that respect user expertise.
             </p>
           </div>
         </div>
       </Section>
 
       {/* Final Product Showcase - Looping Slideshow */}
-      <Section>
+      <Section id="product-walkthrough">
         <SectionLabel>08</SectionLabel>
         <SectionTitle>Product Walkthrough</SectionTitle>
         <p className="text-white/50 leading-relaxed max-w-3xl mb-12">
-          Browse through the final high-fidelity designs showcasing Nexus's core features and glassmorphism aesthetic.
+          Final high-fidelity designs of Nexus core features.
         </p>
 
         {/* Big Looping Slideshow */}
@@ -2282,6 +2347,9 @@ export default function NexusCaseStudy() {
         </div>
       </section>
 
+      <style jsx global>{`
+        html { scroll-behavior: smooth; }
+      `}</style>
       <style jsx>{`
         @keyframes float {
           0%, 100% {
@@ -2302,7 +2370,7 @@ export default function NexusCaseStudy() {
   )
 }
 
-function Section({ children }: { children: React.ReactNode }) {
+function Section({ children, id }: { children: React.ReactNode; id?: string }) {
   const ref = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -2330,7 +2398,8 @@ function Section({ children }: { children: React.ReactNode }) {
   return (
     <section 
       ref={ref}
-      className={`relative z-10 py-24 px-8 border-t border-white/5 transition-all duration-700 ease-out ${
+      id={id}
+      className={`relative z-10 py-24 px-8 border-t border-white/5 transition-all duration-700 ease-out ${id ? 'scroll-mt-24' : ''} ${
         isVisible 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 translate-y-8'
@@ -2340,6 +2409,17 @@ function Section({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </section>
+  )
+}
+
+function Footnote({ id, children }: { id: number; children: string }) {
+  return (
+    <span className="relative inline group cursor-help">
+      <sup className="text-[#60a5fa]/50 text-[10px] font-normal ml-0.5 select-none">[{id}]</sup>
+      <span className="absolute bottom-full left-0 mb-2 px-4 py-3 rounded-lg bg-[#1a1a1a] border border-white/10 text-white/80 text-xs leading-relaxed max-w-[280px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-150 pointer-events-none z-[100] shadow-xl">
+        {children}
+      </span>
+    </span>
   )
 }
 
