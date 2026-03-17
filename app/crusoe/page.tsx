@@ -68,9 +68,9 @@ function CustomCursor() {
           top: 0,
           transition: 'width 0.1s, height 0.1s, background-color 0.1s, box-shadow 0.1s',
           backgroundColor: hovering ? ACCENT : 'rgba(255,255,255,0.9)',
-          boxShadow: hovering ? `0 0 20px ${ACCENT}80` : '0 0 4px rgba(255,255,255,0.5)',
-          width: hovering ? 32 : 8,
-          height: hovering ? 32 : 8,
+          boxShadow: hovering ? `0 0 16px ${ACCENT}80` : '0 0 4px rgba(255,255,255,0.5)',
+          width: hovering ? 20 : 8,
+          height: hovering ? 20 : 8,
         }}
       />
       {hovering && (
@@ -80,8 +80,8 @@ function CustomCursor() {
           style={{
             left: lastPos.current.x,
             top: lastPos.current.y,
-            width: 48,
-            height: 48,
+            width: 32,
+            height: 32,
             borderColor: `${ACCENT}60`,
           }}
         />
@@ -528,7 +528,7 @@ export default function CrusoeCaseStudy() {
             onClick={() => setNavExpanded(!navExpanded)}
             className="flex items-center gap-2 min-h-[44px] px-4 py-3 rounded-full text-xs font-medium transition-all duration-300 touch-manipulation bg-white/5 hover:bg-white/10 text-white/80"
           >
-            <span>{navExpanded ? 'Close' : SECTIONS.find((s) => s.id === activeSection)?.label ?? 'Sections'}</span>
+            <span>{navExpanded ? 'Close' : (SECTIONS.find((s) => s.id === activeSection)?.label ?? 'Intro')}</span>
             <svg className={`w-4 h-4 transition-transform duration-200 ${navExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
@@ -648,9 +648,6 @@ export default function CrusoeCaseStudy() {
               How might we give students one accurate answer by aggregating and comparing responses from multiple AI models?
             </p>
           </div>
-          <CrusoeConnection>
-            Nexus gave students one answer so they could stop switching between tools. Crusoe gives developers one platform so they can stop managing infrastructure. Both hide the complexity so people can focus on what actually matters.
-          </CrusoeConnection>
         </div>
         </FadeIn>
       </section>
@@ -1682,6 +1679,9 @@ export default function CrusoeCaseStudy() {
           <p className="text-white/70 leading-relaxed mb-6">
             What gets me excited about Crusoe is the energy-first mindset. Turning flare gas into compute instead of burning it. Building AI infrastructure that runs on renewables. That&apos;s not just smart engineering, it&apos;s the kind of work that matters. I want to be part of a team that&apos;s rethinking how we power the future!
           </p>
+          <CrusoeConnection>
+            Nexus gave students one answer so they could stop switching between tools. Crusoe gives developers one platform so they can stop managing infrastructure. Both hide the complexity so people can focus on what actually matters.
+          </CrusoeConnection>
         </div>
         </FadeIn>
       </section>
