@@ -147,6 +147,27 @@ const ITERATION_INSIGHTS = [
   'Model transparency: Indicators show which models were used so students know where the answer comes from.',
 ]
 
+const PAIN_POINT_DATA = [
+  { label: 'Conflicting answers', value: 72, quote: '"ChatGPT said X, Claude said Y. I had to Google it myself to figure out who was right."', detail: 'Students reported getting different answers for the same question across tools, leading to confusion and extra verification work.' },
+  { label: 'Fact-checking AI answers', value: 65, quote: '"I never trust one answer. I always run it through at least two models before I believe it."', detail: 'Lack of trust drives manual cross-checking, especially for STEM and research-heavy subjects.' },
+  { label: 'Tab hopping', value: 58, quote: '"I have ChatGPT, Claude, and Gemini open. Copy, paste, compare. Every. Single. Time."', detail: 'Switching between tabs and copying prompts adds friction and breaks focus.' },
+]
+
+const TOOL_USAGE_DATA = [
+  { name: 'ChatGPT', pct: 85, detail: 'Most common first choice. Students often use it alone, then switch to others when unsure.' },
+  { name: 'Claude', pct: 72, detail: 'Popular for coding and longer explanations. Often used as a second check against ChatGPT.' },
+  { name: 'Gemini', pct: 58, detail: 'Used for Google integration and as a third opinion when the first two disagree.' },
+  { name: 'Poe', pct: 35, detail: 'Multi-model access appreciated, but separate outputs mean students still compare manually.' },
+  { name: 'Other', pct: 18, detail: 'Perplexity, Copilot, and niche tools. Usually for specific use cases.' },
+]
+
+const SURVEY_QA = [
+  { q: 'How often do you cross-check answers across different AI tools?', responses: ['"Almost every time for homework. Maybe 80% of the time."', '"Only for math and science. Humanities I trust more."', '"Daily. I don\'t trust a single model for anything important."'] },
+  { q: 'What\'s your biggest frustration when using AI for homework?', responses: ['"Copy-pasting the same prompt into 3 different tabs."', '"When they disagree, I have to figure out who\'s right."', '"The time it takes. Sometimes faster to just Google."'] },
+  { q: 'Which AI tools do you use regularly?', responses: ['"ChatGPT and Claude. Sometimes Gemini if I need another opinion."', '"Mainly ChatGPT. I\'ll check Claude for coding."', '"Poe for multi-model, but the answers are separate. Still have to compare."'] },
+  { q: 'How do you feel when AI answers conflict?', responses: ['"Annoyed. I have to do the work myself anyway."', '"Uncertain. I usually ask a TA or check the textbook."', '"I just pick one and hope. Not ideal."'] },
+]
+
 function CrusoeConnection({ children }: { children: React.ReactNode }) {
   return (
     <div
@@ -426,6 +447,9 @@ export default function CrusoeCaseStudy() {
   const [isMobile, setIsMobile] = useState(false)
   const [fidelityLevel, setFidelityLevel] = useState<'lofi' | 'midfi' | 'hifi'>('lofi') // Lo-Fi first by default
   const [expandedPrinciple, setExpandedPrinciple] = useState<number | null>(null)
+  const [selectedPainPoint, setSelectedPainPoint] = useState<number | null>(null)
+  const [expandedQA, setExpandedQA] = useState<number | null>(null)
+  const [selectedToolIndex, setSelectedToolIndex] = useState<number | null>(null)
 
   // Mobile detection
   useEffect(() => {
@@ -600,27 +624,97 @@ export default function CrusoeCaseStudy() {
           <p className="text-white/70 leading-relaxed mb-6">
             To validate the problem and understand how students actually use AI for homework and research, I ran a survey with 48 college students. I asked about their current workflows: which tools they use, how often they cross-check answers across models, and where they run into friction. The goal was to quantify the trust gap and identify the biggest pain points.
           </p>
-          <p className="text-white/50 text-sm mb-8">Top 3 pain points from the survey:</p>
 
-          {/* Animated bars */}
-          <div className="space-y-6 mb-16">
-            {[
-              { label: 'Conflicting answers', value: 72 },
-              { label: 'Fact-checking AI answers', value: 65 },
-              { label: 'Tab hopping', value: 58 },
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-4">
-                <span className="text-white/60 text-sm w-40 shrink-0">{item.label}</span>
-                <div className="flex-1 h-8 bg-white/5 rounded-lg overflow-hidden">
-                  <div
-                    className="h-full rounded-lg transition-all duration-1000 ease-out"
-                    style={{
-                      width: barAnimated ? `${item.value}%` : '0%',
-                      backgroundColor: ACCENT,
-                    }}
-                  />
-                </div>
-                <span className="text-white/60 text-sm w-12 text-right">{item.value}%</span>
+          {/* Interactive Pain Points Bar Chart */}
+          <p className="text-white/50 text-sm mb-4">Top pain points — click a bar to explore</p>
+          <div className="space-y-4 mb-8">
+            {PAIN_POINT_DATA.map((item, i) => (
+              <div key={i} className="group">
+                <button
+                  data-cursor-hover
+                  onClick={() => setSelectedPainPoint(selectedPainPoint === i ? null : i)}
+                  className="w-full flex items-center gap-4 text-left transition-all duration-300"
+                >
+                  <span className="text-white/60 text-sm w-36 md:w-40 shrink-0">{item.label}</span>
+                  <div className="flex-1 h-9 bg-white/5 rounded-lg overflow-hidden cursor-pointer hover:bg-white/[0.08] transition-colors">
+                    <div
+                      className="h-full rounded-lg transition-all duration-1000 ease-out"
+                      style={{
+                        width: barAnimated ? `${item.value}%` : '0%',
+                        backgroundColor: selectedPainPoint === i ? ACCENT : `${ACCENT}99`,
+                      }}
+                    />
+                  </div>
+                  <span className="text-white/60 text-sm w-12 text-right">{item.value}%</span>
+                </button>
+                {selectedPainPoint === i && (
+                  <div className="mt-3 ml-0 pl-0 md:ml-40 md:pl-0 rounded-lg p-4 bg-white/[0.04] border border-white/10 transition-all duration-200">
+                    <p className="text-white/80 text-sm italic mb-2">{item.quote}</p>
+                    <p className="text-white/50 text-xs">{item.detail}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Interactive Tool Usage Bar Chart */}
+          <p className="text-white/50 text-sm mb-4">Tools students use — click a bar to explore</p>
+          <div className="space-y-4 mb-12">
+            {TOOL_USAGE_DATA.map((t, i) => (
+              <div key={i} className="group">
+                <button
+                  data-cursor-hover
+                  onClick={() => setSelectedToolIndex(selectedToolIndex === i ? null : i)}
+                  className="w-full flex items-center gap-4 text-left transition-all duration-300"
+                >
+                  <span className="text-white/60 text-sm w-20 shrink-0">{t.name}</span>
+                  <div className="flex-1 h-8 bg-white/5 rounded-lg overflow-hidden cursor-pointer hover:bg-white/[0.08] transition-colors">
+                    <div
+                      className="h-full rounded-lg transition-all duration-1000 ease-out"
+                      style={{
+                        width: barAnimated ? `${t.pct}%` : '0%',
+                        backgroundColor: selectedToolIndex === i ? ACCENT : `${ACCENT}99`,
+                      }}
+                    />
+                  </div>
+                  <span className="text-white/60 text-sm w-12 text-right">{t.pct}%</span>
+                </button>
+                {selectedToolIndex === i && (
+                  <div className="mt-3 ml-0 md:ml-24 rounded-lg p-4 bg-white/[0.04] border border-white/10 transition-all duration-200">
+                    <p className="text-white/60 text-sm">{t.detail}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Survey Q&A - Expandable */}
+          <p className="text-white/50 text-sm mb-4">Sample questions & responses from the survey</p>
+          <div className="space-y-3 mb-12">
+            {SURVEY_QA.map((qa, i) => (
+              <div
+                key={i}
+                className="rounded-lg border border-white/10 overflow-hidden transition-all duration-300"
+              >
+                <button
+                  data-cursor-hover
+                  onClick={() => setExpandedQA(expandedQA === i ? null : i)}
+                  className="w-full p-4 text-left flex items-center justify-between gap-4 hover:bg-white/[0.03] transition-colors"
+                >
+                  <span className="text-white/80 text-sm font-medium">{qa.q}</span>
+                  <span className="text-white/40 text-xs shrink-0">{expandedQA === i ? '−' : '+'}</span>
+                </button>
+                {expandedQA === i && (
+                  <div className="px-4 pb-4 pt-0 border-t border-white/5">
+                    <ul className="space-y-2 mt-3">
+                      {qa.responses.map((r, j) => (
+                        <li key={j} className="text-white/60 text-sm italic pl-4 border-l-2" style={{ borderColor: `${ACCENT}40` }}>
+                          {r}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             ))}
           </div>
