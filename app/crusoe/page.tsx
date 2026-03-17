@@ -450,6 +450,8 @@ export default function CrusoeCaseStudy() {
   const [selectedPainPoint, setSelectedPainPoint] = useState<number | null>(null)
   const [expandedQA, setExpandedQA] = useState<number | null>(null)
   const [selectedToolIndex, setSelectedToolIndex] = useState<number | null>(null)
+  const [navExpanded, setNavExpanded] = useState(false)
+  const [isFullscreen, setIsFullscreen] = useState(false)
 
   // Mobile detection
   useEffect(() => {
@@ -499,28 +501,76 @@ export default function CrusoeCaseStudy() {
     return () => obs.disconnect()
   }, [])
 
+  // Fullscreen change listener
+  useEffect(() => {
+    const handler = () => setIsFullscreen(!!document.fullscreenElement)
+    document.addEventListener('fullscreenchange', handler)
+    return () => document.removeEventListener('fullscreenchange', handler)
+  }, [])
+
+  const toggleFullscreen = () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen()
+    } else {
+      document.documentElement.requestFullscreen()
+    }
+  }
+
   return (
     <main className="min-h-screen text-white crusoe-cursor-context relative">
       <CustomCursor />
       <SubtlePageBackground />
-      {/* Sticky Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 py-3 md:py-4 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/5 overflow-x-auto scrollbar-hide">
-        <div className="min-w-max flex gap-2 justify-center px-6 md:px-10 py-1">
-          {SECTIONS.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              data-cursor-hover
-              className={`shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center px-4 py-3 rounded-full text-xs font-medium transition-all duration-300 hover:scale-110 touch-manipulation ${
-                activeSection === s.id
-                  ? 'bg-white/10 text-white'
-                  : 'text-white/50 hover:text-white/80 hover:bg-white/5'
-              }`}
-            >
-              {s.label}
-            </a>
-          ))}
+      {/* Sticky Nav - Collapsible */}
+      <nav className="fixed top-0 left-0 right-0 z-50 py-3 md:py-4 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/5">
+        <div className="flex items-center justify-between gap-4 px-4 md:px-6">
+          <button
+            data-cursor-hover
+            onClick={() => setNavExpanded(!navExpanded)}
+            className="flex items-center gap-2 min-h-[44px] px-4 py-3 rounded-full text-xs font-medium transition-all duration-300 touch-manipulation bg-white/5 hover:bg-white/10 text-white/80"
+          >
+            <span>{navExpanded ? 'Close' : SECTIONS.find((s) => s.id === activeSection)?.label ?? 'Sections'}</span>
+            <svg className={`w-4 h-4 transition-transform duration-200 ${navExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <button
+            data-cursor-hover
+            onClick={toggleFullscreen}
+            className="shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full text-white/50 hover:text-white/80 hover:bg-white/5 transition-all duration-300 touch-manipulation"
+            title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
+          >
+            {isFullscreen ? (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+            )}
+          </button>
         </div>
+        {navExpanded && (
+          <div className="px-4 md:px-6 pb-3 pt-1 overflow-x-auto scrollbar-hide">
+            <div className="min-w-max flex flex-wrap gap-2 justify-center">
+              {SECTIONS.map((s) => (
+                <a
+                  key={s.id}
+                  href={`#${s.id}`}
+                  onClick={() => setNavExpanded(false)}
+                  data-cursor-hover
+                  className={`shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center px-4 py-3 rounded-full text-xs font-medium transition-all duration-300 hover:scale-110 touch-manipulation ${
+                    activeSection === s.id
+                      ? 'bg-white/10 text-white'
+                      : 'text-white/50 hover:text-white/80 hover:bg-white/5'
+                  }`}
+                >
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero */}
@@ -529,11 +579,11 @@ export default function CrusoeCaseStudy() {
         className="relative min-h-screen flex flex-col justify-center px-4 pt-32 pb-20 md:px-6 md:pt-24 overflow-hidden"
       >
         <FlowingLinesBackground />
-        {/* Gradient fade at bottom - soft blend, no hard edge */}
+        {/* Gradient fade at bottom - soft blend, extends green further */}
         <div
           className="absolute bottom-0 left-0 right-0 h-3/4 pointer-events-none z-[1]"
           style={{
-            background: `linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.15) 40%, rgba(10,10,10,0.5) 70%, #0a0a0a 100%)`,
+            background: `linear-gradient(to bottom, transparent 0%, transparent 55%, rgba(10,10,10,0.12) 75%, rgba(10,10,10,0.4) 90%, #0a0a0a 100%)`,
           }}
         />
         <div className="relative z-10 max-w-3xl">
