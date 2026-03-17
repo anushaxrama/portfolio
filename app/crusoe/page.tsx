@@ -109,28 +109,29 @@ function FadeIn({ children, className = '' }: { children: React.ReactNode; class
 
 const SECTIONS = [
   { id: 'hero', label: 'Intro' },
-  { id: 'about-me', label: 'The Fit' },
   { id: 'problem', label: 'Problem' },
   { id: 'research', label: 'Research' },
   { id: 'principles', label: 'Principles' },
   { id: 'iteration', label: 'Iteration' },
-  { id: 'walkthrough', label: 'Product' },
-  { id: 'figma-process', label: 'Design Process' },
-  { id: 'solution', label: 'Solution' },
+  { id: 'walkthrough', label: 'Follow the Journey' },
+  { id: 'figma-process', label: 'From Sketch to Ship' },
+  { id: 'solution', label: 'What We Shipped' },
   { id: 'design-system', label: 'Design' },
-  { id: 'impact', label: 'Impact' },
+  { id: 'impact', label: 'The Results' },
+  { id: 'about-me', label: 'The Fit' },
+  { id: 'company-research', label: 'Company Research' },
   { id: 'why-crusoe', label: 'Why Crusoe' },
 ]
 
 const NEXUS_IMAGES = [
-  { src: '/narbl/narbl-1.png', label: 'Landing: Everything You Need. One Nexus.' },
-  { src: '/narbl/narbl-3.png', label: 'Smarter Homework, Faster Results' },
-  { src: '/narbl/narbl-4.png', label: 'Homework Intelligence' },
-  { src: '/narbl/narbl-5.png', label: 'Success Stories' },
-  { src: '/narbl/narbl-6.png', label: 'Trusted by Top Students' },
-  { src: '/narbl/narbl-7.png', label: 'Seamless Integrations' },
-  { src: '/narbl/narbl-8.png', label: 'Why Choose Nexus' },
-  { src: '/narbl/narbl-9.png?v=5', label: 'Final Platform' },
+  { src: '/narbl/narbl-1.png', label: '1. Student lands on Nexus—one place, no tab hopping' },
+  { src: '/narbl/narbl-3.png', label: '2. Asks one question. Nexus runs multiple models in parallel' },
+  { src: '/narbl/narbl-4.png', label: '3. Models compare and surface the strongest answer' },
+  { src: '/narbl/narbl-5.png', label: '4. Success stories—students trust the results' },
+  { src: '/narbl/narbl-6.png', label: '5. Trusted by top students who need accuracy' },
+  { src: '/narbl/narbl-7.png', label: '6. Seamless integrations for homework and research' },
+  { src: '/narbl/narbl-8.png', label: '7. Why choose Nexus—one answer, backed by many' },
+  { src: '/narbl/narbl-9.png?v=5', label: '8. The final experience—ready for the next question' },
 ]
 
 const FIGMA_IMAGES = [
@@ -200,6 +201,84 @@ function TypingEffect() {
   )
 }
 
+function SubtlePageBackground() {
+  const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 })
+
+  useEffect(() => {
+    const move = (e: MouseEvent) => {
+      setMouse({ x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight })
+    }
+    window.addEventListener('mousemove', move, { passive: true })
+    return () => window.removeEventListener('mousemove', move)
+  }, [])
+
+  return (
+    <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+      {/* Gradient base - smooth flow, no banding */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            linear-gradient(180deg, #0a0a0a 0%, #0b0d0a 25%, #0a0a0a 50%, #090b09 75%, #0a0a0a 100%)
+          `,
+        }}
+      />
+      {/* Flowing gradient orbs - stronger, more visible, create flow */}
+      <div
+        className="absolute -top-1/3 -left-1/4 w-[100%] h-[80%] rounded-full blur-[150px] opacity-[0.08]"
+        style={{ background: `radial-gradient(ellipse 80% 60% at 50% 30%, rgba(34,197,94,0.25) 0%, rgba(34,197,94,0.05) 40%, transparent 70%)` }}
+      />
+      <div
+        className="absolute top-[30%] -right-1/4 w-[70%] h-[70%] rounded-full blur-[120px] opacity-[0.06]"
+        style={{ background: `radial-gradient(ellipse 60% 80% at 30% 50%, rgba(34,197,94,0.2) 0%, transparent 60%)` }}
+      />
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-[60%] rounded-full blur-[140px] opacity-[0.05]"
+        style={{ background: `radial-gradient(ellipse 70% 50% at 50% 80%, rgba(34,197,94,0.15) 0%, transparent 60%)` }}
+      />
+      <div
+        className="absolute top-1/2 left-0 w-[50%] h-[50%] rounded-full blur-[100px] opacity-[0.04]"
+        style={{ background: `radial-gradient(circle at 20% 50%, rgba(34,197,94,0.12) 0%, transparent 70%)` }}
+      />
+      {/* Subtle grain texture */}
+      <div
+        className="absolute inset-0 opacity-[0.05] mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: 'repeat',
+        }}
+      />
+      {/* Mouse-following soft glow */}
+      <div
+        className="absolute w-[80vmax] h-[80vmax] rounded-full transition-all duration-700 ease-out"
+        style={{
+          left: `calc(${mouse.x * 100}% - 40vmax)`,
+          top: `calc(${mouse.y * 100}% - 40vmax)`,
+          background: `radial-gradient(circle, rgba(34,197,94,0.04) 0%, transparent 60%)`,
+          filter: 'blur(50px)',
+        }}
+      />
+      {/* Subtle floating dots */}
+      <div className="absolute inset-0">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              left: `${(i * 7 + 3) % 100}%`,
+              top: `${(i * 11 + 5) % 100}%`,
+              width: 2,
+              height: 2,
+              opacity: 0.04 + (i % 3) * 0.01,
+              animation: `float ${15 + (i % 10)}s ease-in-out ${i * 0.3}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const FLOAT_PARTICLES = [
   { id: 0, x: 25, y: 20, size: 1.5, duration: 18, delay: 0 },
   { id: 1, x: 60, y: 35, size: 2, duration: 22, delay: 1 },
@@ -218,14 +297,14 @@ const FLOAT_PARTICLES = [
 function FlowingLinesBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Gradient base */}
+      {/* Gradient base - flows with page background */}
       <div
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 50% at 70% 40%, rgba(34,197,94,0.15) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 80% at 90% 80%, rgba(34,197,94,0.08) 0%, transparent 50%),
-            radial-gradient(ellipse 40% 40% at 20% 60%, rgba(34,197,94,0.06) 0%, transparent 60%)
+            radial-gradient(ellipse 90% 60% at 70% 30%, rgba(34,197,94,0.18) 0%, rgba(34,197,94,0.05) 45%, transparent 70%),
+            radial-gradient(ellipse 70% 90% at 85% 75%, rgba(34,197,94,0.12) 0%, transparent 55%),
+            radial-gradient(ellipse 50% 50% at 15% 55%, rgba(34,197,94,0.08) 0%, transparent 65%)
           `,
         }}
       />
@@ -397,8 +476,9 @@ export default function CrusoeCaseStudy() {
   }, [])
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white crusoe-cursor-context">
+    <main className="min-h-screen text-white crusoe-cursor-context relative">
       <CustomCursor />
+      <SubtlePageBackground />
       {/* Sticky Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 py-3 md:py-4 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/5 overflow-x-auto scrollbar-hide">
         <div className="min-w-max flex gap-2 justify-center px-6 md:px-10 py-1">
@@ -425,6 +505,13 @@ export default function CrusoeCaseStudy() {
         className="relative min-h-screen flex flex-col justify-center px-4 pt-32 pb-20 md:px-6 md:pt-24 overflow-hidden"
       >
         <FlowingLinesBackground />
+        {/* Gradient fade at bottom - soft blend, no hard edge */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-3/4 pointer-events-none z-[1]"
+          style={{
+            background: `linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.15) 40%, rgba(10,10,10,0.5) 70%, #0a0a0a 100%)`,
+          }}
+        />
         <div className="relative z-10 max-w-3xl">
           <p className="text-sm tracking-[0.3em] uppercase mb-4" style={{ color: ACCENT }}>
             Interactive Case Study
@@ -440,43 +527,34 @@ export default function CrusoeCaseStudy() {
               <p className="text-white/90">Product Designer</p>
             </div>
             <div>
-              <p className="text-white/40 uppercase tracking-wider mb-1">Duration</p>
-              <p className="text-white/90">10 weeks</p>
-            </div>
-            <div>
               <p className="text-white/40 uppercase tracking-wider mb-1">Context</p>
               <p className="text-white/90">Internship @ narb.</p>
+            </div>
+            <div>
+              <p className="text-white/40 uppercase tracking-wider mb-1">Duration</p>
+              <p className="text-white/90">10 weeks</p>
             </div>
             <div>
               <p className="text-white/40 uppercase tracking-wider mb-1">Tools</p>
               <p className="text-white/90">Figma, Cursor, Lovable</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* About Me - Personal & Crusoe Excitement */}
-      <section id="about-me" className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5">
-        <FadeIn>
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6">The Fit</h2>
-          <p className="text-white/70 leading-relaxed mb-6">
-            Nexus hid multi-model AI complexity so students could get one answer. Crusoe hides GPU and energy complexity so developers can build. Same problem.
+          <p className="text-white/60 text-sm mt-6 leading-relaxed">
+            How I designed Nexus to give students one trusted answer by aggregating multiple AI models—from problem to shipped product.
           </p>
-          <p className="text-white/70 leading-relaxed mb-6">
-            What gets me excited about Crusoe is the energy-first mindset. Turning flare gas into compute instead of burning it. Building AI infrastructure that runs on renewables. That&apos;s not just smart engineering, it&apos;s the kind of work that matters. I want to be part of a team that&apos;s rethinking how we power the future!
+          <p className="mt-16 text-white/40 text-sm flex items-center justify-center gap-2 animate-subtle-pulse">
+            <span>Scroll to explore</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
           </p>
-          <CrusoeConnection>
-            Crusoe&apos;s mission: accelerate energy and intelligence. Nexus did that for students—trustworthy AI, one answer. Same direction: make powerful systems accessible.
-          </CrusoeConnection>
         </div>
-        </FadeIn>
       </section>
 
       {/* Problem */}
       <section
         id="problem"
-        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]"
       >
         <FadeIn>
         <div className="max-w-3xl mx-auto">
@@ -497,7 +575,7 @@ export default function CrusoeCaseStudy() {
             </p>
           </div>
           <CrusoeConnection>
-            Students juggle models; developers juggle infrastructure. Crusoe takes that off developers&apos; plates. Same idea: less friction, more focus.
+            Nexus gave students one answer so they could stop switching between tools. Crusoe gives developers one platform so they can stop managing infrastructure. Both hide the complexity so people can focus on what actually matters.
           </CrusoeConnection>
         </div>
         </FadeIn>
@@ -506,11 +584,19 @@ export default function CrusoeCaseStudy() {
       {/* Research */}
       <section
         id="research"
-        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]"
       >
         <FadeIn>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-12">Research</h2>
+          <div className="rounded-xl p-6 bg-white/[0.03] border border-white/10 mb-8">
+            <h3 className="text-sm font-semibold mb-3" style={{ color: ACCENT }}>How I Researched This Problem</h3>
+            <ul className="space-y-2 text-white/70 text-sm">
+              <li className="flex items-start gap-2"><span className="text-white/50">1.</span> Surveyed 48 college students on AI usage, cross-checking habits, and friction points</li>
+              <li className="flex items-start gap-2"><span className="text-white/50">2.</span> Mapped the competitive landscape (ChatGPT, Claude, Poe, OpenRouter) to find the gap</li>
+              <li className="flex items-start gap-2"><span className="text-white/50">3.</span> Validated the trust gap with quantitative data before designing</li>
+            </ul>
+          </div>
           <p className="text-white/70 leading-relaxed mb-6">
             To validate the problem and understand how students actually use AI for homework and research, I ran a survey with 48 college students. I asked about their current workflows: which tools they use, how often they cross-check answers across models, and where they run into friction. The goal was to quantify the trust gap and identify the biggest pain points.
           </p>
@@ -567,9 +653,6 @@ export default function CrusoeCaseStudy() {
               None aggregate responses into one answer. Nexus fills this gap.
             </p>
           </div>
-          <CrusoeConnection>
-            Nexus brought multiple models into one answer. Crusoe brought energy, compute, and cloud into one stack. Both became the foundation everything else builds on.
-          </CrusoeConnection>
         </div>
         </FadeIn>
       </section>
@@ -577,7 +660,7 @@ export default function CrusoeCaseStudy() {
       {/* Design Principles */}
       <section
         id="principles"
-        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]"
       >
         <FadeIn>
         <div className="max-w-5xl mx-auto">
@@ -589,21 +672,18 @@ export default function CrusoeCaseStudy() {
                 quote: '"ChatGPT gave me a wrong formula for my physics exam. Never trusting one AI again."',
                 principle: 'Confidence comes from consensus. If multiple AIs agree, the answer is more likely correct.',
                 icon: '✓',
-                crusoeConnection: 'Trust comes from knowing the source. Crusoe: developers know where the compute comes from (renewables, flare gas). Nexus: students know where the answer comes from (consensus across models).',
               },
               {
                 theme: 'Comparison',
                 quote: '"I spend 20 minutes comparing answers across tools. That\'s longer than just Googling it."',
                 principle: 'Comparison should happen automatically. Users want one clear answer, not multiple options to sort through.',
                 icon: '⇄',
-                crusoeConnection: 'One output from many inputs. Crusoe aggregates energy sources into one compute platform. We aggregated models into one answer. Same pattern.',
               },
               {
                 theme: 'Simplicity',
                 quote: '"I have 6 tabs open just to do homework. It\'s exhausting."',
                 principle: 'Complexity should happen behind the scenes. Users just want the answer.',
                 icon: '◉',
-                crusoeConnection: 'Developers don\'t manage infrastructure. Students don\'t juggle models. Complexity stays behind the scenes so users get what they need.',
               },
             ].map((card, i) => (
               <div
@@ -634,11 +714,7 @@ export default function CrusoeCaseStudy() {
                 {expandedPrinciple === i ? (
                   <>
                     <p className="text-white/60 italic text-sm mb-4">&quot;{card.quote}&quot;</p>
-                    <p className="text-white/80 text-sm leading-relaxed mb-4">{card.principle}</p>
-                    <div className="pt-4 border-t border-white/10">
-                      <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>Crusoe Connection</p>
-                      <p className="text-white/70 text-sm">{card.crusoeConnection}</p>
-                    </div>
+                    <p className="text-white/80 text-sm leading-relaxed">{card.principle}</p>
                   </>
                 ) : (
                   <p className="text-white/50 text-sm">Click expand to read more</p>
@@ -653,7 +729,7 @@ export default function CrusoeCaseStudy() {
       {/* Key Iteration - Model Selector */}
       <section
         id="iteration"
-        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]"
       >
         <FadeIn>
         <div className="max-w-5xl mx-auto">
@@ -804,19 +880,16 @@ export default function CrusoeCaseStudy() {
               )}
             </div>
           </div>
-          <CrusoeConnection>
-            We kept refining until the model selector felt right. Crusoe does the same with infrastructure—refining until developers can run models without thinking about it. Iteration is how both ship.
-          </CrusoeConnection>
         </div>
         </FadeIn>
       </section>
 
-      {/* Interactive Product Walkthrough */}
-      <section id="walkthrough" className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5">
+      {/* Follow the Journey - Product Walkthrough */}
+      <section id="walkthrough" className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]">
         <FadeIn>
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold mb-4">Explore the Product</h2>
-          <p className="text-white/50 text-sm mb-8">Click through to see the Nexus experience. Each screen shows a different part of the flow.</p>
+          <h2 className="text-2xl font-bold mb-4">Follow the Journey</h2>
+          <p className="text-white/50 text-sm mb-8">Click through to follow one student&apos;s path—from landing to trusted answer. Each screen tells the next part of the story.</p>
           <div className="rounded-xl overflow-hidden bg-[#111] border border-white/10">
             <div className="relative aspect-[16/10]">
               <Image
@@ -862,19 +935,16 @@ export default function CrusoeCaseStudy() {
               ))}
             </div>
           </div>
-          <CrusoeConnection>
-            Crusoe Cloud: deploy without touching data centers. Nexus: one answer without touching model APIs. The interface stays simple because the infrastructure does the work.
-          </CrusoeConnection>
         </div>
         </FadeIn>
       </section>
 
-      {/* Figma Design Process - Interactive */}
-      <section id="figma-process" className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5">
+      {/* From Sketch to Ship - Design Process */}
+      <section id="figma-process" className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]">
         <FadeIn>
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold mb-4">Design Process: Lo-Fi to Final</h2>
-          <p className="text-white/50 text-sm mb-3">Lo-fi sketches → mid-fi wireframes → hi-fi Figma.</p>
+          <h2 className="text-2xl font-bold mb-4">From Sketch to Ship</h2>
+          <p className="text-white/50 text-sm mb-3">Watch the idea take shape.</p>
           <p className="text-white/40 text-xs mb-4">Click each stage to explore the design evolution</p>
           <div className="flex flex-wrap gap-2 mb-6">
             {(['lofi', 'midfi', 'hifi'] as const).map((level) => (
@@ -1314,7 +1384,7 @@ export default function CrusoeCaseStudy() {
                 </div>
               )}
             </div>
-            <div className="p-4 bg-[#0a0a0a] border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
+            <div className="p-4 bg-[#0a0a0a] border-t border-white/[0.03] flex flex-wrap items-center justify-between gap-4">
               <p className="text-white/80 text-sm font-medium">
                 {fidelityLevel === 'lofi' ? 'Lo-Fi: Hand-drawn sketches' : fidelityLevel === 'midfi' ? 'Mid-Fi: Grayscale wireframes' : FIGMA_IMAGES[figmaIndex].label}
               </p>
@@ -1372,14 +1442,15 @@ export default function CrusoeCaseStudy() {
         </FadeIn>
       </section>
 
-      {/* Final Solution */}
+      {/* What We Shipped - Final Solution */}
       <section
         id="solution"
-        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]"
       >
         <FadeIn>
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold mb-12">Final Solution</h2>
+          <h2 className="text-2xl font-bold mb-4">What We Shipped</h2>
+          <p className="text-white/50 text-sm mb-12">The trust gap had a design solution. Here&apos;s what made it into the product.</p>
           <div className="grid md:grid-cols-2 gap-6">
             {[
               { title: 'One Question, Best Answer', desc: 'Multiple models run in parallel and surface the strongest answer.' },
@@ -1393,9 +1464,6 @@ export default function CrusoeCaseStudy() {
               </div>
             ))}
           </div>
-          <CrusoeConnection>
-            Crusoe: energy → compute → cloud. Nexus: question → models → answer. One flow, end to end. No stitching together separate tools.
-          </CrusoeConnection>
         </div>
         </FadeIn>
       </section>
@@ -1403,7 +1471,7 @@ export default function CrusoeCaseStudy() {
       {/* Design System */}
       <section
         id="design-system"
-        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]"
       >
         <FadeIn>
         <div className="max-w-4xl mx-auto">
@@ -1433,14 +1501,15 @@ export default function CrusoeCaseStudy() {
         </FadeIn>
       </section>
 
-      {/* Impact */}
+      {/* The Results - Impact */}
       <section
         id="impact"
-        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]"
       >
         <FadeIn>
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold mb-12">Impact</h2>
+          <h2 className="text-2xl font-bold mb-4">The Results</h2>
+          <p className="text-white/50 text-sm mb-12">Design decisions that paid off.</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { value: '40%', label: 'More sign-ups in 3 months post-launch' },
@@ -1454,9 +1523,61 @@ export default function CrusoeCaseStudy() {
               </div>
             ))}
           </div>
-          <CrusoeConnection>
-            Crusoe tracks compute delivered, carbon avoided. We tracked sign-ups and trust. Both care about what actually scales and gets used.
-          </CrusoeConnection>
+        </div>
+        </FadeIn>
+      </section>
+
+      {/* The Fit */}
+      <section id="about-me" className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]">
+        <FadeIn>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6">The Fit</h2>
+          <p className="text-white/70 leading-relaxed mb-6">
+            At Nexus I tackled model trust, switching between tools, and tab hopping—hiding complexity so students could get one answer. Crusoe tackles infrastructure visibility, energy transparency, and unified monitoring so developers can build without juggling tools. Different domains, but the same design philosophy: make powerful systems invisible so people can focus on what matters.
+          </p>
+          <p className="text-white/70 leading-relaxed mb-6">
+            What gets me excited about Crusoe is the energy-first mindset. Turning flare gas into compute instead of burning it. Building AI infrastructure that runs on renewables. That&apos;s not just smart engineering, it&apos;s the kind of work that matters. I want to be part of a team that&apos;s rethinking how we power the future!
+          </p>
+        </div>
+        </FadeIn>
+      </section>
+
+      {/* What I Learned About Crusoe */}
+      <section id="company-research" className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]">
+        <FadeIn>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6">What I Learned About Crusoe</h2>
+          <p className="text-white/50 text-sm mb-8">From my research—product pages, Command Center, docs—here&apos;s what I thought mattered most:</p>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>What they build</h3>
+              <p className="text-white/75 text-sm leading-relaxed">
+                Crusoe Cloud for GPU infrastructure, Crusoe Managed Inference for hosted LLM APIs, and Command Center. Command Center puts topology, telemetry, logs, and spend in one place instead of scattered across tools.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>Who they serve</h3>
+              <p className="text-white/75 text-sm leading-relaxed">
+                AI/ML teams and developers who train models, run inference, and scale workloads. They want to focus on building, not managing infrastructure.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>Design philosophy</h3>
+              <p className="text-white/75 text-sm leading-relaxed">
+                One place for everything instead of fragmented views. Fix problems before users notice them. Work where users already are: Telemetry Relay sends data to Datadog or Splunk, alerts go to Slack.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>Why it matters</h3>
+              <p className="text-white/75 text-sm leading-relaxed">
+                AI infrastructure powered by renewables: wind, solar, hydropower, carbon capture. They also turn stranded energy like flare gas into compute instead of burning it.
+              </p>
+            </div>
+          </div>
         </div>
         </FadeIn>
       </section>
@@ -1464,38 +1585,22 @@ export default function CrusoeCaseStudy() {
       {/* Why Crusoe */}
       <section
         id="why-crusoe"
-        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/5"
+        className="py-16 md:py-24 px-4 md:px-6 border-t border-white/[0.03]"
       >
         <FadeIn>
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-8">Why Crusoe</h2>
-          <p className="text-white/70 leading-relaxed mb-6">
-            It&apos;s the same underlying problem but with different users. Nexus simplified multi-model AI for students, while Crusoe simplifies GPU infrastructure for developers.
-          </p>
-          <p className="text-white/70 leading-relaxed mb-8">
-            In both cases, the goal is to hide complexity so people can focus on building or learning instead of managing tools.
-          </p>
-          <p className="text-white/70 leading-relaxed mb-8">
-            What draws me to Crusoe: energy first. Flare gas into compute, renewable-powered AI. That&apos;s the kind of work I want to be part of.
-          </p>
-          <ul className="space-y-4 mb-10">
-            {[
-              'Same design philosophy. Nexus for students, Crusoe for developers.',
-              'I built a design system from scratch and shipped production work in 10 weeks.',
-              'I prototyped in code (Cursor, Lovable) to test interactions before committing in Figma.',
-              'I collaborated daily with engineers on constraints and tradeoffs.',
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: ACCENT }} />
-                <span className="text-white/80 text-sm leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div data-cursor-hover className="p-6 rounded-xl border-l-4 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(34,197,94,0.2)]" style={{ borderColor: ACCENT, backgroundColor: `${ACCENT}08` }}>
+          <h2 className="text-2xl font-bold mb-6">Why Crusoe</h2>
+          <div data-cursor-hover className="p-6 rounded-xl border-l-4 mb-8 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(34,197,94,0.2)]" style={{ borderColor: ACCENT, backgroundColor: `${ACCENT}08` }}>
             <p className="text-white/80 text-sm leading-relaxed italic">
-              Crusoe&apos;s mission: accelerate the abundance of energy and intelligence. I want to design tools that make infrastructure invisible and do it sustainably.
+              Crusoe&apos;s mission: accelerate the abundance of energy and intelligence.
             </p>
           </div>
+          <p className="text-white/70 leading-relaxed mb-6">
+            Crusoe prioritizes single source of truth over fragmented views, progressive disclosure of complexity, and proactive remediation. That&apos;s the same philosophy I applied to Nexus: one place, no tab hopping; complexity behind the scenes; users get what they need without managing the machinery.
+          </p>
+          <p className="text-white/70 leading-relaxed">
+            What draws me most is the energy-first mindset. Flare gas into compute, renewable-powered AI. That&apos;s not just smart engineering—it&apos;s work that matters. I want to design tools that make infrastructure invisible and do it sustainably, and I want to be part of that.
+          </p>
         </div>
         </FadeIn>
       </section>
@@ -1503,6 +1608,19 @@ export default function CrusoeCaseStudy() {
       {/* Thank You */}
       <section id="thank-you" className="relative min-h-screen flex flex-col justify-center px-6 py-24 overflow-hidden">
         <FlowingLinesBackground />
+        {/* Gradient fades - blend with sections above and below */}
+        <div
+          className="absolute top-0 left-0 right-0 h-1/2 pointer-events-none z-[1]"
+          style={{
+            background: `linear-gradient(to bottom, #0a0a0a 0%, rgba(10,10,10,0.6) 30%, transparent 100%)`,
+          }}
+        />
+        <div
+          className="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none z-[1]"
+          style={{
+            background: `linear-gradient(to top, #0a0a0a 0%, rgba(10,10,10,0.5) 40%, transparent 100%)`,
+          }}
+        />
         <FadeIn>
         <div className="relative z-10 max-w-2xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Thanks for exploring</h2>
@@ -1520,7 +1638,7 @@ export default function CrusoeCaseStudy() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-6 border-t border-white/10">
+      <footer className="py-16 px-6 border-t border-white/[0.03]">
         <div className="max-w-3xl mx-auto text-center space-y-4">
           <div className="flex flex-wrap justify-center gap-6">
             <Link href="/" data-cursor-hover className="text-sm hover:underline transition-all duration-300 hover:scale-110" style={{ color: ACCENT }}>
