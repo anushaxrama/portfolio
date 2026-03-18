@@ -124,14 +124,14 @@ const SECTIONS = [
 ]
 
 const NEXUS_IMAGES = [
-  { src: '/narbl/narbl-1.png', label: '1. Student lands on Nexus—one place, no tab hopping' },
-  { src: '/narbl/narbl-3.png', label: '2. Asks one question. Nexus runs multiple models in parallel' },
-  { src: '/narbl/narbl-4.png', label: '3. Models compare and surface the strongest answer' },
-  { src: '/narbl/narbl-5.png', label: '4. Success stories—students trust the results' },
-  { src: '/narbl/narbl-6.png', label: '5. Trusted by top students who need accuracy' },
-  { src: '/narbl/narbl-7.png', label: '6. Seamless integrations for homework and research' },
-  { src: '/narbl/narbl-8.png', label: '7. Why choose Nexus—one answer, backed by many' },
-  { src: '/narbl/narbl-9.png?v=5', label: '8. The final experience—ready for the next question' },
+  { src: '/narbl/narbl-1.png', label: '1. Student lands on Nexus—one place, no tab hopping', why: 'Design decision: One entry point. No switching. The landing sets the promise.' },
+  { src: '/narbl/narbl-3.png', label: '2. Asks one question. Nexus runs multiple models in parallel', why: 'Design decision: Single input. Complexity happens behind the scenes. User never sees the juggling.' },
+  { src: '/narbl/narbl-4.png', label: '3. Models compare and surface the strongest answer', why: 'Design decision: Consensus is the product. We show the best answer, not a list to compare.' },
+  { src: '/narbl/narbl-5.png', label: '4. Success stories—students trust the results', why: 'Design decision: Social proof builds trust. Real students, real results.' },
+  { src: '/narbl/narbl-6.png', label: '5. Trusted by top students who need accuracy', why: 'Design decision: Accuracy matters for STEM. We leaned into that.' },
+  { src: '/narbl/narbl-7.png', label: '6. Seamless integrations for homework and research', why: 'Design decision: Fit into existing workflows. No new habits required.' },
+  { src: '/narbl/narbl-8.png', label: '7. Why choose Nexus—one answer, backed by many', why: 'Design decision: One answer. Backed by many. That\'s the differentiator.' },
+  { src: '/narbl/narbl-9.png?v=5', label: '8. The final experience—ready for the next question', why: 'Design decision: The chat is the core. Model selector visible. Ready for the next question.' },
 ]
 
 const FIGMA_IMAGES = [
@@ -614,7 +614,7 @@ export default function CrusoeCaseStudy() {
             </div>
           </div>
           <p className="text-white/60 text-sm mt-6 leading-relaxed">
-            How I designed Nexus to give students one trusted answer by aggregating multiple AI models—from problem to shipped product.
+            Scroll through the story. Click to dig deeper. This is how I went from a trust gap to one answer students could believe in.
           </p>
           <p className="mt-16 text-white/40 text-sm flex items-center justify-center gap-2 animate-subtle-pulse">
             <span>Scroll to explore</span>
@@ -633,8 +633,8 @@ export default function CrusoeCaseStudy() {
         <FadeIn>
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6">The Problem</h2>
-          <p className="text-white/70 leading-relaxed mb-8">
-            As a student myself, I find myself needing to double check answers through multiple models, especially for harder subjects. One AI might give me a wrong formula for physics or a shaky explanation for calculus. Students rely on AI for homework and research, but we don&apos;t trust a single model&apos;s answer. We copy prompts between ChatGPT, Claude, and Gemini, then manually compare responses. It&apos;s slow, exhausting, and creates a trust gap: which answer is actually right?
+          <p className="text-white/70 leading-relaxed mb-6">
+            As a student myself, I find myself needing to double check answers through multiple models, especially for harder subjects. One AI might give me a wrong formula for physics or a shaky explanation for calculus. Students rely on AI for homework and research, but we don&apos;t trust a single model&apos;s answer. We copy prompts between ChatGPT, Claude, and Gemini, then manually compare responses. It&apos;s slow, exhausting, and creates a trust gap. Which answer is actually right?
           </p>
           <div
             className="rounded-xl p-8 border transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_-10px_rgba(34,197,94,0.3)]"
@@ -644,8 +644,11 @@ export default function CrusoeCaseStudy() {
             }}
           >
             <p className="text-white/40 text-xs uppercase tracking-wider mb-4">Design Challenge</p>
-            <p className="text-xl text-white/90 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed mb-4">
               How might we give students one accurate answer by aggregating and comparing responses from multiple AI models?
+            </p>
+            <p className="text-white/50 text-sm">
+              This question drove every design decision. One answer. Many models behind the scenes. Trust through consensus.
             </p>
           </div>
         </div>
@@ -659,7 +662,8 @@ export default function CrusoeCaseStudy() {
       >
         <FadeIn>
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-12">Research</h2>
+          <h2 className="text-2xl font-bold mb-4">Research</h2>
+          <p className="text-white/50 text-sm mb-8">I needed to understand the problem before designing. Here&apos;s what I learned and how it shaped the product.</p>
           <div className="rounded-xl p-6 bg-white/[0.03] border border-white/10 mb-8">
             <h3 className="text-sm font-semibold mb-3" style={{ color: ACCENT }}>How I Researched This Problem</h3>
             <ul className="space-y-2 text-white/70 text-sm">
@@ -794,6 +798,11 @@ export default function CrusoeCaseStudy() {
               None aggregate responses into one answer. Nexus fills this gap.
             </p>
           </div>
+          <div className="mt-8 p-4 rounded-lg border-l-4" style={{ borderColor: ACCENT, backgroundColor: `${ACCENT}08` }}>
+            <p className="text-white/70 text-sm">
+              <strong className="text-white/90">Design insight:</strong> The research told me to prioritize one unified answer, make model transparency visible but not overwhelming, and cut tab hopping entirely. That became the backbone of every screen.
+            </p>
+          </div>
         </div>
         </FadeIn>
       </section>
@@ -805,25 +814,29 @@ export default function CrusoeCaseStudy() {
       >
         <FadeIn>
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold mb-12">Design Principles</h2>
+          <h2 className="text-2xl font-bold mb-4">Design Principles</h2>
+          <p className="text-white/50 text-sm mb-8">These three principles guided every design decision. Click expand to see the reasoning behind each.</p>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 theme: 'Confidence',
                 quote: '"ChatGPT gave me a wrong formula for my physics exam. Never trusting one AI again."',
                 principle: 'Confidence comes from consensus. If multiple AIs agree, the answer is more likely correct.',
+                designDecision: 'We surfaced consensus in the answer itself. Model badges show who contributed. No guessing.',
                 icon: '✓',
               },
               {
                 theme: 'Comparison',
                 quote: '"I spend 20 minutes comparing answers across tools. That\'s longer than just Googling it."',
                 principle: 'Comparison should happen automatically. Users want one clear answer, not multiple options to sort through.',
+                designDecision: 'One answer. Always. Models run in parallel behind the scenes. The user never compares manually.',
                 icon: '⇄',
               },
               {
                 theme: 'Simplicity',
                 quote: '"I have 6 tabs open just to do homework. It\'s exhausting."',
                 principle: 'Complexity should happen behind the scenes. Users just want the answer.',
+                designDecision: 'One place. One input. One output. Tabs, prompts, and model switching all hidden.',
                 icon: '◉',
               },
             ].map((card, i) => (
@@ -855,7 +868,10 @@ export default function CrusoeCaseStudy() {
                 {expandedPrinciple === i ? (
                   <>
                     <p className="text-white/60 italic text-sm mb-4">&quot;{card.quote}&quot;</p>
-                    <p className="text-white/80 text-sm leading-relaxed">{card.principle}</p>
+                    <p className="text-white/80 text-sm leading-relaxed mb-4">{card.principle}</p>
+                    <p className="text-white/50 text-xs pt-3 border-t border-white/10">
+                      <span style={{ color: ACCENT }}>Design decision:</span> {card.designDecision}
+                    </p>
                   </>
                 ) : (
                   <p className="text-white/50 text-sm">Click expand to read more</p>
@@ -875,10 +891,10 @@ export default function CrusoeCaseStudy() {
         <FadeIn>
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">Key Iteration: Model Selector</h2>
-          <p className="text-white/50 text-sm mb-12">How we landed on the final model attribution pattern</p>
+          <p className="text-white/50 text-sm mb-6">The hardest design question: how do we show which models contributed without overwhelming the user? Click each version to see what we tried and why.</p>
+          <p className="text-white/40 text-xs mb-8">Click to explore each iteration</p>
 
           {/* Version tabs */}
-          <p className="text-white/40 text-xs mb-3">Click to explore each iteration</p>
           <div className="flex flex-wrap gap-2 mb-12">
             {(['v1', 'v2', 'v3'] as const).map((v) => (
               <button
@@ -1014,8 +1030,11 @@ export default function CrusoeCaseStudy() {
                   <p className="text-white/60 text-sm mb-4">
                     Shows &quot;5 models selected&quot; with model icons. Click to open dropdown: Premium models at top (locked), free models below with checkmarks for selected ones.
                   </p>
-                  <p className="text-white/70 text-sm">
+                  <p className="text-white/70 text-sm mb-4">
                     <strong style={{ color: ACCENT }}>Shipped:</strong> One-tap visibility into which models are running. Premium vs free clearly separated. No friction to see or change selection.
+                  </p>
+                  <p className="text-white/50 text-xs pt-3 border-t border-white/10">
+                    <span style={{ color: ACCENT }}>Design insight:</span> Transparency had to be immediate. No clicks. No hidden panels. The user sees trust at a glance.
                   </p>
                 </>
               )}
@@ -1030,7 +1049,7 @@ export default function CrusoeCaseStudy() {
         <FadeIn>
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">Follow the Journey</h2>
-          <p className="text-white/50 text-sm mb-8">Click through to follow one student&apos;s path—from landing to trusted answer. Each screen tells the next part of the story.</p>
+          <p className="text-white/50 text-sm mb-6">Click through to follow one student&apos;s path—from landing to trusted answer. Each screen has a design note explaining why it matters.</p>
           <div className="rounded-xl overflow-hidden bg-[#111] border border-white/10">
             <div className="relative aspect-[16/10]">
               <Image
@@ -1042,7 +1061,12 @@ export default function CrusoeCaseStudy() {
               />
             </div>
             <div className="p-4 bg-[#0a0a0a] border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-              <p className="text-white/80 text-sm font-medium">{NEXUS_IMAGES[walkthroughIndex].label}</p>
+              <div>
+                <p className="text-white/80 text-sm font-medium">{NEXUS_IMAGES[walkthroughIndex].label}</p>
+                {'why' in NEXUS_IMAGES[walkthroughIndex] && (
+                  <p className="text-white/40 text-xs mt-1">{NEXUS_IMAGES[walkthroughIndex].why}</p>
+                )}
+              </div>
               <div className="hidden md:flex gap-2">
                 <button
                   data-cursor-hover
@@ -1086,6 +1110,7 @@ export default function CrusoeCaseStudy() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">From Sketch to Ship</h2>
           <p className="text-white/50 text-sm mb-3">Watch the idea take shape.</p>
+          <p className="text-white/60 text-sm mb-4">Lo-fi to validate structure. Mid-fi to test flows. Hi-fi to ship. Each stage answered a different question—layout first, then interaction, then polish.</p>
           <p className="text-white/40 text-xs mb-4">Click each stage to explore the design evolution</p>
           <div className="flex flex-wrap gap-2 mb-6">
             {(['lofi', 'midfi', 'hifi'] as const).map((level) => (
@@ -1591,17 +1616,18 @@ export default function CrusoeCaseStudy() {
         <FadeIn>
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">What We Shipped</h2>
-          <p className="text-white/50 text-sm mb-12">The trust gap had a design solution. Here&apos;s what made it into the product.</p>
+          <p className="text-white/50 text-sm mb-6">The trust gap had a design solution. Here&apos;s what made it into the product—and why we chose each.</p>
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              { title: 'One Question, Best Answer', desc: 'Multiple models run in parallel and surface the strongest answer.' },
-              { title: 'Multi-Model Comparison', desc: 'Compares responses across models and surfaces where they agree.' },
-              { title: 'Model Transparency', desc: 'See which models contributed. Full transparency.' },
-              { title: 'Trusted Answers', desc: 'Consensus-backed answers for research where accuracy matters.' },
+              { title: 'One Question, Best Answer', desc: 'Multiple models run in parallel and surface the strongest answer.', why: 'Students wanted one answer, not a list. We gave them one.' },
+              { title: 'Multi-Model Comparison', desc: 'Compares responses across models and surfaces where they agree.', why: 'We compare in the background. They get the best answer.' },
+              { title: 'Model Transparency', desc: 'See which models contributed. Full transparency.', why: 'Badges show which models answered. No guessing.' },
+              { title: 'Trusted Answers', desc: 'Consensus-backed answers for research where accuracy matters.', why: 'When models agree, students trust it. Especially for homework.' },
             ].map((f, i) => (
               <div key={i} data-cursor-hover className="p-6 rounded-xl bg-white/[0.03] border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_10px_40px_-15px_rgba(34,197,94,0.15)]">
                 <h3 className="font-semibold mb-2" style={{ color: ACCENT }}>{f.title}</h3>
-                <p className="text-white/60 text-sm">{f.desc}</p>
+                <p className="text-white/60 text-sm mb-2">{f.desc}</p>
+                <p className="text-white/40 text-xs border-t border-white/10 pt-2">Why: {f.why}</p>
               </div>
             ))}
           </div>
@@ -1616,7 +1642,8 @@ export default function CrusoeCaseStudy() {
       >
         <FadeIn>
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-12">Design System</h2>
+          <h2 className="text-2xl font-bold mb-4">Design System</h2>
+          <p className="text-white/50 text-sm mb-8">Every color and type choice had a reason. Dark theme for focus. Blue for trust. Serif for warmth.</p>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-sm font-medium text-white/60 mb-4">Colors</h3>
@@ -1650,7 +1677,7 @@ export default function CrusoeCaseStudy() {
         <FadeIn>
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">The Results</h2>
-          <p className="text-white/50 text-sm mb-12">Design decisions that paid off.</p>
+          <p className="text-white/50 text-sm mb-12">One answer. No tab hopping. Trust through consensus. The design decisions we made showed up in the numbers.</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { value: '40%', label: 'More sign-ups in 3 months post-launch' },

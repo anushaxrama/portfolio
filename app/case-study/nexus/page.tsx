@@ -1790,15 +1790,15 @@ export default function NexusCaseStudy() {
             <ul className="space-y-3 text-white/50 leading-relaxed">
               <li className="flex items-start gap-3">
                 <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
-                <span><span className="text-white/70 font-medium">Inline model selector:</span> Dropdown in-context instead of a separate screen. Users change models without leaving the chat.</span>
+                <span><span className="text-white/70 font-medium">Model picker in the chat:</span> Dropdown right where you type. No switching to another screen.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
-                <span><span className="text-white/70 font-medium">Badge system:</span> Compact colored badges below each response show which models contributed.</span>
+                <span><span className="text-white/70 font-medium">Model badges:</span> Small colored badges below each answer show which models contributed.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
-                <span><span className="text-white/70 font-medium">Single-input layout:</span> One screen for question and answer. No wizard steps. Faster path to first answer.</span>
+                <span><span className="text-white/70 font-medium">One screen:</span> Ask and answer on the same page. No extra steps.</span>
               </li>
             </ul>
           </div>
