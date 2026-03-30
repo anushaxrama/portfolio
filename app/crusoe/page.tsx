@@ -614,7 +614,7 @@ export default function CrusoeCaseStudy() {
             </div>
           </div>
           <p className="text-white/60 text-sm mt-6 leading-relaxed">
-            Scroll through the story. Click to dig deeper. This is how I went from a trust gap to one answer students could believe in.
+            Scroll through the story. Click to dig deeper.
           </p>
           <p className="mt-16 text-white/40 text-sm flex items-center justify-center gap-2 animate-subtle-pulse">
             <span>Scroll to explore</span>
@@ -1718,34 +1718,34 @@ export default function CrusoeCaseStudy() {
         <FadeIn>
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6">What I Learned About Crusoe</h2>
-          <p className="text-white/50 text-sm mb-8">From my research—product pages, Command Center, docs—here&apos;s what I thought mattered most:</p>
+          <p className="text-white/50 text-sm mb-8">From product pages, Command Center, and docs, here&apos;s what mattered most to me.</p>
 
           <div className="space-y-8">
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>What they build</h3>
               <p className="text-white/75 text-sm leading-relaxed">
-                Crusoe Cloud for GPU infrastructure, Crusoe Managed Inference for hosted LLM APIs, and Command Center. Command Center puts topology, telemetry, logs, and spend in one place instead of scattered across tools.
+                Crusoe Cloud for GPU workloads, Managed Inference for hosted LLMs, and Command Center layered on top. Command Center brings topology, health, logs, and spend together so you are not jumping between tools.
               </p>
             </div>
 
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>Who they serve</h3>
               <p className="text-white/75 text-sm leading-relaxed">
-                AI/ML teams and developers who train models, run inference, and scale workloads. They want to focus on building, not managing infrastructure.
+                Teams training models, running inference, and scaling workloads. They want to build, not spend time managing infrastructure.
               </p>
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>Design philosophy</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>What stood out</h3>
               <p className="text-white/75 text-sm leading-relaxed">
-                One place for everything instead of fragmented views. Fix problems before users notice them. Work where users already are: Telemetry Relay sends data to Datadog or Splunk, alerts go to Slack.
+                Command Center shows health, logs, and spend in one place. Crusoe can also forward metrics and logs to monitoring tools you already use (for example Datadog or Splunk), with alerts in Slack.
               </p>
             </div>
 
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: ACCENT }}>Why it matters</h3>
               <p className="text-white/75 text-sm leading-relaxed">
-                AI infrastructure powered by renewables: wind, solar, hydropower, carbon capture. They also turn stranded energy like flare gas into compute instead of burning it.
+                Energy-smart AI: renewables where they can, plus stranded energy such as flare gas turned into useful compute so less goes to waste.
               </p>
             </div>
           </div>
