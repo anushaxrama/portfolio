@@ -64,7 +64,7 @@ export default function Navbar() {
           <span className="absolute bottom-1 left-3 right-3 h-[1px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
         </a>
         <Link
-          href="/lendingclub-presentation"
+          href="/LC-presentation"
           aria-label="Open LendingClub interview deck"
           title="LendingClub interview deck"
           className="min-h-[44px] min-w-[44px] flex items-center justify-center px-2 py-3 text-[0.55rem] font-medium uppercase tracking-[0.22em] text-white/15 transition-all duration-300 hover:text-white/55"
