@@ -88,13 +88,13 @@ export default function NexusCaseStudy() {
   }
 
   return (
-    <main className="relative min-h-screen bg-black text-white">
+    <main className="nexus-theme relative min-h-screen bg-[#f7f7f2] text-slate-900">
       {/* Floating particles */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         {particles.map((particle) => (
           <div
             key={particle.id}
-            className="absolute rounded-full bg-blue-400"
+            className="absolute rounded-full bg-[#93c5fd]"
             style={{
               left: `${particle.x}%`,
               top: `${particle.y}%`,
@@ -115,35 +115,35 @@ export default function NexusCaseStudy() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left side - Title and info */}
             <div>
-              <p className={`text-[#60a5fa] text-sm tracking-[0.3em] uppercase mb-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <p className={`mb-6 text-sm uppercase tracking-[0.3em] text-[#2563EB] transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 Case Study
               </p>
               
-              <h1 className={`text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <h1 className={`mb-6 text-5xl font-black tracking-tight text-slate-950 transition-all duration-700 delay-200 md:text-6xl lg:text-7xl ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 Nexus
               </h1>
               
-              <p className={`text-lg md:text-xl text-white/50 mb-10 leading-relaxed transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <p className={`mb-10 text-lg leading-relaxed text-slate-600 transition-all duration-700 delay-300 md:text-xl ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 Ask once. Get one answer backed by multiple AI models.
               </p>
 
               {/* Project Meta */}
-              <div className={`grid grid-cols-2 gap-x-8 gap-y-4 text-sm transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className={`grid grid-cols-2 gap-x-8 gap-y-4 rounded-2xl border border-slate-200/80 bg-white/80 p-5 text-sm shadow-[0_16px_36px_-28px_rgba(15,23,42,0.18)] backdrop-blur-sm transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div>
-                  <p className="text-white/30 uppercase tracking-wider mb-1">Role</p>
-                  <p className="text-white/80">Product Designer</p>
+                  <p className="mb-1 uppercase tracking-wider text-slate-500">Role</p>
+                  <p className="text-slate-900">Product Designer</p>
                 </div>
                 <div>
-                  <p className="text-white/30 uppercase tracking-wider mb-1">Duration</p>
-                  <p className="text-white/80">10 weeks</p>
+                  <p className="mb-1 uppercase tracking-wider text-slate-500">Duration</p>
+                  <p className="text-slate-900">10 weeks</p>
                 </div>
                 <div>
-                  <p className="text-white/30 uppercase tracking-wider mb-1">Tools</p>
-                  <p className="text-white/80">Figma, Cursor, Lovable</p>
+                  <p className="mb-1 uppercase tracking-wider text-slate-500">Tools</p>
+                  <p className="text-slate-900">Figma, Cursor, Lovable</p>
                 </div>
                 <div>
-                  <p className="text-white/30 uppercase tracking-wider mb-1">Context</p>
-                  <p className="text-white/80">Internship Project</p>
+                  <p className="mb-1 uppercase tracking-wider text-slate-500">Context</p>
+                  <p className="text-slate-900">Internship Project</p>
                 </div>
               </div>
             </div>
@@ -239,7 +239,7 @@ export default function NexusCaseStudy() {
               </div>
 
               {/* Current slide label */}
-              <p className="text-center text-white/40 text-sm mt-6">{demoImages[activeSlide].label}</p>
+              <p className="mt-6 text-center text-sm text-slate-500">{demoImages[activeSlide].label}</p>
             </div>
           </div>
         </div>
@@ -259,16 +259,14 @@ export default function NexusCaseStudy() {
           
           {/* Problem Statement Box */}
           <div 
-            className="relative rounded-3xl p-10 md:p-14"
+            className="relative rounded-3xl border border-[#2563EB]/10 bg-white p-10 shadow-[0_24px_60px_-32px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_70px_-34px_rgba(37,99,235,0.24)] md:p-14"
             style={{
-              background: 'linear-gradient(145deg, rgba(59,130,246,0.12) 0%, rgba(59,130,246,0.04) 100%)',
+              background: 'linear-gradient(145deg, rgba(219,234,254,0.88) 0%, rgba(255,255,255,0.98) 100%)',
               boxShadow: `
-                0 4px 24px -4px rgba(0,0,0,0.4),
-                0 12px 48px -8px rgba(0,0,0,0.3),
-                inset 0 1px 0 rgba(255,255,255,0.08),
-                inset 0 -1px 0 rgba(0,0,0,0.2)
+                0 20px 50px -34px rgba(15,23,42,0.22),
+                inset 0 1px 0 rgba(255,255,255,0.75)
               `,
-              border: '1px solid rgba(59,130,246,0.2)',
+              border: '1px solid rgba(37,99,235,0.1)',
             }}
           >
             {/* Label */}
@@ -599,7 +597,7 @@ export default function NexusCaseStudy() {
             {/* ChatGPT */}
             <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
               <div>
-                <p className="text-white font-medium">ChatGPT</p>
+                <p className="font-medium text-slate-900">ChatGPT</p>
                 <p className="text-white/30 text-xs mt-1">OpenAI</p>
               </div>
               <div className="flex items-center gap-2">
@@ -620,7 +618,7 @@ export default function NexusCaseStudy() {
             {/* Claude */}
             <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
               <div>
-                <p className="text-white font-medium">Claude</p>
+                <p className="font-medium text-slate-900">Claude</p>
                 <p className="text-white/30 text-xs mt-1">Anthropic</p>
               </div>
               <div className="flex items-center gap-2">
@@ -641,7 +639,7 @@ export default function NexusCaseStudy() {
             {/* Poe */}
             <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
               <div>
-                <p className="text-white font-medium">Poe</p>
+                <p className="font-medium text-slate-900">Poe</p>
                 <p className="text-white/30 text-xs mt-1">Quora</p>
               </div>
               <div className="flex items-center gap-2">
@@ -662,7 +660,7 @@ export default function NexusCaseStudy() {
             {/* OpenRouter */}
             <div className="grid grid-cols-5 gap-4 py-5 border-b border-white/5 items-start">
               <div>
-                <p className="text-white font-medium">OpenRouter</p>
+                <p className="font-medium text-slate-900">OpenRouter</p>
                 <p className="text-white/30 text-xs mt-1">API Gateway</p>
               </div>
               <div className="flex items-center gap-2">
@@ -703,7 +701,7 @@ export default function NexusCaseStudy() {
           </div>
 
           {/* Key Finding */}
-          <div className="max-w-3xl mt-12 p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+          <div className="mt-12 max-w-3xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <p className="text-white/50 leading-relaxed">
               Most platforms offer either one model (ChatGPT, Claude) or many models with separate outputs (Poe, OpenRouter). None aggregate responses into one answer. Nexus fills this gap by running multiple AIs behind the scenes and surfacing only what they agree on.
             </p>
@@ -1884,53 +1882,53 @@ export default function NexusCaseStudy() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl">
           {/* Feature 1: One Question, Best Answer */}
-          <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-cyan-500/20 transition-all duration-300 hover:bg-white/[0.05]">
+          <div className="group relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#2563EB]/20 hover:shadow-[0_18px_40px_-28px_rgba(37,99,235,0.28)]">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-700 flex items-center justify-center mb-4">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
               </svg>
             </div>
-            <h3 className="text-white text-lg font-semibold mb-3">One Question, Best Answer</h3>
-            <p className="text-white/40 text-sm leading-relaxed">
+            <h3 className="mb-3 text-lg font-semibold text-[#2563EB]">One Question, Best Answer</h3>
+            <p className="text-sm leading-relaxed text-slate-600">
               Ask anything. Multiple models run in parallel and surface the strongest answer.
             </p>
           </div>
 
           {/* Feature 2: Multi-Model Comparison */}
-          <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-blue-500/20 transition-all duration-300 hover:bg-white/[0.05]">
+          <div className="group relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#2563EB]/20 hover:shadow-[0_18px_40px_-28px_rgba(37,99,235,0.28)]">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-4">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-white text-lg font-semibold mb-3">Multi-Model Comparison</h3>
-            <p className="text-white/40 text-sm leading-relaxed">
+            <h3 className="mb-3 text-lg font-semibold text-[#2563EB]">Multi-Model Comparison</h3>
+            <p className="text-sm leading-relaxed text-slate-600">
               Compares responses across models and surfaces where they agree.
             </p>
           </div>
 
           {/* Feature 3: Model Transparency */}
-          <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-pink-500/20 transition-all duration-300 hover:bg-white/[0.05]">
+          <div className="group relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#2563EB]/20 hover:shadow-[0_18px_40px_-28px_rgba(37,99,235,0.28)]">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500 to-pink-700 flex items-center justify-center mb-4">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-white text-lg font-semibold mb-3">Model Transparency</h3>
-            <p className="text-white/40 text-sm leading-relaxed">
+            <h3 className="mb-3 text-lg font-semibold text-[#2563EB]">Model Transparency</h3>
+            <p className="text-sm leading-relaxed text-slate-600">
               See which models contributed. Full transparency.
             </p>
           </div>
 
           {/* Feature 4: Trusted Answers */}
-          <div className="group relative bg-white/[0.03] rounded-2xl p-6 border border-white/5 hover:border-emerald-500/20 transition-all duration-300 hover:bg-white/[0.05]">
+          <div className="group relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#2563EB]/20 hover:shadow-[0_18px_40px_-28px_rgba(37,99,235,0.28)]">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center mb-4">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-white text-lg font-semibold mb-3">Trusted Answers</h3>
-            <p className="text-white/40 text-sm leading-relaxed">
+            <h3 className="mb-3 text-lg font-semibold text-[#2563EB]">Trusted Answers</h3>
+            <p className="text-sm leading-relaxed text-slate-600">
               Consensus-backed answers for research where accuracy matters.
             </p>
           </div>
@@ -1956,12 +1954,12 @@ export default function NexusCaseStudy() {
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
           {/* Colors */}
           <div 
-            className="rounded-2xl p-8 border border-white/10"
+            className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-30px_rgba(37,99,235,0.22)]"
             style={{
-              background: 'linear-gradient(145deg, #0a0a0a 0%, #141414 100%)',
+              background: 'linear-gradient(145deg, rgba(255,255,255,0.98) 0%, rgba(248,250,252,0.98) 100%)',
             }}
           >
-            <h5 className="text-white text-lg font-semibold mb-8">Colors</h5>
+            <h5 className="mb-8 text-lg font-semibold text-[#2563EB]">Colors</h5>
             
             {/* Background */}
             <div className="mb-8">
@@ -2061,12 +2059,12 @@ export default function NexusCaseStudy() {
 
           {/* Typography */}
           <div 
-            className="rounded-2xl p-8 border border-white/10"
+            className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-30px_rgba(37,99,235,0.22)]"
             style={{
-              background: 'linear-gradient(145deg, #0a0a0a 0%, #141414 100%)',
+              background: 'linear-gradient(145deg, rgba(255,255,255,0.98) 0%, rgba(248,250,252,0.98) 100%)',
             }}
           >
-            <h5 className="text-white text-lg font-semibold mb-8">Typography</h5>
+            <h5 className="mb-8 text-lg font-semibold text-[#2563EB]">Typography</h5>
             
             <div className="space-y-0">
               {/* Display */}
@@ -2075,7 +2073,7 @@ export default function NexusCaseStudy() {
                   <p className="text-white/90 text-sm font-medium">Display</p>
                   <p className="text-white/30 text-xs mt-0.5">Inter Bold · 48px</p>
                 </div>
-                <p className="text-white text-3xl font-bold">Nexus</p>
+                <p className="text-3xl font-bold text-slate-900">Nexus</p>
               </div>
 
               {/* Heading */}
@@ -2084,7 +2082,7 @@ export default function NexusCaseStudy() {
                   <p className="text-white/90 text-sm font-medium">Heading</p>
                   <p className="text-white/30 text-xs mt-0.5">Inter SemiBold · 24px</p>
                 </div>
-                <p className="text-white text-2xl font-semibold">Heading</p>
+                <p className="text-2xl font-semibold text-slate-900">Heading</p>
               </div>
 
               {/* Subheading - Italic style like "One Nexus" */}
@@ -2127,24 +2125,24 @@ export default function NexusCaseStudy() {
         </div>
 
         {/* Design System Rationale */}
-        <div className="mt-16 p-8 rounded-2xl bg-white/[0.02] border border-white/10 max-w-3xl">
+        <div className="mt-16 max-w-3xl rounded-2xl border border-slate-200 bg-[#DBEAFE]/45 p-8 shadow-sm">
           <p className="text-[#60a5fa] text-xs font-semibold uppercase tracking-widest mb-6">Why These Choices</p>
           <ul className="text-white/70 leading-relaxed space-y-4">
             <li className="flex items-start gap-3">
               <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
-              <span><strong className="text-white font-semibold">Dark theme:</strong> Reduces eye strain during long sessions.</span>
+              <span><strong className="font-semibold text-slate-900">Dark theme:</strong> Reduces eye strain during long sessions.</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
-              <span><strong className="text-white font-semibold">Monochromatic palette:</strong> Grays and white keep focus on the answer.</span>
+              <span><strong className="font-semibold text-slate-900">Monochromatic palette:</strong> Grays and white keep focus on the answer.</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
-              <span><strong className="text-white font-semibold">Blue accents:</strong> Subtle highlights and emphasis. Trustworthy without being distracting.</span>
+              <span><strong className="font-semibold text-slate-900">Blue accents:</strong> Subtle highlights and emphasis. Trustworthy without being distracting.</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-[#60a5fa]/80 mt-1 text-sm">•</span>
-              <span><strong className="text-white font-semibold">Inter:</strong> Clean, readable. Serif italic for the tagline adds personality.</span>
+              <span><strong className="font-semibold text-slate-900">Inter:</strong> Clean, readable. Serif italic for the tagline adds personality.</span>
             </li>
           </ul>
         </div>
@@ -2157,19 +2155,19 @@ export default function NexusCaseStudy() {
         
         <div className="max-w-4xl">
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-28px_rgba(37,99,235,0.22)]">
               <p className="text-4xl font-bold text-[#60a5fa] mb-2">40%<Footnote id={4}>Compared to baseline in the 3 months before launch. Measured as completed sign-ups.</Footnote></p>
               <p className="text-white/70 text-sm">More sign-ups in 3 months post-launch</p>
             </div>
-            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-28px_rgba(37,99,235,0.22)]">
               <p className="text-4xl font-bold text-[#60a5fa] mb-2">2x</p>
               <p className="text-white/70 text-sm">Faster onboarding after flow redesign</p>
             </div>
-            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-28px_rgba(37,99,235,0.22)]">
               <p className="text-4xl font-bold text-[#60a5fa] mb-2">85%</p>
               <p className="text-white/70 text-sm">Positive feedback from user testing</p>
             </div>
-            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-28px_rgba(37,99,235,0.22)]">
               <p className="text-4xl font-bold text-[#60a5fa] mb-2">10,000+</p>
               <p className="text-white/70 text-sm">Active users on shipped designs</p>
             </div>
@@ -2237,9 +2235,9 @@ export default function NexusCaseStudy() {
             </div>
           </div>
 
-          <div className="p-5 bg-white/[0.03] rounded-xl border border-white/10">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
             <p className="text-white/70 text-sm leading-relaxed">
-              <span className="text-white font-medium">Key Insight:</span> Shipped production-quality work in a fast-paced startup. Learned to collaborate with engineers and design complex tools that respect user expertise.
+              <span className="font-medium text-slate-900">Key Insight:</span> Shipped production-quality work in a fast-paced startup. Learned to collaborate with engineers and design complex tools that respect user expertise.
             </p>
           </div>
         </div>
@@ -2326,7 +2324,7 @@ export default function NexusCaseStudy() {
         <div className="max-w-6xl mx-auto">
           <Link
             href="/"
-            className="relative z-30 inline-flex items-center gap-3 px-6 py-3 bg-[#3b82f6] hover:bg-[#2563eb] text-white font-semibold rounded-full transition-all touch-manipulation"
+            className="relative z-30 inline-flex items-center gap-3 rounded-full border border-[#2563EB]/15 bg-[#2563EB] px-6 py-3 font-semibold text-white shadow-[0_14px_30px_-18px_rgba(37,99,235,0.75)] transition-all hover:bg-[#1d4ed8] touch-manipulation"
           >
             Back to Portfolio
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2338,6 +2336,54 @@ export default function NexusCaseStudy() {
 
       <style jsx global>{`
         html { scroll-behavior: smooth; }
+
+        .nexus-theme {
+          background:
+            radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 28%),
+            radial-gradient(circle at top right, rgba(148, 163, 184, 0.14), transparent 24%),
+            linear-gradient(180deg, #fafaf8 0%, #f5f5f1 100%);
+        }
+
+        .nexus-theme [class~="text-white"] { color: rgb(15 23 42) !important; }
+        .nexus-theme [class~="text-white/30"] { color: rgb(100 116 139 / 0.82) !important; }
+        .nexus-theme [class~="text-white/40"] { color: rgb(100 116 139 / 0.92) !important; }
+        .nexus-theme [class~="text-white/50"] { color: rgb(71 85 105 / 0.92) !important; }
+        .nexus-theme [class~="text-white/60"] { color: rgb(71 85 105 / 0.82) !important; }
+        .nexus-theme [class~="text-white/70"] { color: rgb(30 41 59 / 0.82) !important; }
+        .nexus-theme [class~="text-white/80"] { color: rgb(15 23 42 / 0.88) !important; }
+        .nexus-theme [class~="text-white/90"] { color: rgb(15 23 42 / 0.96) !important; }
+        .nexus-theme .text-\[\#60a5fa\],
+        .nexus-theme .text-\[\#60a5fa\]\/50,
+        .nexus-theme .text-\[\#60a5fa\]\/60,
+        .nexus-theme .text-\[\#60a5fa\]\/70,
+        .nexus-theme .text-\[\#60a5fa\]\/80 {
+          color: #2563eb !important;
+        }
+        .nexus-theme [class~="bg-[#60a5fa]/5"] { background-color: rgba(219, 234, 254, 0.78) !important; }
+        .nexus-theme [class~="border-[#60a5fa]/20"] { border-color: rgba(37, 99, 235, 0.18) !important; }
+        .nexus-theme [class~="border-white/10"] { border-color: rgba(148, 163, 184, 0.24) !important; }
+        .nexus-theme [class~="border-white/5"] { border-color: rgba(148, 163, 184, 0.14) !important; }
+        .nexus-theme [class~="bg-white/5"] { background-color: rgba(148, 163, 184, 0.12) !important; }
+        .nexus-theme [class~="bg-white/40"] { background-color: rgba(148, 163, 184, 0.36) !important; }
+        .nexus-theme [class~="bg-white/60"] { background-color: rgba(37, 99, 235, 0.56) !important; }
+
+        .nexus-theme a[href^="#"],
+        .nexus-theme a[href="/"],
+        .nexus-theme button {
+          transition:
+            transform 180ms ease,
+            box-shadow 220ms ease,
+            background-color 220ms ease,
+            border-color 220ms ease,
+            color 220ms ease,
+            opacity 220ms ease;
+        }
+
+        .nexus-theme a[href^="#"]:hover,
+        .nexus-theme a[href="/"]:hover,
+        .nexus-theme button:hover {
+          transform: translateY(-2px);
+        }
       `}</style>
       <style jsx>{`
         @keyframes float {
@@ -2389,7 +2435,7 @@ function Section({ children, id }: { children: React.ReactNode; id?: string }) {
     <section 
       ref={ref}
       id={id}
-      className={`relative z-10 py-16 md:py-24 px-4 md:px-8 border-t border-white/5 transition-all duration-700 ease-out ${id ? 'scroll-mt-24' : ''} ${
+      className={`relative z-10 border-t border-slate-200/80 px-4 py-16 transition-all duration-700 ease-out md:px-8 md:py-24 ${id ? 'scroll-mt-24' : ''} ${
         isVisible 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 translate-y-8'
@@ -2405,8 +2451,8 @@ function Section({ children, id }: { children: React.ReactNode; id?: string }) {
 function Footnote({ id, children }: { id: number; children: string }) {
   return (
     <span className="relative inline group cursor-help">
-      <sup className="text-[#60a5fa]/50 text-[10px] font-normal ml-0.5 select-none">[{id}]</sup>
-      <span className="absolute bottom-full left-0 mb-2 px-4 py-3 rounded-lg bg-[#1a1a1a] border border-white/10 text-white/80 text-xs leading-relaxed max-w-[280px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-150 pointer-events-none z-[100] shadow-xl">
+      <sup className="ml-0.5 select-none text-[10px] font-normal text-[#2563EB]/70">[{id}]</sup>
+      <span className="absolute bottom-full left-0 z-[100] mb-2 max-w-[280px] invisible rounded-lg border border-slate-200 bg-white px-4 py-3 text-xs leading-relaxed text-slate-700 opacity-0 shadow-xl transition-opacity duration-150 pointer-events-none group-hover:visible group-hover:opacity-100">
         {children}
       </span>
     </span>
@@ -2415,12 +2461,12 @@ function Footnote({ id, children }: { id: number; children: string }) {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[#60a5fa]/60 text-sm font-mono mb-4">{children}</p>
+    <p className="mb-4 text-sm font-mono text-[#2563EB]/70">{children}</p>
   )
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-3xl md:text-4xl font-bold text-white mb-12">{children}</h2>
+    <h2 className="mb-12 text-3xl font-bold text-[#2563EB] md:text-4xl">{children}</h2>
   )
 }

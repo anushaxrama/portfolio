@@ -1,12 +1,42 @@
 export type ProjectSlug = 'nexus' | 'neuranote' | 'flowops'
 
-export type VisualKind = 'image' | 'video'
+export type VisualKind = 'image' | 'video' | 'chart'
 
-export interface VisualAsset {
-  kind: VisualKind
+export interface ChartDatum {
+  label: string
+  value: number
+  note: string
+}
+
+export interface ChartSeries {
+  id: string
+  label: string
+  description: string
+  data: ChartDatum[]
+}
+
+export interface ImageVisualAsset {
+  kind: 'image'
   src: string
   caption: string
 }
+
+export interface VideoVisualAsset {
+  kind: 'video'
+  src: string
+  caption: string
+}
+
+export interface ChartVisualAsset {
+  kind: 'chart'
+  caption: string
+  title: string
+  scaleLabel: string
+  maxValue: number
+  series: ChartSeries[]
+}
+
+export type VisualAsset = ImageVisualAsset | VideoVisualAsset | ChartVisualAsset
 
 export interface PresentationStop {
   /** Mirrors numbered sections on the full case study page */
@@ -39,8 +69,8 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
     title: 'Nexus',
     subtitle: 'One answer backed by multiple models, designed to feel clear and trustworthy.',
     meta: 'Product design · Narb internship · Shipped with engineering (Figma, Cursor, Lovable)',
-    accentClass: 'text-[#1d6b5a]',
-    accentSoftClass: 'bg-[#1d6b5a]/12 border-[#1d6b5a]/25',
+    accentClass: 'text-[#2563EB]',
+    accentSoftClass: 'bg-[#DBEAFE] border-[#93C5FD]',
     caseStudyHref: '/case-study/nexus',
     stops: [
       {
@@ -72,7 +102,61 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
           '**What that meant:** The issue wasn’t a lack of information. It was a lack of **clarity** and too much work being pushed onto the user.',
           '**Design direction:** Instead of showing multiple outputs, the goal became to design something that feels **clear, dependable, and easy to act on**.',
         ],
-        visuals: [],
+        visuals: [
+          {
+            kind: 'chart',
+            title: 'What the research pointed to',
+            caption: 'Qualitative synthesis from the 48-student survey and usability sessions',
+            scaleLabel: 'Relative signal strength',
+            maxValue: 5,
+            series: [
+              {
+                id: 'pain-points',
+                label: 'Main pain points',
+                description: 'This view summarizes which issues showed up most strongly in the research.',
+                data: [
+                  {
+                    label: 'Trust in one answer',
+                    value: 5,
+                    note: 'The strongest issue was confidence, especially on more complex questions.',
+                  },
+                  {
+                    label: 'Need to verify',
+                    value: 4,
+                    note: 'People often felt they still had to confirm the answer themselves.',
+                  },
+                  {
+                    label: 'Speed of response',
+                    value: 2,
+                    note: 'Speed mattered, but it was not the main reason people kept switching tools.',
+                  },
+                ],
+              },
+              {
+                id: 'behaviors',
+                label: 'Observed behaviors',
+                description: 'This view shows the behaviors that followed when people did not trust a single output.',
+                data: [
+                  {
+                    label: 'Compare across tools',
+                    value: 5,
+                    note: 'Users regularly moved between ChatGPT, Claude, and other sources to compare answers.',
+                  },
+                  {
+                    label: 'Re-check before acting',
+                    value: 4,
+                    note: 'People slowed down and spent extra effort validating what they saw.',
+                  },
+                  {
+                    label: 'Use first answer directly',
+                    value: 1,
+                    note: 'This was uncommon when the question felt important or high stakes.',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
         bridgeHeading: 'Why this matters',
         internshipBridge:
           'When people don’t feel confident in an answer, they slow down and start doing extra work to verify it. That friction adds up quickly. In products where decisions matter, like financial tools, that kind of doubt can make people leave.',
@@ -175,8 +259,8 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
     title: 'NeuraNote',
     subtitle: 'A study tool designed around how people learn, not just how they organize notes.',
     meta: 'UX design & research · 6 weeks · Cognitive science in the interface (Figma, Lovable, Cursor)',
-    accentClass: 'text-[#6b4fc9]',
-    accentSoftClass: 'bg-[#6b4fc9]/12 border-[#6b4fc9]/25',
+    accentClass: 'text-[#4F46E5]',
+    accentSoftClass: 'bg-[#EEF2FF] border-[#C7D2FE]',
     caseStudyHref: '/case-study/neuranote',
     stops: [
       {
@@ -201,8 +285,8 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         summary:
           'Early on, I saw that students often confuse **being organized** with **actually knowing the material**. Having neat notes didn’t always translate to retention.',
         bullets: [
-          '**What I explored:** In lo-fi sketches, I focused on testing different **layouts and mental models** before getting into visuals. I also mapped out how students move between “reviewing” and “cramming,” so the product could meet them where they are and gradually guide them toward better habits.',
-          '**What this led to:** A direction focused less on organizing information and more on helping students **actively engage with it** in a way that improves memory.',
+          '**What I explored:** In early sketches, I focused on testing different ways to organize notes, like whether concepts should be shown as lists or connected visually. I also thought through how students move between quickly reviewing material and studying more deeply, so the product could support both without feeling overwhelming.',
+          '**What this led to:** A direction focused on helping students actively engage with their notes in a way that improves memory, instead of just passively reviewing information.',
         ],
         visuals: [
           { kind: 'image', src: '/neuranote/lofi-sketches-1.png', caption: 'Early layout exploration' },
@@ -245,10 +329,11 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         caseStudySection: '05 · Testing',
         title: 'What testing revealed',
         summary:
-          'People understood the idea quickly, but some were confused about **what the AI was doing versus what they were controlling**.',
+          'People understood the overall idea, but some were unsure how to actually use features like **concept linking** and **review**. A few users also didn’t know what to do first or how the system was supposed to help them study.',
         bullets: [
-          '**What I changed:** I updated the wording across the product to make **roles clearer**, what the system does and what the user controls. I also improved **onboarding** so new users weren’t starting from a blank screen without guidance.',
-          '**The result:** Users felt **more confident getting started** and had a better understanding of how everything works.',
+          '**What I changed:** I simplified the flow and made the next steps more clear.',
+          '**Guidance:** I added onboarding support so users knew how to start instead of facing a blank state.',
+          '**Interaction clarity:** I made actions like linking concepts and reviewing more obvious.',
         ],
         visuals: [{ kind: 'image', src: '/neuranote/neuranote-4.png', caption: 'Usability testing prototype' }],
         internshipBridge: '',
@@ -286,19 +371,21 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
     slug: 'flowops',
     title: 'FlowOps',
     subtitle: 'A multi-role request tool designed to make ownership, progress, and next steps clear.',
-    meta: 'Product design · 2-week sprint · Enterprise workflows (Figma, Adobe CC)',
-    accentClass: 'text-[#c43c3c]',
-    accentSoftClass: 'bg-[#c43c3c]/12 border-[#c43c3c]/25',
+    meta: 'Product design · 2-week sprint · Enterprise workflows (Figma, Adobe CC, Cursor)',
+    accentClass: 'text-[#DC2626]',
+    accentSoftClass: 'bg-[#FEE2E2] border-[#FCA5A5]',
     caseStudyHref: '/case-study/flowops',
     stops: [
       {
         caseStudySection: '01 · Problem',
         title: 'The problem',
         summary:
-          'I wanted to design FlowOps because multi-step internal tools often make simple work feel harder than it should. Requests were scattered across **email, Slack, and spreadsheets**, ownership was unclear, and teams often found issues too late.',
+          'I designed FlowOps because a lot of internal tools make simple tasks feel more complicated than they should. Requests were spread across **email, Slack, and spreadsheets**, so it was hard to track what was going on and who was responsible.',
         bullets: [
-          '**What that caused:** Lost context, stalled approvals, and higher operational risk.',
-          '**Who it affected:** Requesters, managers, agents, and admins all touched the same request, but each needed a different view of it.',
+          '**What that caused:** Confusion around ownership.',
+          '**What that caused:** Delays in getting things done.',
+          '**What that caused:** Issues being noticed too late.',
+          '**Who it affected:** Requesters, agents, and managers were all involved in the same request, but each person needed a different view.',
         ],
         visuals: [],
         internshipBridge: '',
@@ -307,10 +394,12 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         caseStudySection: '02 · Goals',
         title: 'What success needed to look like',
         summary:
-          'Before designing screens, I defined what a good outcome needed to be: **clear ownership, visible progress, faster decision-making, and a history teams could trust**.',
+          'Before designing, I defined what a good outcome should be: **clear ownership, easy-to-see progress, faster decisions, and a reliable history of requests**.',
         bullets: [
-          '**How I scoped it:** I set clear boundaries for a **2-week sprint** so the concept stayed realistic.',
-          '**What guided the design:** Fewer invisible stalls, faster decisions, and a system people could follow without rebuilding context.',
+          '**How I scoped it:** I kept the project focused to fit a **2-week sprint** so it stayed realistic.',
+          '**What guided the design:** Reduce delays.',
+          '**What guided the design:** Help people make decisions faster.',
+          '**What guided the design:** Make the system easy to follow without needing extra context.',
         ],
         visuals: [],
         internshipBridge: '',
@@ -319,10 +408,13 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         caseStudySection: '03 · Workflow',
         title: 'Building a clear workflow',
         summary:
-          'The core challenge was making a request easy to follow from **open to closed**. I designed the workflow so status, handoffs, and history stayed visible at every step.',
+          'The main challenge was making it easy to follow a request from start to finish.',
         bullets: [
-          '**How it works:** Statuses match how work actually moves, including reassignment, “needs info,” and requests that need attention.',
-          '**Why it mattered:** Shared metadata and clear ownership reduce rework and make the next step obvious.',
+          '**What I designed:** I created a workflow where status is always visible.',
+          '**What I designed:** I created a workflow where ownership is clear.',
+          '**What I designed:** I created a workflow where you can see what has happened so far.',
+          '**How it works:** Statuses reflect real steps like “in progress,” “needs info,” or “reassigned.”',
+          '**How it works:** It is always clear what needs attention.',
         ],
         visuals: [{ kind: 'image', src: '/flowops2.png', caption: 'Request detail view' }],
         internshipBridge: '',
@@ -331,12 +423,18 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         caseStudySection: '04 · Roles',
         title: 'Designing for four roles',
         summary:
-          'The same request needed to work for **four different roles**: requesters, managers, agents, and admins. Each one interacts with the same system for a different reason, so the design had to make the right information and actions clear without turning it into four separate products.',
+          'The same request needed to work for different roles: **requesters, agents, managers, and admins**. Each person uses the system differently, so the goal was to show the right information without making it feel overwhelming.',
         bullets: [
-          '**Why the roles mattered:** Requesters need clarity on status and next steps, managers need visibility and approvals, agents need speed and context, and admins need control over the system as a whole.',
-          '**What I prioritized:** The right fields, actions, and alerts for each role without adding extra complexity.',
-          '**Interaction decisions:** Strong defaults, explicit confirmations, and dense but readable layouts for high-frequency work.',
-          '**Edge cases:** Color never carried meaning alone, and empty, loading, and error states were considered early.',
+          '**Requester:** Submit requests and track status easily.',
+          '**Agent:** Handle and resolve requests quickly with enough context.',
+          '**Manager:** See priorities, ownership, and approvals.',
+          '**Admin:** Manage workflows and system rules.',
+          '**What I focused on:** Showing the right information for each role.',
+          '**What I focused on:** Making actions and next steps clear.',
+          '**What I focused on:** Avoiding unnecessary complexity.',
+          '**Key design decisions:** Clear defaults.',
+          '**Key design decisions:** Strong confirmations for important actions.',
+          '**Key design decisions:** Layouts that show a lot of information but still feel easy to scan.',
         ],
         visuals: [],
         internshipBridge: '',
@@ -345,10 +443,14 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         caseStudySection: '05 · Testing',
         title: 'What testing changed',
         summary:
-          'Peer walkthroughs showed where ownership handoffs still felt fuzzy and where requesters needed more explanation.',
+          'Some steps still felt unclear, especially when a request changed hands. Requesters didn’t always understand what was happening or why.',
         bullets: [
-          '**What I changed:** Rejection reasons became required, supporting copy got clearer, and progress indicators were easier to scan.',
-          '**The result:** The flow felt easier to follow, especially when a request changed hands or needed attention.',
+          '**What I changed:** I made rejection reasons required so there was always clear feedback.',
+          '**What I changed:** I simplified the wording to make actions easier to understand.',
+          '**What I changed:** I improved progress indicators so status was easier to scan.',
+          '**The result:** The flow was easier to follow.',
+          '**The result:** Ownership changes felt clearer.',
+          '**The result:** Users understood what was happening without needing to ask.',
         ],
         visuals: [],
         internshipBridge: '',
@@ -357,10 +459,14 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         caseStudySection: '06 · Impact',
         title: 'What this was designed to improve',
         summary:
-          'As a sprint concept, the goal was to clarify what this system should improve in production: **faster decisions, fewer stalled approvals, clearer progress, and stronger accountability**.',
+          'Even as a short project, the goal was to show how the system could improve: **faster decisions, fewer delays, clearer progress, and stronger ownership**.',
         bullets: [
-          '**What this would measure:** Completion time, stalled requests, handoff clarity, and satisfaction across roles.',
-          '**What I learned:** In complex operational tools, clarity is the product; the interface has to handle complexity without making users feel it.',
+          '**What this would measure:** Time to complete requests.',
+          '**What this would measure:** Fewer stalled requests.',
+          '**What this would measure:** Clearer handoffs between people.',
+          '**What this would measure:** Overall satisfaction across roles.',
+          '**What I learned:** In complex tools like this, clarity is the most important thing.',
+          '**What I learned:** The system should handle the complexity so users don’t have to.',
         ],
         visuals: [],
         internshipBridge: '',

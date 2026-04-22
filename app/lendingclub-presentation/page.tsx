@@ -6,6 +6,7 @@ import type { CSSProperties } from 'react'
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import {
   PRESENTATION_PROJECTS,
+  type ChartVisualAsset,
   type PresentationProject,
   type PresentationStop,
   type ProjectSlug,
@@ -53,28 +54,28 @@ function DeckWelcomeIntro({ reduceMotion }: { reduceMotion: boolean }) {
   return (
     <section
       id="welcome-intro"
-      className="relative flex min-h-[100dvh] flex-col items-center justify-start overflow-x-hidden bg-[#f3f0e8] px-5 pb-16 pt-10 sm:justify-center sm:px-8 sm:pb-24 sm:pt-12"
+      className="relative flex min-h-[100dvh] flex-col items-center justify-start overflow-x-hidden bg-[#F8FAFC] px-5 pb-16 pt-10 sm:justify-center sm:px-8 sm:pb-24 sm:pt-12"
       aria-labelledby="opening-splash-title"
     >
       <div
-        className="pointer-events-none absolute -left-24 top-1/4 h-64 w-64 rounded-full bg-[#1e4d3d]/10 blur-3xl motion-reduce:animate-none sm:h-72 sm:w-72 animate-lc-soft-pulse"
+        className="pointer-events-none absolute -left-24 top-1/4 h-64 w-64 rounded-full bg-[#2563EB]/10 blur-3xl motion-reduce:animate-none sm:h-72 sm:w-72 animate-lc-soft-pulse"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-16 bottom-1/4 h-56 w-56 rounded-full bg-[#1e4d3d]/8 blur-3xl motion-reduce:animate-none sm:-right-20 sm:h-64 sm:w-64 animate-lc-soft-pulse [animation-delay:1.2s]"
+        className="pointer-events-none absolute -right-16 bottom-1/4 h-56 w-56 rounded-full bg-[#2563EB]/8 blur-3xl motion-reduce:animate-none sm:-right-20 sm:h-64 sm:w-64 animate-lc-soft-pulse [animation-delay:1.2s]"
         aria-hidden
       />
 
       <div className="relative z-10 mx-auto w-full max-w-[32rem] text-center sm:max-w-[38rem] md:max-w-[44rem]">
         <p
-          className={`mb-2 text-[0.58rem] font-medium uppercase tracking-[0.2em] text-[#1e4d3d] sm:mb-2.5 sm:text-[0.62rem] sm:tracking-[0.22em] ${motionFade}`}
+          className={`mb-2 text-[0.58rem] font-medium uppercase tracking-[0.2em] text-[#2563EB] sm:mb-2.5 sm:text-[0.62rem] sm:tracking-[0.22em] ${motionFade}`}
           style={introDelay(reduceMotion, 320)}
         >
           LendingClub · Product &amp; Experience
         </p>
         <h1
           id="opening-splash-title"
-          className={`mb-5 text-[clamp(1.35rem,3.25vw,1.9rem)] font-medium leading-[1.2] tracking-tight text-[#0f241c] sm:mb-6 ${motionFade}`}
+          className={`mb-5 text-[clamp(1.35rem,3.25vw,1.9rem)] font-medium leading-[1.2] tracking-tight text-[#0F172A] sm:mb-6 ${motionFade}`}
           style={{
             fontFamily: 'var(--font-lc-serif), Georgia, serif',
             ...introDelay(reduceMotion, 420),
@@ -85,28 +86,28 @@ function DeckWelcomeIntro({ reduceMotion }: { reduceMotion: boolean }) {
 
         <div
           id="opening-splash-desc"
-          className="space-y-3.5 text-left text-[0.875rem] leading-[1.62] text-[#14231f]/85 sm:space-y-4 sm:text-[0.9375rem] sm:leading-[1.65]"
+          className="space-y-3.5 text-left text-[0.875rem] leading-[1.62] text-[#1E293B]/85 sm:space-y-4 sm:text-[0.9375rem] sm:leading-[1.65]"
         >
           <p className={motionPara} style={introDelay(reduceMotion, 640)}>
-            I&apos;m a <strong className="font-semibold text-[#0f241c]">Cognitive Science</strong> student at{' '}
-            <strong className="font-semibold text-[#0f241c]">UC Davis</strong> with a minor in{' '}
-            <strong className="font-semibold text-[#0f241c]">Computer Science</strong>. I got into design through
+            I&apos;m a <strong className="font-semibold text-[#0F172A]">Cognitive Science</strong> student at{' '}
+            <strong className="font-semibold text-[#0F172A]">UC Davis</strong> with a minor in{' '}
+            <strong className="font-semibold text-[#0F172A]">Computer Science</strong>. I got into design through
             an interest in how people think, make decisions, and interact with technology.
           </p>
           <p className={motionPara} style={introDelay(reduceMotion, 920)}>
-            That led me to <strong className="font-semibold text-[#0f241c]">product and UX</strong>, where I enjoy
+            That led me to <strong className="font-semibold text-[#0F172A]">product and UX</strong>, where I enjoy
             working across the full process from understanding user problems to designing and testing solutions.
             Most recently, I was a{' '}
-            <strong className="font-semibold text-[#0f241c]">Product Design Intern at Narb</strong>, where I
+            <strong className="font-semibold text-[#0F172A]">Product Design Intern at Narb</strong>, where I
             worked on onboarding and the core AI experience that we shipped.
           </p>
           <p className={motionPara} style={introDelay(reduceMotion, 1220)}>
             Across my work, I focus on{' '}
-            <strong className="font-semibold text-[#0f241c]">
+            <strong className="font-semibold text-[#0F172A]">
               making complex and confusing experiences feel clear and usable
             </strong>
             , especially in areas where trust and clarity really matter. That is a big reason why I&apos;m
-            excited about <strong className="font-semibold text-[#0f241c]">LendingClub</strong> and the
+            excited about <strong className="font-semibold text-[#0F172A]">LendingClub</strong> and the
             opportunity to design thoughtful digital financial experiences.
           </p>
         </div>
@@ -116,17 +117,87 @@ function DeckWelcomeIntro({ reduceMotion }: { reduceMotion: boolean }) {
         className={`relative z-10 mt-10 flex flex-col items-center gap-2 sm:mt-14 ${reduceMotion ? '' : 'lc-intro-scroll-pop'}`}
         aria-hidden
       >
-        <span className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#1e4d3d]">
+        <span className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#2563EB]">
           Scroll for deck
         </span>
         <span
-          className={`text-2xl leading-none text-[#1e4d3d] ${reduceMotion ? '' : 'lc-intro-scroll-nudge'}`}
+          className={`text-2xl leading-none text-[#2563EB] ${reduceMotion ? '' : 'lc-intro-scroll-nudge'}`}
           aria-hidden
         >
           ↓
         </span>
       </div>
     </section>
+  )
+}
+
+function InteractiveResearchChart({
+  chart,
+  projectSlug,
+}: {
+  chart: ChartVisualAsset
+  projectSlug: ProjectSlug
+}) {
+  const [seriesIndex, setSeriesIndex] = useState(0)
+
+  useEffect(() => {
+    setSeriesIndex(0)
+  }, [chart.title])
+
+  const activeSeries = chart.series[Math.min(seriesIndex, chart.series.length - 1)]
+  const accentBarClass =
+    projectSlug === 'nexus' ? 'bg-[#2563EB]' : projectSlug === 'neuranote' ? 'bg-[#4F46E5]' : 'bg-[#DC2626]'
+
+  return (
+    <div className="rounded-xl border border-[#1E293B]/10 bg-white/85 p-4 md:p-5">
+      <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+        <div>
+          <p className="text-sm font-semibold text-[#0F172A]">{chart.title}</p>
+          <p className="mt-1 text-xs uppercase tracking-[0.16em] text-[#1E293B]/45">
+            {chart.scaleLabel} · 1 low to {chart.maxValue} high
+          </p>
+        </div>
+
+        {chart.series.length > 1 && (
+          <div className="inline-flex w-fit rounded-full border border-[#1E293B]/10 bg-[#EFF6FF] p-1">
+            {chart.series.map((series, i) => (
+              <button
+                key={series.id}
+                type="button"
+                onClick={() => setSeriesIndex(i)}
+                className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
+                  i === seriesIndex ? `${accentBarClass} text-white` : 'text-[#1E293B]/65 hover:bg-white'
+                }`}
+              >
+                {series.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <p className="mt-3 text-sm leading-relaxed text-[#1E293B]/70">{activeSeries.description}</p>
+
+      <div className="mt-5 space-y-4">
+        {activeSeries.data.map((datum) => (
+          <div key={`${activeSeries.id}-${datum.label}`}>
+            <div className="mb-1.5 flex items-center justify-between gap-3">
+              <p className="text-sm font-medium text-[#0F172A]">{datum.label}</p>
+              <p className="text-xs font-medium text-[#1E293B]/55">
+                {datum.value}/{chart.maxValue}
+              </p>
+            </div>
+            <div className="h-2 overflow-hidden rounded-full bg-[#1E293B]/10">
+              <div
+                className={`h-full rounded-full transition-[width] duration-500 ease-out ${accentBarClass}`}
+                style={{ width: `${(datum.value / chart.maxValue) * 100}%` }}
+              />
+            </div>
+            <p className="mt-2 text-xs leading-relaxed text-[#1E293B]/60">{datum.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -145,6 +216,25 @@ export default function LendingClubPresentationPage() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
+  const resetPresentationToIntro = useCallback((revealDeck: boolean) => {
+    const cleanPath = `${window.location.pathname}${window.location.search}`
+    if (window.location.hash) {
+      window.history.replaceState(window.history.state, '', cleanPath)
+    }
+
+    setChapter('intro')
+    setStopIndexByProject(createInitialStopIndexByProject())
+    setVisualIndexByKey({})
+    setLightbox(null)
+    setDeckRevealed(revealDeck)
+    setGuidedMode(true)
+
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    document.getElementById('welcome-intro')?.scrollIntoView({ block: 'start' })
+  }, [])
+
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
     setReduceMotion(mq.matches)
@@ -157,49 +247,38 @@ export default function LendingClubPresentationPage() {
   useLayoutEffect(() => {
     const prev = window.history.scrollRestoration
     window.history.scrollRestoration = 'manual'
+    let rafA = 0
+    let rafB = 0
 
-    setChapter('intro')
-    setStopIndexByProject(createInitialStopIndexByProject())
-    setVisualIndexByKey({})
-    setLightbox(null)
-    setDeckRevealed(reduceMotion)
-    setGuidedMode(true)
-
-    const scrollToIntro = () => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-      document.getElementById('welcome-intro')?.scrollIntoView({ block: 'start' })
-    }
-
-    scrollToIntro()
-    requestAnimationFrame(scrollToIntro)
-    const timeoutId = window.setTimeout(scrollToIntro, 60)
+    resetPresentationToIntro(reduceMotion)
+    rafA = requestAnimationFrame(() => {
+      resetPresentationToIntro(reduceMotion)
+      rafB = requestAnimationFrame(() => resetPresentationToIntro(reduceMotion))
+    })
+    const timeoutId = window.setTimeout(() => resetPresentationToIntro(reduceMotion), 90)
 
     const onPageShow = () => {
-      scrollToIntro()
+      resetPresentationToIntro(reduceMotion)
+      requestAnimationFrame(() => resetPresentationToIntro(reduceMotion))
     }
 
     window.addEventListener('pageshow', onPageShow)
     return () => {
+      window.cancelAnimationFrame(rafA)
+      window.cancelAnimationFrame(rafB)
       window.clearTimeout(timeoutId)
       window.removeEventListener('pageshow', onPageShow)
       window.history.scrollRestoration = prev
     }
-  }, [reduceMotion])
+  }, [reduceMotion, resetPresentationToIntro])
 
   // In development, Fast Refresh preserves React state across edits.
   // Tie a reset effect to a module-level version so the deck always returns to intro.
   useLayoutEffect(() => {
     if (process.env.NODE_ENV !== 'development') return
 
-    setChapter('intro')
-    setStopIndexByProject(createInitialStopIndexByProject())
-    setVisualIndexByKey({})
-    setLightbox(null)
-    setDeckRevealed(reduceMotion)
-    setGuidedMode(true)
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-    document.getElementById('welcome-intro')?.scrollIntoView({ block: 'start' })
-  }, [reduceMotion])
+    resetPresentationToIntro(reduceMotion)
+  }, [reduceMotion, resetPresentationToIntro])
 
   // Fade the deck in once the user reaches the end of the welcome.
   // A direct position check is more reliable here than observing a 1px sentinel.
@@ -366,13 +445,13 @@ export default function LendingClubPresentationPage() {
         aria-hidden
       />
       <div className={`${deckShellMotionClass} ${deckShellOpacityClass}`}>
-      <header className="sticky top-0 z-40 border-b border-[#14231f]/10 bg-[#f3f0e8]/95 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-[#1E293B]/10 bg-[#F8FAFC]/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-3 md:px-8">
           <div>
-            <p className="text-[0.65rem] font-medium uppercase tracking-[0.2em] text-[#1e4d3d]">
+            <p className="text-[0.65rem] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
               Interview deck · LendingClub
             </p>
-            <p className="text-sm font-medium text-[#14231f]/80">Anusha Ramachandran · Product &amp; UX</p>
+            <p className="text-sm font-medium text-[#1E293B]/80">Anusha Ramachandran · Product &amp; UX</p>
           </div>
           <nav className="flex flex-wrap items-center gap-1 text-xs md:gap-2 md:text-sm">
             {(
@@ -390,8 +469,8 @@ export default function LendingClubPresentationPage() {
                 onClick={() => goChapter(id)}
                 className={`rounded-full px-3 py-1.5 transition-colors ${
                   chapter === id
-                    ? 'bg-[#1e4d3d] text-white shadow-sm'
-                    : 'text-[#14231f]/70 hover:bg-[#14231f]/5'
+                    ? 'bg-[#2563EB] text-white shadow-sm'
+                    : 'text-[#1E293B]/70 hover:bg-[#1E293B]/5'
                 }`}
               >
                 {label}
@@ -399,16 +478,16 @@ export default function LendingClubPresentationPage() {
             ))}
             <Link
               href="/"
-              className="ml-1 rounded-full border border-[#14231f]/15 px-3 py-1.5 text-[#14231f]/70 hover:bg-[#14231f]/5"
+              className="ml-1 rounded-full border border-[#1E293B]/15 px-3 py-1.5 text-[#1E293B]/70 hover:bg-[#1E293B]/5"
             >
               Portfolio
             </Link>
-            <div className="ml-1 inline-flex rounded-full border border-[#14231f]/15 bg-white/70 p-1 text-[0.7rem]">
+            <div className="ml-1 inline-flex rounded-full border border-[#1E293B]/15 bg-white/70 p-1 text-[0.7rem]">
               <button
                 type="button"
                 onClick={() => setGuidedMode(true)}
                 className={`rounded-full px-3 py-1 transition ${
-                  guidedMode ? 'bg-[#1e4d3d] text-white' : 'text-[#14231f]/65 hover:bg-[#14231f]/5'
+                  guidedMode ? 'bg-[#2563EB] text-white' : 'text-[#1E293B]/65 hover:bg-[#1E293B]/5'
                 }`}
               >
                 Guided
@@ -417,7 +496,7 @@ export default function LendingClubPresentationPage() {
                 type="button"
                 onClick={() => setGuidedMode(false)}
                 className={`rounded-full px-3 py-1 transition ${
-                  !guidedMode ? 'bg-[#1e4d3d] text-white' : 'text-[#14231f]/65 hover:bg-[#14231f]/5'
+                  !guidedMode ? 'bg-[#2563EB] text-white' : 'text-[#1E293B]/65 hover:bg-[#1E293B]/5'
                 }`}
               >
                 Explore
@@ -429,20 +508,20 @@ export default function LendingClubPresentationPage() {
 
       <section
         id="chapter-intro"
-        className="scroll-mt-28 border-b border-[#14231f]/10 px-5 py-16 md:px-8 md:py-24"
+        className="scroll-mt-28 border-b border-[#1E293B]/10 px-5 py-16 md:px-8 md:py-24"
       >
         <div className="mx-auto max-w-3xl">
-          <p className="mb-3 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-[#1e4d3d]">
+          <p className="mb-3 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-[#2563EB]">
             Product &amp; Experience internship
           </p>
           <h1
-            className="mb-6 text-4xl font-medium leading-[1.12] tracking-tight text-[#0f241c] md:text-5xl lg:text-[3.15rem]"
+            className="mb-6 text-4xl font-medium leading-[1.12] tracking-tight text-[#0F172A] md:text-5xl lg:text-[3.15rem]"
             style={{ fontFamily: 'var(--font-lc-serif), Georgia, serif' }}
           >
             I design for moments when{' '}
-            <span className="text-[#1e4d3d]">complexity meets real people.</span>
+            <span className="text-[#2563EB]">complexity meets real people.</span>
           </h1>
-          <p className="mb-6 text-base leading-relaxed text-[#14231f]/75 md:text-lg">
+          <p className="mb-6 text-base leading-relaxed text-[#1E293B]/75 md:text-lg">
             I&apos;ll walk through three projects that show how I approach design from end to end, from
             understanding the problem to delivering clear, thoughtful solutions. I&apos;ll start with Nexus, my
             internship project at Narb where I designed the onboarding and core AI experience that was built and
@@ -451,37 +530,37 @@ export default function LendingClubPresentationPage() {
             across multiple roles. Each project follows a similar structure, with key visuals included where they
             help tell the story.
           </p>
-          <div className="mb-8 rounded-2xl border border-[#14231f]/10 bg-white/70 p-6 shadow-sm md:p-8">
-            <p className="mb-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#1e4d3d]">
+          <div className="mb-8 rounded-2xl border border-[#1E293B]/10 bg-white/70 p-6 shadow-sm md:p-8">
+            <p className="mb-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#2563EB]">
               Navigate this deck
             </p>
-            <ul className="space-y-2 text-sm leading-relaxed text-[#14231f]/75">
+            <ul className="space-y-2 text-sm leading-relaxed text-[#1E293B]/75">
               <li>
-                Use the top tabs, or <strong className="text-[#0f241c]">scroll</strong>—the highlight
+                Use the top tabs, or <strong className="text-[#0F172A]">scroll</strong>—the highlight
                 tracks where you are.
               </li>
               <li>
-                In each project: <strong className="text-[#0f241c]">click a section</strong> on the left, or
-                press <strong className="text-[#0f241c]">← →</strong> to step through images and sections;{' '}
-                <strong className="text-[#0f241c]">↑ ↓</strong> jumps between Intro / Nexus / NeuraNote /
+                In each project: <strong className="text-[#0F172A]">click a section</strong> on the left, or
+                press <strong className="text-[#0F172A]">← →</strong> to step through images and sections;{' '}
+                <strong className="text-[#0F172A]">↑ ↓</strong> jumps between Intro / Nexus / NeuraNote /
                 FlowOps / Close.
               </li>
               <li>
-                <strong className="text-[#0f241c]">Click</strong> a main image to enlarge;{' '}
-                <kbd className="rounded bg-[#14231f]/10 px-1.5 py-0.5 text-xs">Esc</kbd> closes.
+                <strong className="text-[#0F172A]">Click</strong> a main image to enlarge;{' '}
+                <kbd className="rounded bg-[#1E293B]/10 px-1.5 py-0.5 text-xs">Esc</kbd> closes.
               </li>
             </ul>
           </div>
           <button
             type="button"
             onClick={() => goChapter('nexus')}
-            className="rounded-full bg-[#1e4d3d] px-8 py-3 text-sm font-medium text-white shadow-md transition hover:bg-[#163d30]"
+            className="rounded-full bg-[#2563EB] px-8 py-3 text-sm font-medium text-white shadow-md transition hover:bg-[#1D4ED8]"
           >
             Start with Nexus
           </button>
-          <div className="mt-14 flex flex-col items-center gap-2 text-[#14231f]/45">
+          <div className="mt-14 flex flex-col items-center gap-2 text-[#1E293B]/45">
             <span className="text-[0.65rem] uppercase tracking-[0.3em]">Scroll</span>
-            <span className="h-12 w-px bg-gradient-to-b from-[#1e4d3d]/45 to-transparent" />
+            <span className="h-12 w-px bg-gradient-to-b from-[#2563EB]/45 to-transparent" />
           </div>
         </div>
       </section>
@@ -501,34 +580,33 @@ export default function LendingClubPresentationPage() {
 
       <section id="chapter-closing" className="scroll-mt-28 px-5 py-16 md:px-8 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-3 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-[#1e4d3d]">
+          <p className="mb-3 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-[#2563EB]">
             Before we wrap
           </p>
           <h2
-            className="mb-5 text-3xl font-medium text-[#0f241c] md:text-4xl"
+            className="mb-5 text-3xl font-medium text-[#0F172A] md:text-4xl"
             style={{ fontFamily: 'var(--font-lc-serif), Georgia, serif' }}
           >
             I’d love to bring this same focus on clarity to your team.
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl leading-relaxed text-[#14231f]/75">
-            Whether on the <strong className="text-[#0f241c]">Product</strong> or{' '}
-            <strong className="text-[#0f241c]">UX</strong> track, I enjoy taking messy problems and turning
-            them into <RichText text="**clear flows, prototypes, and decisions that hold up in practice**" />.
-            I like working closely with engineering, design, and product to refine things until they&apos;re
-            actually usable for real customers. That&apos;s how I approached these projects, and it&apos;s how
-            I&apos;d work here as well!
+          <p className="mx-auto mb-8 max-w-2xl leading-relaxed text-[#1E293B]/75">
+            Across these projects, a pattern for me has been taking something that feels unclear at first and
+            shaping it into something people can move through with confidence. That&apos;s why I&apos;m especially
+            interested in LendingClub, because even small moments in these experiences can really impact how
+            someone feels when they&apos;re managing their money. I&apos;d be excited to bring that same focus on
+            clarity and usability to your team.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <button
               type="button"
               onClick={() => goChapter('intro')}
-              className="rounded-full border border-[#14231f]/20 px-6 py-2.5 text-sm text-[#14231f]/80 hover:bg-white/80"
+              className="rounded-full border border-[#1E293B]/20 px-6 py-2.5 text-sm text-[#1E293B]/80 hover:bg-white/80"
             >
               Back to intro
             </button>
             <Link
               href="/case-study/nexus"
-              className="rounded-full bg-[#1e4d3d] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#163d30]"
+              className="rounded-full bg-[#2563EB] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#1D4ED8]"
             >
               View full Nexus case study
             </Link>
@@ -540,7 +618,7 @@ export default function LendingClubPresentationPage() {
       {lightbox && (
         <button
           type="button"
-          className="fixed inset-0 z-[100] flex cursor-zoom-out flex-col items-center justify-center bg-[#0a0f0d]/90 p-6 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex cursor-zoom-out flex-col items-center justify-center bg-[#0F172A]/90 p-6 backdrop-blur-sm"
           onClick={() => setLightbox(null)}
           aria-label="Close enlarged image"
         >
@@ -580,6 +658,10 @@ function ProjectWalkthrough({
 }) {
   const sectionRef = useRef<HTMLElement>(null)
   const visualPanelRef = useRef<HTMLDivElement>(null)
+  const navControlsRef = useRef<HTMLDivElement>(null)
+  const pendingNavTopRef = useRef<number | null>(null)
+  const pendingScrollYRef = useRef<number | null>(null)
+  const [sectionMinHeight, setSectionMinHeight] = useState<number | null>(null)
   const safeStopIndex = Math.max(0, Math.min(stopIndex, project.stops.length - 1))
   const stop: PresentationStop = project.stops[safeStopIndex]
   const visuals = stop.visuals
@@ -589,16 +671,83 @@ function ProjectWalkthrough({
   const [showKeyPoints, setShowKeyPoints] = useState(stop.bullets.length > 0)
   const [showWhyItMatters, setShowWhyItMatters] = useState(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setShowKeyPoints(stop.bullets.length > 0)
     setShowWhyItMatters(false)
   }, [project.slug, safeStopIndex, stop.bullets.length])
 
-  const focusProjectTop = () => {
-    if (!guidedMode) return
-    requestAnimationFrame(() => {
-      sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    })
+  useLayoutEffect(() => {
+    const height = sectionRef.current?.offsetHeight
+    if (!height) return
+
+    setSectionMinHeight((prev) => (prev === null || height > prev ? height : prev))
+  }, [safeStopIndex, showKeyPoints, showWhyItMatters, visuals.length, project.slug])
+
+  useLayoutEffect(() => {
+    if (pendingNavTopRef.current === null && pendingScrollYRef.current === null) return
+
+    let rafId = 0
+    let frameCount = 0
+    let timeoutId = 0
+
+    const clearPendingAlignment = () => {
+      pendingNavTopRef.current = null
+      pendingScrollYRef.current = null
+    }
+
+    const alignToPreviousPosition = () => {
+      if (pendingScrollYRef.current !== null) {
+        window.scrollTo({ top: pendingScrollYRef.current, left: 0, behavior: 'auto' })
+      }
+
+      const prevTop = pendingNavTopRef.current
+      const nextTop = navControlsRef.current?.getBoundingClientRect().top
+      if (prevTop === null || typeof nextTop !== 'number') return
+
+      const delta = nextTop - prevTop
+      if (Math.abs(delta) > 1) {
+        window.scrollBy({ top: delta, left: 0, behavior: 'auto' })
+      }
+    }
+
+    const tickAlignment = () => {
+      alignToPreviousPosition()
+      frameCount += 1
+
+      if (frameCount < 18) {
+        rafId = window.requestAnimationFrame(tickAlignment)
+      } else {
+        clearPendingAlignment()
+      }
+    }
+
+    const resizeObserver =
+      typeof ResizeObserver === 'undefined'
+        ? null
+        : new ResizeObserver(() => {
+            alignToPreviousPosition()
+          })
+
+    if (sectionRef.current) resizeObserver?.observe(sectionRef.current)
+    if (navControlsRef.current) resizeObserver?.observe(navControlsRef.current)
+
+    alignToPreviousPosition()
+    rafId = window.requestAnimationFrame(tickAlignment)
+    timeoutId = window.setTimeout(() => {
+      alignToPreviousPosition()
+      clearPendingAlignment()
+    }, 500)
+
+    return () => {
+      window.cancelAnimationFrame(rafId)
+      window.clearTimeout(timeoutId)
+      resizeObserver?.disconnect()
+    }
+  }, [safeStopIndex, showKeyPoints, showWhyItMatters, visuals.length, vSafe])
+
+  const preserveNavPosition = () => {
+    pendingNavTopRef.current = navControlsRef.current?.getBoundingClientRect().top ?? null
+    pendingScrollYRef.current = window.scrollY
   }
 
   const jumpToVisual = () => {
@@ -608,11 +757,29 @@ function ProjectWalkthrough({
     })
   }
 
+  const sectionToneClass =
+    project.slug === 'nexus'
+      ? 'bg-gradient-to-b from-[#DBEAFE]/55 via-[#EFF6FF]/32 to-transparent'
+      : project.slug === 'neuranote'
+        ? 'bg-gradient-to-b from-[#EDE9FE]/55 via-[#F5F3FF]/32 to-transparent'
+        : 'bg-gradient-to-b from-[#FEE2E2]/55 via-[#FEF2F2]/32 to-transparent'
+
+  const accentFillClass =
+    project.slug === 'nexus' ? 'bg-[#2563EB]' : project.slug === 'neuranote' ? 'bg-[#4F46E5]' : 'bg-[#DC2626]'
+
+  const visualPanelToneClass =
+    project.slug === 'nexus'
+      ? 'border-[#93C5FD]/60 bg-[#F8FBFF]'
+      : project.slug === 'neuranote'
+        ? 'border-[#C4B5FD]/60 bg-[#FAF8FF]'
+        : 'border-[#FCA5A5]/60 bg-[#FFF8F8]'
+
   return (
     <section
       ref={sectionRef}
       id={`chapter-${project.slug}`}
-      className="scroll-mt-20 border-b border-[#14231f]/10 bg-gradient-to-b from-[#e8e4db]/40 to-transparent px-4 py-14 md:px-8 md:py-20"
+      className={`scroll-mt-20 border-b border-[#1E293B]/10 px-4 py-14 md:px-8 md:py-20 ${sectionToneClass}`}
+      style={sectionMinHeight ? { minHeight: `${sectionMinHeight}px` } : undefined}
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -621,13 +788,13 @@ function ProjectWalkthrough({
               Project walkthrough
             </p>
             <h2
-              className="mt-1 text-3xl font-medium text-[#0f241c] md:text-4xl"
+              className="mt-1 text-3xl font-medium text-[#0F172A] md:text-4xl"
               style={{ fontFamily: 'var(--font-lc-serif), Georgia, serif' }}
             >
               {project.title}
             </h2>
-            <p className="mt-1 text-lg text-[#14231f]/65">{project.subtitle}</p>
-            <p className="mt-1 text-sm text-[#14231f]/50">{project.meta}</p>
+            <p className="mt-1 text-lg text-[#1E293B]/65">{project.subtitle}</p>
+            <p className="mt-1 text-sm text-[#1E293B]/50">{project.meta}</p>
           </div>
           <Link
             href={project.caseStudyHref}
@@ -637,23 +804,23 @@ function ProjectWalkthrough({
             <span aria-hidden>→</span>
           </Link>
         </div>
-        <div className="mb-6 flex flex-wrap items-center gap-2 text-xs text-[#14231f]/60">
-          <span className="rounded-full border border-[#14231f]/10 bg-white/70 px-3 py-1">
+        <div className="mb-6 flex flex-wrap items-center gap-2 text-xs text-[#1E293B]/60">
+          <span className="rounded-full border border-[#1E293B]/10 bg-white/70 px-3 py-1">
             {guidedMode ? 'Guided mode keeps the current section in focus.' : 'Explore mode lets you move freely.'}
           </span>
         </div>
 
         {/* Progress */}
         <div className="mb-8">
-          <div className="mb-1 flex justify-between text-[0.65rem] font-medium uppercase tracking-wider text-[#14231f]/45">
+          <div className="mb-1 flex justify-between text-[0.65rem] font-medium uppercase tracking-wider text-[#1E293B]/45">
             <span>
               Section {safeStopIndex + 1} / {project.stops.length}
             </span>
             <span>{stop.caseStudySection}</span>
           </div>
-          <div className="h-2 overflow-hidden rounded-full bg-[#14231f]/10">
+          <div className="h-2 overflow-hidden rounded-full bg-[#1E293B]/10">
             <div
-              className="h-full rounded-full bg-[#1e4d3d] transition-[width] duration-500 ease-out"
+              className={`h-full rounded-full transition-[width] duration-500 ease-out ${accentFillClass}`}
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -662,7 +829,7 @@ function ProjectWalkthrough({
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
           {/* Timeline */}
           <div className="lg:col-span-4">
-            <p className="mb-3 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#14231f]/45">
+            <p className="mb-3 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#1E293B]/45">
               Sections — jump to any part
             </p>
             <div className="relative max-h-[min(70vh,520px)] space-y-0 overflow-y-auto pr-2 lg:max-h-[640px]">
@@ -673,26 +840,25 @@ function ProjectWalkthrough({
                   onClick={() => {
                     onStopChange(i)
                     onVisualChange(0)
-                    focusProjectTop()
                   }}
                   className={`relative flex w-full gap-3 rounded-xl border px-3 py-3 text-left transition ${
                     i === safeStopIndex
                       ? `${project.accentSoftClass} border-current shadow-sm ${project.accentClass}`
-                      : 'border-transparent bg-white/50 hover:border-[#14231f]/10 hover:bg-white/80'
+                      : 'border-transparent bg-white/50 hover:border-[#1E293B]/10 hover:bg-white/80'
                   }`}
                 >
                   <span
                     className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold ${
-                      i === safeStopIndex ? 'bg-[#1e4d3d] text-white' : 'bg-[#14231f]/10 text-[#14231f]/60'
+                      i === safeStopIndex ? `${accentFillClass} text-white` : 'bg-[#1E293B]/10 text-[#1E293B]/60'
                     }`}
                   >
                     {i + 1}
                   </span>
                   <span className="min-w-0">
-                    <span className="block text-[0.6rem] font-medium uppercase tracking-wider text-[#14231f]/45">
+                    <span className="block text-[0.6rem] font-medium uppercase tracking-wider text-[#1E293B]/45">
                       {s.caseStudySection.split('·')[0]}
                     </span>
-                    <span className="block font-medium leading-snug text-[#0f241c]">{s.title}</span>
+                    <span className="block font-medium leading-snug text-[#0F172A]">{s.title}</span>
                   </span>
                 </button>
               ))}
@@ -701,13 +867,13 @@ function ProjectWalkthrough({
 
           {/* Main stage */}
           <div className="lg:col-span-8">
-            <div key={`${project.slug}-${safeStopIndex}`} className="transition-opacity duration-300">
+            <div className="transition-opacity duration-300">
               <p className={`text-[0.65rem] font-semibold uppercase tracking-[0.2em] ${project.accentClass}`}>
                 {stop.caseStudySection}
               </p>
-              <h3 className="mt-1 text-2xl font-medium text-[#0f241c] md:text-3xl">{stop.title}</h3>
+              <h3 className="mt-1 text-2xl font-medium text-[#0F172A] md:text-3xl">{stop.title}</h3>
               {stop.summary.trim().length > 0 && (
-                <p className="mt-3 text-base leading-relaxed text-[#14231f]/75">
+                <p className="mt-3 text-base leading-relaxed text-[#1E293B]/75">
                   <RichText text={stop.summary} />
                 </p>
               )}
@@ -720,7 +886,7 @@ function ProjectWalkthrough({
                     className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${
                       showKeyPoints
                         ? `${project.accentSoftClass} ${project.accentClass} border-current`
-                        : 'border-[#14231f]/15 text-[#14231f]/65 hover:bg-white/80'
+                        : 'border-[#1E293B]/15 text-[#1E293B]/65 hover:bg-white/80'
                     }`}
                   >
                     {showKeyPoints ? 'Hide key points' : 'Show key points'}
@@ -733,7 +899,7 @@ function ProjectWalkthrough({
                     className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${
                       showWhyItMatters
                         ? `${project.accentSoftClass} ${project.accentClass} border-current`
-                        : 'border-[#14231f]/15 text-[#14231f]/65 hover:bg-white/80'
+                        : 'border-[#1E293B]/15 text-[#1E293B]/65 hover:bg-white/80'
                     }`}
                   >
                     {showWhyItMatters ? 'Hide why it matters' : 'Show why it matters'}
@@ -743,7 +909,7 @@ function ProjectWalkthrough({
                   <button
                     type="button"
                     onClick={jumpToVisual}
-                    className="rounded-full border border-[#14231f]/15 px-3 py-1.5 text-xs font-medium text-[#14231f]/65 transition hover:bg-white/80"
+                    className="rounded-full border border-[#1E293B]/15 px-3 py-1.5 text-xs font-medium text-[#1E293B]/65 transition hover:bg-white/80"
                   >
                     Jump to visual
                   </button>
@@ -753,14 +919,14 @@ function ProjectWalkthrough({
               {showKeyPoints && stop.bullets.length > 0 && (
               <ul className="mt-6 space-y-3">
                 {stop.bullets.map((b, i) => (
-                  <li key={i} className="flex gap-3 text-[#14231f]/80">
+                  <li key={i} className="flex gap-3 text-[#1E293B]/80">
                     <span
                       className={`mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full ${
                         project.slug === 'nexus'
-                          ? 'bg-[#1d6b5a]'
+                          ? 'bg-[#2563EB]'
                           : project.slug === 'neuranote'
-                            ? 'bg-[#6b4fc9]'
-                            : 'bg-[#c43c3c]'
+                            ? 'bg-[#4F46E5]'
+                            : 'bg-[#DC2626]'
                       }`}
                     />
                     <span className="leading-relaxed">
@@ -777,10 +943,10 @@ function ProjectWalkthrough({
                     stop.bullets.length > 0 ? 'mt-6' : 'mt-4'
                   }`}
                 >
-                  <p className="text-[0.6rem] font-semibold uppercase tracking-wider text-[#14231f]/50">
+                  <p className="text-[0.6rem] font-semibold uppercase tracking-wider text-[#1E293B]/50">
                     {stop.bridgeHeading ?? 'Why this approach matters'}
                   </p>
-                  <p className="mt-1 text-sm leading-relaxed text-[#14231f]/80">
+                  <p className="mt-1 text-sm leading-relaxed text-[#1E293B]/80">
                     <RichText text={stop.internshipBridge} />
                   </p>
                 </div>
@@ -791,7 +957,7 @@ function ProjectWalkthrough({
             {visuals.length > 0 && (
               <div
                 ref={visualPanelRef}
-                className="mt-8 rounded-2xl border border-[#14231f]/10 bg-[#faf7f1] p-3 shadow-[0_20px_50px_-24px_rgba(20,35,31,0.35)] md:p-4"
+                className={`mt-8 rounded-2xl border p-3 shadow-[0_20px_50px_-24px_rgba(20,35,31,0.18)] md:p-4 ${visualPanelToneClass}`}
               >
                 {activeVisual?.kind === 'video' ? (
                   <div className="overflow-hidden rounded-xl bg-black">
@@ -806,10 +972,12 @@ function ProjectWalkthrough({
                       Your browser does not support the video tag.
                     </video>
                   </div>
+                ) : activeVisual?.kind === 'chart' ? (
+                  <InteractiveResearchChart chart={activeVisual} projectSlug={project.slug} />
                 ) : activeVisual ? (
                   <button
                     type="button"
-                    className="group relative block w-full overflow-hidden rounded-xl bg-[#0c0c0c]/5 text-left outline-none ring-[#1e4d3d] focus-visible:ring-2"
+                    className="group relative block w-full overflow-hidden rounded-xl bg-[#0c0c0c]/5 text-left outline-none ring-[#2563EB] focus-visible:ring-2"
                     onClick={() => onOpenLightbox(activeVisual.src, activeVisual.caption)}
                   >
                     <div className="relative aspect-[16/10] w-full">
@@ -821,19 +989,19 @@ function ProjectWalkthrough({
                         sizes="(max-width: 1024px) 100vw, 720px"
                       />
                     </div>
-                    <span className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-[#0a0f0d]/75 px-3 py-1 text-xs text-white opacity-0 backdrop-blur transition group-hover:opacity-100">
+                    <span className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-[#0F172A]/75 px-3 py-1 text-xs text-white opacity-0 backdrop-blur transition group-hover:opacity-100">
                       Click to enlarge
                     </span>
                   </button>
                 ) : null}
 
-                <p className="mt-3 text-center text-sm text-[#14231f]/60">{activeVisual?.caption}</p>
+                <p className="mt-3 text-center text-sm text-[#1E293B]/60">{activeVisual?.caption}</p>
 
                 {visuals.length > 1 && (
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
                     <button
                       type="button"
-                      className="rounded-full border border-[#14231f]/15 px-3 py-1.5 text-xs text-[#14231f]/70 hover:bg-white/90 disabled:opacity-35"
+                      className="rounded-full border border-[#1E293B]/15 px-3 py-1.5 text-xs text-[#1E293B]/70 hover:bg-white/90 disabled:opacity-35"
                       disabled={vSafe <= 0}
                       onClick={() => onVisualChange(vSafe - 1)}
                     >
@@ -847,14 +1015,14 @@ function ProjectWalkthrough({
                           aria-label={v.caption}
                           onClick={() => onVisualChange(i)}
                           className={`h-2 rounded-full transition-all ${
-                            i === vSafe ? 'w-7 bg-[#1e4d3d]' : 'w-2 bg-[#14231f]/20 hover:bg-[#14231f]/35'
+                            i === vSafe ? 'w-7 bg-[#2563EB]' : 'w-2 bg-[#1E293B]/20 hover:bg-[#1E293B]/35'
                           }`}
                         />
                       ))}
                     </div>
                     <button
                       type="button"
-                      className="rounded-full border border-[#14231f]/15 px-3 py-1.5 text-xs text-[#14231f]/70 hover:bg-white/90 disabled:opacity-35"
+                      className="rounded-full border border-[#1E293B]/15 px-3 py-1.5 text-xs text-[#1E293B]/70 hover:bg-white/90 disabled:opacity-35"
                       disabled={vSafe >= visuals.length - 1}
                       onClick={() => onVisualChange(vSafe + 1)}
                     >
@@ -871,12 +1039,16 @@ function ProjectWalkthrough({
                         type="button"
                         onClick={() => onVisualChange(i)}
                         className={`relative h-16 w-24 flex-shrink-0 overflow-hidden rounded-lg border-2 transition ${
-                          i === vSafe ? 'border-[#1e4d3d] shadow-md' : 'border-transparent opacity-70 hover:opacity-100'
+                          i === vSafe ? 'border-[#2563EB] shadow-md' : 'border-transparent opacity-70 hover:opacity-100'
                         }`}
                       >
                         {v.kind === 'video' ? (
-                          <span className="flex h-full w-full items-center justify-center bg-[#14231f]/90 text-[0.6rem] font-medium text-white">
+                          <span className="flex h-full w-full items-center justify-center bg-[#1E293B]/90 text-[0.6rem] font-medium text-white">
                             ▶ Video
+                          </span>
+                        ) : v.kind === 'chart' ? (
+                          <span className="flex h-full w-full items-center justify-center bg-[#f0ece3] px-2 text-center text-[0.6rem] font-medium text-[#1E293B]/75">
+                            Interactive chart
                           </span>
                         ) : (
                           <Image src={v.src} alt="" fill className="object-cover" sizes="96px" />
@@ -888,27 +1060,29 @@ function ProjectWalkthrough({
               </div>
             )}
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div ref={navControlsRef} className="mt-6 flex flex-wrap gap-3">
               <button
                 type="button"
-                className="rounded-full border border-[#14231f]/20 px-4 py-2 text-sm text-[#14231f]/80 hover:bg-white/80 disabled:opacity-35"
+                className="rounded-full border border-[#1E293B]/20 px-4 py-2 text-sm text-[#1E293B]/80 hover:bg-white/80 disabled:opacity-35"
                 disabled={safeStopIndex <= 0}
-                onClick={() => {
+                onClick={(e) => {
+                  ;(e.currentTarget as HTMLButtonElement).blur()
+                  preserveNavPosition()
                   onStopChange(safeStopIndex - 1)
                   onVisualChange(0)
-                  focusProjectTop()
                 }}
               >
                 ← Previous part
               </button>
               <button
                 type="button"
-                className="rounded-full bg-[#1e4d3d] px-4 py-2 text-sm font-medium text-white hover:bg-[#163d30] disabled:opacity-35"
+                className="rounded-full bg-[#2563EB] px-4 py-2 text-sm font-medium text-white hover:bg-[#1D4ED8] disabled:opacity-35"
                 disabled={safeStopIndex >= project.stops.length - 1}
-                onClick={() => {
+                onClick={(e) => {
+                  ;(e.currentTarget as HTMLButtonElement).blur()
+                  preserveNavPosition()
                   onStopChange(safeStopIndex + 1)
                   onVisualChange(0)
-                  focusProjectTop()
                 }}
               >
                 Next part →

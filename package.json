@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "dev:clean": "rm -rf .next node_modules/.cache && next dev",
-    "dev:presentation": "next dev -p 3010",
-    "dev:presentation:clean": "rm -rf .next node_modules/.cache && next dev -p 3010",
+    "dev:presentation": "rm -rf .next && next build && next start -p 3010",
+    "dev:presentation:clean": "rm -rf .next node_modules/.cache && next build && next start -p 3010",
+    "preview": "rm -rf .next && next build && next start",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
