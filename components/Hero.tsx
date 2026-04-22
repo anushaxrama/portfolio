@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 
 interface Particle {
   id: number;
@@ -13,7 +13,6 @@ interface Particle {
 }
 
 export default function Hero() {
-  const [isLoaded, setIsLoaded] = useState(false)
   const [typedFirstName, setTypedFirstName] = useState('')
   const [typedLastName, setTypedLastName] = useState('')
   const [showSubtitle, setShowSubtitle] = useState(false)
@@ -29,86 +28,82 @@ export default function Hero() {
     setIsMobile(window.innerWidth < 768)
   }, [])
 
-  // Generate floating white particles (star specs) - reduced on mobile
-  const particles: Particle[] = useMemo(() => {
-    const count = isMobile ? 20 : 60 // More vibrant stars
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2.5 + 1, // Slightly larger
-      duration: Math.random() * 10 + 6,
-      delay: Math.random() * 5,
-      opacity: Math.random() * 0.5 + 0.2, // More visible
-    }));
-  }, [isMobile]);
+  // Particles use random layout — must be built only on the client after mount
+  // so server HTML matches the first client render (avoids hydration errors).
+  const [particles, setParticles] = useState<Particle[]>([])
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const count = isMobile ? 20 : 60
+    setParticles(
+      Array.from({ length: count }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 2.5 + 1,
+        duration: Math.random() * 10 + 6,
+        delay: Math.random() * 5,
+        opacity: Math.random() * 0.5 + 0.2,
+      })),
+    )
+  }, [isMobile])
 
-    // Start page load
-    const loadTimer = setTimeout(() => {
-      setIsLoaded(true)
-    }, 100)
-
-    // If reduced motion, show everything immediately
-    if (prefersReducedMotion) {
-      setTypedFirstName(firstName)
-      setTypedLastName(lastName)
-      setShowSubtitle(true)
-      setAnimateStar(true)
-      setShowScroll(true)
-      return () => clearTimeout(loadTimer)
-    }
-
-    return () => clearTimeout(loadTimer)
-  }, [])
-
-  // Type first name
   useEffect(() => {
-    if (!isLoaded) return
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion) return
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    setTypedFirstName(firstName)
+    setTypedLastName(lastName)
+    setShowSubtitle(true)
+    setAnimateStar(true)
+    setShowScroll(true)
+  }, [firstName, lastName])
+
+  // Type first name (skip when reduced motion — handled above)
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     let currentIndex = 0
+    let typingInterval: ReturnType<typeof setInterval> | undefined
+
     const startDelay = setTimeout(() => {
-      const typingInterval = setInterval(() => {
+      typingInterval = setInterval(() => {
         if (currentIndex <= firstName.length) {
           setTypedFirstName(firstName.slice(0, currentIndex))
           currentIndex++
-        } else {
+        } else if (typingInterval) {
           clearInterval(typingInterval)
         }
       }, 80)
-
-      return () => clearInterval(typingInterval)
     }, 300)
 
-    return () => clearTimeout(startDelay)
-  }, [isLoaded])
+    return () => {
+      clearTimeout(startDelay)
+      if (typingInterval) clearInterval(typingInterval)
+    }
+  }, [firstName])
 
   // Type last name after first name completes
   useEffect(() => {
     if (typedFirstName !== firstName) return
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     let currentIndex = 0
+    let typingInterval: ReturnType<typeof setInterval> | undefined
+
     const startDelay = setTimeout(() => {
-      const typingInterval = setInterval(() => {
+      typingInterval = setInterval(() => {
         if (currentIndex <= lastName.length) {
           setTypedLastName(lastName.slice(0, currentIndex))
           currentIndex++
-        } else {
+        } else if (typingInterval) {
           clearInterval(typingInterval)
         }
       }, 60)
-
-      return () => clearInterval(typingInterval)
     }, 200)
 
-    return () => clearTimeout(startDelay)
-  }, [typedFirstName])
+    return () => {
+      clearTimeout(startDelay)
+      if (typingInterval) clearInterval(typingInterval)
+    }
+  }, [typedFirstName, firstName, lastName])
 
   // Show subtitle and star after last name completes
   useEffect(() => {
@@ -158,13 +153,7 @@ export default function Hero() {
       {/* Removed - background is now handled by RecentWork's fixed background */}
 
       {/* Main content - centered */}
-      <div 
-        className="relative z-10 flex flex-col items-center justify-center px-4 text-center"
-        style={{
-          opacity: isLoaded ? 1 : 0,
-          transition: 'opacity 0.4s ease-out',
-        }}
-      >
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 text-center">
         {/* Two-line name with typing effect */}
         <div className="relative">
           {/* First name - larger */}

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -40,19 +40,23 @@ export default function RecentWork() {
     setIsMobile(window.innerWidth < 768)
   }, [])
 
-  // Generate floating particles - continues from hero
-  const particles: Particle[] = useMemo(() => {
+  // Random particles only after mount — avoids SSR/client hydration mismatch
+  const [particles, setParticles] = useState<Particle[]>([])
+
+  useEffect(() => {
     const count = isMobile ? 15 : 40
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2 + 0.5,
-      duration: Math.random() * 12 + 8,
-      delay: Math.random() * 5,
-      opacity: Math.random() * 0.35 + 0.1,
-    }));
-  }, [isMobile]);
+    setParticles(
+      Array.from({ length: count }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 2 + 0.5,
+        duration: Math.random() * 12 + 8,
+        delay: Math.random() * 5,
+        opacity: Math.random() * 0.35 + 0.1,
+      })),
+    )
+  }, [isMobile])
 
   const projects = [
     {
@@ -172,27 +176,27 @@ export default function RecentWork() {
 
   // Intersection Observer for scroll-triggered animations
   useEffect(() => {
-    const observers = projectRefs.current.map((ref, index) => {
-      if (!ref) return null
-      
-    const observer = new IntersectionObserver(
+    const sectionEls = projectRefs.current
+    const observers = sectionEls.map((el, index) => {
+      if (!el) return null
+
+      const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setVisibleProjects(prev => new Set([...prev, index]))
+            setVisibleProjects((prev) => new Set([...prev, index]))
           }
-      },
-        { threshold: 0.2 }
-    )
+        },
+        { threshold: 0.2 },
+      )
 
-      observer.observe(ref)
+      observer.observe(el)
       return observer
     })
 
     return () => {
       observers.forEach((observer, index) => {
-        if (observer && projectRefs.current[index]) {
-          observer.unobserve(projectRefs.current[index]!)
-      }
+        const el = sectionEls[index]
+        if (observer && el) observer.unobserve(el)
       })
     }
   }, [])
@@ -219,32 +223,32 @@ export default function RecentWork() {
 
   // Auto-slideshow effect - advances every 4 seconds
   useEffect(() => {
+    const timers = autoSlideTimers.current
     projects.forEach((project, index) => {
       if (project.demoImages.length <= 1) return // Skip single-image projects
       if (isPaused[index]) return // Skip if manually paused
-      
-      // Clear existing timer
-      if (autoSlideTimers.current[index]) {
-        clearInterval(autoSlideTimers.current[index]!)
+
+      if (timers[index]) {
+        clearInterval(timers[index]!)
       }
-      
-      // Set new timer
-      autoSlideTimers.current[index] = setInterval(() => {
+
+      timers[index] = setInterval(() => {
         if (!isPaused[index]) {
-          setActiveSlides(prev => {
+          setActiveSlides((prev) => {
             const currentSlide = prev[index] || 0
             return { ...prev, [index]: (currentSlide + 1) % project.demoImages.length }
           })
         }
-      }, 4000) // 4 seconds per slide
+      }, 4000)
     })
 
-    // Cleanup on unmount
     return () => {
-      Object.values(autoSlideTimers.current).forEach(timer => {
+      Object.values(timers).forEach((timer) => {
         if (timer) clearInterval(timer)
       })
     }
+    // `projects` is stable in shape; re-run only when pause state changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- projects array is inline but content is fixed
   }, [isPaused])
 
   const setProjectRef = (index: number) => (el: HTMLElement | null) => {

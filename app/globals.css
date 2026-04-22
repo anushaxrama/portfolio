@@ -263,3 +263,97 @@ img, video {
   max-width: 100%;
   height: auto;
 }
+
+/* LendingClub intro splash — real CSS keyframes + classes so staggered delays always work
+   (Tailwind JIT often skips dynamically built class names like [animation-delay:620ms]). */
+@keyframes lc-intro-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lc-intro-para {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lc-intro-panel {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.lc-intro-fade-up {
+  animation: lc-intro-fade-up 0.78s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lc-intro-para {
+  animation: lc-intro-para 1.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lc-intro-panel {
+  animation: lc-intro-panel 0.82s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* After last intro paragraph (~1220ms delay + 1.45s para): pop in scroll cue, then nudge arrow. */
+@keyframes lc-intro-scroll-pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.lc-intro-scroll-pop {
+  animation: lc-intro-scroll-pop 0.55s cubic-bezier(0.22, 1, 0.36, 1) 2.85s both;
+}
+
+@keyframes lc-intro-scroll-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+.lc-intro-scroll-nudge {
+  animation: lc-intro-scroll-nudge 1.2s ease-in-out infinite 3.45s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lc-intro-fade-up,
+  .lc-intro-para,
+  .lc-intro-panel {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .lc-intro-scroll-pop,
+  .lc-intro-scroll-nudge {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
