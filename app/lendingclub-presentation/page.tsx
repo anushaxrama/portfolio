@@ -205,7 +205,6 @@ export default function LendingClubPresentationPage() {
   const [reduceMotion, setReduceMotion] = useState(false)
   const deckSentinelRef = useRef<HTMLDivElement>(null)
   const [deckRevealed, setDeckRevealed] = useState(false)
-  const [guidedMode, setGuidedMode] = useState(true)
 
   const [chapter, setChapter] = useState<Chapter>('intro')
   const [stopIndexByProject, setStopIndexByProject] = useState<Record<ProjectSlug, number>>(createInitialStopIndexByProject)
@@ -227,7 +226,6 @@ export default function LendingClubPresentationPage() {
     setVisualIndexByKey({})
     setLightbox(null)
     setDeckRevealed(revealDeck)
-    setGuidedMode(true)
 
     document.documentElement.scrollTop = 0
     document.body.scrollTop = 0
@@ -482,26 +480,6 @@ export default function LendingClubPresentationPage() {
             >
               Portfolio
             </Link>
-            <div className="ml-1 inline-flex rounded-full border border-[#1E293B]/15 bg-white/70 p-1 text-[0.7rem]">
-              <button
-                type="button"
-                onClick={() => setGuidedMode(true)}
-                className={`rounded-full px-3 py-1 transition ${
-                  guidedMode ? 'bg-[#2563EB] text-white' : 'text-[#1E293B]/65 hover:bg-[#1E293B]/5'
-                }`}
-              >
-                Guided
-              </button>
-              <button
-                type="button"
-                onClick={() => setGuidedMode(false)}
-                className={`rounded-full px-3 py-1 transition ${
-                  !guidedMode ? 'bg-[#2563EB] text-white' : 'text-[#1E293B]/65 hover:bg-[#1E293B]/5'
-                }`}
-              >
-                Explore
-              </button>
-            </div>
           </nav>
         </div>
       </header>
@@ -569,7 +547,6 @@ export default function LendingClubPresentationPage() {
         <ProjectWalkthrough
           key={project.slug}
           project={project}
-          guidedMode={guidedMode}
           stopIndex={stopIndexByProject[project.slug]}
           onStopChange={(i) => setStopIndex(project.slug, i)}
           visualIndex={visualIndexByKey[visualKey(project.slug, stopIndexByProject[project.slug])] ?? 0}
@@ -605,10 +582,10 @@ export default function LendingClubPresentationPage() {
               Back to intro
             </button>
             <Link
-              href="/case-study/nexus"
+              href="/"
               className="rounded-full bg-[#2563EB] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#1D4ED8]"
             >
-              View full Nexus case study
+              View full portfolio
             </Link>
           </div>
         </div>
@@ -641,7 +618,6 @@ export default function LendingClubPresentationPage() {
 
 function ProjectWalkthrough({
   project,
-  guidedMode,
   stopIndex,
   onStopChange,
   visualIndex,
@@ -649,7 +625,6 @@ function ProjectWalkthrough({
   onOpenLightbox,
 }: {
   project: PresentationProject
-  guidedMode: boolean
   stopIndex: number
   onStopChange: (i: number) => void
   visualIndex: number
@@ -669,12 +644,12 @@ function ProjectWalkthrough({
   const activeVisual: VisualAsset | undefined = visuals[vSafe]
   const progress = ((safeStopIndex + 1) / project.stops.length) * 100
   const [showKeyPoints, setShowKeyPoints] = useState(stop.bullets.length > 0)
-  const [showWhyItMatters, setShowWhyItMatters] = useState(false)
+  const [showWhyItMatters, setShowWhyItMatters] = useState(stop.internshipBridge.trim().length > 0)
 
   useLayoutEffect(() => {
     setShowKeyPoints(stop.bullets.length > 0)
-    setShowWhyItMatters(false)
-  }, [project.slug, safeStopIndex, stop.bullets.length])
+    setShowWhyItMatters(stop.internshipBridge.trim().length > 0)
+  }, [project.slug, safeStopIndex, stop.bullets.length, stop.internshipBridge])
 
   useLayoutEffect(() => {
     const height = sectionRef.current?.offsetHeight
@@ -804,12 +779,6 @@ function ProjectWalkthrough({
             <span aria-hidden>→</span>
           </Link>
         </div>
-        <div className="mb-6 flex flex-wrap items-center gap-2 text-xs text-[#1E293B]/60">
-          <span className="rounded-full border border-[#1E293B]/10 bg-white/70 px-3 py-1">
-            {guidedMode ? 'Guided mode keeps the current section in focus.' : 'Explore mode lets you move freely.'}
-          </span>
-        </div>
-
         {/* Progress */}
         <div className="mb-8">
           <div className="mb-1 flex justify-between text-[0.65rem] font-medium uppercase tracking-wider text-[#1E293B]/45">
