@@ -522,7 +522,7 @@ export default function LendingClubPresentationPage() {
             <span className="text-[#2563EB]">complexity meets real people.</span>
           </h1>
           <p className="mb-6 text-base leading-relaxed text-[#1E293B]/75 md:text-lg">
-            I&apos;ll walk through three projects that show how I approach design from end to end, from
+            I&apos;ll walk through three projects that show how I approach design from start to finish, from
             understanding the problem to delivering clear, thoughtful solutions. I&apos;ll start with Nexus, my
             internship project at Narb where I designed the onboarding and core AI experience that was built and
             launched, then move to NeuraNote, where I designed a study tool grounded in cognitive science to help

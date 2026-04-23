@@ -77,12 +77,11 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         caseStudySection: '01 · Overview',
         title: 'What Nexus is',
         summary:
-          'Nexus is an **AI research platform** I designed at **Narb** during my internship. For complex technical or academic work, students already use AI, but a single response rarely feels complete. They often cross-check across multiple tools to feel confident. Nexus addresses this by generating **one synthesized answer** backed by multiple models, giving users something they can trust without needing to verify everything themselves.',
+          'Nexus is an **AI research platform** I designed at **Narb** during my internship. For complex technical or academic work, students already use AI, but a single response often doesn’t feel reliable. Different models can give different answers, and even in my own experience, I found myself cross-checking across tools to be sure.',
         bullets: [
-          '**Reducing uncertainty:** This project focuses on helping people feel confident in their decisions by providing a **clear, trustworthy outcome upfront**, with more detail available when it’s helpful, not by adding more information by default.',
-          '**Financial products:** The same idea applies here, where **clarity** directly shapes how confident people feel and how easily they can make decisions.',
-          '**How it works:** Nexus **runs multiple models in the background** and delivers **one focused response**, instead of overwhelming people with side-by-side outputs.',
-          '**Why that matters:** The goal isn’t more AI, it’s **less uncertainty** and an answer users can **actually act on**.',
+          'This project focuses on helping people feel confident in their decisions by giving them a clear answer first, with more detail available if they want it.',
+          'Nexus does this by running multiple models in the background and combining the results into one focused response, instead of showing everything side by side.',
+          'The goal is simple: reduce uncertainty and give users something they can actually act on.',
         ],
         visuals: [
           { kind: 'image', src: '/narbl/narbl-1.png', caption: 'Nexus landing page' },
@@ -96,11 +95,11 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         caseStudySection: '02 · Research',
         title: 'The problem was trust, not speed',
         summary:
-          'Speed helped, but it didn’t fix the real issue. When questions got more complex, people didn’t fully trust a single AI answer, so they double-checked it themselves by jumping between different tools. I surveyed about **48 students** and ran a few usability sessions, and what stood out wasn’t speed, it was confusion.',
+          'The main issue was that people didn’t feel confident relying on a single AI answer, especially for more complex questions. Because of that, they often double-checked across different tools to be sure. I surveyed about **48 students** and ran a few usability sessions, and what stood out was how unsure people felt about the answers, not how they used the tools.',
         bullets: [
           '**What we saw:** Students were switching between **ChatGPT**, **Claude**, and other tools to compare answers.',
-          '**What that meant:** The issue wasn’t a lack of information. It was a lack of **clarity** and too much work being pushed onto the user.',
-          '**Design direction:** Instead of showing multiple outputs, the goal became to design something that feels **clear, dependable, and easy to act on**.',
+          '**What that meant:** The problem wasn’t access to information, it was having to figure out which answer to trust.',
+          '**Design direction:** Instead of showing multiple outputs, the goal became to provide one clear answer that users can rely on and act on.',
         ],
         visuals: [
           {
@@ -180,12 +179,12 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         caseStudySection: '04 · Decision',
         title: 'Showing where the answer comes from',
         summary:
-          'A single answer can’t feel like a **black box**. People still want to understand where it’s coming from and whether it’s reliable.',
+          'A single answer isn’t enough on its own. People still want to understand where it’s coming from and whether they can rely on it.',
         bullets: [
-          '**What I added:** **Model attribution** so users can see which models contributed to the answer.',
-          '**How it’s designed:** The default view stays simple, with a **clear answer upfront**. If users want more detail, they can explore how the answer was formed.',
-          '**Why it worked:** Keeps the experience easy to use while still giving users a way to **build trust** and understand the reasoning behind the answer.',
-          '**The impact:** Users get a straightforward answer, with the option to **go deeper** when they need more confidence.',
+          '**What I added:** Model attribution so users can see which models contributed to the answer.',
+          '**How it’s designed:** The default view stays simple, with a clear answer upfront. If users want more detail, they can expand to see which models were used.',
+          '**Why it worked:** It keeps the experience easy to use while giving users a way to verify the answer without overwhelming them.',
+          '**The impact:** Users get a straightforward answer, with the option to check where it came from when they want more confidence.',
         ],
         visuals: [],
         internshipBridge:
@@ -207,7 +206,23 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
           'Good design accounts for real constraints. Especially with live systems, the experience should match what’s actually happening behind the scenes, not hide it.',
       },
       {
-        caseStudySection: '06 · Impact',
+        caseStudySection: '06 · Collaboration',
+        title: 'Cross-functional collaboration',
+        summary:
+          'This project also shows how I work across design and engineering to move an idea from early concept to something that is much closer to the final product.',
+        bullets: [
+          '**How it started:** We began in **Figma** to explore the core flows, structure, and interaction patterns.',
+          '**How it evolved:** As the product got more detailed, we moved into **Cursor** for deeper prototyping so we could think through behavior, states, and system constraints more realistically.',
+          '**How I handed it off:** We shared **GitHub pages** with design system tokens so engineers had a more concrete, implementation-ready reference.',
+          '**Why it mattered:** That made collaboration faster, reduced ambiguity in handoff, and helped keep the design system aligned with what was actually being built.',
+        ],
+        visuals: [],
+        bridgeHeading: 'Why this matters',
+        internshipBridge:
+          'One of the most useful parts of the project was learning how to work across tools and disciplines, not just designing the interface but helping shape how it moved into implementation.',
+      },
+      {
+        caseStudySection: '07 · Impact',
         title: 'Impact',
         summary:
           'In testing, people felt **more confident** in the answers and were **less likely to cross-check** across other tools. On the product side, we saw improvements in **onboarding and overall engagement**, along with strong positive feedback.',
@@ -220,7 +235,7 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
           'I focus on connecting design decisions to real outcomes. It’s not just about improving the experience, but showing how those changes impact user behavior and product metrics.',
       },
       {
-        caseStudySection: '07 · Reflection',
+        caseStudySection: '08 · Reflection',
         title: 'What I’d explore next',
         summary:
           'One area I’d want to explore further is how we communicate **confidence for more complex or ambiguous questions**, where a single signal doesn’t fully capture the nuance.',
@@ -234,7 +249,7 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
           'I think it’s important to leave a project with clear next steps, not just a finished design. Documenting open questions helps guide future iterations and keeps the work grounded in real user needs.',
       },
       {
-        caseStudySection: '08 · Walkthrough',
+        caseStudySection: '09 · Walkthrough',
         title: 'Full walkthrough',
         summary:
           'This is a quick walkthrough of the final designs, pulled directly from my public case study. I can move through key screens or jump to specific areas depending on what’s most useful.',
@@ -298,7 +313,7 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         caseStudySection: '03 · Features',
         title: 'Designing for how people learn',
         summary:
-          'Each part of the product is tied to a simple learning question. **What are the key ideas? How do they connect? What should I focus on today?** The goal was to support real learning behaviors, not just make notes look organized.',
+          'I designed the product around how students actually study. **What are the key ideas? How do they connect? What should I review today?** The goal was to help students learn and remember the material, not just organize their notes.',
         bullets: [
           '**Concept map:** Helps students **see relationships between ideas**, instead of keeping everything in flat notes.',
           '**Review mode:** Focuses on **active recall**, so students test what they know instead of just rereading.',
@@ -316,9 +331,8 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         caseStudySection: '04 · Process',
         title: 'From sketches to tested flows',
         summary:
-          'This project moved from research and early sketches into **mid-fidelity wireframes, high-fidelity designs, and usability testing**. From the start, the focus was on keeping the learning science visible in the product, not hidden behind settings or extra steps.',
+          'This project moved from research and early sketches into **mid-fidelity wireframes, high-fidelity designs, and usability testing**.',
         bullets: [
-          '**How I stayed focused:** I treated each phase as a question to answer, like whether someone could **map a lecture quickly** or **review concepts without feeling overwhelmed**.',
           '**What mid-fi helped validate:** Layout, hierarchy, and how much information to show before committing to final visual decisions.',
           '**Why it worked:** It kept the experience centered on **learning, not just organization** and avoided unnecessary features.',
         ],
@@ -382,9 +396,7 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         summary:
           'I designed FlowOps because a lot of internal tools make simple tasks feel more complicated than they should. Requests were spread across **email, Slack, and spreadsheets**, so it was hard to track what was going on and who was responsible.',
         bullets: [
-          '**What that caused:** Confusion around ownership.',
-          '**What that caused:** Delays in getting things done.',
-          '**What that caused:** Issues being noticed too late.',
+          '**What that caused:** Confusion around ownership, delays in getting things done, and issues being noticed too late.',
           '**Who it affected:** Requesters, agents, and managers were all involved in the same request, but each person needed a different view.',
         ],
         visuals: [],
@@ -396,10 +408,7 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         summary:
           'Before designing, I defined what a good outcome should be: **clear ownership, easy-to-see progress, faster decisions, and a reliable history of requests**.',
         bullets: [
-          '**How I scoped it:** I kept the project focused to fit a **2-week sprint** so it stayed realistic.',
-          '**What guided the design:** Reduce delays.',
-          '**What guided the design:** Help people make decisions faster.',
-          '**What guided the design:** Make the system easy to follow without needing extra context.',
+          '**What guided the design:** Reduce delays, help people make decisions faster, and make the system easy to follow without needing extra context.',
         ],
         visuals: [],
         internshipBridge: '',
@@ -410,11 +419,8 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         summary:
           'The main challenge was making it easy to follow a request from start to finish.',
         bullets: [
-          '**What I designed:** I created a workflow where status is always visible.',
-          '**What I designed:** I created a workflow where ownership is clear.',
-          '**What I designed:** I created a workflow where you can see what has happened so far.',
-          '**How it works:** Statuses reflect real steps like “in progress,” “needs info,” or “reassigned.”',
-          '**How it works:** It is always clear what needs attention.',
+          '**What I designed:** A workflow where status is always visible, ownership is clear, and you can see what has happened so far.',
+          '**How it works:** Statuses reflect real steps like “in progress,” “needs info,” or “reassigned,” so it is always clear what needs attention.',
         ],
         visuals: [{ kind: 'image', src: '/flowops2.png', caption: 'Request detail view' }],
         internshipBridge: '',
@@ -429,14 +435,15 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
           '**Agent:** Handle and resolve requests quickly with enough context.',
           '**Manager:** See priorities, ownership, and approvals.',
           '**Admin:** Manage workflows and system rules.',
-          '**What I focused on:** Showing the right information for each role.',
-          '**What I focused on:** Making actions and next steps clear.',
-          '**What I focused on:** Avoiding unnecessary complexity.',
-          '**Key design decisions:** Clear defaults.',
-          '**Key design decisions:** Strong confirmations for important actions.',
-          '**Key design decisions:** Layouts that show a lot of information but still feel easy to scan.',
+          '**What I focused on:** Showing the right information for each role, making actions and next steps clear, and avoiding unnecessary complexity.',
+          '**Key design decisions:** Clear defaults, strong confirmations for important actions, and layouts that show a lot of information but still feel easy to scan.',
         ],
-        visuals: [],
+        visuals: [
+          { kind: 'image', src: '/flowops-permission-matrix.png', caption: 'Permission matrix across roles' },
+          { kind: 'image', src: '/flowops-role-approver.png', caption: 'Approver dashboard' },
+          { kind: 'image', src: '/flowops-role-agent.png', caption: 'Agent dashboard' },
+          { kind: 'image', src: '/flowops-role-admin.png', caption: 'Admin dashboard' },
+        ],
         internshipBridge: '',
       },
       {
@@ -445,12 +452,8 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         summary:
           'Some steps still felt unclear, especially when a request changed hands. Requesters didn’t always understand what was happening or why.',
         bullets: [
-          '**What I changed:** I made rejection reasons required so there was always clear feedback.',
-          '**What I changed:** I simplified the wording to make actions easier to understand.',
-          '**What I changed:** I improved progress indicators so status was easier to scan.',
-          '**The result:** The flow was easier to follow.',
-          '**The result:** Ownership changes felt clearer.',
-          '**The result:** Users understood what was happening without needing to ask.',
+          '**What I changed:** I made rejection reasons required so there was always clear feedback, simplified the wording, and improved progress indicators so status was easier to scan.',
+          '**The result:** The flow was easier to follow, ownership changes felt clearer, and users understood what was happening without needing to ask.',
         ],
         visuals: [],
         internshipBridge: '',
@@ -461,12 +464,8 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
         summary:
           'Even as a short project, the goal was to show how the system could improve: **faster decisions, fewer delays, clearer progress, and stronger ownership**.',
         bullets: [
-          '**What this would measure:** Time to complete requests.',
-          '**What this would measure:** Fewer stalled requests.',
-          '**What this would measure:** Clearer handoffs between people.',
-          '**What this would measure:** Overall satisfaction across roles.',
-          '**What I learned:** In complex tools like this, clarity is the most important thing.',
-          '**What I learned:** The system should handle the complexity so users don’t have to.',
+          '**What this would measure:** Time to complete requests, fewer stalled requests, clearer handoffs between people, and overall satisfaction across roles.',
+          '**What I learned:** In complex tools like this, clarity is the most important thing, and the system should handle the complexity so users don’t have to.',
         ],
         visuals: [],
         internshipBridge: '',
@@ -482,6 +481,10 @@ export const PRESENTATION_PROJECTS: PresentationProject[] = [
           { kind: 'image', src: '/flowops2.png', caption: 'Request detail view' },
           { kind: 'image', src: '/flowops3.png', caption: 'Team queue' },
           { kind: 'image', src: '/flowops4.png', caption: 'Workflow view' },
+          { kind: 'image', src: '/flowops-permission-matrix.png', caption: 'Permission matrix' },
+          { kind: 'image', src: '/flowops-role-approver.png', caption: 'Approver dashboard' },
+          { kind: 'image', src: '/flowops-role-agent.png', caption: 'Agent dashboard' },
+          { kind: 'image', src: '/flowops-role-admin.png', caption: 'Admin dashboard' },
         ],
         internshipBridge: '',
       },
