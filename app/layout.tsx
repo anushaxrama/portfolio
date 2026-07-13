@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import PasswordGate from '@/components/PasswordGate'
 import './globals.css'
 
 const inter = Inter({ 
@@ -20,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <PasswordGate>{children}</PasswordGate>
+      </body>
     </html>
   )
 }
