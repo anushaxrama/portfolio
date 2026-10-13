@@ -253,5 +253,6 @@ How might we transform music streaming from passive consumption into active refl
 
 ## Contact
 
-**Email:** arama@ucdavis.edu  
+**Email:** anusharama100@gmail.com
+
 **LinkedIn:** [linkedin.com/in/anusha-ramachandran-45882724a](https://www.linkedin.com/in/anusha-ramachandran-45882724a)

@@ -57,7 +57,7 @@ export default function Navbar() {
           <span className="absolute bottom-1 left-3 right-3 h-[1px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
         </a>
         <a
-          href="mailto:arama@ucdavis.edu"
+          href="mailto:anusharama100@gmail.com"
           className="group relative min-h-[44px] flex items-center px-4 py-3 text-white/80 text-sm font-medium tracking-wide hover:text-white transition-colors duration-300 touch-manipulation"
         >
           Email

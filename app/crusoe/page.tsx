@@ -1820,7 +1820,7 @@ export default function CrusoeCaseStudy() {
             </a>
           </div>
           <div className="flex justify-center gap-6 text-sm text-white/50">
-            <a href="mailto:arama@ucdavis.edu" data-cursor-hover className="hover:text-white transition-all duration-300 hover:scale-110">Email</a>
+            <a href="mailto:anusharama100@gmail.com" data-cursor-hover className="hover:text-white transition-all duration-300 hover:scale-110">Email</a>
             <a href="https://www.linkedin.com/in/anusha-ramachandran-45882724a" target="_blank" rel="noopener noreferrer" data-cursor-hover className="hover:text-white transition-all duration-300 hover:scale-110">LinkedIn</a>
           </div>
           <Link href="/" data-cursor-hover className="inline-block mt-8 text-white/40 hover:text-white text-sm transition-all duration-300 hover:scale-105">

@@ -770,7 +770,7 @@ export default function CrusoeCaseStudy() {
       <nav className="crusoe-case-nav" aria-label="Case study navigation">
         <Link href="/#work">← Back to work</Link>
         <span>Crusoe · Product Design Internship</span>
-        <a href="mailto:arama@ucdavis.edu">Let&apos;s talk</a>
+        <a href="mailto:anusharama100@gmail.com">Let&apos;s talk</a>
       </nav>
 
       <header className="crusoe-case-hero">
@@ -1630,7 +1630,7 @@ export default function CrusoeCaseStudy() {
         <h2>Thanks for taking a look.</h2>
         <div>
           <Link href="/#work">More work</Link>
-          <a href="mailto:arama@ucdavis.edu">Get in touch</a>
+          <a href="mailto:anusharama100@gmail.com">Get in touch</a>
         </div>
       </footer>
     </main>

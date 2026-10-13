@@ -429,13 +429,13 @@ export default function HousePortfolio() {
         <Flower className="contact-bloom bloom-two" />
         <p className="neo-section-index">05 / Say hello</p>
         <p className="neo-contact-note">Have a complex product that needs to feel simple?</p>
-        <a href="mailto:arama@ucdavis.edu" className="neo-contact-link">
+        <a href="mailto:anusharama100@gmail.com" className="neo-contact-link">
           Let’s make it<br /><em>resonate.</em>
         </a>
         <div className="neo-footer-row">
           <span>© {new Date().getFullYear()} Anusha Ramachandran</span>
           <div>
-            <a href="mailto:arama@ucdavis.edu">Email</a>
+            <a href="mailto:anusharama100@gmail.com">Email</a>
             <a href="https://www.linkedin.com/in/anusha-ramachandran-45882724a" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="#top">Back to top ↑</a>
           </div>

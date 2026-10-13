@@ -1,7 +1,5 @@
-'use client'
-
-import HousePortfolio from '@/components/HousePortfolio'
+import PortfolioLanding from '@/components/PortfolioLanding'
 
 export default function Home() {
-  return <HousePortfolio />
+  return <PortfolioLanding />
 }

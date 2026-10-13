@@ -354,7 +354,7 @@ export default function ToniPRCaseStudy() {
         <h2>From expertise to something ready to share.</h2>
         <div>
           <Link href="/#work">More work</Link>
-          <a href="mailto:arama@ucdavis.edu">Get in touch</a>
+          <a href="mailto:anusharama100@gmail.com">Get in touch</a>
         </div>
       </footer>
     </main>
