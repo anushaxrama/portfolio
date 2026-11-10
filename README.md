@@ -1,8 +1,10 @@
 # Anusha Ramachandran — Portfolio
 
-My portfolio brings together product-design work, interactive prototypes, and the decisions behind them. The case studies cover cloud infrastructure, AI-assisted tools, learning experiences, enterprise workflows, and a biotechnology website redesign.
+I'm a product designer + engineer. This portfolio shows how I move from research and interaction design to responsive interfaces and working frontend prototypes.
 
-This is the maintained portfolio repository. Earlier versions live in `anusha-portfolio-codex`, `ui-ux-portfolio-`, and `rama-pop-animation`; current presentation work belongs here.
+**[Visit my portfolio →](https://www.anusharamachandran.com)**
+
+Built with Next.js, React, TypeScript, and Tailwind CSS. Case studies link to live sites, prototypes, and source code where available.
 
 ## Start with the case studies
 
@@ -14,17 +16,18 @@ This is the maintained portfolio repository. Earlier versions live in `anusha-po
 | Nexus | A clearer experience for comparing and understanding AI answers | `/case-study/nexus/` |
 | NeuraNote | Notes, connected concepts, and review rituals | `/case-study/neuranote/` |
 | FlowOps | Request ownership, approvals, handoffs, and SLA visibility | `/case-study/flowops/` |
+| HABITat | Habit-building mobile concept and interactive Figma prototype | `/case-study/habitat/` |
 
-Each case study provides its own role, context, and evidence. Concept work and projected outcomes should be read separately from shipped work and measured results.
+Each case study explains my role, the research, and the design decisions. Some projects are frontend prototypes or design concepts; they are labeled separately from published work and measured results.
 
 ## Run locally
 
-Use Node.js 20 or a compatible newer version with npm:
+Use Node.js 24 with npm (the version used for the latest local checks):
 
 ```sh
 git clone https://github.com/anushaxrama/portfolio.git
 cd portfolio
-npm install
+npm ci
 npm run dev
 ```
 
@@ -59,10 +62,12 @@ Next.js 14 and TypeScript provide the routes. React components, Tailwind CSS 4, 
 | `test/` | Interaction and presentation checks |
 | `render.yaml` | Static hosting configuration |
 
-HABITat and Spotify Threads remain in the source but are intentionally unfeatured. [Archived project notes](docs/archived-portfolio-projects.md) explain their routes and restoration.
+HABITat is the final featured project. Spotify Threads remains available by direct route but is not featured on the homepage. See [archived project notes](docs/archived-portfolio-projects.md).
 
 ## Continuing the work
 
 Preserve the static export, natural screenshot proportions, evidence labels, and reduced-motion behavior. Keep published Git history intact and avoid adding large media files.
 
-The portfolio presents the work and its story. Individual project repositories contain the corresponding application or prototype source where available.
+## Latest local check
+
+See [local verification](docs/LOCAL_VERIFICATION.md) for the November 5, 2026 setup, runtime checks, and remaining test boundaries.

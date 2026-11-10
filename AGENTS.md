@@ -1,5 +1,7 @@
 ## Production portfolio
 
+- This is the `anushaxrama/portfolio` repository. Publish changes to this repository unless the user requests another destination. The user also maintains `anusharama100`; verify the intended account before acting on repositories elsewhere.
+
 - This repository publishes the live Next.js static site. Keep `next.config.js` static export and the Render `out` publish directory intact.
 - The reviewed UI lives in `portfolio/`, with Next.js entry points under `app/`. `portfolio/compat.tsx` adapts links to Next.js and preserves native, uncropped image rendering.
 - Shared case-study styles are imported by `portfolio/styles.css`. Tailwind 4 is processed with `@tailwindcss/postcss`; do not restore the old Tailwind 3 PostCSS plugin.
