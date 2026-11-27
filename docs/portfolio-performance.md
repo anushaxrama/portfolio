@@ -18,7 +18,7 @@ The artwork's `.jpg` source is actually PNG-encoded. Full-resolution originals r
 
 - Eight locally hosted Latin variable font faces replace the external Google Fonts stylesheet. Only the two primary faces are preloaded; other faces load when used. Redistribution licenses are in `public/fonts/`.
 - The header icon is a 2,318-byte PNG rather than the full-resolution monogram.
-- Homepage reveal motion no longer sets content opacity to zero. A short movement remains, without a fade-in wait.
+- Homepage reveal motion no longer sets content opacity to zero. A short movement remains, without a fade-in wait. The headline and main action also appear immediately, replacing the masked headline and delayed entrance sequence.
 - The background mesh drops from 672 triangles per frame to 192 on desktop and 80 on mobile. Existing offscreen, background-tab, reduced-motion, and startup-continuity behavior remains tested.
 - Manual walkthroughs use `preload="none"`. Selecting a billing timestamp explicitly loads metadata when needed; it still pauses at that timestamp.
 - Auto-playing previews mount video sources only near the viewport and pause on exit or when the document is hidden. Posters use compact copies where available.
