@@ -2,6 +2,7 @@
 
 import { Image } from '@/portfolio/compat'
 import CrusoeCostWalkthrough from './CrusoeCostWalkthrough'
+import StudyEvidenceSwitcher from './StudyEvidenceSwitcher'
 import { CrusoeEvidenceChain, CrusoeProjectProcess, CrusoeProjectNextSteps, crusoeNarratives, usageToCostInsights } from './CrusoeStoryContent'
 
 const imageRoot = '/images/crusoe/usage-to-cost/story-screen-only'
@@ -76,29 +77,35 @@ export default function CrusoeUsageCostStory() {
 
       <section className="crusoe-clean-section crusoe-cost-section" aria-labelledby="crusoe-cost-billing-title">
         <div className="crusoe-clean-heading"><span>03 / Decision · Billing hierarchy</span><div><h3 id="crusoe-cost-billing-title">Orient first. Explain the charge on demand.</h3><p>I placed dated totals and daily spend before product detail. A customer can establish the period, choose a product, and inspect its pricing without starting a new investigation.</p></div></div>
-        <DecisionNote problem="The customer had to assemble the explanation behind a total." decision="Show period totals and daily spend, then reveal product pricing on demand." why="Start with the comparison; let the customer choose which product to inspect next." />
-        <div className="crusoe-cost-still-grid" role="group" aria-label="After redesign: Billing overview, then product detail">
+        <div className="crusoe-cost-still-explorer" role="group" aria-label="After redesign: Billing overview, then product detail">
+          <StudyEvidenceSwitcher label="Explore billing overview, then product detail" labels={['Billing overview', 'Product pricing']}>
           <CostScreenshot file="billing-comparison" step={1} title="Check what each total covers" alt="Billing view showing current and previous month totals with explicit dates and a daily spend chart" note="Dates sit beside the totals. The captured current month is partial, so these amounts need period context before someone interprets the difference." />
           <CostScreenshot file="product-detail" step={2} title="Open the product’s pricing detail" alt="Product cost detail panel with usage, unit costs, and line-item prices" note="Next: open a product card from Billing to inspect its usage and pricing. The detail panel keeps the investigation within the same flow." />
+        </StudyEvidenceSwitcher>
         </div>
+        <DecisionNote problem="The customer had to assemble the explanation behind a total." decision="Show period totals and daily spend, then reveal product pricing on demand." why="Start with the comparison; let the customer choose which product to inspect next." />
       </section>
 
       <section className="crusoe-clean-section crusoe-cost-section" aria-labelledby="crusoe-cost-usage-title">
         <div className="crusoe-clean-heading"><span>04 / Decision · Measurement clarity</span><div><h3 id="crusoe-cost-usage-title">Reuse the pattern. Preserve the meaning of the number.</h3><p>I reused comparison cards and chart interactions for Usage, while keeping the consumption unit explicit. Analytics then adds traffic and response-time context. Consistency should help the reader navigate, not suggest that every metric is a billing unit.</p></div></div>
-        <DecisionNote problem="Different measures were difficult to interpret across separate screens." decision="Reuse comparison and chart patterns, but keep each view’s units explicit." why="Consumption explains usage; workload metrics guide investigation. They are related evidence, not interchangeable billing units." />
-        <div className="crusoe-cost-still-grid" role="group" aria-label="After redesign: Usage comparison, then workload analytics">
+        <div className="crusoe-cost-still-explorer" role="group" aria-label="After redesign: Usage comparison, then workload analytics">
+          <StudyEvidenceSwitcher label="Explore usage comparison, then workload analytics" labels={['Usage comparison', 'Workload analytics']}>
           <CostScreenshot file="usage-comparison" step={3} title="Check the usage measure" alt="Usage view with input, output, and cached token tabs above comparison cards and a daily chart" note="Choose the usage measure and read it with the selected dates. The comparison pattern stays familiar as the units change." />
           <CostScreenshot file="workload-analytics" step={4} title="Inspect the workload" alt="Operational analytics showing request rate, throughput, token volume, and response time" note="Continue into Analytics to inspect traffic and performance. Usage explains consumption; this view adds operational context to investigate." />
+        </StudyEvidenceSwitcher>
         </div>
+        <DecisionNote problem="Different measures were difficult to interpret across separate screens." decision="Reuse comparison and chart patterns, but keep each view’s units explicit." why="Consumption explains usage; workload metrics guide investigation. They are related evidence, not interchangeable billing units." />
       </section>
 
       <section className="crusoe-clean-section crusoe-cost-section" aria-labelledby="crusoe-cost-investigation-title">
         <div className="crusoe-clean-heading"><span>05 / Decision · Evidence &amp; next actions</span><div><h3 id="crusoe-cost-investigation-title">Give the investigation somewhere useful to go.</h3><p>A chart can show where to look, but not explain a cause by itself. I separated request logs from account activity so the customer can inspect what ran and what changed, without confusing correlation with an explanation.</p></div></div>
-        <DecisionNote problem="Customers had to connect summary charts with request and account evidence by hand." decision="Include request-level logs and account activity in the investigation path." why="Separate workload behavior from configuration changes. A nearby model update is context to examine, not proof that it caused the bill." />
-        <div className="crusoe-cost-still-grid" role="group" aria-label="After redesign: Request logs, then account activity">
+        <div className="crusoe-cost-still-explorer" role="group" aria-label="After redesign: Request logs, then account activity">
+          <StudyEvidenceSwitcher label="Explore request logs, then account activity" labels={['Request logs', 'Account activity']}>
           <CostScreenshot file="request-evidence" step={5} title="Read individual requests" alt="Event logs with request rows, model and version, token counts, timing, status codes, search, and export" note="Use status, token counts, timing, and search to narrow the request evidence. Export supports a closer investigation." />
           <CostScreenshot file="activity-history" step={6} title="Check account activity" alt="Activity history with model checkpoint updates, endpoint changes, timestamps, and activity filters" note="Review model updates and endpoint actions separately from requests. This adds context; it does not establish what caused the cost change." />
+        </StudyEvidenceSwitcher>
         </div>
+        <DecisionNote problem="Customers had to connect summary charts with request and account evidence by hand." decision="Include request-level logs and account activity in the investigation path." why="Separate workload behavior from configuration changes. A nearby model update is context to examine, not proof that it caused the bill." />
       </section>
 
       <section className="crusoe-clean-section crusoe-cost-section" aria-labelledby="crusoe-cost-decisions-title">

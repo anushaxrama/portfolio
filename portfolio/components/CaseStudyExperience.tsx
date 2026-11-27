@@ -7,11 +7,16 @@ import { Link } from '@/portfolio/compat'
 import { caseStudyOrder, caseStudyProjects, featuredCaseStudyOrder, type CaseStudySlug } from './caseStudyProjects'
 import { collectStudySections } from './caseStudySections'
 import CaseStudyProjectActions from './CaseStudyProjectActions'
+import StudyVisualTour from './StudyVisualTour'
+import { studyVisualTours } from './studyVisualTours'
+import { useCaseStudyMotion } from './useCaseStudyMotion'
 
 export default function CaseStudyExperience({ slug, children, preview }: { slug: CaseStudySlug; children: ReactNode; preview?: ReactNode }) {
   const project = caseStudyProjects[slug]
   const isProjectCollection = slug === 'crusoe'
   const content = useRef<HTMLDivElement>(null)
+  const experience = useRef<HTMLDivElement>(null)
+  useCaseStudyMotion(experience, slug)
   const projectOrder = featuredCaseStudyOrder.includes(slug) ? featuredCaseStudyOrder : caseStudyOrder
   const nextSlug = projectOrder[(projectOrder.indexOf(slug) + 1) % projectOrder.length] ?? 'crusoe'
   const next = caseStudyProjects[nextSlug]
@@ -32,32 +37,29 @@ export default function CaseStudyExperience({ slug, children, preview }: { slug:
   }, [slug])
 
   return (
-    <div data-study-slug={slug} className={`case-study-experience study-tone-${project.tone}${isProjectCollection ? ' study-project-collection' : ''}`}>
+    <div ref={experience} data-study-slug={slug} className={`case-study-experience study-tone-${project.tone}${isProjectCollection ? ' study-project-collection' : ''}`}>
       <div className="study-intro">
         <div className="study-intro-art" aria-hidden="true">
           <PortfolioImage src="/landing/editorial-flow.jpg" alt="" width={1376} height={768} decoding="async" />
         </div>
         <header className="study-cover" id="study-top">
           <div className="study-width">
-            <div className="study-cover-overview"><div className="study-cover-copy">
+            <div className={`study-cover-overview${isProjectCollection ? '' : ' study-cover-overview-visual'}`}><div className="study-cover-copy">
             <p className="study-eyebrow"><span>selected work / {String(projectOrder.indexOf(slug) + 1).padStart(2, '0')}</span><span>{project.category}</span></p>
             <h1>{project.name}</h1>
             <p className="study-headline">{project.headline}</p>
             <CaseStudyProjectActions slug={slug} />
             <p className="study-description">{project.description}</p>
-            </div>{isProjectCollection && <figure className="study-crusoe-preview"><a href="/images/crusoe/final-instances-empty.png" target="_blank" rel="noreferrer"><PortfolioImage src="/images/crusoe/final-instances-empty.png" width={838} height={768} alt="Crusoe V1 empty-state design with resource explanation, primary create action, and documentation" fetchPriority="high" /></a><figcaption>Designed V1 · First-run guidance pattern</figcaption></figure>}</div>
+            </div>{isProjectCollection && <figure className="study-crusoe-preview"><a href="/images/crusoe/final-instances-empty.png" target="_blank" rel="noreferrer"><PortfolioImage src="/images/crusoe/final-instances-empty.png" width={838} height={768} alt="Crusoe V1 empty-state design with resource explanation, primary create action, and documentation" fetchPriority="high" /></a><figcaption>Designed V1 · First-run guidance pattern</figcaption></figure>}{!isProjectCollection && <div className="study-cover-visual">{studyVisualTours[slug] ? <StudyVisualTour slug={slug} name={project.name} /> : preview && slug !== 'tonipr' ? preview : <figure className="study-product-stage study-cover-still"><a href={project.image} target="_blank" rel="noreferrer"><PortfolioImage src={project.image} alt={project.imageAlt} fetchPriority="high" /></a><figcaption><span>{project.name} / product preview</span><a href={project.image} target="_blank" rel="noreferrer">Open full size ↗</a></figcaption></figure>}</div>}</div>
             <dl className="study-meta">{project.meta.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
           </div>
-          {!isProjectCollection && (preview ? <div className="study-preview-slot study-width">{preview}</div> : <figure className="study-product-stage study-width">
-            <PortfolioImage src={project.image} alt={project.imageAlt} fetchPriority="high" />
-            <figcaption><span>{project.name} / product preview</span><a href="#study-summary">Read the overview <span aria-hidden="true">↓</span></a></figcaption>
-          </figure>)}
+          {slug === 'tonipr' && preview && <div className="study-preview-slot study-width">{preview}</div>}
         </header>
       </div>
 
       {!isProjectCollection && <section className="study-summary study-width" id="study-summary" aria-labelledby="study-summary-title">
         <div className="study-summary-heading"><h2 id="study-summary-title">The project at a glance.</h2></div>
-        <div className="study-summary-grid">{project.summary.map(([title, body], index) => <article key={title}><span className="study-eyebrow">0{index + 1} / {title}</span><p>{body}</p></article>)}</div>
+        <div className="study-summary-grid">{project.summary.map(([title, body]) => <article key={title}><span className="study-eyebrow">{title}</span><p>{body}</p></article>)}</div>
       </section>}
 
       <div className="study-original-content" ref={content}>{children}</div>

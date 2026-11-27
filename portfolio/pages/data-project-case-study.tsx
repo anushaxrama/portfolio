@@ -1,4 +1,7 @@
+"use client"
 
+import DataPipelineExplorer from '../components/DataPipelineExplorer'
+import StudyEvidenceSwitcher from '../components/StudyEvidenceSwitcher'
 import { PortfolioImage } from '../components/PortfolioImage'
 import { dataProjects, dataProjectStories, type DataProjectSlug } from '../components/dataProjects'
 
@@ -17,8 +20,8 @@ export default function DataProjectCaseStudy({ slug }: { slug: DataProjectSlug }
     </section>
     <section className="refined-chapter" id="implementation">
       <div className="refined-heading"><p className="refined-kicker">02 / Implementation</p><h3>Follow the data through the product.</h3></div>
-      <ol className="data-project-pipeline" aria-label={`${project.name} data flow`}>{story.pipeline.map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, '0')}</span><strong>{step}</strong></li>)}</ol>
-      <div className="refined-decisions">{story.decisions.map((decision, index) => <article key={decision.title}><span>Decision {String(index + 1).padStart(2, '0')}</span><h4>{decision.title}</h4><p>{decision.body}</p></article>)}</div>
+      <DataPipelineExplorer slug={slug} name={project.name} steps={story.pipeline} />
+      <div className="study-reasoning-explorer"><h4>Three implementation choices</h4><StudyEvidenceSwitcher label={`Explore ${project.name} implementation decisions`} labels={story.decisions.map(decision => decision.title)}>{story.decisions.map((decision, index) => <article className="study-reasoning-panel" key={decision.title}><span className="study-eyebrow">Decision {String(index + 1).padStart(2, '0')}</span><h4>{decision.title}</h4><p>{decision.body}</p></article>)}</StudyEvidenceSwitcher></div>
     </section>
     <section className="refined-chapter" id="evidence-and-next-steps">
       <div className="refined-heading"><p className="refined-kicker">03 / Evidence &amp; reflection</p><h3>What the work demonstrates.</h3><p>{story.result}</p></div>

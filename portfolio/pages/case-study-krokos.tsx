@@ -2,8 +2,7 @@
 
 import { PortfolioImage } from '../components/PortfolioImage'
 
-import { useRef, useState } from 'react'
-import { useCaseStudyMotion } from '@/portfolio/components/useCaseStudyMotion'
+import { useState } from 'react'
 import KrokosScrollableSite from '@/portfolio/components/KrokosScrollableSite'
 
 const homepageVersions = {
@@ -111,11 +110,9 @@ export function KrokosMobileLayouts() {
 }
 
 export default function KrokosCaseStudy() {
-  const root = useRef<HTMLElement>(null)
-  useCaseStudyMotion(root, 'krokos')
 
   return (
-    <main className="krokos-case" ref={root}>
+    <main className="krokos-case">
       <section className="crusoe-case-section krokos-section" id="krokos-before-after" aria-labelledby="krokos-brief-title" data-study-title="The brief and transformation">
         <div className="krokos-section-heading">
           <p className="krokos-kicker">01 / The brief</p>

@@ -133,7 +133,7 @@ describe('Usage-to-cost edited walkthrough', () => {
       expect(shot).toHaveAttribute('data-design-version', 'after')
       expect(shot.querySelector('header')).toHaveTextContent('After · Proposed redesign')
       expect(shot.querySelector('header')).toHaveTextContent(`Step ${String(index + 1).padStart(2, '0')} / 06`)
-      expect(shot.querySelector('img')).toHaveAccessibleName(/^Proposed redesign:/)
+      expect(shot.querySelector('img')).toHaveAttribute('alt', expect.stringMatching(/^Proposed redesign:/))
       expect(shot.querySelector('header')!.compareDocumentPosition(shot.querySelector('a')!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
     }
     const walkthrough = screen.getByLabelText('21-second usage-to-cost walkthrough')

@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { act, cleanup, render } from '@testing-library/react'
+import { useRef, useState } from 'react'
+import { act, cleanup, fireEvent, render } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { useCaseStudyMotion } from '@/portfolio/components/useCaseStudyMotion'
 
@@ -7,6 +7,12 @@ function MotionFixture() {
   const root = useRef<HTMLElement>(null)
   useCaseStudyMotion(root, 'example')
   return <main ref={root}><section className="crusoe-project-panel"><div className="crusoe-clean-heading">Always readable content</div></section></main>
+}
+function DynamicMotionFixture() {
+  const root = useRef<HTMLElement>(null)
+  const [added, setAdded] = useState(false)
+  useCaseStudyMotion(root, 'dynamic')
+  return <main ref={root}><button onClick={() => setAdded(true)}>Select another project</button>{added && <figure className="refined-figure">New evidence</figure>}<div hidden><figure className="refined-figure">Inactive evidence</figure></div></main>
 }
 
 afterEach(() => { cleanup(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
@@ -48,5 +54,15 @@ describe('Case-study scroll motion', () => {
     vi.stubGlobal('IntersectionObserver', undefined)
     const { getByText } = render(<MotionFixture />)
     expect(getByText('Always readable content')).toBeVisible()
+  })
+
+  it('registers newly selected project evidence while skipping inactive panels', async () => {
+    const observe = vi.fn()
+    vi.stubGlobal('IntersectionObserver', class { observe = observe; unobserve() {}; disconnect() {} })
+    const { container, getByRole } = render(<DynamicMotionFixture />)
+    expect(observe).not.toHaveBeenCalled()
+    await act(async () => { fireEvent.click(getByRole('button')); await Promise.resolve() })
+    expect(observe).toHaveBeenCalledWith(container.querySelector('main > figure'))
+    expect(observe).not.toHaveBeenCalledWith(container.querySelector('[hidden] figure'))
   })
 })

@@ -14,7 +14,7 @@ describe('Crusoe project selection', () => {
     for (const [number, name, panel, hash] of projects) {
       const button = screen.getByRole('button', { name: `Read project ${number}: ${name}` })
       fireEvent.click(button)
-      expect(screen.getAllByRole('tabpanel')).toHaveLength(1)
+      expect(document.querySelectorAll('.crusoe-project-panel[role="tabpanel"]')).toHaveLength(1)
       expect(screen.getByRole('tabpanel', { name: panel })).toBeInTheDocument()
       expect(button).toHaveAttribute('aria-pressed', 'true')
       expect(window.location.hash).toBe(`#${hash}`)

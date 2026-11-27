@@ -20,6 +20,7 @@
 @import "./refined-stories.css";
 @import "./trace-case-study.css";
 @import "./case-study-editorial.css";
+@import "./case-study-interactions.css";
 
 @custom-variant dark (&:is(.dark *));
 

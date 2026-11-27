@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from 'react'
 import CrusoeUsageCostStory from '@/portfolio/components/CrusoeUsageCostStory'
 import CrusoeDecisionExplorer from '@/portfolio/components/CrusoeDecisionExplorer'
 import { crusoeDesignDecisions } from '@/portfolio/components/crusoeDesignDecisions'
-import { useCaseStudyMotion } from '@/portfolio/components/useCaseStudyMotion'
 import { CrusoeEvidenceChain, CrusoeProjectBrief, CrusoeProjectProcess, CrusoeProjectCollaboration, CrusoeProjectNextSteps, CrusoeProjectReflection, crusoeNarratives, heuristicInsights } from '@/portfolio/components/CrusoeStoryContent'
 
 const heuristicMethod = [
@@ -267,8 +266,6 @@ type CrusoeProjectId = (typeof crusoeProjects)[number]['id']
 export default function CrusoeCaseStudy() {
   const [activeProject, setActiveProject] = useState<CrusoeProjectId>('empty-state-system')
   const initialHashScroll = useRef(true)
-  const motionRoot = useRef<HTMLElement>(null)
-  useCaseStudyMotion(motionRoot, activeProject)
 
   useEffect(() => {
     const hash = window.location.hash.slice(1)
@@ -299,7 +296,7 @@ export default function CrusoeCaseStudy() {
   }
 
   return (
-    <main ref={motionRoot} className="crusoe-case crusoe-cloud-case">
+    <main className="crusoe-case crusoe-cloud-case">
       <nav className="crusoe-impact-band crusoe-project-shortcuts" aria-label="Choose a Crusoe project">
         {crusoeProjects.map((project) => (
           <button

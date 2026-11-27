@@ -103,7 +103,7 @@ describe('ToniPR reader-controlled design preview', () => {
     const original = container.querySelector('.study-original-content') as HTMLElement
     const detailed = within(original).getByRole('img', { name: /ToniPR website explaining set your goal/ })
     expect(preview.compareDocumentPosition(detailed) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
-    expect(container.querySelector('.study-product-stage')).not.toBeInTheDocument()
+    expect(container.querySelector('.study-cover-visual img')).toHaveAttribute('src', '/tonipr/previews/dashboard-overview.jpg')
     expect(container.querySelector('video')).toBeNull()
     expect(within(original).getByRole('img', { name: /ToniPR public demonstration pairing/ })).toHaveAttribute('src', '/tonipr/previews/source-and-story.jpg')
     const route = readFileSync(resolve('app/case-study/tonipr/page.tsx'), 'utf8')

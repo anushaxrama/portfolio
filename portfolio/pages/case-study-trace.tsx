@@ -127,49 +127,7 @@ export default function TraceCaseStudy() {
             either direction without losing the source.
           </p>
         </div>
-        <dl className="refined-facts">
-          <div>
-            <dt>Intended user</dt>
-            <dd>
-              A designer or researcher synthesizing a small study and
-              documenting a product choice.
-            </dd>
-          </div>
-          <div>
-            <dt>My ownership</dt>
-            <dd>
-              Problem framing, interaction and visual design, React
-              implementation, data modeling, persistence, and verification.
-            </dd>
-          </div>
-          <div>
-            <dt>Project boundary</dt>
-            <dd>
-              An independent, single-user frontend build. The editable sample is
-              fictional; no customer study or adoption outcome is claimed.
-            </dd>
-          </div>
-        </dl>
-        <div className="refined-two">
-          <article>
-            <h4>The core assumption</h4>
-            <p>
-              Someone should be able to inspect the evidence behind a decision
-              without reconstructing the whole study. I treated that as a
-              product hypothesis to build and test, rather than presenting it as
-              an established research finding.
-            </p>
-          </article>
-          <article>
-            <h4>What I deliberately left out</h4>
-            <p>
-              Automatic synthesis, confidence scores, and team accounts would
-              add complexity before the central workflow was dependable. I
-              concentrated on connected records, clear review states, and
-              recoverable editing.
-            </p>
-          </article>
-        </div>
+        <p className="trace-case-scope-note">An independent product hypothesis for designers and researchers. I focused on linked records and recoverable editing; customer adoption and research-quality judgments remain outside this build.</p>
       </section>
 
       <section className="refined-chapter" id="trace-process">

@@ -9,7 +9,7 @@ describe('Concise Nexus case study', () => {
   it('keeps the survey scope and three decisions without unsupported outcome claims', () => {
     const { container } = render(<NexusCaseStudy />)
     expect(container.querySelectorAll('.refined-chapter')).toHaveLength(3)
-    expect(container.querySelectorAll('.refined-decisions article')).toHaveLength(3)
+    expect(container.querySelectorAll('.study-reasoning-explorer article')).toHaveLength(3)
     expect(screen.getByText('48 survey respondents')).toBeInTheDocument()
     expect(container).toHaveTextContent('Agreement between models is not proof of correctness')
     expect(container).not.toHaveTextContent(/40%|85%|10,000|10k|2x/)
