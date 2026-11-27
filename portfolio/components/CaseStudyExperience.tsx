@@ -1,5 +1,7 @@
 "use client"
 
+import { PortfolioImage } from './PortfolioImage'
+
 import { useEffect, useRef, type ReactNode } from 'react'
 import { Link } from '@/portfolio/compat'
 import { caseStudyOrder, caseStudyProjects, featuredCaseStudyOrder, type CaseStudySlug } from './caseStudyProjects'
@@ -33,7 +35,7 @@ export default function CaseStudyExperience({ slug, children, preview }: { slug:
     <div data-study-slug={slug} className={`case-study-experience study-tone-${project.tone}${isProjectCollection ? ' study-project-collection' : ''}`}>
       <div className="study-intro">
         <div className="study-intro-art" aria-hidden="true">
-          <img src="/landing/editorial-flow.jpg" alt="" width={1376} height={768} decoding="async" />
+          <PortfolioImage src="/landing/editorial-flow.jpg" alt="" width={1376} height={768} decoding="async" />
         </div>
         <header className="study-cover" id="study-top">
           <div className="study-width">
@@ -43,11 +45,11 @@ export default function CaseStudyExperience({ slug, children, preview }: { slug:
             <p className="study-headline">{project.headline}</p>
             <CaseStudyProjectActions slug={slug} />
             <p className="study-description">{project.description}</p>
-            </div>{isProjectCollection && <figure className="study-crusoe-preview"><a href="/images/crusoe/final-instances-empty.png" target="_blank" rel="noreferrer"><img src="/images/crusoe/final-instances-empty.png" width={838} height={768} alt="Crusoe V1 empty-state design with resource explanation, primary create action, and documentation" fetchPriority="high" /></a><figcaption>Designed V1 · First-run guidance pattern</figcaption></figure>}</div>
+            </div>{isProjectCollection && <figure className="study-crusoe-preview"><a href="/images/crusoe/final-instances-empty.png" target="_blank" rel="noreferrer"><PortfolioImage src="/images/crusoe/final-instances-empty.png" width={838} height={768} alt="Crusoe V1 empty-state design with resource explanation, primary create action, and documentation" fetchPriority="high" /></a><figcaption>Designed V1 · First-run guidance pattern</figcaption></figure>}</div>
             <dl className="study-meta">{project.meta.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
           </div>
           {!isProjectCollection && (preview ? <div className="study-preview-slot study-width">{preview}</div> : <figure className="study-product-stage study-width">
-            <img src={project.image} alt={project.imageAlt} fetchPriority="high" />
+            <PortfolioImage src={project.image} alt={project.imageAlt} fetchPriority="high" />
             <figcaption><span>{project.name} / product preview</span><a href="#study-summary">Read the overview <span aria-hidden="true">↓</span></a></figcaption>
           </figure>)}
         </header>

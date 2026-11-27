@@ -258,7 +258,7 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
 }
 
 @keyframes project-image-in {
-  from { opacity: 0; transform: translateY(8px) scale(.985); }
+  from { opacity: 1; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -354,18 +354,17 @@ a:hover .circle-arrow { background: var(--primary); color: var(--primary-foregro
 
 /* Reveal each block once; keep the screenshot canvas and its controls together. */
 .landing-page [data-reveal].reveal-ready {
-  opacity: 0;
-  transform: translate3d(0, 20px, 0);
-  transition: opacity .7s ease, transform .85s cubic-bezier(.22, 1, .36, 1);
+  opacity: 1;
+  transform: none;
 }
 .landing-page .project-card-slideshow.reveal-ready {
-  transform: translate3d(0, 22px, 0) scale(.985);
+  transform: none;
   clip-path: none;
 }
-.landing-page .project-info.reveal-ready { transition-delay: .1s; }
 .landing-page [data-reveal].reveal-ready.is-visible {
   opacity: 1;
   transform: none;
+  animation: project-image-in .28s ease-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .landing-page [data-reveal].reveal-ready {

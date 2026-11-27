@@ -1,5 +1,7 @@
 "use client";
 
+import { PortfolioImage, optimizedImageSource } from './PortfolioImage'
+
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowDownRight,
@@ -189,14 +191,15 @@ function ProjectImageSlideshow({ project }: { project: Project }) {
             role="img"
             aria-label={currentImage.alt}
           >
-            <image href={currentImage.src} width="593" height="421" />
+            <image href={optimizedImageSource(currentImage.src)} data-original-src={currentImage.src} width="593" height="421" />
           </svg>
         ) : (
-          <img
+          <PortfolioImage
             key={`${project.path}-${activeImage}`}
             src={currentImage.src}
             alt={currentImage.alt}
             loading="lazy"
+            sizes={['nexus', 'neuranote', 'habitat'].includes(project.path) ? '(max-width: 600px) calc(100vw - 40px), (max-width: 850px) 45vw, 320px' : '(max-width: 760px) calc(100vw - 40px), 464px'}
           />
         )}
       </Link>
@@ -286,13 +289,14 @@ export default function PortfolioLanding() {
       <PortfolioHeader />
       <main>
         <section className="hero" aria-labelledby="intro-title">
-          <img
+          <PortfolioImage
             className="hero-art"
             src={ribbon}
             alt=""
             width={1920}
             height={1024}
             fetchPriority="high"
+            sizes="100vw"
           />
           <FlowingArtwork src={ribbon} />
           <div className="hero-content site-container">

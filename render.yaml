@@ -4,6 +4,16 @@ services:
     runtime: static
     buildCommand: npm install && npm run build
     staticPublishPath: out
+    headers:
+      - path: /media/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /fonts/*.woff2
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /_next/static/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
     envVars:
       - key: NODE_VERSION
         value: 20

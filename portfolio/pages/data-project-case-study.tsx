@@ -1,8 +1,10 @@
+
+import { PortfolioImage } from '../components/PortfolioImage'
 import { dataProjects, dataProjectStories, type DataProjectSlug } from '../components/dataProjects'
 
 export function DataProjectPreview({ slug }: { slug: DataProjectSlug }) {
   const project = dataProjects[slug]
-  return <figure className="study-product-stage study-width"><img src={project.image} alt={project.imageAlt} fetchPriority="high" /><figcaption><span>{project.image.endsWith('.svg') ? 'Pipeline schematic · Project structure' : 'Dashboard capture · Local application'}</span><a href="#study-summary">Read the overview ↓</a></figcaption></figure>
+  return <figure className="study-product-stage study-width"><PortfolioImage src={project.image} alt={project.imageAlt} fetchPriority="high" /><figcaption><span>{project.image.endsWith('.svg') ? 'Pipeline schematic · Project structure' : 'Dashboard capture · Local application'}</span><a href="#study-summary">Read the overview ↓</a></figcaption></figure>
 }
 
 export default function DataProjectCaseStudy({ slug }: { slug: DataProjectSlug }) {

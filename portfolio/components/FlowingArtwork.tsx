@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react";
+import { optimizedImageSource } from './PortfolioImage';
 
 /** Image-backed flowing artwork; browser work stays inside the effect. */
 export function FlowingArtwork({ src }: { src: string }) {
@@ -44,8 +45,8 @@ export function FlowingArtwork({ src }: { src: string }) {
       if (!motion) return;
       // A connected image mesh deforms the whole color field, rather than
       // sliding a rigid picture or slicing it into visible horizontal strips.
-      const cols = 24;
-      const rows = 14;
+      const cols = width < 760 ? 8 : 12;
+      const rows = width < 760 ? 5 : 8;
       const amplitude = Math.min(width, height) * .038 * motion;
       const point = (x: number, y: number) => {
         const u = x / cols;
@@ -175,7 +176,10 @@ export function FlowingArtwork({ src }: { src: string }) {
       canvas.classList.add("artwork-ready");
       schedule();
     };
-    image.src = src;
+    // Reuse the still image's selected delivery copy instead of downloading
+    // the original artwork again solely for canvas rendering.
+    const still = canvas.parentElement?.querySelector<HTMLImageElement>('.hero-art');
+    image.src = still?.currentSrc || optimizedImageSource(src);
     return () => {
       disposed = true;
       stop();

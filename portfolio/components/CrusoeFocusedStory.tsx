@@ -1,6 +1,8 @@
 "use client"
 
-const Screenshot = ({ src, alt, label }: { src: string; alt: string; label: string }) => <figure className="refined-figure"><a href={src} target="_blank" rel="noreferrer"><img src={src} alt={alt} loading="lazy" /></a><figcaption>{label} <span aria-hidden="true">↗</span></figcaption></figure>
+import { PortfolioImage } from './PortfolioImage'
+
+const Screenshot = ({ src, alt, label }: { src: string; alt: string; label: string }) => <figure className="refined-figure"><a href={src} target="_blank" rel="noreferrer"><PortfolioImage src={src} alt={alt} loading="lazy" /></a><figcaption>{label} <span aria-hidden="true">↗</span></figcaption></figure>
 
 export default function CrusoeFocusedStory() {
   return <section id="crusoe-panel-empty-state-system" role="tabpanel" aria-label="Empty-state system project" className="crusoe-case-section crusoe-project-panel refined-story crusoe-focused-story">

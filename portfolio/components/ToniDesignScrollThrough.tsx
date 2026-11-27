@@ -1,5 +1,7 @@
 "use client"
 
+import { PortfolioImage } from './PortfolioImage'
+
 import { useState } from 'react'
 
 export const toniDesignGroups = [
@@ -70,7 +72,7 @@ export default function ToniDesignScrollThrough() {
                   <li key={screen.src}>
                     <figure className="toni-scroll-screen">
                       <figcaption><span>{String(index + 1).padStart(2, '0')}</span> {screen.title}</figcaption>
-                      <img src={screen.src} alt={screen.alt} width={screen.width} height={screen.height} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+                      <PortfolioImage src={screen.src} alt={screen.alt} width={screen.width} height={screen.height} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
                     </figure>
                   </li>
                 ))}

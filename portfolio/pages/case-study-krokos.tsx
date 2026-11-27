@@ -1,5 +1,7 @@
 "use client"
 
+import { PortfolioImage } from '../components/PortfolioImage'
+
 import { useRef, useState } from 'react'
 import { useCaseStudyMotion } from '@/portfolio/components/useCaseStudyMotion'
 import KrokosScrollableSite from '@/portfolio/components/KrokosScrollableSite'
@@ -91,7 +93,7 @@ export function KrokosMobileLayouts() {
           <figure key={layout.id} className="krokos-mobile-layout" data-study-reveal>
             <div className="krokos-mobile-device">
               <div className="krokos-mobile-screen" {...(layout.scrollable ? { role: 'region', tabIndex: 0, 'aria-label': `Mobile ${layout.title.toLowerCase()} capture`, 'aria-describedby': 'krokos-mobile-help' } : {})}>
-                <img src={`/krokos/mobile/${layout.id}.png`} alt={`Published Krokos ${layout.title.toLowerCase()} at phone width`} width={390} height={layout.height} loading="lazy" />
+                <PortfolioImage src={`/krokos/mobile/${layout.id}.png`} alt={`Published Krokos ${layout.title.toLowerCase()} at phone width`} width={390} height={layout.height} loading="lazy" />
               </div>
             </div>
             <figcaption>
@@ -141,7 +143,7 @@ export default function KrokosCaseStudy() {
         </ol>
         <figure className="krokos-landing-flow" data-study-reveal>
           <a href="/krokos/redesign-landing-flow.jpg" target="_blank" rel="noreferrer" aria-label="Open the landing-page flow overview at full size">
-            <img src="/krokos/redesign-landing-flow.jpg" alt="Six actual website sections in order: opening, supply-chain problem, approach, saffron product, team, and contact" width={1600} height={1000} loading="lazy" />
+            <PortfolioImage src="/krokos/redesign-landing-flow.jpg" alt="Six actual website sections in order: opening, supply-chain problem, approach, saffron product, team, and contact" width={1600} height={1000} loading="lazy" />
           </a>
           <figcaption>Selected sections of the published landing page, in reading order. <a href="/krokos/redesign-landing-flow.jpg" target="_blank" rel="noreferrer">Open overview ↗</a></figcaption>
         </figure>
@@ -152,7 +154,7 @@ export default function KrokosCaseStudy() {
             <a className="krokos-text-link" href="https://krokos.bio/#approach" target="_blank" rel="noreferrer">See the live approach section ↗</a>
           </div>
           <figure className="krokos-screen-evidence">
-            <a href="/krokos/redesign-approach.jpg" target="_blank" rel="noreferrer" aria-label="Open the actual approach-section design at full size"><img src="/krokos/redesign-approach.jpg" alt="Published Krokos approach section with its headline, explanation, and three-step plant-cell-culture sequence" width={1280} height={757} loading="lazy" /></a>
+            <a href="/krokos/redesign-approach.jpg" target="_blank" rel="noreferrer" aria-label="Open the actual approach-section design at full size"><PortfolioImage src="/krokos/redesign-approach.jpg" alt="Published Krokos approach section with its headline, explanation, and three-step plant-cell-culture sequence" width={1280} height={757} loading="lazy" /></a>
             <figcaption>The published approach section, including the typography, spacing, and visual sequence. <a href="/krokos/redesign-approach.jpg" target="_blank" rel="noreferrer">Open full image ↗</a></figcaption>
           </figure>
         </div>
@@ -165,7 +167,7 @@ export default function KrokosCaseStudy() {
           <p>I kept the botanical identity recognizable while giving it a more editorial expression. The design balances organic imagery and warm color with a more deliberate type hierarchy and consistent section structure.</p>
         </div>
         <div className="krokos-visual-row" data-study-reveal>
-          <figure className="krokos-screen-evidence"><a href="/krokos/redesign-press-full.jpg" target="_blank" rel="noreferrer" aria-label="Open the complete Press-page design"><img src="/krokos/redesign-press-coverage.jpg" alt="Published Krokos Press page coverage layout with publisher labels, publication dates, editorial headlines, descriptions, and article links" width={1280} height={1019} loading="lazy" /></a><figcaption>The Press page carries the visual system into an editorial coverage layout. <a href="/krokos/redesign-press-full.jpg" target="_blank" rel="noreferrer">Open complete Press page ↗</a></figcaption></figure>
+          <figure className="krokos-screen-evidence"><a href="/krokos/redesign-press-full.jpg" target="_blank" rel="noreferrer" aria-label="Open the complete Press-page design"><PortfolioImage src="/krokos/redesign-press-coverage.jpg" alt="Published Krokos Press page coverage layout with publisher labels, publication dates, editorial headlines, descriptions, and article links" width={1280} height={1019} loading="lazy" /></a><figcaption>The Press page carries the visual system into an editorial coverage layout. <a href="/krokos/redesign-press-full.jpg" target="_blank" rel="noreferrer">Open complete Press page ↗</a></figcaption></figure>
           <dl className="krokos-design-reasons">
             <div><dt>Give every story a clear hierarchy</dt><dd>Publisher and date establish context; the headline and short description explain the story; a consistent Read the story action leads to the source.</dd></div>
             <div><dt>Editorial headlines, straightforward reading</dt><dd>Instrument Serif gives the headlines an organic character. DM Sans carries navigation, body text, and scientific explanations with a quieter rhythm.</dd></div>

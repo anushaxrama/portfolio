@@ -1,5 +1,7 @@
 "use client"
 
+import { PortfolioImage } from './PortfolioImage'
+
 import { ArrowUpRight } from './LandingIcons'
 import { Link } from '@/portfolio/compat'
 
@@ -9,7 +11,7 @@ export function PortfolioHeader({ active = 'work' }: { active?: 'work' | 'about'
   return (
     <header className="site-header site-container">
       <Link className="wordmark" href="/" aria-label="Anusha Ramachandran, home">
-        <img className="monogram" src="/landing/ar-logo-final.png" alt="AR monogram" width={1024} height={1024} />
+        <PortfolioImage className="monogram" src="/landing/ar-logo-final.png" alt="AR monogram" width={1024} height={1024} sizes="50px" loading="eager" />
         <span className="wordmark-name">Anusha Ramachandran<small>product designer + engineer</small></span>
       </Link>
       <nav className="site-nav" aria-label="Main navigation">

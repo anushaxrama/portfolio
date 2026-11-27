@@ -1,0 +1,776 @@
+{
+  "/about-food.jpg": {
+    "width": 2400,
+    "height": 1800,
+    "srcSet": "/media/d28fe588bc38d875-640.webp 640w, /media/d28fe588bc38d875-1280.webp 1280w, /media/d28fe588bc38d875-1920.webp 1920w",
+    "preview": "/media/d28fe588bc38d875-1280.webp"
+  },
+  "/about-friends-grad-1.jpg": {
+    "width": 1800,
+    "height": 2400,
+    "srcSet": "/media/ff549f94cfb61c32-640.webp 640w, /media/ff549f94cfb61c32-1280.webp 1280w, /media/ff549f94cfb61c32-1800.webp 1800w",
+    "preview": "/media/ff549f94cfb61c32-1280.webp"
+  },
+  "/about-grad.jpg": {
+    "width": 1800,
+    "height": 2400,
+    "srcSet": "/media/420ac46064fe880f-640.webp 640w, /media/420ac46064fe880f-1280.webp 1280w, /media/420ac46064fe880f-1800.webp 1800w",
+    "preview": "/media/420ac46064fe880f-1280.webp"
+  },
+  "/about-matcha.jpg": {
+    "width": 2400,
+    "height": 1800,
+    "srcSet": "/media/6a31da0ee8c687f6-640.webp 640w, /media/6a31da0ee8c687f6-1280.webp 1280w, /media/6a31da0ee8c687f6-1920.webp 1920w",
+    "preview": "/media/6a31da0ee8c687f6-1280.webp"
+  },
+  "/about-nature.jpg": {
+    "width": 1799,
+    "height": 2400,
+    "srcSet": "/media/db809774260f9f74-640.webp 640w, /media/db809774260f9f74-1280.webp 1280w, /media/db809774260f9f74-1799.webp 1799w",
+    "preview": "/media/db809774260f9f74-1280.webp"
+  },
+  "/about-sunset-campus.png": {
+    "width": 447,
+    "height": 447,
+    "srcSet": "/media/c0d4aac3b3f35acc-447.webp 447w",
+    "preview": "/media/c0d4aac3b3f35acc-447.webp"
+  },
+  "/data-projects/atlasiq.jpg": {
+    "width": 1440,
+    "height": 1936,
+    "srcSet": "/media/6f7cec6880b8f90c-640.webp 640w, /media/6f7cec6880b8f90c-1280.webp 1280w",
+    "preview": "/media/6f7cec6880b8f90c-1280.webp"
+  },
+  "/data-projects/marketpulse.jpg": {
+    "width": 1280,
+    "height": 1562,
+    "srcSet": "/media/bf05ca7fb410c608-640.webp 640w, /media/bf05ca7fb410c608-1280.webp 1280w",
+    "preview": "/media/bf05ca7fb410c608-1280.webp"
+  },
+  "/data-projects/signalflow.jpg": {
+    "width": 1440,
+    "height": 2427,
+    "srcSet": "/media/c30ebc8088ceb8fa-640.webp 640w, /media/c30ebc8088ceb8fa-1280.webp 1280w",
+    "preview": "/media/c30ebc8088ceb8fa-1280.webp"
+  },
+  "/flowops-permission-matrix.png": {
+    "width": 1024,
+    "height": 502
+  },
+  "/flowops-role-admin.png": {
+    "width": 1024,
+    "height": 495
+  },
+  "/flowops-role-agent.png": {
+    "width": 1024,
+    "height": 502,
+    "srcSet": "/media/a4af766e411fb270-640.webp 640w, /media/a4af766e411fb270-1024.webp 1024w",
+    "preview": "/media/a4af766e411fb270-1024.webp"
+  },
+  "/flowops-role-approver.png": {
+    "width": 1024,
+    "height": 497
+  },
+  "/flowops1.png": {
+    "width": 2880,
+    "height": 1414,
+    "srcSet": "/media/ea14e13f4b44e9af-640.webp 640w, /media/ea14e13f4b44e9af-1280.webp 1280w, /media/ea14e13f4b44e9af-1920.webp 1920w",
+    "preview": "/media/ea14e13f4b44e9af-1280.webp"
+  },
+  "/flowops2.png": {
+    "width": 2880,
+    "height": 1410,
+    "srcSet": "/media/356fc9d5b496c49d-640.webp 640w, /media/356fc9d5b496c49d-1280.webp 1280w, /media/356fc9d5b496c49d-1920.webp 1920w",
+    "preview": "/media/356fc9d5b496c49d-1280.webp"
+  },
+  "/flowops3.png": {
+    "width": 2880,
+    "height": 1410,
+    "srcSet": "/media/337a904191ccb338-640.webp 640w, /media/337a904191ccb338-1280.webp 1280w, /media/337a904191ccb338-1920.webp 1920w",
+    "preview": "/media/337a904191ccb338-1280.webp"
+  },
+  "/flowops4.png": {
+    "width": 2880,
+    "height": 1412,
+    "srcSet": "/media/20cf5a16e4d41c1c-640.webp 640w, /media/20cf5a16e4d41c1c-1280.webp 1280w, /media/20cf5a16e4d41c1c-1920.webp 1920w",
+    "preview": "/media/20cf5a16e4d41c1c-1280.webp"
+  },
+  "/habitat/habitat-figma.png": {
+    "width": 1652,
+    "height": 1360,
+    "srcSet": "/media/6f5eabdfd722825f-640.webp 640w, /media/6f5eabdfd722825f-1280.webp 1280w, /media/6f5eabdfd722825f-1652.webp 1652w",
+    "preview": "/media/6f5eabdfd722825f-1280.webp"
+  },
+  "/habitat/habitat-hero.png": {
+    "width": 593,
+    "height": 421,
+    "srcSet": "/media/bf5634ac4cf97016-593.webp 593w",
+    "preview": "/media/bf5634ac4cf97016-593.webp"
+  },
+  "/habitat/home-screen.jpeg": {
+    "width": 638,
+    "height": 1320,
+    "srcSet": "/media/ad142dbed11f2c39-638.webp 638w",
+    "preview": "/media/ad142dbed11f2c39-638.webp"
+  },
+  "/habitat/profile-screen.jpeg": {
+    "width": 264,
+    "height": 576
+  },
+  "/habitat/reward-tiger.jpeg": {
+    "width": 216,
+    "height": 210
+  },
+  "/habitat/shared-habits.jpeg": {
+    "width": 716,
+    "height": 610
+  },
+  "/habitat-figma.png": {
+    "width": 1652,
+    "height": 1360,
+    "srcSet": "/media/6f5eabdfd722825f-640.webp 640w, /media/6f5eabdfd722825f-1280.webp 1280w, /media/6f5eabdfd722825f-1652.webp 1652w",
+    "preview": "/media/6f5eabdfd722825f-1280.webp"
+  },
+  "/images/crusoe/current-resource-empty.png": {
+    "width": 1045,
+    "height": 431
+  },
+  "/images/crusoe/figjam-research-synthesis.png": {
+    "width": 1220,
+    "height": 820,
+    "srcSet": "/media/fb43e8e80629c9b2-640.webp 640w, /media/fb43e8e80629c9b2-1220.webp 1220w",
+    "preview": "/media/fb43e8e80629c9b2-1220.webp"
+  },
+  "/images/crusoe/figma/api-create-after.png": {
+    "width": 1560,
+    "height": 840,
+    "srcSet": "/media/394f0d5e3adb4a74-640.webp 640w, /media/394f0d5e3adb4a74-1280.webp 1280w",
+    "preview": "/media/394f0d5e3adb4a74-1280.webp"
+  },
+  "/images/crusoe/figma/api-create-before.png": {
+    "width": 1440,
+    "height": 900,
+    "srcSet": "/media/5106d7f6792730af-640.webp 640w, /media/5106d7f6792730af-1280.webp 1280w",
+    "preview": "/media/5106d7f6792730af-1280.webp"
+  },
+  "/images/crusoe/figma/api-create-refined.png": {
+    "width": 1000,
+    "height": 840,
+    "srcSet": "/media/6780d33b32a6d87e-640.webp 640w, /media/6780d33b32a6d87e-1000.webp 1000w",
+    "preview": "/media/6780d33b32a6d87e-1000.webp"
+  },
+  "/images/crusoe/figma/api-finding.png": {
+    "width": 1440,
+    "height": 900,
+    "srcSet": "/media/633aac3e2a0d7dcf-640.webp 640w, /media/633aac3e2a0d7dcf-1280.webp 1280w",
+    "preview": "/media/633aac3e2a0d7dcf-1280.webp"
+  },
+  "/images/crusoe/figma/api-onboarding-banner.png": {
+    "width": 1500,
+    "height": 1100,
+    "srcSet": "/media/114c15846165bf67-640.webp 640w, /media/114c15846165bf67-1280.webp 1280w",
+    "preview": "/media/114c15846165bf67-1280.webp"
+  },
+  "/images/crusoe/figma/api-secure-export.png": {
+    "width": 1060,
+    "height": 800,
+    "srcSet": "/media/e9588b1008f78946-640.webp 640w, /media/e9588b1008f78946-1060.webp 1060w",
+    "preview": "/media/e9588b1008f78946-1060.webp"
+  },
+  "/images/crusoe/figma/billing-budget-alerts.png": {
+    "width": 1440,
+    "height": 820,
+    "srcSet": "/media/f300a8ecc05a364c-640.webp 640w, /media/f300a8ecc05a364c-1280.webp 1280w",
+    "preview": "/media/f300a8ecc05a364c-1280.webp"
+  },
+  "/images/crusoe/figma/billing-cost-breakdown.png": {
+    "width": 1440,
+    "height": 720,
+    "srcSet": "/media/ea012e786e6f60d3-640.webp 640w, /media/ea012e786e6f60d3-1280.webp 1280w",
+    "preview": "/media/ea012e786e6f60d3-1280.webp"
+  },
+  "/images/crusoe/figma/billing-dashboard.png": {
+    "width": 1440,
+    "height": 2048,
+    "srcSet": "/media/e587917bde525a6d-640.webp 640w, /media/e587917bde525a6d-1280.webp 1280w",
+    "preview": "/media/e587917bde525a6d-1280.webp"
+  },
+  "/images/crusoe/figma/monitoring-journey-overview.png": {
+    "width": 1440,
+    "height": 900,
+    "srcSet": "/media/830f63164e9912ff-640.webp 640w, /media/830f63164e9912ff-1280.webp 1280w",
+    "preview": "/media/830f63164e9912ff-1280.webp"
+  },
+  "/images/crusoe/figma/monitoring-unhealthy-tooltip.png": {
+    "width": 1240,
+    "height": 760,
+    "srcSet": "/media/6daa485c9b76de43-640.webp 640w, /media/6daa485c9b76de43-1240.webp 1240w",
+    "preview": "/media/6daa485c9b76de43-1240.webp"
+  },
+  "/images/crusoe/final-instances-empty.png": {
+    "width": 838,
+    "height": 768
+  },
+  "/images/crusoe/final-instances-provisioning.png": {
+    "width": 1440,
+    "height": 900,
+    "srcSet": "/media/e3ff7c6332952573-640.webp 640w, /media/e3ff7c6332952573-1280.webp 1280w",
+    "preview": "/media/e3ff7c6332952573-1280.webp"
+  },
+  "/images/crusoe/usage-to-cost/story-screen-only/activity-history.jpg": {
+    "width": 1280,
+    "height": 690,
+    "srcSet": "/media/2658270cd931c9e7-640.webp 640w, /media/2658270cd931c9e7-1280.webp 1280w",
+    "preview": "/media/2658270cd931c9e7-1280.webp"
+  },
+  "/images/crusoe/usage-to-cost/story-screen-only/billing-comparison.jpg": {
+    "width": 1280,
+    "height": 690,
+    "srcSet": "/media/b9a331e457f87008-640.webp 640w, /media/b9a331e457f87008-1280.webp 1280w",
+    "preview": "/media/b9a331e457f87008-1280.webp"
+  },
+  "/images/crusoe/usage-to-cost/story-screen-only/product-detail.jpg": {
+    "width": 1280,
+    "height": 690,
+    "srcSet": "/media/a39b324a24d9d60b-640.webp 640w, /media/a39b324a24d9d60b-1280.webp 1280w",
+    "preview": "/media/a39b324a24d9d60b-1280.webp"
+  },
+  "/images/crusoe/usage-to-cost/story-screen-only/request-evidence.jpg": {
+    "width": 1280,
+    "height": 690,
+    "srcSet": "/media/cbbff11f3688ecc9-640.webp 640w, /media/cbbff11f3688ecc9-1280.webp 1280w",
+    "preview": "/media/cbbff11f3688ecc9-1280.webp"
+  },
+  "/images/crusoe/usage-to-cost/story-screen-only/usage-comparison.jpg": {
+    "width": 1280,
+    "height": 690,
+    "srcSet": "/media/8f778eec97355aff-640.webp 640w, /media/8f778eec97355aff-1280.webp 1280w",
+    "preview": "/media/8f778eec97355aff-1280.webp"
+  },
+  "/images/crusoe/usage-to-cost/story-screen-only/walkthrough-poster-trimmed.jpg": {
+    "width": 1280,
+    "height": 802,
+    "srcSet": "/media/31f56ac80dd574f9-640.webp 640w, /media/31f56ac80dd574f9-1280.webp 1280w",
+    "preview": "/media/31f56ac80dd574f9-1280.webp"
+  },
+  "/images/crusoe/usage-to-cost/story-screen-only/walkthrough-poster.jpg": {
+    "width": 1280,
+    "height": 802,
+    "srcSet": "/media/56d8b8bc3478881b-640.webp 640w, /media/56d8b8bc3478881b-1280.webp 1280w",
+    "preview": "/media/56d8b8bc3478881b-1280.webp"
+  },
+  "/images/crusoe/usage-to-cost/story-screen-only/workload-analytics.jpg": {
+    "width": 1280,
+    "height": 690,
+    "srcSet": "/media/736e7e4eaa7f0a51-640.webp 640w, /media/736e7e4eaa7f0a51-1280.webp 1280w",
+    "preview": "/media/736e7e4eaa7f0a51-1280.webp"
+  },
+  "/krokos/mobile/homepage.png": {
+    "width": 390,
+    "height": 13635,
+    "srcSet": "/media/f150ac94221651af-390.webp 390w",
+    "preview": "/media/f150ac94221651af-390.webp"
+  },
+  "/krokos/mobile/navigation.png": {
+    "width": 390,
+    "height": 844
+  },
+  "/krokos/mobile/press.png": {
+    "width": 390,
+    "height": 2652,
+    "srcSet": "/media/615ae7e6cf44a2c7-390.webp 390w",
+    "preview": "/media/615ae7e6cf44a2c7-390.webp"
+  },
+  "/krokos/original-sections/approach.jpg": {
+    "width": 1280,
+    "height": 718,
+    "srcSet": "/media/f8d666291e55cfcd-640.webp 640w, /media/f8d666291e55cfcd-1280.webp 1280w",
+    "preview": "/media/f8d666291e55cfcd-1280.webp"
+  },
+  "/krokos/original-sections/benefits.jpg": {
+    "width": 1280,
+    "height": 860,
+    "srcSet": "/media/7751d9ad53c46839-640.webp 640w, /media/7751d9ad53c46839-1280.webp 1280w",
+    "preview": "/media/7751d9ad53c46839-1280.webp"
+  },
+  "/krokos/original-sections/contact.jpg": {
+    "width": 1280,
+    "height": 644
+  },
+  "/krokos/original-sections/newsletter.jpg": {
+    "width": 1280,
+    "height": 790
+  },
+  "/krokos/original-sections/opening.jpg": {
+    "width": 1280,
+    "height": 610,
+    "srcSet": "/media/cef805bf8ae5b4a0-640.webp 640w, /media/cef805bf8ae5b4a0-1280.webp 1280w",
+    "preview": "/media/cef805bf8ae5b4a0-1280.webp"
+  },
+  "/krokos/original-sections/plant-science.jpg": {
+    "width": 1280,
+    "height": 526
+  },
+  "/krokos/original-sections/saffron.jpg": {
+    "width": 1280,
+    "height": 684,
+    "srcSet": "/media/5e5c900b3c254c78-640.webp 640w, /media/5e5c900b3c254c78-1280.webp 1280w",
+    "preview": "/media/5e5c900b3c254c78-1280.webp"
+  },
+  "/krokos/original-sections/supply-chain.jpg": {
+    "width": 1280,
+    "height": 526,
+    "srcSet": "/media/ffe4bf2bd5c50f71-640.webp 640w, /media/ffe4bf2bd5c50f71-1280.webp 1280w",
+    "preview": "/media/ffe4bf2bd5c50f71-1280.webp"
+  },
+  "/krokos/original-sections/team-contact.jpg": {
+    "width": 1280,
+    "height": 800
+  },
+  "/krokos/original-sections/team.jpg": {
+    "width": 1280,
+    "height": 526
+  },
+  "/krokos/original-site-walkthrough-poster.jpg": {
+    "width": 1280,
+    "height": 900,
+    "srcSet": "/media/16cd935db85aca0f-640.webp 640w, /media/16cd935db85aca0f-1280.webp 1280w",
+    "preview": "/media/16cd935db85aca0f-1280.webp"
+  },
+  "/krokos/redesign-approach.jpg": {
+    "width": 1280,
+    "height": 757,
+    "srcSet": "/media/f7587d8614008b4b-640.webp 640w, /media/f7587d8614008b4b-1280.webp 1280w",
+    "preview": "/media/f7587d8614008b4b-1280.webp"
+  },
+  "/krokos/redesign-home-screen.jpg": {
+    "width": 1280,
+    "height": 720,
+    "srcSet": "/media/add415b4dfbed0de-640.webp 640w, /media/add415b4dfbed0de-1280.webp 1280w",
+    "preview": "/media/add415b4dfbed0de-1280.webp"
+  },
+  "/krokos/redesign-landing-flow.jpg": {
+    "width": 1600,
+    "height": 1000,
+    "srcSet": "/media/0d431965f3792de1-640.webp 640w, /media/0d431965f3792de1-1280.webp 1280w",
+    "preview": "/media/0d431965f3792de1-1280.webp"
+  },
+  "/krokos/redesign-landing-full.jpg": {
+    "width": 1280,
+    "height": 8259,
+    "srcSet": "/media/c3361f14aefc8c8a-640.webp 640w, /media/c3361f14aefc8c8a-1280.webp 1280w",
+    "preview": "/media/c3361f14aefc8c8a-1280.webp"
+  },
+  "/krokos/redesign-press-coverage.jpg": {
+    "width": 1280,
+    "height": 1019,
+    "srcSet": "/media/8edbcb421cdd5ee4-640.webp 640w, /media/8edbcb421cdd5ee4-1280.webp 1280w",
+    "preview": "/media/8edbcb421cdd5ee4-1280.webp"
+  },
+  "/krokos/redesign-press-full.jpg": {
+    "width": 1280,
+    "height": 2198,
+    "srcSet": "/media/213bb088280c519e-640.webp 640w, /media/213bb088280c519e-1280.webp 1280w",
+    "preview": "/media/213bb088280c519e-1280.webp"
+  },
+  "/krokos/redesign-site-walkthrough-poster.jpg": {
+    "width": 1280,
+    "height": 900,
+    "srcSet": "/media/d0e35edde2d7fe2b-640.webp 640w, /media/d0e35edde2d7fe2b-1280.webp 1280w",
+    "preview": "/media/d0e35edde2d7fe2b-1280.webp"
+  },
+  "/landing/ar-logo-final.png": {
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/media/15b1e335323d522d-160.webp 160w, /media/15b1e335323d522d-320.webp 320w",
+    "preview": "/media/15b1e335323d522d-320.webp"
+  },
+  "/landing/editorial-flow.jpg": {
+    "width": 1376,
+    "height": 768,
+    "srcSet": "/media/110c680796a4496b-640.webp 640w, /media/110c680796a4496b-1280.webp 1280w",
+    "preview": "/media/110c680796a4496b-1280.webp"
+  },
+  "/landing/project-crusoe-2.png": {
+    "width": 1440,
+    "height": 940,
+    "srcSet": "/media/d06de9d22147a4c0-640.webp 640w, /media/d06de9d22147a4c0-1280.webp 1280w",
+    "preview": "/media/d06de9d22147a4c0-1280.webp"
+  },
+  "/landing/project-crusoe-3.png": {
+    "width": 1440,
+    "height": 720,
+    "srcSet": "/media/ea012e786e6f60d3-640.webp 640w, /media/ea012e786e6f60d3-1280.webp 1280w",
+    "preview": "/media/ea012e786e6f60d3-1280.webp"
+  },
+  "/landing/project-crusoe.png": {
+    "width": 1440,
+    "height": 900,
+    "srcSet": "/media/e3ff7c6332952573-640.webp 640w, /media/e3ff7c6332952573-1280.webp 1280w",
+    "preview": "/media/e3ff7c6332952573-1280.webp"
+  },
+  "/landing/project-flowops.png": {
+    "width": 2880,
+    "height": 1398,
+    "srcSet": "/media/97a38d154c25cbfd-640.webp 640w, /media/97a38d154c25cbfd-1280.webp 1280w, /media/97a38d154c25cbfd-1920.webp 1920w",
+    "preview": "/media/97a38d154c25cbfd-1280.webp"
+  },
+  "/landing/project-neuranote-2.png": {
+    "width": 2842,
+    "height": 1382,
+    "srcSet": "/media/eac1c89dc2e5dcf4-640.webp 640w, /media/eac1c89dc2e5dcf4-1280.webp 1280w, /media/eac1c89dc2e5dcf4-1920.webp 1920w",
+    "preview": "/media/eac1c89dc2e5dcf4-1280.webp"
+  },
+  "/landing/project-neuranote-3.png": {
+    "width": 2494,
+    "height": 1400,
+    "srcSet": "/media/339101c88a417efb-640.webp 640w, /media/339101c88a417efb-1280.webp 1280w, /media/339101c88a417efb-1920.webp 1920w",
+    "preview": "/media/339101c88a417efb-1280.webp"
+  },
+  "/landing/project-neuranote.png": {
+    "width": 2880,
+    "height": 1414,
+    "srcSet": "/media/8425d670b9d700cc-640.webp 640w, /media/8425d670b9d700cc-1280.webp 1280w, /media/8425d670b9d700cc-1920.webp 1920w",
+    "preview": "/media/8425d670b9d700cc-1280.webp"
+  },
+  "/midfi-calendar.png": {
+    "width": 854,
+    "height": 1800,
+    "srcSet": "/media/5e71e732b2adc751-640.webp 640w, /media/5e71e732b2adc751-854.webp 854w",
+    "preview": "/media/5e71e732b2adc751-854.webp"
+  },
+  "/midfi-habits.png": {
+    "width": 848,
+    "height": 1800,
+    "srcSet": "/media/12fd0b9e675fb0c4-640.webp 640w, /media/12fd0b9e675fb0c4-848.webp 848w",
+    "preview": "/media/12fd0b9e675fb0c4-848.webp"
+  },
+  "/midfi-profile.png": {
+    "width": 858,
+    "height": 1798,
+    "srcSet": "/media/1ced8d7603055d25-640.webp 640w, /media/1ced8d7603055d25-858.webp 858w",
+    "preview": "/media/1ced8d7603055d25-858.webp"
+  },
+  "/midfi-signin.png": {
+    "width": 848,
+    "height": 1800,
+    "srcSet": "/media/5f7518d8bf9b4926-640.webp 640w, /media/5f7518d8bf9b4926-848.webp 848w",
+    "preview": "/media/5f7518d8bf9b4926-848.webp"
+  },
+  "/narbl/figma-iteration-1.png": {
+    "width": 1180,
+    "height": 1006,
+    "srcSet": "/media/73da4a03faccdf17-640.webp 640w, /media/73da4a03faccdf17-1180.webp 1180w",
+    "preview": "/media/73da4a03faccdf17-1180.webp"
+  },
+  "/narbl/figma-iteration-2.png": {
+    "width": 1176,
+    "height": 1064,
+    "srcSet": "/media/cd486d6e43253b73-640.webp 640w, /media/cd486d6e43253b73-1176.webp 1176w",
+    "preview": "/media/cd486d6e43253b73-1176.webp"
+  },
+  "/narbl/figma-iteration-3.png": {
+    "width": 1264,
+    "height": 776,
+    "srcSet": "/media/c549e81076329c3d-640.webp 640w, /media/c549e81076329c3d-1264.webp 1264w",
+    "preview": "/media/c549e81076329c3d-1264.webp"
+  },
+  "/narbl/narbl-1.png": {
+    "width": 2044,
+    "height": 992,
+    "srcSet": "/media/529814647add7795-640.webp 640w, /media/529814647add7795-1280.webp 1280w, /media/529814647add7795-1920.webp 1920w",
+    "preview": "/media/529814647add7795-1280.webp"
+  },
+  "/narbl/narbl-2.png": {
+    "width": 1024,
+    "height": 497
+  },
+  "/narbl/narbl-3.png": {
+    "width": 2450,
+    "height": 1208,
+    "srcSet": "/media/ae8340bbbe08fbc1-640.webp 640w, /media/ae8340bbbe08fbc1-1280.webp 1280w, /media/ae8340bbbe08fbc1-1920.webp 1920w",
+    "preview": "/media/ae8340bbbe08fbc1-1280.webp"
+  },
+  "/narbl/narbl-4.png": {
+    "width": 2450,
+    "height": 1208,
+    "srcSet": "/media/14c359fed2308b7e-640.webp 640w, /media/14c359fed2308b7e-1280.webp 1280w, /media/14c359fed2308b7e-1920.webp 1920w",
+    "preview": "/media/14c359fed2308b7e-1280.webp"
+  },
+  "/narbl/narbl-5.png": {
+    "width": 2450,
+    "height": 1208,
+    "srcSet": "/media/ee5be70f82e164be-640.webp 640w, /media/ee5be70f82e164be-1280.webp 1280w, /media/ee5be70f82e164be-1920.webp 1920w",
+    "preview": "/media/ee5be70f82e164be-1280.webp"
+  },
+  "/narbl/narbl-6.png": {
+    "width": 2450,
+    "height": 1208,
+    "srcSet": "/media/dce732c567bf0f34-640.webp 640w, /media/dce732c567bf0f34-1280.webp 1280w, /media/dce732c567bf0f34-1920.webp 1920w",
+    "preview": "/media/dce732c567bf0f34-1280.webp"
+  },
+  "/narbl/narbl-7.png": {
+    "width": 2450,
+    "height": 1208,
+    "srcSet": "/media/646619b122bad90d-640.webp 640w, /media/646619b122bad90d-1280.webp 1280w, /media/646619b122bad90d-1920.webp 1920w",
+    "preview": "/media/646619b122bad90d-1280.webp"
+  },
+  "/narbl/narbl-8.png": {
+    "width": 2450,
+    "height": 1208,
+    "srcSet": "/media/af3caa2f1ad9d727-640.webp 640w, /media/af3caa2f1ad9d727-1280.webp 1280w, /media/af3caa2f1ad9d727-1920.webp 1920w",
+    "preview": "/media/af3caa2f1ad9d727-1280.webp"
+  },
+  "/narbl/narbl-9.png": {
+    "width": 1024,
+    "height": 497
+  },
+  "/narbl/narbl-figma.png": {
+    "width": 1426,
+    "height": 1356,
+    "srcSet": "/media/00394a7ff6a80ba9-640.webp 640w, /media/00394a7ff6a80ba9-1280.webp 1280w",
+    "preview": "/media/00394a7ff6a80ba9-1280.webp"
+  },
+  "/neuranote/lofi-sketches-1.png": {
+    "width": 1024,
+    "height": 1024,
+    "srcSet": "/media/60d9837065de7bf3-640.webp 640w, /media/60d9837065de7bf3-1024.webp 1024w",
+    "preview": "/media/60d9837065de7bf3-1024.webp"
+  },
+  "/neuranote/lofi-sketches-2.png": {
+    "width": 1012,
+    "height": 436,
+    "srcSet": "/media/c5fb87efaab4d32b-640.webp 640w, /media/c5fb87efaab4d32b-1012.webp 1012w",
+    "preview": "/media/c5fb87efaab4d32b-1012.webp"
+  },
+  "/neuranote/midfi-wireframes.png": {
+    "width": 1758,
+    "height": 520,
+    "srcSet": "/media/62e58a320d8f3e78-640.webp 640w, /media/62e58a320d8f3e78-1280.webp 1280w, /media/62e58a320d8f3e78-1758.webp 1758w",
+    "preview": "/media/62e58a320d8f3e78-1280.webp"
+  },
+  "/neuranote/neuranote-1.png": {
+    "width": 2880,
+    "height": 1414,
+    "srcSet": "/media/8425d670b9d700cc-640.webp 640w, /media/8425d670b9d700cc-1280.webp 1280w, /media/8425d670b9d700cc-1920.webp 1920w",
+    "preview": "/media/8425d670b9d700cc-1280.webp"
+  },
+  "/neuranote/neuranote-2.png": {
+    "width": 2880,
+    "height": 1402,
+    "srcSet": "/media/7817a0a46a40555a-640.webp 640w, /media/7817a0a46a40555a-1280.webp 1280w, /media/7817a0a46a40555a-1920.webp 1920w",
+    "preview": "/media/7817a0a46a40555a-1280.webp"
+  },
+  "/neuranote/neuranote-3.png": {
+    "width": 2842,
+    "height": 1382,
+    "srcSet": "/media/eac1c89dc2e5dcf4-640.webp 640w, /media/eac1c89dc2e5dcf4-1280.webp 1280w, /media/eac1c89dc2e5dcf4-1920.webp 1920w",
+    "preview": "/media/eac1c89dc2e5dcf4-1280.webp"
+  },
+  "/neuranote/neuranote-4.png": {
+    "width": 2880,
+    "height": 1388,
+    "srcSet": "/media/5b107693013a41ac-640.webp 640w, /media/5b107693013a41ac-1280.webp 1280w, /media/5b107693013a41ac-1920.webp 1920w",
+    "preview": "/media/5b107693013a41ac-1280.webp"
+  },
+  "/neuranote/neuranote-5.png": {
+    "width": 2494,
+    "height": 1400,
+    "srcSet": "/media/339101c88a417efb-640.webp 640w, /media/339101c88a417efb-1280.webp 1280w, /media/339101c88a417efb-1920.webp 1920w",
+    "preview": "/media/339101c88a417efb-1280.webp"
+  },
+  "/neuranote/neuranote-6.png": {
+    "width": 2880,
+    "height": 1396,
+    "srcSet": "/media/24c79ff4010cb91e-640.webp 640w, /media/24c79ff4010cb91e-1280.webp 1280w, /media/24c79ff4010cb91e-1920.webp 1920w",
+    "preview": "/media/24c79ff4010cb91e-1280.webp"
+  },
+  "/neuranote/neuranote-7.png": {
+    "width": 2880,
+    "height": 1400,
+    "srcSet": "/media/09bbfeee105e0a5d-640.webp 640w, /media/09bbfeee105e0a5d-1280.webp 1280w, /media/09bbfeee105e0a5d-1920.webp 1920w",
+    "preview": "/media/09bbfeee105e0a5d-1280.webp"
+  },
+  "/neuranote/onboarding-chaptered-poster.jpg": {
+    "width": 1272,
+    "height": 674,
+    "srcSet": "/media/2d722316c5447822-640.webp 640w, /media/2d722316c5447822-1272.webp 1272w",
+    "preview": "/media/2d722316c5447822-1272.webp"
+  },
+  "/neuranote/workflow-chaptered-poster.jpg": {
+    "width": 1278,
+    "height": 618
+  },
+  "/spotify/spotify-1.png": {
+    "width": 708,
+    "height": 1392,
+    "srcSet": "/media/a3a9a552ef7d1ceb-640.webp 640w, /media/a3a9a552ef7d1ceb-708.webp 708w",
+    "preview": "/media/a3a9a552ef7d1ceb-708.webp"
+  },
+  "/spotify/spotify-2.png": {
+    "width": 694,
+    "height": 1382,
+    "srcSet": "/media/be4d253ba62d4119-640.webp 640w, /media/be4d253ba62d4119-694.webp 694w",
+    "preview": "/media/be4d253ba62d4119-694.webp"
+  },
+  "/spotify/spotify-3.png": {
+    "width": 712,
+    "height": 1386,
+    "srcSet": "/media/fb0816fcf9dda676-640.webp 640w, /media/fb0816fcf9dda676-712.webp 712w",
+    "preview": "/media/fb0816fcf9dda676-712.webp"
+  },
+  "/spotify/spotify-4.png": {
+    "width": 704,
+    "height": 1390,
+    "srcSet": "/media/43bf0cffee34c820-640.webp 640w, /media/43bf0cffee34c820-704.webp 704w",
+    "preview": "/media/43bf0cffee34c820-704.webp"
+  },
+  "/spotify/spotify-5.png": {
+    "width": 726,
+    "height": 1396,
+    "srcSet": "/media/27e2ae718ed230ea-640.webp 640w, /media/27e2ae718ed230ea-726.webp 726w",
+    "preview": "/media/27e2ae718ed230ea-726.webp"
+  },
+  "/spotify/spotify-6.png": {
+    "width": 714,
+    "height": 1398,
+    "srcSet": "/media/cec26c8fd0390985-640.webp 640w, /media/cec26c8fd0390985-714.webp 714w",
+    "preview": "/media/cec26c8fd0390985-714.webp"
+  },
+  "/spotify/spotify-lofi-wireframes.png": {
+    "width": 2816,
+    "height": 1536,
+    "srcSet": "/media/ae459522e78c4478-640.webp 640w, /media/ae459522e78c4478-1280.webp 1280w, /media/ae459522e78c4478-1920.webp 1920w",
+    "preview": "/media/ae459522e78c4478-1280.webp"
+  },
+  "/tonipr/case-study/camera-setup.png": {
+    "width": 2940,
+    "height": 1428,
+    "srcSet": "/media/8445cb35436f75bd-640.webp 640w, /media/8445cb35436f75bd-1280.webp 1280w, /media/8445cb35436f75bd-1920.webp 1920w",
+    "preview": "/media/8445cb35436f75bd-1280.webp"
+  },
+  "/tonipr/case-study/content-kit.png": {
+    "width": 1432,
+    "height": 895,
+    "srcSet": "/media/96dd5a87d616bd06-640.webp 640w, /media/96dd5a87d616bd06-1280.webp 1280w",
+    "preview": "/media/96dd5a87d616bd06-1280.webp"
+  },
+  "/tonipr/case-study/interview-focus.png": {
+    "width": 2940,
+    "height": 1428,
+    "srcSet": "/media/a2a1f89fd64264fd-640.webp 640w, /media/a2a1f89fd64264fd-1280.webp 1280w, /media/a2a1f89fd64264fd-1920.webp 1920w",
+    "preview": "/media/a2a1f89fd64264fd-1280.webp"
+  },
+  "/tonipr/case-study/interview-tone.png": {
+    "width": 2940,
+    "height": 1428,
+    "srcSet": "/media/e34ee188a795942c-640.webp 640w, /media/e34ee188a795942c-1280.webp 1280w, /media/e34ee188a795942c-1920.webp 1920w",
+    "preview": "/media/e34ee188a795942c-1280.webp"
+  },
+  "/tonipr/case-study/product-dashboard.png": {
+    "width": 2940,
+    "height": 1428,
+    "srcSet": "/media/6c7adf84a0584690-640.webp 640w, /media/6c7adf84a0584690-1280.webp 1280w, /media/6c7adf84a0584690-1920.webp 1920w",
+    "preview": "/media/6c7adf84a0584690-1280.webp"
+  },
+  "/tonipr/case-study/public-hero.png": {
+    "width": 1432,
+    "height": 895,
+    "srcSet": "/media/0d002e5d95863ef0-640.webp 640w, /media/0d002e5d95863ef0-1280.webp 1280w",
+    "preview": "/media/0d002e5d95863ef0-1280.webp"
+  },
+  "/tonipr/journey-highlights-poster.jpg": {
+    "width": 1280,
+    "height": 820,
+    "srcSet": "/media/37ca1f817f7b0cde-640.webp 640w, /media/37ca1f817f7b0cde-1280.webp 1280w",
+    "preview": "/media/37ca1f817f7b0cde-1280.webp"
+  },
+  "/tonipr/previews/dashboard-overview.jpg": {
+    "width": 1600,
+    "height": 707,
+    "srcSet": "/media/520c99396a34be5f-640.webp 640w, /media/520c99396a34be5f-1280.webp 1280w",
+    "preview": "/media/520c99396a34be5f-1280.webp"
+  },
+  "/tonipr/previews/interview-direction.jpg": {
+    "width": 1600,
+    "height": 950,
+    "srcSet": "/media/d01987299f141de0-640.webp 640w, /media/d01987299f141de0-1280.webp 1280w",
+    "preview": "/media/d01987299f141de0-1280.webp"
+  },
+  "/tonipr/previews/landing-problem.jpg": {
+    "width": 1440,
+    "height": 700,
+    "srcSet": "/media/9103f9c000c83046-640.webp 640w, /media/9103f9c000c83046-1280.webp 1280w",
+    "preview": "/media/9103f9c000c83046-1280.webp"
+  },
+  "/tonipr/previews/landing-solution.jpg": {
+    "width": 1440,
+    "height": 700,
+    "srcSet": "/media/0c1f5e78286a1b92-640.webp 640w, /media/0c1f5e78286a1b92-1280.webp 1280w",
+    "preview": "/media/0c1f5e78286a1b92-1280.webp"
+  },
+  "/tonipr/previews/landing-transformation.jpg": {
+    "width": 1440,
+    "height": 700,
+    "srcSet": "/media/91026153e60bc677-640.webp 640w, /media/91026153e60bc677-1280.webp 1280w",
+    "preview": "/media/91026153e60bc677-1280.webp"
+  },
+  "/tonipr/previews/recording-preparation.jpg": {
+    "width": 1600,
+    "height": 1215,
+    "srcSet": "/media/aa427b95d7914729-640.webp 640w, /media/aa427b95d7914729-1280.webp 1280w",
+    "preview": "/media/aa427b95d7914729-1280.webp"
+  },
+  "/tonipr/previews/source-and-story.jpg": {
+    "width": 1175,
+    "height": 625,
+    "srcSet": "/media/a33613832dba99a8-640.webp 640w, /media/a33613832dba99a8-1175.webp 1175w",
+    "preview": "/media/a33613832dba99a8-1175.webp"
+  },
+  "/tonipr/previews/three-step-workflow.jpg": {
+    "width": 1180,
+    "height": 551,
+    "srcSet": "/media/405897509eb203de-640.webp 640w, /media/405897509eb203de-1180.webp 1180w",
+    "preview": "/media/405897509eb203de-1180.webp"
+  },
+  "/tonipr/previews/voice-selection.jpg": {
+    "width": 1400,
+    "height": 870,
+    "srcSet": "/media/8afa55944d3be07d-640.webp 640w, /media/8afa55944d3be07d-1280.webp 1280w",
+    "preview": "/media/8afa55944d3be07d-1280.webp"
+  },
+  "/trace/trace-decision.jpg": {
+    "width": 1440,
+    "height": 960,
+    "srcSet": "/media/7f7a53e39a99ec11-640.webp 640w, /media/7f7a53e39a99ec11-1280.webp 1280w",
+    "preview": "/media/7f7a53e39a99ec11-1280.webp"
+  },
+  "/trace/trace-evidence-v1.jpg": {
+    "width": 1280,
+    "height": 720,
+    "srcSet": "/media/32e556970e6c0dca-640.webp 640w, /media/32e556970e6c0dca-1280.webp 1280w",
+    "preview": "/media/32e556970e6c0dca-1280.webp"
+  },
+  "/trace/trace-evidence.jpg": {
+    "width": 1440,
+    "height": 960,
+    "srcSet": "/media/d4b106dc4f7c1410-640.webp 640w, /media/d4b106dc4f7c1410-1280.webp 1280w",
+    "preview": "/media/d4b106dc4f7c1410-1280.webp"
+  },
+  "/trace/trace-insight.jpg": {
+    "width": 1440,
+    "height": 960,
+    "srcSet": "/media/6f425c130ffad556-640.webp 640w, /media/6f425c130ffad556-1280.webp 1280w",
+    "preview": "/media/6f425c130ffad556-1280.webp"
+  },
+  "/trace/trace-mobile.jpg": {
+    "width": 390,
+    "height": 844
+  },
+  "/trace/trace-overview.jpg": {
+    "width": 1440,
+    "height": 960,
+    "srcSet": "/media/e664e30cf308c2c9-640.webp 640w, /media/e664e30cf308c2c9-1280.webp 1280w",
+    "preview": "/media/e664e30cf308c2c9-1280.webp"
+  }
+}

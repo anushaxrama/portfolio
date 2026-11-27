@@ -1,5 +1,7 @@
 "use client"
 
+import { PortfolioImage, optimizedImageSource } from './PortfolioImage'
+
 import { useRef, useState } from 'react'
 
 export const costWalkthroughChapters = [
@@ -60,7 +62,7 @@ export default function CrusoeCostWalkthrough() {
     video.pause()
     setActive(index)
     if (video.readyState >= 1) video.currentTime = time
-    else pendingTime.current = time
+    else { pendingTime.current = time; video.load() }
   }
 
   return (
@@ -72,7 +74,7 @@ export default function CrusoeCostWalkthrough() {
       <div className="crusoe-cost-walkthrough-media">
         {failed ? (
           <div className="crusoe-cost-walkthrough-fallback" role="status">
-            <img src="/images/crusoe/usage-to-cost/story-screen-only/walkthrough-poster-trimmed.jpg" alt="Billing period comparison from the redesigned prototype" />
+            <PortfolioImage src="/images/crusoe/usage-to-cost/story-screen-only/walkthrough-poster-trimmed.jpg" alt="Billing period comparison from the redesigned prototype" />
             <p>The video could not load. All six moments are shown as screenshots below.</p>
           </div>
         ) : (
@@ -83,8 +85,8 @@ export default function CrusoeCostWalkthrough() {
             playsInline
             width={1280}
             height={802}
-            preload="metadata"
-            poster="/images/crusoe/usage-to-cost/story-screen-only/walkthrough-poster-trimmed.jpg"
+            preload="none"
+            poster={optimizedImageSource("/images/crusoe/usage-to-cost/story-screen-only/walkthrough-poster-trimmed.jpg")}
             onLoadedMetadata={() => {
               if (videoRef.current && pendingTime.current !== null) {
                 videoRef.current.currentTime = pendingTime.current

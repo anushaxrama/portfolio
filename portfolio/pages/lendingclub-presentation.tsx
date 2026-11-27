@@ -936,7 +936,7 @@ function ProjectWalkthrough({
                       controls
                       loop
                       playsInline
-                      preload="metadata"
+                      preload="none"
                     >
                       <source src={activeVisual.src} type="video/mp4" />
                       Your browser does not support the video tag.

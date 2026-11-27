@@ -1,5 +1,7 @@
 "use client"
 
+import { PortfolioImage } from './PortfolioImage'
+
 export type KrokosSiteVersion = 'before' | 'after'
 
 export const originalKrokosSections = [
@@ -29,10 +31,10 @@ export default function KrokosScrollableSite({ version }: { version: KrokosSiteV
         {before ? originalKrokosSections.map((section, index) => (
           <figure className="krokos-archived-section" key={section.file}>
             <figcaption><span>{String(index + 1).padStart(2, '0')}</span> {section.label}</figcaption>
-            <img src={`/krokos/original-sections/${section.file}.jpg`} alt={section.alt} width={1280} height={section.height} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+            <PortfolioImage src={`/krokos/original-sections/${section.file}.jpg`} alt={section.alt} width={1280} height={section.height} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
           </figure>
         )) : (
-          <img src="/krokos/redesign-landing-full.jpg" alt="Full published Krokos Bio redesign, from the navigation and opening through the science, approach, saffron, team, contact, and footer" width={1280} height={8259} decoding="async" />
+          <PortfolioImage src="/krokos/redesign-landing-full.jpg" alt="Full published Krokos Bio redesign, from the navigation and opening through the science, approach, saffron, team, contact, and footer" width={1280} height={8259} decoding="async" />
         )}
       </div>
       <figcaption className="krokos-scrollthrough-note">

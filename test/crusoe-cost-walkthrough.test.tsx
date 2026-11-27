@@ -12,6 +12,7 @@ vi.mock('@/portfolio/compat', () => ({
 beforeEach(() => {
   vi.spyOn(HTMLMediaElement.prototype, 'play').mockResolvedValue()
   vi.spyOn(HTMLMediaElement.prototype, 'pause').mockImplementation(() => undefined)
+  vi.spyOn(HTMLMediaElement.prototype, 'load').mockImplementation(() => undefined)
 })
 afterEach(() => { cleanup(); vi.restoreAllMocks() })
 
@@ -20,7 +21,7 @@ describe('Usage-to-cost edited walkthrough', () => {
     const { container } = render(<CrusoeCostWalkthrough />)
     const video = container.querySelector('video')!
     expect(video).toHaveAttribute('controls')
-    expect(video).toHaveAttribute('preload', 'metadata')
+    expect(video).toHaveAttribute('preload', 'none')
     expect(video).not.toHaveAttribute('autoplay')
     expect(video).not.toHaveAttribute('loop')
     expect(video.querySelector('source')).toHaveAttribute('src', '/crusoe/usage-cost-highlights-trimmed.mp4')
@@ -53,6 +54,7 @@ describe('Usage-to-cost edited walkthrough', () => {
     const { container } = render(<CrusoeCostWalkthrough />)
     const video = container.querySelector('video')!
     fireEvent.click(screen.getByRole('button', { name: 'Show Usage totals at 00:05' }))
+    expect(video.load).toHaveBeenCalledOnce()
     fireEvent.loadedMetadata(video)
     expect(video.currentTime).toBeCloseTo(5.08)
     expect(video.play).not.toHaveBeenCalled()

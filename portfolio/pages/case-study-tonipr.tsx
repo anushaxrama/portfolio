@@ -1,8 +1,10 @@
 "use client"
 
+import { PortfolioImage } from '../components/PortfolioImage'
+
 import ToniProductSlideshow from '@/portfolio/components/ToniProductSlideshow'
 
-function Screen({ src, alt, caption }: { src: string; alt: string; caption: string }) { return <figure className="refined-figure"><a href={src} target="_blank" rel="noreferrer"><img src={src} alt={alt} loading="lazy" /></a><figcaption>{caption}<span aria-hidden="true">↗</span></figcaption></figure> }
+function Screen({ src, alt, caption }: { src: string; alt: string; caption: string }) { return <figure className="refined-figure"><a href={src} target="_blank" rel="noreferrer"><PortfolioImage src={src} alt={alt} loading="lazy" /></a><figcaption>{caption}<span aria-hidden="true">↗</span></figcaption></figure> }
 export default function ToniPRCaseStudy() {
   return <main className="refined-story toni-focused-story">
     <section className="refined-chapter" id="service-framing"><div className="refined-heading"><p className="refined-kicker">01 / Frame the service</p><h2>Make the commitment clear before the interview.</h2><p>ToniPR asks founders to share their expertise in a short interview, then turns that conversation into content for different channels. I worked with the founder and engineering on the website and signed-in product journey.</p></div>

@@ -1,5 +1,7 @@
 "use client"
 
+import { PortfolioImage } from '../components/PortfolioImage'
+
 import { ArrowUpRight } from '@/portfolio/components/LandingIcons';
 import { PortfolioHeader } from '@/portfolio/components/PortfolioHeader';
 
@@ -20,7 +22,7 @@ function PhotoBoard({ photos, label }: { photos: typeof firstPhotos; label: stri
     <div className="about-photo-board" role="group" aria-label={label}>
       {photos.map((photo, index) => (
         <figure className={`about-polaroid about-polaroid-${index + 1}`} key={photo.src}>
-          <img src={photo.src} alt={photo.alt} width={600} height={800} loading="lazy" />
+          <PortfolioImage src={photo.src} alt={photo.alt} width={600} height={800} loading="lazy" />
         </figure>
       ))}
     </div>

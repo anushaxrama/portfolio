@@ -1,5 +1,7 @@
 'use client'
 
+import { PortfolioImage } from '../components/PortfolioImage'
+
 import { useState } from 'react'
 import { sampleWorkspace } from '@/portfolio/trace/seed'
 import { recordReference } from '@/portfolio/trace/TracePrimitives'
@@ -44,7 +46,7 @@ function EvidenceFigure({
   return (
     <figure className="refined-figure">
       <a href={src} target="_blank" rel="noreferrer">
-        <img src={src} alt={alt} loading="lazy" />
+        <PortfolioImage src={src} alt={alt} loading="lazy" />
       </a>
       <figcaption>
         {caption}

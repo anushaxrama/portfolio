@@ -1,5 +1,7 @@
 "use client"
 
+import { PortfolioImage, optimizedImageSource } from '../components/PortfolioImage'
+
 import { useState, type ReactNode } from 'react'
 import { projectResources } from '@/portfolio/components/projectResources'
 
@@ -73,7 +75,7 @@ function HabitatFinalScreens() {
       </div>
       <div className="habitat-screen-panel" id="habitat-screen-panel" role="region" aria-labelledby={'habitat-screen-' + selected}>
         <a className="habitat-final-image" data-layout={screen.width > screen.height ? 'landscape' : 'phone'} href={screen.src} target="_blank" rel="noreferrer" aria-label={'Open ' + screen.label.toLowerCase() + ' full image'}>
-          <img src={screen.src} alt={screen.alt} width={screen.width} height={screen.height} loading="lazy" />
+          <PortfolioImage src={screen.src} alt={screen.alt} width={screen.width} height={screen.height} loading="lazy" />
         </a>
         <div className="habitat-screen-copy">
           <p className="habitat-kicker">Final design · {String(selected + 1).padStart(2, '0')} / 03</p>
@@ -167,7 +169,7 @@ export default function HabitatCaseStudy() {
         </div>
         <details className="habitat-prototype-map">
           <summary>View the complete interaction map <span aria-hidden="true">+</span></summary>
-          <figure><a href="/habitat/habitat-figma.png" target="_blank" rel="noreferrer" aria-label="Open HABITat Figma interaction map full size"><img src="/habitat/habitat-figma.png" alt="Original Figma canvas showing the connected HABITat screens and prototype interactions" width={1652} height={1360} loading="lazy" /></a><figcaption>Original Figma interaction map. Select the image to inspect it at full size.</figcaption></figure>
+          <figure><a href="/habitat/habitat-figma.png" target="_blank" rel="noreferrer" aria-label="Open HABITat Figma interaction map full size"><PortfolioImage src="/habitat/habitat-figma.png" alt="Original Figma canvas showing the connected HABITat screens and prototype interactions" width={1652} height={1360} loading="lazy" /></a><figcaption>Original Figma interaction map. Select the image to inspect it at full size.</figcaption></figure>
         </details>
       </Section>
 
@@ -175,7 +177,7 @@ export default function HabitatCaseStudy() {
         <p className="habitat-section-intro">The earlier screens established the layout for account entry, habit tracking, and personal progress.</p>
         <div className="habitat-wireframes">
           {midfiScreens.map(screen => <figure key={screen.src}>
-            <a href={screen.src} target="_blank" rel="noreferrer" aria-label={'Open ' + screen.title.toLowerCase() + ' wireframe full size'}><img src={screen.src} alt={'HABITat mid-fidelity ' + screen.title.toLowerCase() + ' design'} width={screen.width} height={screen.height} loading="lazy" /></a>
+            <a href={screen.src} target="_blank" rel="noreferrer" aria-label={'Open ' + screen.title.toLowerCase() + ' wireframe full size'}><PortfolioImage src={screen.src} alt={'HABITat mid-fidelity ' + screen.title.toLowerCase() + ' design'} width={screen.width} height={screen.height} loading="lazy" /></a>
             <figcaption><h3>{screen.title}</h3><p>{screen.description}</p></figcaption>
           </figure>)}
         </div>
@@ -185,7 +187,7 @@ export default function HabitatCaseStudy() {
         <p className="habitat-section-intro">A daily overview, a growing habitat, and shared progress form the core of the final concept. Choose a screen to explore the design.</p>
         <HabitatFinalScreens />
         <div className="habitat-reward-note">
-          <img src="/habitat/reward-tiger.jpeg" alt="Tiger reward earned through a HABITat habit milestone" width={216} height={210} loading="lazy" />
+          <PortfolioImage src="/habitat/reward-tiger.jpeg" alt="Tiger reward earned through a HABITat habit milestone" width={216} height={210} loading="lazy" />
           <div><h3>A reward tied to the routine.</h3><p>Animals are unlocked through habit milestones. The collection gives the progress a visible, personal expression.</p></div>
         </div>
       </Section>
@@ -209,7 +211,7 @@ export default function HabitatCaseStudy() {
 
       <Section number="11" title="Product Walkthrough" id="habitat-walkthrough">
         <div className="habitat-walkthrough-intro"><p className="habitat-section-intro">Play the recorded prototype walkthrough, or open Figma to explore the interactions yourself.</p><a className="habitat-text-link" href={projectResources.habitat.demo.href} target="_blank" rel="noreferrer">Try the interactive prototype <span aria-hidden="true">↗</span></a></div>
-        <video className="habitat-walkthrough" controls playsInline preload="none" poster="/habitat/habitat-hero.png" aria-label="HABITat product walkthrough">
+        <video className="habitat-walkthrough" controls playsInline preload="none" poster={optimizedImageSource('/habitat/habitat-hero.png')} aria-label="HABITat product walkthrough">
           <source src="/habitat/habitat-demo.mp4" type="video/mp4" />
           Your browser does not support this video. <a href="/habitat/habitat-demo.mp4">Open the recorded walkthrough.</a>
         </video>

@@ -31,7 +31,7 @@ describe('Featured portfolio projects', () => {
     const gallery = screen.getByLabelText('HABITat image slideshow')
     const displayedAsset = () => {
       const image = gallery.querySelector('img, svg image')
-      return image?.getAttribute('src') ?? image?.getAttribute('href')
+      return image?.getAttribute('data-original-src') ?? image?.getAttribute('src') ?? image?.getAttribute('href')
     }
     const assets = ['/habitat/habitat-hero.png', '/habitat/home-screen.jpeg', '/habitat/shared-habits.jpeg']
     expect(within(gallery).getByRole('link', { name: 'View HABITat case study' })).toHaveAttribute('href', '/case-study/habitat/')

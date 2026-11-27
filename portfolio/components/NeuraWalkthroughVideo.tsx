@@ -1,5 +1,7 @@
 "use client"
 
+import { PortfolioImage, optimizedImageSource } from './PortfolioImage'
+
 import { useEffect, useRef, useState } from 'react'
 
 export type NeuraVideoChapter = { time: number; label: string; detail: string }
@@ -48,9 +50,9 @@ export default function NeuraWalkthroughVideo({ label, poster, sources, chapters
   return <div className="neura-chaptered-video">
     <div className="neura-video-frame">
       {failed ? <div className="neura-video-fallback" role="group" aria-label={label}>
-        <img src={poster} alt={`${label} preview`} width={width} height={height} />
+        <PortfolioImage src={poster} alt={`${label} preview`} width={width} height={height} />
         <p>This recording is currently unavailable. The prototype preview is shown above.</p>
-      </div> : <video ref={videoRef} aria-label={label} controls playsInline preload="metadata" poster={poster} width={width} height={height}
+      </div> : <video ref={videoRef} aria-label={label} controls playsInline preload="none" poster={optimizedImageSource(poster)} width={width} height={height}
         onLoadedMetadata={() => {
           if (videoRef.current && pendingTime.current !== null) {
             seek(videoRef.current, pendingTime.current)

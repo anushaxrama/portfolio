@@ -1,5 +1,7 @@
 "use client"
 
+import { PortfolioImage } from '../components/PortfolioImage'
+
 export default function NexusCaseStudy() {
   return <main className="refined-story nexus-focused-story">
     <section className="refined-chapter" id="research"><div className="refined-heading"><p className="refined-kicker">01 / Research &amp; synthesis</p><h2>Less work comparing tools. More room to think.</h2><p>Nexus explored how students could work with multiple AI models in one place. My role at Narb was product and interaction design, working with engineering on the question-to-answer experience and visual system.</p></div>
@@ -8,7 +10,7 @@ export default function NexusCaseStudy() {
       <div className="refined-note"><strong>The design question</strong><p>How can one workspace reduce comparison effort while helping students inspect where an answer came from?</p></div>
     </section>
     <section className="refined-chapter" id="core-product-flow"><div className="refined-heading"><p className="refined-kicker">02 / Three decisions</p><h3>Make the main task obvious. Keep the controls close.</h3></div>
-      <figure className="refined-figure"><a href="/narbl/narbl-9.png?v=5" target="_blank" rel="noreferrer"><img src="/narbl/narbl-9.png?v=5" alt="Nexus chat workspace with persistent history, a primary question field, and model selection below the composer" loading="lazy" /></a><figcaption>Captured product UI · Question composer, model controls, and persistent history.<span aria-hidden="true">↗</span></figcaption></figure>
+      <figure className="refined-figure"><a href="/narbl/narbl-9.png?v=5" target="_blank" rel="noreferrer"><PortfolioImage src="/narbl/narbl-9.png?v=5" alt="Nexus chat workspace with persistent history, a primary question field, and model selection below the composer" loading="lazy" /></a><figcaption>Captured product UI · Question composer, model controls, and persistent history.<span aria-hidden="true">↗</span></figcaption></figure>
       <div className="refined-decisions"><article><span>Decision 01 / Input</span><h4>One starting point for the question.</h4><p>A prominent composer anchors the task. Keeping model controls near it makes configuration part of the same flow, rather than a separate destination.</p></article><article><span>Decision 02 / Attribution</span><h4>Show the models without implying certainty.</h4><p>Visible model selection gives users context about the system. Agreement between models is not proof of correctness. Reliable evaluation and access to original sources remain necessary.</p></article><article><span>Decision 03 / Continuity</span><h4>Let people return to an investigation.</h4><p>Persistent history separates ongoing work from a blank conversation. It reduces the need to remember and recreate earlier prompts.</p></article></div>
     </section>
     <section className="refined-chapter" id="reflection"><div className="refined-heading"><p className="refined-kicker">03 / Delivery &amp; reflection</p><h3>A clearer interface is a starting point for validation.</h3><p>I translated the research themes into a unified flow and visual system, then worked with engineers on implementation. The captured interface demonstrates that direction; it does not establish faster onboarding, answer accuracy, or growth.</p></div>

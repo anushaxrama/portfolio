@@ -485,7 +485,7 @@ export default function SpotifyCaseStudy() {
                   controls
                   loop
                   playsInline
-                  preload="metadata"
+                  preload="none"
                 />
                 <figcaption className="flex items-center justify-between px-2 pb-1 pt-3 text-xs">
                   <span className="font-medium text-white/70">{session.label}</span>

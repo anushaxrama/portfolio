@@ -113,6 +113,16 @@ describe('Flowing artwork startup and continuity', () => {
     expect(context['setTransform']).toHaveBeenCalledTimes(1)
   })
 
+  it('bounds per-frame mesh work so artwork does not monopolize the main thread', async () => {
+    fixture()
+    await load()
+    advance(1000)
+    const before = context['transform'].mock.calls.length
+    advance(1016.67)
+    expect(context['transform'].mock.calls.length - before).toBeGreaterThan(0)
+    expect(context['transform'].mock.calls.length - before).toBeLessThanOrEqual(192)
+  })
+
   it('pauses offscreen and in background tabs, resuming at the same wave position', async () => {
     fixture()
     await load()
